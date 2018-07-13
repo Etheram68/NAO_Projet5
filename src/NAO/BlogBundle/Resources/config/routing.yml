@@ -1,0 +1,3 @@
+nao_blog_homepage:
+    path:     /
+    defaults: { _controller: NAOBlogBundle:Default:index }

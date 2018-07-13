@@ -1,3 +1,24 @@
+nao_game:
+    resource: "@NAOGameBundle/Resources/config/routing.yml"
+    prefix:   /
+
+nao_map:
+    resource: "@NAOMapBundle/Resources/config/routing.yml"
+    prefix:   /
+
+nao_blog:
+    resource: "@NAOBlogBundle/Resources/config/routing.yml"
+    prefix:   /
+
+nao_core:
+    resource: "@NAOCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
+
+easy_admin_bundle:
+    resource: "@EasyAdminBundle/Controller/AdminController.php"
+    type:     annotation
+    prefix:   /admin

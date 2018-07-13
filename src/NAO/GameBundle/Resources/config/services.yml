@@ -1,0 +1,4 @@
+services:
+#    nao_game.example:
+#        class: NAO\GameBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

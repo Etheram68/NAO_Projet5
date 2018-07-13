@@ -1,0 +1,4 @@
+services:
+#    nao_blog.example:
+#        class: NAO\BlogBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

@@ -1,0 +1,3 @@
+nao_core_homepage:
+    path:     /
+    defaults: { _controller: NAOCoreBundle:Core:index }

@@ -1,0 +1,3 @@
+nao_map_homepage:
+    path:     /
+    defaults: { _controller: NAOMapBundle:Default:index }
