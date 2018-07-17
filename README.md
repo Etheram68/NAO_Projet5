@@ -1,6 +1,8 @@
 Nao
 ===
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9c30e3214b4b47f8ae98e838099f6d52)](https://app.codacy.com/app/Etheram68/NAO_Projet5?utm_source=github.com&utm_medium=referral&utm_content=Etheram68/NAO_Projet5&utm_campaign=badger)
+
 A Symfony project created on June 3, 2018, 10:26 am.
 
 # Installation
