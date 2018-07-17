@@ -17,7 +17,6 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new AppBundle\AppBundle(),
             new NAO\CoreBundle\NAOCoreBundle(),
             new NAO\BlogBundle\NAOBlogBundle(),
             new NAO\MapBundle\NAOMapBundle(),

@@ -12,11 +12,7 @@ nao_blog:
 
 nao_core:
     resource: "@NAOCoreBundle/Resources/config/routing.yml"
-    prefix:   /core
-
-app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
+    prefix:   /
 
 easy_admin_bundle:
     resource: "@EasyAdminBundle/Controller/AdminController.php"
