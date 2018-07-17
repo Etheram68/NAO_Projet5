@@ -8,6 +8,6 @@ class BlogController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('NAOBlogBundle:Default:index.html.twig');
+        return $this->render('NAOBlogBundle:Blog:index.html.twig');
     }
 }
