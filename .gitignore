@@ -1,5 +1,8 @@
 /.web-server-pid
+# Parameters
 /app/config/parameters.yml
+/app/config/parameters.ini
+
 /build/
 /phpunit.xml
 /var/*
@@ -14,6 +17,18 @@
 !var/sessions/.gitkeep
 !var/SymfonyRequirements.php
 /vendor/
+
+# Assets and user uploads
 /web/bundles/
+/web/uploads/
+
+# Ide folder
 /.idea/
+
 NAO_Projet5.iml
+
+# Backup entities generated with doctrine:generate:entities command
+*/Entity/*~
+
+# Composer PHAR
+/composer.phar

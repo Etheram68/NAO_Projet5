@@ -1,0 +1,161 @@
+easy_admin:
+    site_name: 'Nos Amis les Oiseaux'
+    design:
+        brand_color: '#707070'
+        color_scheme: 'light'
+        menu:
+            - label: 'Fiches et Observations'
+              icon: 'file'
+              children:
+                - { entity: 'Bird', label: 'Fiches oiseaux' }
+                - { entity: 'Edit', label: 'Contributions' }
+                - { entity: 'Observation', label: 'Observations' }
+            - label: 'Blog'
+              icon: 'sticky-note'
+              children:
+                - { entity: 'Article', label: 'Articles' }
+                - { entity: 'Comment', label: 'Commentaires' }
+            - { entity: 'User', label: 'Utilisateurs', icon: 'user' }
+
+            # - { label: 'Fiches et Observations' }
+            # - { entity: 'Bird', label: 'Fiches oiseaux' }
+            # - { entity: 'Edit', label: 'Contributions' }
+            # - { label: 'Le Blog' }
+            # - { entity: 'Article', label: 'Articles' }
+            # - { entity: 'Comment', label: 'Commentaires' }
+            # - { label: 'Utilisateurs' }
+            # - { entity: 'User', label: 'Utilisateurs', icon: 'user' }
+
+    formats:
+        date:     'd/m/Y'
+        time:     'H:i'
+        datetime: 'd/m/Y H:i:s'
+    list:
+        actions:
+            - { name: 'edit', icon: 'pencil', label: '', title: 'Éditer' }
+            - { name: 'delete', icon: 'trash', label: '', title: 'Supprimer' }
+    entities:
+
+        Bird:
+            class: NAO\MapBundle\Entity\Bird
+            # list:
+            #     title: La galerie d'images
+            #     fields:
+            #         - { property: 'image', type: 'image', base_path: '%app.path.images%' }
+            #         - {  property: 'alt', label: 'Titre' }
+            #     actions: 
+            #         - { name: 'new', label: 'Ajouter une image'}
+            #         - '-search'
+            # show:
+            #     fields:
+            #         - { property: 'image', type: 'image', base_path: '%app.path.images%' }
+            # form:
+            #     fields:
+            #         - { property: 'imageFile', type: 'vich_image', label: 'Choisir une image' }
+            #         - alt
+            # new:
+            #     title:  'Ajouter une image'
+            #     help: 'Les images ne doivent pas dépasser 2 Mo'
+
+        Edit:
+            class: NAO\MapBundle\Entity\Edit
+        Observation:
+            class: NAO\MapBundle\Entity\Observation
+        Article:
+            class: NAO\BlogBundle\Entity\Article
+        Comment:
+            class: NAO\BlogBundle\Entity\Comment
+        User:
+            class: NAO\UserBundle\Entity\User
+            list:
+                actions:
+                    - { name: 'edit', icon: 'pencil', label: '', title: 'Éditer' }
+                title: Les utilisateurs
+                sort: ['id', 'ASC']
+                fields: 
+                    - id
+                    - { property: 'username', label: 'Pseudo' }
+                    - { property: 'lastname', label: 'Nom' }
+                    - { property: 'firstname', label: 'Prénom' }
+                    - { property: 'email', label: 'Contact', type: 'email' }
+                    - { property: 'town', label: 'Ville' }
+                    - { property: 'newsletter',  type: 'boolean' }
+                    - { property: 'roles', label: 'Rôle' }
+                    - { property: 'points', label: 'Nbr de points' }
+                    - { property: 'enabled',  label: 'Actif' }
+
+
+
+
+        # DOCUMENTS #
+        # Document:
+        #     class: Agropol\CoreBundle\Entity\Document
+        #     list:
+        #         title: Les documents/rapports
+        #         fields:
+        #             - { property: 'pdf', label: 'Fichiers', template: 'pdf.html.twig', base_path: '%app.path.files%' }
+        #             - { property: 'titre' }
+        #             - { property: 'auteur' }
+        #             - { property: 'dateUpload', label: 'Date', format: 'd/m/Y' }
+        #             - { property: 'updatedAt', label: 'Modifications', format: 'd/m/Y' }
+        #             - { property: 'categories', label: 'Catégories associées', type: 'array' }
+        #             - { property: 'image', type: 'image', base_path: '%app.path.images%' }
+        #         actions: 
+        #             - { name: 'new', label: 'Ajouter un document'}
+        #     form:
+        #         fields:
+        #             - { property: 'pdfFile', type: 'vich_file', label: 'Parcourir' }
+        #             - { property: 'titre', css_class: 'col-sm-9' }
+        #             - { property: 'auteur', css_class: 'col-sm-9' }
+        #             - { property: 'texte', type: 'ckeditor', css_class: 'col-sm-9' }
+        #             - { property: 'categories', type: 'easyadmin_autocomplete' }
+        #             - { property: 'imageFile', type: 'vich_image', label: 'Choisir une image' }
+        #     new:
+        #         title:  'Ajouter un fichier'
+        #         help: 'Les fichiers ne doivent pas dépasser 2 Mo'
+
+        # CATÉGORIES #
+        # Category:
+        #     class: Agropol\CoreBundle\Entity\Category
+        #     list:
+        #         title: Les catégories
+        #         sort: ['id', 'ASC']
+        #         fields:
+        #             - nom
+        #             - { property: 'documents', label: 'Nombre de documents de la catégorie' }
+        #         actions: 
+        #             - { name: 'new', label: 'Ajouter une catégorie'}
+        #     form:
+        #         fields: [{ property: 'nom', label: 'Nom' }]
+        #     new:
+        #         title:  'Ajouter une catégorie'
+        #     edit:
+        #         title:  'Modifier la catégorie'
+
+        # UTILISATEURS #
+        # User:
+        #     class: Agropol\UserBundle\Entity\User
+        #     list:
+                # actions:
+                #     - { name: 'edit', icon: 'pencil', label: '', title: 'Éditer' }
+            #     title: Les utilisateurs
+            #     sort: ['id', 'ASC']
+            #     fields: 
+            #         - id
+            #         - { property: 'username', label: 'Nom' }
+            #         - { property: 'email', label: 'Contact', type: 'email' }
+            #         - { property: 'roles', label: 'Rôle' }
+            #     actions: 
+            #         - { name: 'new', label: 'Créer un nouveau compte'}
+            # new:
+            #     title:  'Nouvel utilisateur'
+            #     fields:
+            #         - { property: 'username', icon: 'Nom' }
+            #         - { property: 'email', css_class: 'input-large', type_options: { required: true } }
+            #         - { property: 'password', type_options: { required: true } }
+            # edit:
+            #     title:  "Modifier l'utilisateur"
+            #     fields:
+            #         - { property: 'username', icon: 'Nom' }
+            #         - { property: 'email', css_class: 'input-large' }
+
