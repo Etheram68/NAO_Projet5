@@ -60,7 +60,7 @@ class User extends BaseUser
     /**
      * @var bool
      *
-     * @ORM\Column(name="rgpd", type="boolean", nullable=true)
+     * @ORM\Column(name="rgpd", type="boolean")
      */
     private $rgpd;
 

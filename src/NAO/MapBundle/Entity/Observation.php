@@ -56,6 +56,13 @@ class Observation
      */
     private $gps;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="validation", type="boolean")
+     */
+    private $validation;
+
 
     /**
      * Get id.
@@ -185,5 +192,29 @@ class Observation
     public function getGps()
     {
         return $this->gps;
+    }
+
+    /**
+     * Set validation
+     *
+     * @param boolean $validation
+     *
+     * @return Observation
+     */
+    public function setValidation($validation)
+    {
+        $this->validation = $validation;
+
+        return $this;
+    }
+
+    /**
+     * Get validation
+     *
+     * @return boolean
+     */
+    public function getValidation()
+    {
+        return $this->validation;
     }
 }
