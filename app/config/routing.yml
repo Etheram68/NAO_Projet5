@@ -14,10 +14,6 @@ nao_core:
     resource: "@NAOCoreBundle/Resources/config/routing.yml"
     prefix:   /core
 
-app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
-
 easy_admin_bundle:
     resource: "@EasyAdminBundle/Controller/AdminController.php"
     type:     annotation
