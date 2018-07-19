@@ -1,0 +1,21 @@
+{% extends "layout.html.twig" %}
+{% block headtitle %}{{ parent() }}{% endblock %}
+{% block body %}
+    <header class="header-area overlay full-height relative v-center" id="home-page">
+        <div class="absolute anlge-bg"></div>
+            <div class="container">
+                <div class="row v-center">
+                    <div class="col-xs-12 col-md-7 header-text">
+                        <h2>Partagez votre passion pour les oiseaux et la nature</h2>
+                        <p>Venez avec nous contribuer au recensement des espèces sur le territoire et soutenir le programme de recherche sur la biodiversité</p>
+<!-- ajouter le liens -->                        <a href="#" class="button white">Decouvrez l'Ornithologie</a>
+                    </div>
+                    <div class="hidden-xs hidden-sm col-md-5 text-right">
+                        <div class="item">
+                            <img id="nao" src="../img/04-nao-logo-petit-jaune.png" alt="Logo Nos amie les oiseaux">
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </header>
+{% endblock %}
