@@ -324,6 +324,7 @@ input:-webkit-autofill:focus {
     z-index: 9999999;
     -webkit-transition: 0.3s;
     transition: 0.3s;
+    background-color: RGBA(255, 255, 255, 0.3);
 }
 
 .overlay,
@@ -342,6 +343,7 @@ input:-webkit-autofill:focus {
 
 .mainmenu-area .logo h2 {
     margin-bottom: 0;
+    color: #000000;
 }
 
 .mainmenu-area #primary-menu > ul > li > a {
@@ -350,6 +352,7 @@ input:-webkit-autofill:focus {
     position: relative;
     border-top: 3px solid transparent;
     text-align: center;
+    color: #000000;
 }
 
 .mainmenu-area #primary-menu > ul > li > a:before {
@@ -368,6 +371,22 @@ input:-webkit-autofill:focus {
     -webkit-transition: 0.3s;
     transition: 0.3s;
 }
+.mainmenu-area.affix #primary-menu > ul > li > a:before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    top: -10px;
+    width: 0;
+    height: 0;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    border-top: 10px solid #FFDE00;
+    opacity: 0;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
 
 .mainmenu-area #primary-menu > ul > li > a:hover:before,
 .mainmenu-area #primary-menu > ul > li.active > a:before {
@@ -379,9 +398,13 @@ input:-webkit-autofill:focus {
 .mainmenu-area #primary-menu ul li a:hover {
     border-top: 3px solid #ffffff;
 }
+.mainmenu-area.affix #primary-menu ul li.active a,
+.mainmenu-area.affix #primary-menu ul li a:hover {
+    border-top: 3px solid #FFDE00;
+}
 
 .mainmenu-area.affix {
-    background-color: #777;
+    background-color: #FFFFFF;
 }
 
 
