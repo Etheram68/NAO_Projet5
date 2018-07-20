@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}"/>
     <link rel="stylesheet" href="{{ asset('css/themify-icons.css') }}"/>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
+
 </head>
 
 <body data-spy="scroll" data-target="#primary-menu">
@@ -39,12 +40,10 @@
 {% block body %}
 {% endblock %}
 
-<footer class="footer">
-    <div class="container">
+<footer>
         {% block footer %}
             {% include 'footer.html.twig' %}
         {% endblock %}
-    </div>
 
     <!--Vendor-JS-->
     <script src="{{ asset('js/vendor/modernizr-2.8.3.min.js') }}"></script>
