@@ -1,10 +1,11 @@
 {% extends "@FOSUser/fosuser_layout.html.twig" %}
+{% block headtitle %}{{ parent() }}{% endblock %}
 
 {% block body %}
     <!--Header-area-->
-    <header class="header-area-login overlay full-height-login relative v-center" id="login-page">
+    <header class="header-area-login overlay full-height-miniHeader relative v-center">
         <div class="absolute anlge-bg"></div>
-            <div class="container" id="loginTitre">
+            <div class="container">
                 <div class="row v-center">
                     <div class="col-xs-12 col-md-7 header-text-login">
                         <h2>Identifiez-vous</h2>

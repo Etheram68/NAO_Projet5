@@ -2,7 +2,7 @@
 
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
 
-<div class="container">
+<main role="main" class="container" id="pageRegister">
 
 	<div class="form-group row col-lg-12 col-sm-12">
 		{# Nom #}
@@ -55,6 +55,6 @@
 		<input type="submit" value="{{ 'registration.submit'|trans }}" />
 	</div>
 
-</div>
+</main>
 
 {{ form_end(form) }}
