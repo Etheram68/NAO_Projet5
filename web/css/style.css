@@ -45,6 +45,11 @@ CSS INDEX
 {
     color: #7B8087;
 }
+.full-404 {
+    width: 100%;
+    height: 6vh;
+    background-color: #737373;
+}
 
 /*-----------------
 1. Google font
@@ -417,12 +422,12 @@ input:-webkit-autofill:focus {
     margin-top: 30px;
 }
 
-.screen-slider .item {
+/*.screen-slider .item {
     background: url('../img/mobile2.png') no-repeat scroll center center / auto 100%;
     padding: 56px 22px;
     display: inline-block;
     margin: auto;
-}
+}*/
 
 .screen-slider.owl-carousel .owl-item {
     text-align: center
@@ -660,9 +665,9 @@ input:-webkit-autofill:focus {
 *Price-area
 ***/
 
-.price-area {
+/*.price-area {
     background: url('images/parallax-6.jpg') no-repeat scroll center center / cover
-}
+}*/
 
 .price-table h3 {
     margin-bottom: 30px;
