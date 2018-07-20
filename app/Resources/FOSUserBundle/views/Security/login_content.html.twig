@@ -6,7 +6,7 @@
 
 <main role="main" class="container" id="pageLogin">
     <div class="row col-lg-12">
-        <div class="col-lg-9 col-xs-12">
+        <div class="col-lg-7 col-xs-12">
             <form action="{{ path("fos_user_security_check") }}" method="post">
                 {% if csrf_token %}
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
@@ -17,14 +17,15 @@
 
                 <label for="password">{{ 'security.login.password'|trans }}</label>
                 <input type="password" id="password" name="_password" required="required" autocomplete="current-password" />
-
+                <div id="dejaVu">
                 <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
                 <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+                </div>
 
-                <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+                <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="btn btn-light" />
             </form>
         </div>
-        <div class="col-lg-3 col-xs-12">
-            <img src="{{ asset('img/pictos/oiseau-jaune-01.png') }}" alt="oiseau-silouhette">
+        <div class="col-lg-5 col-xs-12">
+            <img src="{{ asset('img/pictos/oiseau-jaune-01.png') }}" alt="oiseau-silouhette" />
         </div>
 </main>

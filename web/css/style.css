@@ -101,21 +101,38 @@ h1, h2 {
 }
 
 #pageLogin form input {
-    width: 30%;
+    width: 35%;
 }
 
 #pageLogin form input[type="submit"] {
-    width: 15%;
+    width: 20%;
 }
 
 .header-text-login h2 {
-    margin-top: 200px;
+    margin-top: 180px;
     font-size: 84px;
     color: #FFDE00;
 }
 
-.header-text .button {
-    margin-top: 30px;
+#dejaVu {
+    margin-top: 5px;
+    display: flex;
+    align-items: flex-start;
+    width: 30%;
+    margin-bottom: 25px;
+}
+
+#dejaVu input#remember_me {
+    width: 25px;
+}
+
+label[for="remember_me"] {
+    font-size: 0.7em;
+}
+
+.btn.btn-light {
+    background-color: #FFDE00;
+    color: #575757;
 }
 
 /*-----------------

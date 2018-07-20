@@ -4,6 +4,7 @@ easy_admin:
         brand_color: '#707070'
         color_scheme: 'light'
         menu:
+            - { label: 'Le site', route: 'nao_core_homepage', icon: 'home' }
             - label: 'Fiches et Observations'
               icon: 'file'
               children:
@@ -16,15 +17,6 @@ easy_admin:
                 - { entity: 'Article', label: 'Articles' }
                 - { entity: 'Comment', label: 'Commentaires' }
             - { entity: 'User', label: 'Utilisateurs', icon: 'user' }
-
-            # - { label: 'Fiches et Observations' }
-            # - { entity: 'Bird', label: 'Fiches oiseaux' }
-            # - { entity: 'Edit', label: 'Contributions' }
-            # - { label: 'Le Blog' }
-            # - { entity: 'Article', label: 'Articles' }
-            # - { entity: 'Comment', label: 'Commentaires' }
-            # - { label: 'Utilisateurs' }
-            # - { entity: 'User', label: 'Utilisateurs', icon: 'user' }
 
     formats:
         date:     'd/m/Y'
