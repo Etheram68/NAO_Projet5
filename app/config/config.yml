@@ -71,7 +71,6 @@ swiftmailer:
     password: '%mailer_password%'
     spool: { type: memory }
 
-
 # Fos User Configuration
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'

@@ -33,6 +33,7 @@ CSS INDEX
     position: relative;
     bottom: 2em;
 }
+
 #FontAwesomeIcon3 i {
     color: #FCDE00;
     display: inline-block;
@@ -41,14 +42,80 @@ CSS INDEX
     vertical-align: middle;
     width: 91px;
 }
+
 #wb_FontAwesomeIcon3:hover i
 {
     color: #7B8087;
 }
+
+@font-face {
+    font-family: 'WhitneyHTF-BlackSC';
+    src: url(../fonts/WhitneyHTF-BlackSC.otf) format('opentype');
+}
+
+h1, h2 {
+    font-family: 'WhitneyHTF-BlackSC';
+}
+
 .full-404 {
     width: 100%;
     height: 6vh;
     background-color: #737373;
+}
+
+/** NAVBAR **/
+
+.navbar-header {
+    width: 150px;
+}
+
+.navbar-brand.logo {
+    width: 90%;
+}
+
+/** PAGE LOGIN **/
+
+.header-area-login {
+    background: #000000 url('../img/login-photo.jpg') no-repeat center / cover;
+    height: 50%;
+}
+
+.full-height-login {
+    width: 100%;
+    height: 40vh;
+}
+
+#pageLogin {
+    height: 500px;
+    background-color: #F6F6F6;
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-around;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+#pageLogin form {
+    display: flex;
+    flex-direction: column;
+}
+
+#pageLogin form input {
+    width: 30%;
+}
+
+#pageLogin form input[type="submit"] {
+    width: 15%;
+}
+
+.header-text-login h2 {
+    margin-top: 200px;
+    font-size: 84px;
+    color: #FFDE00;
+}
+
+.header-text .button {
+    margin-top: 30px;
 }
 
 /*-----------------
@@ -324,7 +391,7 @@ input:-webkit-autofill:focus {
     z-index: 9999999;
     -webkit-transition: 0.3s;
     transition: 0.3s;
-    background-color: RGBA(255, 255, 255, 0.3);
+    background-color: RGBA(255, 255, 255, 0.5);
 }
 
 .overlay,
@@ -337,7 +404,7 @@ input:-webkit-autofill:focus {
     text-transform: uppercase;
     letter-spacing: 2px;
     height: inherit;
-    margin-top: 8px;
+    /*margin-top: 8px;*/
     padding-left: 0;
 }
 
@@ -403,8 +470,11 @@ input:-webkit-autofill:focus {
     border-top: 3px solid #FFDE00;
 }
 
-.mainmenu-area.affix {
+/*.mainmenu-area.affix {
     background-color: #FFFFFF;
+}*/
+.mainmenu-area.affix {
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 

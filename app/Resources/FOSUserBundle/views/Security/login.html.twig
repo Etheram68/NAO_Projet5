@@ -1,5 +1,20 @@
-{% extends "@FOSUser/layout.html.twig" %}
+{% extends "@FOSUser/fosuser_layout.html.twig" %}
 
-{% block fos_user_content %}
-    {{ include('@FOSUser/Security/login_content.html.twig') }}
-{% endblock fos_user_content %}
+{% block body %}
+    <!--Header-area-->
+    <header class="header-area-login overlay full-height-login relative v-center" id="login-page">
+        <div class="absolute anlge-bg"></div>
+            <div class="container" id="loginTitre">
+                <div class="row v-center">
+                    <div class="col-xs-12 col-md-7 header-text-login">
+                        <h2>Identifiez-vous</h2>
+                    </div>
+                </div>
+            </div>
+    </header>
+
+	{% block fos_user_content %}
+	    {{ include('@FOSUser/Security/login_content.html.twig') }}
+	{% endblock fos_user_content %}
+
+{% endblock %}
