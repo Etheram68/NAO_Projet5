@@ -39,7 +39,7 @@
 {% block body %}
 {% endblock %}
 
-<footer>
+<!--<footer>-->
         {% block footer %}
             {% include 'footer.html.twig' %}
         {% endblock %}
@@ -55,14 +55,14 @@
     <script src="{{ asset('js/scrollUp.min.js') }}"></script>
     <script src="{{ asset('js/magnific-popup.min.js') }}"></script>
     <script src="{{ asset('js/wow.min.js') }}"></script>
+    <script src="{{ asset('js/footer-reveal.min.js') }}"></script>
+    <script src="{{ asset('js/active.js') }}"></script>
     <!--Main-active-JS-->
     <script src="{{ asset('js/main.js') }}"></script>
 
-    <!--<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
     {% block script %}
         <!-- Block Script -->
     {% endblock %}
-</footer>
+<!--</footer>-->
 </body>
 </html>
