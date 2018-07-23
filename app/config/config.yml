@@ -89,7 +89,7 @@ assetic:
         cssrewrite: ~
         cssembed:
             jar: "%kernel.root_dir%/Resources/java/cssembed.jar"
-            yui_js:
+        yui_js:
             jar: "%kernel.root_dir%/Resources/java/yuicompressor.jar"
         yui_css:
             jar: "%kernel.root_dir%/Resources/java/yuicompressor.jar"
