@@ -38,9 +38,9 @@ class Bird
     /**
      * @var string
      *
-     * @ORM\Column(name="familly", type="string", length=255)
+     * @ORM\Column(name="family", type="string", length=255)
      */
-    private $familly;
+    private $family;
 
     /**
      * @var string
@@ -168,27 +168,27 @@ class Bird
     }
 
     /**
-     * Set familly.
+     * Set family.
      *
-     * @param string $familly
+     * @param string $family
      *
      * @return Bird
      */
-    public function setFamilly($familly)
+    public function setFamily($family)
     {
-        $this->familly = $familly;
+        $this->family = $family;
 
         return $this;
     }
 
     /**
-     * Get familly.
+     * Get family.
      *
      * @return string
      */
-    public function getFamilly()
+    public function getFamily()
     {
-        return $this->familly;
+        return $this->family;
     }
 
     /**

@@ -30,6 +30,21 @@ easy_admin:
 
         Bird:
             class: NAO\MapBundle\Entity\Bird
+            list:
+                actions:
+                    - { name: 'edit', icon: 'pencil', label: '', title: 'Éditer' }
+                title: Les fiches oiseaux
+                sort: ['id', 'ASC']
+                fields: 
+                    - { property: 'id', label: "Id de l'oiseau" }
+                    - { property: 'name', label: "Nom" }
+                    - { property: 'latinName', label: "Nom latin" }
+                    - { property: 'family', label: "Famille" }
+                    - { property: 'featherColor', label: 'Plumage' }
+                    - { property: 'size', label: 'Taille en cm' }
+                    - { property: 'beakShape', label: 'Bec' }
+                    - { property: 'pawColor',  label: 'Pattes' }
+                    - { property: 'editDate',  label: 'Modifications' }
         Edit:
             class: NAO\MapBundle\Entity\Edit
         Observation:
