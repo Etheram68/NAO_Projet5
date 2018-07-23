@@ -50,11 +50,6 @@ class Article
     private $content;
 
     /**
-     * @ORM\OneToMany(targetEntity="NAO\BlogBundle\Entity\Comment", mappedBy="article")
-     */
-    private $comment;
-
-    /**
      * Get id
      *
      * @return int
@@ -159,5 +154,5 @@ class Article
     {
         return $this->content;
     }
-}
 
+}

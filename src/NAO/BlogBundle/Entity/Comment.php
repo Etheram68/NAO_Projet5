@@ -38,9 +38,15 @@ class Comment
     /**
      * @var string
      *
-     * @ORM\Column(name="content", type="string", length=255)
+     * @ORM\Column(name="content", type="string", length=510)
      */
     private $content;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="NAO\BlogBundle\Entity\Article")
+     */
+    private  $article;
+
 
 
 
@@ -125,5 +131,28 @@ class Comment
     {
         return $this->content;
     }
-}
 
+    /**
+     * Set article.
+     *
+     * @param \NAO\BlogBundle\Entity\Article|null $article
+     *
+     * @return Comment
+     */
+    public function setArticle(\NAO\BlogBundle\Entity\Article $article = null)
+    {
+        $this->article = $article;
+
+        return $this;
+    }
+
+    /**
+     * Get article.
+     *
+     * @return \NAO\BlogBundle\Entity\Article|null
+     */
+    public function getArticle()
+    {
+        return $this->article;
+    }
+}

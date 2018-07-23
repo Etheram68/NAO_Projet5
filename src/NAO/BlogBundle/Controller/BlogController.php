@@ -20,7 +20,7 @@ class BlogController extends Controller
             ->getRepository('NAOBlogBundle:Article')
             ->findAll();
 
-        return $this->render('NAOBlogBundle:Blog:index.html.twig', array(
+        return $this->render('blog\index.html.twig', array(
             'listArticles' => $listArticles,
         ));
     }
@@ -28,15 +28,15 @@ class BlogController extends Controller
     public function viewAction(Article $article)
     {
         $em = $this->getDoctrine()->getManager();
-        // Récupération de la liste des candidatures de l'annonce
         $listArticles = $em
             ->getRepository('NAOBlogBundle:Article')
             ->findBy(array('article' => $article));
-        // Récupération des AdvertSkill de l'annonce
+        // Récupération des Commentaires d'un article
+
         $listComments = $em
             ->getRepository('NAOBlogBundle:Comment')
             ->findBy(array('article' => $article));
-        return $this->render('OCPlatformBundle:Advert:view.html.twig', array(
+        return $this->render('blog/view.html.twig', array(
             'article' => $article,
             'listArticles' => $listArticles,
             'listComments' => $listComments,
@@ -74,7 +74,7 @@ class BlogController extends Controller
             return $this->redirectToRoute('nao_blog_view', array('id' => $article->getId()));
     }
 
-    return $this->render('NAOBlogBundle:Blog:edit.html.twig', array(
+    return $this->render('NAOBlogBundle:blog:edit.html.twig', array(
         'article'=> $article,
         'form' => $form->createView(),
     ));

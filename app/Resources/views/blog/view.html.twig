@@ -1,10 +1,10 @@
 {# src/OC/PlatformBundle/Resources/view/Advert/view.html.twig #}
 
-{% extends "NAOBlogBundle::layout.html.twig" %}
+{% extends "blog/layout.html.twig" %}
 
 
 
-{% block ocplatform_body %}
+{% block naoblog_body %}
 
     <div style="float: left; margin-right: 1em;">
         {# On vérifie qu'une image soit bien associée à l'article #}
@@ -34,7 +34,7 @@
                     <li> Posté par {{ comment.author }} le {{ comment.date }}
                          {{ comment.content }}</li>
                 {% else %}
-                    <p>aucune commentaire!</p>
+                    <p>aucun commentaire!</p>
                 {% endfor %}
             </ul>
         </div>
