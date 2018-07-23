@@ -49,6 +49,10 @@ class Article
      */
     private $content;
 
+    /**
+     * @ORM\OneToMany(targetEntity="NAO\BlogBundle\Entity\Comment", mappedBy="article")
+     */
+    private $comment;
 
     /**
      * Get id
@@ -155,5 +159,45 @@ class Article
     {
         return $this->content;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->comment = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add comment
+     *
+     * @param \NAO\BlogBundle\Entity\Comment $comment
+     *
+     * @return Article
+     */
+    public function addComment(\NAO\BlogBundle\Entity\Comment $comment)
+    {
+        $this->comment[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \NAO\BlogBundle\Entity\Comment $comment
+     */
+    public function removeComment(\NAO\BlogBundle\Entity\Comment $comment)
+    {
+        $this->comment->removeElement($comment);
+    }
+
+    /**
+     * Get comment
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+}

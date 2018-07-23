@@ -1,0 +1,9 @@
+services:
+#    nao_user.example:
+#        class: NAO\UserBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+    naouser.form.registration:
+        class: NAO\UserBundle\Form\RegistrationType
+        tags:
+            - {name: form.type, alias: nao_user_registration }

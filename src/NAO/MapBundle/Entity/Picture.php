@@ -35,6 +35,14 @@ class Picture
      */
     private $alt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="NAO\MapBundle\Entity\Observation")
+     */
+    private $observation;
+
+
+
+
 
     /**
      * Get id.
@@ -92,5 +100,29 @@ class Picture
     public function getAlt()
     {
         return $this->alt;
+    }
+
+    /**
+     * Set observation
+     *
+     * @param \NAO\MapBundle\Entity\Observation $observation
+     *
+     * @return Picture
+     */
+    public function setObservation(\NAO\MapBundle\Entity\Observation $observation = null)
+    {
+        $this->observation = $observation;
+
+        return $this;
+    }
+
+    /**
+     * Get observation
+     *
+     * @return \NAO\MapBundle\Entity\Observation
+     */
+    public function getObservation()
+    {
+        return $this->observation;
     }
 }

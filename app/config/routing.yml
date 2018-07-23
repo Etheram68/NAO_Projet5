@@ -1,3 +1,7 @@
+nao_user:
+    resource: "@NAOUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
 nao_game:
     resource: "@NAOGameBundle/Resources/config/routing.yml"
     prefix:   /game
@@ -18,3 +22,6 @@ easy_admin_bundle:
     resource: "@EasyAdminBundle/Controller/AdminController.php"
     type:     annotation
     prefix:   /admin
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
