@@ -1,4 +1,3 @@
-
 {% block navbar %}
     <div class="mainmenu-area" data-spy="affix" data-offset-top="100">
         <div class="container">
@@ -9,22 +8,19 @@
                     <span class="icon-bar"></span>
                 </button>
                 {# LOGO #}
-                {% if (app.request.requesturi == path('nao_core_homepage')) %}
-                  <a href="{{ path('nao_core_homepage') }}" class="navbar-brand logo"><img src="{{ asset('bundles/naocore/img/03-nao-logo-petit-noir.png') }}" \></a>
+                {% if (app.request.requesturi == path('homepage')) %}
+                  <a href="{{ path('homepage') }}" class="navbar-brand logo"><img src="{{ asset('bundles/naocore/img/03-nao-logo-petit-noir.png') }}" \></a>
                 {% else %}
-                  <a href="{{ path('nao_core_homepage') }}" class="navbar-brand logo"><img src="{{ asset('bundles/naocore/img/04-nao-logo-petit-jaune.png') }}" \></a>
+                  <a href="{{ path('homepage') }}" class="navbar-brand logo"><img src="{{ asset('bundles/naocore/img/04-nao-logo-petit-jaune.png') }}" \></a>
                 {% endif %}
             </div>
             <nav class="collapse navbar-collapse" id="primary-menu">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="#">Carte</a></li>
+                    <li class="active"><a href="{{ path('observation.map') }}">Carte</a></li>
                     <li><a href="#">Blog</a></li>
                     <li><a href="#">Salle de Jeux</a></li>
                     <li><a href="#">A propos</a></li>
                     <li><a href="#">Contact</a></li>
-<<<<<<< HEAD
-                    <li><a href="#">Connexion</a></li>
-=======
                     {# CONNEXION/DÉCONNEXION #}
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                       <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
@@ -39,7 +35,6 @@
                       </li>
                     {% endif %}
                     <li><a href="javascript:void(0)" class="dropdown-button" data-activates="dropdown-search"><i class="material-icons">search</i></a></li>
->>>>>>> Nam-dev
                 </ul>
             </nav>
         </div>

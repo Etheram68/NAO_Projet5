@@ -172,6 +172,125 @@ ul#action-map-widget {
 .btn-floating.white i {
     color: #000000;
 }
+
+/** NAVBAR **/
+
+.navbar-header {
+    width: 150px;
+}
+
+.navbar-brand.logo {
+    width: 90%;
+}
+
+
+/** Mini HEADER **/
+
+.full-height-miniHeader {
+    width: 100%;
+    height: 50vh;
+}
+
+/** page LOGIN **/
+
+.header-area-login {
+    background: #000000 url('../img/header-login-photo.jpg') no-repeat scroll center center / cover;
+}
+
+#pageLogin {
+    height: 500px;
+    background-color: #F6F6F6;
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-around;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+#pageLogin form {
+    display: flex;
+    flex-direction: column;
+}
+
+#pageLogin form input {
+    width: 35%;
+}
+
+#pageLogin form input[type="submit"] {
+    width: 20%;
+}
+
+.header-text-login h2 {
+    margin-top: 180px;
+    font-size: 108px;
+    color: #FFDE00;
+}
+
+#dejaVu {
+    margin-top: 5px;
+    display: flex;
+    align-items: flex-start;
+    width: 30%;
+    margin-bottom: 25px;
+}
+
+#dejaVu input#remember_me {
+    width: 25px;
+}
+
+label[for="remember_me"] {
+    font-size: 0.7em;
+}
+
+.btn.btn-light {
+    background-color: #FFDE00;
+    color: #575757;
+}
+
+/** page REGISTER **/
+
+.header-area-register {
+    background: #000000 url('../img/header-register-photo.jpg') no-repeat scroll center -160px / cover;
+}
+
+#pageRegister {
+    height: 1200px;
+    background-color: #F6F6F6;
+    padding: 100px 200px 100px 200px;
+}
+
+.header-text-register h2 {
+    margin-top: 150px;
+    font-size: 120px;
+    color: #FFDE00;
+}
+
+.rgpdNewsletter {
+    display: flex;
+    justify-content: space-around;
+}
+
+.rgpdNewsletter p {
+    font-size: 0.8em;
+    line-height: 1.7em;
+    font-style: italic;
+    color: #848484;
+}
+
+.rgpdNewsletter input[type="checkbox"] {
+    margin-right: 1em;
+}
+
+.rgpdNewsletter input[type="checkbox"]:required:invalid + p {
+
+color: red;
+}
+
+.rgpdNewsletter input[type="checkbox"]:required:valid + p {
+
+color: #848484;
+}
+
 /*-----------------
 1. Google font
 ------------------*/
