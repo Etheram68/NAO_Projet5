@@ -28,6 +28,7 @@ security:
                 csrf_token_generator: security.csrf.token_manager
                 login_path: fos_user_security_login
                 check_path: fos_user_security_check
+                default_target_path: /index
             logout:
                 path: fos_user_security_logout
                 target: fos_user_security_login
@@ -39,7 +40,6 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/contact, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/moncompte, role: ROLE_USER }
         - { path: ^/profile, role: ROLE_USER }
         - { path: ^/observation, role: ROLE_USER }
         - { path: ^/admin, roles: ROLE_ADMIN}

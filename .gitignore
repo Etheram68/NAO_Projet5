@@ -18,7 +18,7 @@
 !var/SymfonyRequirements.php
 /vendor/
 
-# Assets and user uploads
+# Assets
 /web/bundles/
 
 # Ide folder
@@ -34,5 +34,3 @@ src/NAO/MapBundle/Entity/*~
 
 # Composer PHAR
 /composer.phar
-
-node_modules/

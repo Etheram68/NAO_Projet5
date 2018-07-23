@@ -144,19 +144,41 @@ label[for="remember_me"] {
 }
 
 #pageRegister {
-    height: 500px;
+    height: 1200px;
     background-color: #F6F6F6;
-/*    display: flex; 
-    flex-direction: column;
-    justify-content: space-around;*/
-    padding-left: 100px;
-    padding-right: 100px;
+    padding: 100px 200px 100px 200px;
 }
 
 .header-text-register h2 {
-    margin-top: 200px;
+    margin-top: 150px;
     font-size: 120px;
     color: #FFDE00;
+}
+
+.rgpdNewsletter {
+    display: flex;
+    justify-content: space-around;
+}
+
+.rgpdNewsletter p {
+    font-size: 0.8em;
+    line-height: 1.7em;
+    font-style: italic;
+    color: #848484;
+}
+
+.rgpdNewsletter input[type="checkbox"] {
+    margin-right: 1em;
+}
+
+.rgpdNewsletter input[type="checkbox"]:required:invalid + p {
+
+color: red;
+}
+
+.rgpdNewsletter input[type="checkbox"]:required:valid + p {
+
+color: #848484;
 }
 /*-----------------
 1. Google font

@@ -9,9 +9,9 @@
                 </button>
                 {# LOGO #}
                 {% if (app.request.requesturi == path('nao_core_homepage')) %}
-                  <a href="{{ path('nao_core_homepage') }}" class="navbar-brand logo"><img src="{{ asset('img/03-nao-logo-petit-noir.png') }}" \></a>
+                  <a href="{{ path('nao_core_homepage') }}" class="navbar-brand logo"><img src="{{ asset('bundles/naocore/img/03-nao-logo-petit-noir.png') }}" \></a>
                 {% else %}
-                  <a href="{{ path('nao_core_homepage') }}" class="navbar-brand logo"><img src="{{ asset('img/04-nao-logo-petit-jaune.png') }}" \></a>
+                  <a href="{{ path('nao_core_homepage') }}" class="navbar-brand logo"><img src="{{ asset('bundles/naocore/img/04-nao-logo-petit-jaune.png') }}" \></a>
                 {% endif %}
             </div>
             <nav class="collapse navbar-collapse" id="primary-menu">
