@@ -20,6 +20,13 @@
         scrollSpeed: 900,
         animation: 'fade'
     });
+    // :: 4.0 ScrollUp Active Code
+    // if ($.fn.scrollUp) {
+    //     $.scrollUp({
+    //         scrollSpeed: 1500,
+    //         scrollText: '<i class="fa fa-angle-up"></i>'
+    //     });
+    // }
     /* testimonials Slider Active
     =============================*/
     $('.testimonials').owlCarousel({
