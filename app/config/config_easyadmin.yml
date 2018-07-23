@@ -1,0 +1,69 @@
+easy_admin:
+    site_name: 'Nos Amis les Oiseaux'
+    design:
+        brand_color: '#707070'
+        color_scheme: 'light'
+        menu:
+            - { label: 'Le site', route: 'nao_core_homepage', icon: 'home' }
+            - label: 'Fiches et Observations'
+              icon: 'file'
+              children:
+                - { entity: 'Bird', label: 'Fiches oiseaux' }
+                - { entity: 'Edit', label: 'Contributions' }
+                - { entity: 'Observation', label: 'Observations' }
+            - label: 'Blog'
+              icon: 'sticky-note'
+              children:
+                - { entity: 'Article', label: 'Articles' }
+                - { entity: 'Comment', label: 'Commentaires' }
+            - { entity: 'User', label: 'Utilisateurs', icon: 'user' }
+
+    formats:
+        date:     'd/m/Y'
+        time:     'H:i'
+        datetime: 'd/m/Y H:i:s'
+    list:
+        actions:
+            - { name: 'edit', icon: 'pencil', label: '', title: 'Éditer' }
+            - { name: 'delete', icon: 'trash', label: '', title: 'Supprimer' }
+    entities:
+
+        Bird:
+            class: NAO\MapBundle\Entity\Bird
+        Edit:
+            class: NAO\MapBundle\Entity\Edit
+        Observation:
+            class: NAO\MapBundle\Entity\Observation
+            list:
+                actions:
+                    - { name: 'edit', icon: 'pencil', label: '', title: 'Éditer' }
+                title: Les observations
+                sort: ['id', 'ASC']
+                fields: 
+                    - { property: 'birdId', label: "Id de l'oiseau" }
+                    - { property: 'author', label: 'Auteur' }
+                    - date
+                    - { property: 'content', label: 'Description' }
+                    - { property: 'validation',  label: 'Validation' }
+        Article:
+            class: NAO\BlogBundle\Entity\Article
+        Comment:
+            class: NAO\BlogBundle\Entity\Comment
+        User:
+            class: NAO\UserBundle\Entity\User
+            list:
+                actions:
+                    - { name: 'edit', icon: 'pencil', label: '', title: 'Éditer' }
+                title: Les utilisateurs
+                sort: ['id', 'ASC']
+                fields: 
+                    - id
+                    - { property: 'username', label: 'Pseudo' }
+                    - { property: 'lastname', label: 'Nom' }
+                    - { property: 'firstname', label: 'Prénom' }
+                    - { property: 'email', label: 'Contact', type: 'email' }
+                    - { property: 'town', label: 'Ville' }
+                    - { property: 'newsletter',  type: 'boolean' }
+                    - { property: 'roles', label: 'Rôle' }
+                    - { property: 'points', label: 'Nbr de points' }
+                    - { property: 'enabled',  label: 'Actif' }

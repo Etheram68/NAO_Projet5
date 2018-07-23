@@ -1,0 +1,67 @@
+{% extends "layout.html.twig" %}
+{% block headtitle %}{{ status_code }} Error - {{ parent() }}{% endblock %}
+{% block head %}
+    <link href="{{ asset('bundles/naocore/css/error.min.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    <header class="header-404 overlay full-404 relative v-center" id="home-page">
+        <div class="absolute anlge-bg"></div>
+        <div class="container">
+            <div class="row v-center">
+                <div class="col-xs-12 col-md-7 header-text">
+                    <h2>OUPSS</h2>
+                    <h3>une erreur s'est produite</h3>
+                </div>
+            </div>
+        </div>
+        </div>
+    </header>
+
+    <section class="section-padding gray-bg" id="blog-page">
+        <div class="container">
+        <div class="row">
+
+            <div class="col-xs-12 col-sm-4">
+                <div class="error-image">
+                    <div class="robot-wrap">
+                        <div class="robot-head">
+                            <div class="robot-head-with-gradient"></div>
+                            <div class="left-eye"></div>
+                            <div class="right-eye"></div>
+                            <div class="robot-mouth"></div>
+                        </div>
+                        <div class="robot-body-wrap">
+                            <div class="body-right-wire"></div>
+                            <div class="robot-body"></div>
+                            <div class="left-hand">
+                                <div class="left-top-hand-brokenness"></div>
+                                <div class="left-top-hand"></div>
+                                <div class="left-bottom-hand"></div>
+                            </div>
+                            <div class="right-hand">
+                                <div class="right-hand-wire"></div>
+                                <div class="right-top-hand"></div>
+                                <div class="right-bottom-hand"></div>
+                            </div>
+                            <div class="left-top-hand"></div>
+                        </div>
+                        <div class="right-hand-shadow"></div>
+                        <div class="robot-body-bottom-brokenness"></div>
+                        <div class="robot-body-bottom"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="error-content">
+
+                <h2 style="text-align: center;" class="error-msg">{{ status_code }}</h2>
+                <p style="text-align: center;" class="error-info"></p><h3 style="text-align: center;">La page recherché n'existe pas?</h3><br>
+
+                <p style="text-align: center;">Vous serez bien plus en sécurité si vous faites demi-tour...</p><br>
+
+                <div style="text-align: center;" class="options"><a class="button_error" href="{{ path('nao_core_homepage') }}">Retourner à l'accueil</a></div><p></p>
+            </div>
+        </div>
+        </div>
+    </section>
+{% endblock %}
