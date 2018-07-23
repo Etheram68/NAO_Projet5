@@ -20,7 +20,7 @@ class BlogController extends Controller
             ->getRepository('NAOBlogBundle:Article')
             ->findAll();
 
-        return $this->render('NAOBlogBundle:Blog:index.html.twig', array(
+        return $this->render('blog\index.html.twig', array(
             'listArticles' => $listArticles,
         ));
     }
@@ -36,7 +36,7 @@ class BlogController extends Controller
         $listComments = $em
             ->getRepository('NAOBlogBundle:Comment')
             ->findBy(array('article' => $article));
-        return $this->render('OCPlatformBundle:Advert:view.html.twig', array(
+        return $this->render('blog\view.html.twig', array(
             'article' => $article,
             'listArticles' => $listArticles,
             'listComments' => $listComments,
@@ -57,7 +57,7 @@ class BlogController extends Controller
 
             return $this->redirectToRoute('nao_blog_view', array('id' => $article->getId()));
         }
-        return $this->render('NAOBlogBundle:Article:add.html.twig', array(
+        return $this->render('blog\add.html.twig', array(
             'form' => $form->createView(),
         ));
     }
@@ -74,7 +74,7 @@ class BlogController extends Controller
             return $this->redirectToRoute('nao_blog_view', array('id' => $article->getId()));
     }
 
-    return $this->render('NAOBlogBundle:Blog:edit.html.twig', array(
+    return $this->render('blog\edit.html.twig', array(
         'article'=> $article,
         'form' => $form->createView(),
     ));
@@ -94,7 +94,7 @@ class BlogController extends Controller
             return $this->redirectToRoute('nao_blog_homepage');
         }
 
-        return $this->render('OCPlatformBundle:Article:delete.html.twig', array(
+        return $this->render('blog\delete.html.twig', array(
             'article' => $article,
             'form'   => $form->createView(),
         ));

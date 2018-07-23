@@ -406,28 +406,4 @@ class Bird
     {
         return $this->picture;
     }
-
-    /**
-     * Set edit
-     *
-     * @param \NAO\MapBundle\Entity\Edit $edit
-     *
-     * @return Bird
-     */
-    public function setEdit(\NAO\MapBundle\Entity\Edit $edit = null)
-    {
-        $this->edit = $edit;
-
-        return $this;
-    }
-
-    /**
-     * Get edit
-     *
-     * @return \NAO\MapBundle\Entity\Edit
-     */
-    public function getEdit()
-    {
-        return $this->edit;
-    }
 }

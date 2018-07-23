@@ -101,28 +101,4 @@ class Picture
     {
         return $this->alt;
     }
-
-    /**
-     * Set observation
-     *
-     * @param \NAO\MapBundle\Entity\Observation $observation
-     *
-     * @return Picture
-     */
-    public function setObservation(\NAO\MapBundle\Entity\Observation $observation = null)
-    {
-        $this->observation = $observation;
-
-        return $this;
-    }
-
-    /**
-     * Get observation
-     *
-     * @return \NAO\MapBundle\Entity\Observation
-     */
-    public function getObservation()
-    {
-        return $this->observation;
-    }
 }

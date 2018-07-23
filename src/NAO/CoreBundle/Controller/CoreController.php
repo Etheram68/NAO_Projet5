@@ -8,6 +8,6 @@ class CoreController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('NAOCoreBundle:Core:index.html.twig');
+        return $this->render('homepage\index.html.twig');
     }
 }
