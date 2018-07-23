@@ -1,0 +1,58 @@
+{# src/OC/PlatformBundle/Resources/view/Advert/view.html.twig #}
+
+{% extends "NAOBlogBundle::layout.html.twig" %}
+
+
+
+{% block ocplatform_body %}
+
+    <div style="float: left; margin-right: 1em;">
+        {# On vérifie qu'une image soit bien associée à l'article #}
+        {% if article.image is not null %}
+            <img
+                    src="{{ asset(article.image.webPath) }}"
+                    alt="{{ article.image.alt }}"
+                    height="60"
+            />
+        {% endif %}
+    </div>
+
+    <h2>{{ article.title }}</h2>
+    <i>Par {{ article.author }}, le {{ article.date|date('d/m/Y') }}</i>
+
+    <div class="well">
+        {{ article.content }}
+    </div>
+
+    {% if listComments|length > 0 %}
+        <div>
+            Commentaires
+
+            <button>Ajouter un commentaire</button>
+            <ul>
+                {% for comment in listComments %}
+                    <li> Posté par {{ comment.author }} le {{ comment.date }}
+                         {{ comment.content }}</li>
+                {% else %}
+                    <p>aucune commentaire!</p>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    <p>
+        <a href="{{ path('oc_platform_home') }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour à la liste
+        </a>
+        <a href="{{ path('oc_platform_edit', {'id': advert.id}) }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-edit"></i>
+            Modifier l'annonce
+        </a>
+        <a href="{{ path('oc_platform_delete', {'id': advert.id}) }}" class="btn btn-danger">
+            <i class="glyphicon glyphicon-trash"></i>
+            Supprimer l'annonce
+        </a>
+    </p>
+
+{% endblock %}

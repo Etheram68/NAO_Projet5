@@ -98,6 +98,16 @@ class Bird
      */
     private $editDate;
 
+    /**
+     * @ORM\OneToOne(targetEntity="NAO\MapBundle\Entity\Picture", cascade={"persist", "remove"})
+     */
+    private $picture;
+
+    /**
+     * @ORM\OneToOne (targetEntity="NAO\MapBundle\Entity\Edit", cascade={"persist", "remove"})
+     */
+    private $edit;
+
 
     /**
      * Get id.
@@ -371,5 +381,53 @@ class Bird
     public function getEditDate()
     {
         return $this->editDate;
+    }
+
+    /**
+     * Set picture
+     *
+     * @param \NAO\MapBundle\Entity\Picture $picture
+     *
+     * @return Bird
+     */
+    public function setPicture(\NAO\MapBundle\Entity\Picture $picture = null)
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Get picture
+     *
+     * @return \NAO\MapBundle\Entity\Picture
+     */
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+    /**
+     * Set edit
+     *
+     * @param \NAO\MapBundle\Entity\Edit $edit
+     *
+     * @return Bird
+     */
+    public function setEdit(\NAO\MapBundle\Entity\Edit $edit = null)
+    {
+        $this->edit = $edit;
+
+        return $this;
+    }
+
+    /**
+     * Get edit
+     *
+     * @return \NAO\MapBundle\Entity\Edit
+     */
+    public function getEdit()
+    {
+        return $this->edit;
     }
 }
