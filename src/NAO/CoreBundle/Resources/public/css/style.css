@@ -273,7 +273,7 @@ ul#action-map-widget {
 /*---- page LOGIN ----*/
 
 .header-area-login {
-    background: #000000 url('../img/header-login-photo.jpg') no-repeat scroll center center / cover;
+    background: #000000 url('../img/header-login-photo.jpg') no-repeat scroll center / cover;
 }
 
 #pageLogin {
@@ -311,15 +311,31 @@ ul#action-map-widget {
     display: flex;
     align-items: flex-start;
     width: 30%;
-    margin-bottom: 25px;
 }
 
 #dejaVu input#remember_me {
     width: 25px;
+    margin-top: 7px;
 }
 
 label[for="remember_me"] {
+    font-size: 0.9em;
+    font-weight: 400;
+}
+
+.forgetAndSubscribe {
     font-size: 0.7em;
+    margin-bottom: 10px;
+    padding-left: 24px;
+}
+
+#forget, #subscribe {
+    text-decoration: underline;
+}
+
+a#forget:hover, a#subscribe:hover {
+    color: #212121;
+    text-decoration: none;
 }
 
 .btn.btn-light {
@@ -330,7 +346,7 @@ label[for="remember_me"] {
 /*---- page INSCRIPTION ----*/
 
 .header-area-register {
-    background: #000000 url('../img/header-register-photo.jpg') no-repeat scroll center -160px / cover;
+    background: #000000 url('../img/header-register-photo.jpg') no-repeat scroll center center / cover;
 }
 
 #pageRegister {
@@ -556,6 +572,24 @@ color: #848484;
 #wb_FontAwesomeIcon6:hover i {
    color: #575757;
 }*/
+
+/*---- page PROFILE ----*/
+
+.header-area-profile {
+    background: #000000 url('../img/header-profile-photo.jpg') no-repeat scroll center center / cover;
+}
+
+#pageProfile {
+    height: 960px;
+    background-color: #F6F6F6;
+    padding: 100px 200px 100px 200px;
+}
+
+.header-text-profile h2 {
+    margin-top: 216px;
+    font-size: 120px;
+    color: #FFDE00;
+}
 
 
 /*-----------------

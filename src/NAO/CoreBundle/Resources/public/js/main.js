@@ -103,7 +103,10 @@
     magnifPopup();
 
     //Background Parallax
-    $('.header-area').parallax("50%", -0.4);
+    $('.header-area').parallax("50%", -0.6);
+    $('.header-area-register').parallax("50%", -0.6);
+    $('.header-area-login').parallax("50%", -0.6);
+    $('.header-area-profile').parallax("50%", -0.6);
     $('.price-area').parallax("50%", -0.5);
     $('.testimonial-area').parallax("10%", -0.2);
 
