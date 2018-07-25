@@ -143,6 +143,10 @@ h1, h2 {
     line-height: 50px;
 }
 
+#service-page {
+    background-color: #F6F6F6;
+}
+
 /*---- CARTE ----*/
 
 .map-container {
