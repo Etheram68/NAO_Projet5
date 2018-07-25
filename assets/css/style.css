@@ -224,7 +224,6 @@ ul#action-map-widget {
     margin-top: 180px;
     font-size: 108px;
     color: #FFDE00;
-    line-height: 0.8em;
 }
 
 #dejaVu {
@@ -255,13 +254,13 @@ label[for="remember_me"] {
 }
 
 #pageRegister {
-    height: 960px;
+    height: 1200px;
     background-color: #F6F6F6;
     padding: 100px 200px 100px 200px;
 }
 
 .header-text-register h2 {
-    margin-top: 180px;
+    margin-top: 150px;
     font-size: 120px;
     color: #FFDE00;
 }
@@ -456,7 +455,7 @@ input:-webkit-autofill:focus {
     display: inline-block;
     padding: 8px 30px;
     border-radius: 50px;
-    color: #575757;
+    color: #777;
     background-color: #FFDE00;
     -webkit-transition: 0.3s;
     transition: 0.3s;

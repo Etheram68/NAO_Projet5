@@ -1,0 +1,234 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}Carte - {{ parent() }}{% endblock %}
+
+{% block body %}
+    <header class="header-404 overlay full-404 relative v-center" id="home-page">
+        <div class="absolute anlge-bg"></div>
+        <div class="container">
+            <div class="row v-center">
+                <div class="col-xs-12 col-md-7 header-text">
+                    <h2>LES OBSERVATIONS</h2>
+                    <h3>sur la Carte</h3>
+                </div>
+            </div>
+        </div>
+        </div>
+    </header>
+
+    <section class="section-padding gray-bg" id="blog-page">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-4">
+                    <main class="container full-map">
+                        <section>
+                            <div class="map-container">
+                                <div class="map-result-overlay"></div>
+                                <form id="search-map-widget" method="post">
+                                    <a id="action-map-search" href="#" class="light-2"><i class="material-icons">search</i></a>
+                                    <input type="text" id="search-bird" name="search-bird" autocomplete="off" placeholder="Rechercher par espèce"/>
+                                    <a id="action-map-filter" href="#" class="bleen"><i class="material-icons">keyboard_arrow_down</i></a>
+                                    <div id="extra-filter" class="input-field">
+                                        {% include 'observation/dep.html.twig' only %}
+                                        <label>Tous les départements</label>
+                                    </div>
+                                </form>
+                                <ul id="dropSpecimen" class="autocomplete-content dropdown-content"></ul>
+                                <div id="google-maps"></div>
+                                <ul id="action-map-widget">
+                                    <li><a href="#" id="map-geoloc-zoom" class="btn-floating btn-large waves-effect waves-light white"><i class="material-icons">gps_fixed</i></a></li>
+                                    <li><a href="#" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">add</i></a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block script %}
+    <script>
+        $(function () {
+            $('ul.tabs').tabs();
+            /**************************
+             * Autocomplete Bird
+             ***************************************/
+            var searchBird      = $('#search-bird');
+            searchBird.materialize_autocomplete({
+                limit: 6,
+                cacheable: true,
+                multiple: {
+                    enable: false
+                },
+                dropdown : {
+                    el: '#dropSpecimen'
+                },
+                getData: function (value, callback) {
+                    var data = [];
+                    $.ajax({
+                        url: "#",
+                        type: "",
+                        dataType: "json",
+                        data: { "name": value },
+                        success: function (response) {
+                            callback(value, response);
+                        }
+                    });
+                },
+            });
+            /**************************
+             * MAPS
+             ***************************************/
+            var map;
+            var polygon;
+            var markers = [];
+            map = new GMaps({
+                div: '#google-maps',
+                lat: 46.52863469527167,
+                lng: 2.43896484375,
+                zoom: 6,
+                fullscreenControl : false,
+                streetViewControl : false,
+                mapTypeControl: false,
+                zoomControl: false,
+                zoom_changed: function(e) {
+                    var zoom = map.getZoom();
+                    for(i = 0; i < map.markers.length; i++){
+                        if(zoom > 10){
+                            map.markers[i].setVisible(false);
+                        }else{
+                            map.markers[i].setVisible(true);
+                        }
+                    }
+                },
+            });
+            /**************************
+             * Geolocalisation
+             ***************************************/
+            var geoZoom = $('#map-geoloc-zoom');
+            geoZoom.on('click', function(e){
+                e.preventDefault();
+                GMaps.geolocate({
+                    success: function(position) {
+                        map.setCenter(position.coords.latitude, position.coords.longitude);
+                        map.setZoom(15);
+                    },
+                    error: function(error) {
+                        console.log('Geolocation failed: '+error.message);
+                    },
+                    not_supported: function() {
+                        alert("Votre navigateur ne supporte pas la géolocalisation");
+                    }
+                });
+            });
+            /**************************
+             * search form management
+             ***************************************/
+            var actionSearch    = $('#action-map-search');
+            var actionFilter    = $('#action-map-filter');
+            var formSearch      = $('#search-map-widget');
+            var extraFilter     = $('#extra-filter');
+            var bird            = $('#search-bird');
+            var department      = $('#extra-filter select');
+            var mapOverlay      = $('.map-result-overlay');
+            // Update map with all observations when page are finish to load
+            updateMapsWithObservations('', 0);
+            // Submit form by clinking on search button
+            actionSearch.on('click', function(e){
+                e.preventDefault();
+                formSearch.submit();
+            });
+            // submit by pressing enter
+            bird.on('keyup', function (event) {
+                if (event.which == 13) {
+                    formSearch.submit();
+                }
+            });
+            // Refresh when changing department
+            $('select').on('change', function() {
+                formSearch.submit();
+            })
+            ;
+            // Show or hide filter additional menu
+            actionFilter.on('click', function(e){
+                e.preventDefault();
+                extraFilter.toggle();
+                var arrowItem = actionFilter.find('i');
+                if(arrowItem.html() == 'keyboard_arrow_down'){
+                    arrowItem.html('keyboard_arrow_up');
+                }else{
+                    arrowItem.html('keyboard_arrow_down');
+                }
+            });
+            // When user submit form
+            formSearch.on('submit',function(e){
+                e.preventDefault();
+                updateMapsWithObservations(bird.val(), department.val());
+            });
+            /**
+             * Update current maps with observations generate with filters
+             *
+             * @param bird
+             * @param department
+             */
+            function updateMapsWithObservations(bird, department){
+                var data = {bird: bird, department: department};
+                $.post( "#", data , function( response ) {
+                    map.removePolygons();
+                    map.removeMarkers();
+                    $.each(response, function(index, item) {
+                        var location = new google.maps.LatLng(item.latitude, item.longitude);
+                        drawRect(location);
+                        placeMarker(location);
+                    });
+                    $('#eltlist').html(response.html);
+                    mapOverlay.html(response.message);
+                    mapOverlay.show();
+                });
+            }
+            /**
+             * Add custom marker for position
+             * @param location
+             */
+            function placeMarker(location){
+                map.addMarker({
+                    position: location,
+                    icon: "{{ asset('assets/img/marker.png') }}",
+                    title: 'Zoomer ici pour voir la zone d\'observation'
+                });
+            }
+            /**
+             * Draw rectangle
+             * @param location
+             */
+            function drawRect(location) {
+                var NORTH       = 0;
+                var WEST        = -90;
+                var SOUTH       = 180;
+                var EAST        = 90;
+                var distance    = 3000; // 3Km
+                var north = google.maps.geometry.spherical.computeOffset(location, distance / 2, NORTH);
+                var south = google.maps.geometry.spherical.computeOffset(location, distance / 2, SOUTH);
+                var northEast = google.maps.geometry.spherical.computeOffset(north, distance / 2, EAST);
+                var northWest = google.maps.geometry.spherical.computeOffset(north, distance / 2, WEST);
+                var southEast = google.maps.geometry.spherical.computeOffset(south, distance / 2, EAST);
+                var southWest = google.maps.geometry.spherical.computeOffset(south, distance / 2, WEST);
+                var path = [northEast, northWest, southWest, southEast];
+                polygon = map.drawPolygon({
+                    paths: path,
+                    strokeColor: '#f67d79',
+                    strokeOpacity: 0.9,
+                    strokeWeight: 1,
+                    fillColor: '#eec0b7',
+                    fillOpacity: 0.5,
+                });
+            }
+        });
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASSHQxYAWG48ya6foaegZOev9J7VqKvk8&libraries=geometry,places">
+    </script>
+
+{% endblock %}

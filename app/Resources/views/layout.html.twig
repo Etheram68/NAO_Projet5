@@ -1,67 +1,73 @@
 {# src/OC/CoreBundle/Resources/views/Core/index.html.twig #}
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
-  <!-- Title -->
-  <title>{% block headtitle %}{% endblock %} Nos Amis les Oiseaux</title>
-  <!-- Include in header -->
-  {% block head %}
-  {% endblock %}
-  <!-- Add CSS -->
-  <link rel="stylesheet" href="{{ asset('bundles/naocore/css/bootstrap.min.css') }}" />
-  <link rel="stylesheet" href="{{ asset('bundles/naocore/css/animate.css') }}" />
-  <link rel="stylesheet" href="{{ asset('bundles/naocore/css/magnific-popup.css') }}" />
-  <link rel="stylesheet" href="{{ asset('bundles/naocore/css/normalize.css') }}" />
-  <link rel="stylesheet" href="{{ asset('bundles/naocore/css/owl.carousel.min.css') }}" />
-  <link rel="stylesheet" href="{{ asset('bundles/naocore/css/responsive.css') }}" />
-  <link rel="stylesheet" href="{{ asset('bundles/naocore/css/themify-icons.css') }}" />
-  <link rel="stylesheet" href="{{ asset('bundles/naocore/css/style.css') }}" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+    <!-- Title -->
+    <title>{% block headtitle %}{% endblock %} Nos Amis les Oiseaux</title>
+    <!-- Include in header -->
+    {% block head %}
+    {% endblock %}
+    <!-- Add CSS -->
+    <link rel="stylesheet" href="{{ asset('bundles/naocore/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/naocore/css/animate.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('bundles/naocore/css/magnific-popup.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('bundles/naocore/css/normalize.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('bundles/naocore/css/owl.carousel.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('bundles/naocore/css/responsive.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('bundles/naocore/css/themify-icons.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('bundles/naocore/css/style.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('bundles/naocore/css/materialize.css') }}"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body data-spy="scroll" data-target="#primary-menu">
 <div class="preloader">
-  <div class="sk-folding-cube">
-    <div class="sk-cube1 sk-cube"></div>
-    <div class="sk-cube2 sk-cube"></div>
-    <div class="sk-cube4 sk-cube"></div>
-    <div class="sk-cube3 sk-cube"></div>
-  </div>
+    <div class="sk-folding-cube">
+        <div class="sk-cube1 sk-cube"></div>
+        <div class="sk-cube2 sk-cube"></div>
+        <div class="sk-cube4 sk-cube"></div>
+        <div class="sk-cube3 sk-cube"></div>
+    </div>
 </div>
 <!-- Navbar -->
 {% block navbar %}
-  {% include 'navbar.html.twig' %}
+    {% include 'navbar.html.twig' %}
 {% endblock %}
 
 {% block body %}
 {% endblock %}
 
 <!--<footer>-->
-  {% block footer %}
-    {% include 'footer.html.twig' %}
-  {% endblock %}
+        {% block footer %}
+            {% include 'footer.html.twig' %}
+        {% endblock %}
 
-  <!--Vendor-JS-->
-  <script src="{{ asset('bundles/naocore/js/vendor/modernizr-2.8.3.min.js') }}"></script>
-  <script src="{{ asset('bundles/naocore/js/vendor/jquery-1.12.4.min.js') }}"></script>
-  <script src="{{ asset('bundles/naocore/js/vendor/bootstrap.min.js') }}"></script>
-  <!--Plugin-JS-->
-  <script src="{{ asset('bundles/naocore/js/owl.carousel.min.js') }}"></script>
-  <script src="{{ asset('bundles/naocore/js/contact-form.js') }}"></script>
-  <script src="{{ asset('bundles/naocore/js/jquery.parallax-1.1.3.js') }}"></script>
-  <script src="{{ asset('bundles/naocore/js/scrollUp.min.js') }}"></script>
-  <script src="{{ asset('bundles/naocore/js/magnific-popup.min.js') }}"></script>
-  <script src="{{ asset('bundles/naocore/js/wow.min.js') }}"></script>
-  <!--<script src="{{ asset('bundles/naocore/js/footer-reveal.min.js') }}"></script>
-  <script src="{{ asset('bundles/naocore/js/active.js') }}"></script>  -->
-  <!--Main-active-JS-->
-  <script src="{{ asset('bundles/naocore/js/main.js') }}"></script>
+    <!--Vendor-JS-->
+    <script src="{{ asset('bundles/naocore/js/vendor/modernizr-2.8.3.min.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="{{ asset('bundles/naocore/js/vendor/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bundles/naocore/js/vendor/gmaps.min.js') }}"></script>
+    <script src="{{ asset('bundles/naocore/js/vendor/materialize.js') }}"></script>
+    <script src="{{ asset('bundles/naocore/js/vendor/jquery.materialize-autocomplete.js') }}"></script>
+    <!--Plugin-JS-->
+    <script src="{{ asset('bundles/naocore/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('bundles/naocore/js/contact-form.js') }}"></script>
+    <script src="{{ asset('bundles/naocore/js/jquery.parallax-1.1.3.js') }}"></script>
+    <script src="{{ asset('bundles/naocore/js/scrollUp.min.js') }}"></script>
+    <script src="{{ asset('bundles/naocore/js/magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('bundles/naocore/js/wow.min.js') }}"></script>
+    <script src="{{ asset('bundles/naocore/js/footer-reveal.min.js') }}"></script>
+    <script src="{{ asset('bundles/naocore/js/active.js') }}"></script>
+    <!--Main-active-JS-->
+    <script src="{{ asset('bundles/naocore/js/main.js') }}"></script>
 
-  {% block script %}
-      <!-- Block Script -->
-  {% endblock %}
+    {% block script %}
+        <!-- Block Script -->
+    {% endblock %}
 <!--</footer>-->
 </body>
 </html>
