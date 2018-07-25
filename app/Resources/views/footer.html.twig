@@ -1,47 +1,80 @@
 {% block footer %}
+    <div id="nao_socialMedia">
+        <div id="socialMedia">
+            <div class="row">
+                <div class="col-1">
+                    <div id="wb_FontAwesomeIcon1" style="display:inline-block;text-align:center;z-index:50;">
+                        <a href="#">
+                            <div id="FontAwesomeIcon1">
+                                <i class="fa fa-facebook"></i>        
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div id="wb_FontAwesomeIcon2" style="display:inline-block;text-align:center;z-index:51;">
+                        <a href="#">
+                            <div id="FontAwesomeIcon2">
+                                <i class="fa fa-twitter"></i>    
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div id="wb_FontAwesomeIcon4" style="display:inline-block;text-align:center;z-index:52;">
+                        <a href="#">
+                            <div id="FontAwesomeIcon4">
+                                <i class="fa fa-instagram"></i>    
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div id="wb_FontAwesomeIcon6" style="display:inline-block;text-align:center;z-index:53;">
+                        <a href="#">
+                            <div id="FontAwesomeIcon6">
+                                <i class="fa fa-pinterest-p"></i>     
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer class="footer_area">
         <div class="container">
-        <div class="footer_row row">
-            <div class="col-md-3 col-sm-6 footer_about">
-                <img src="{{ asset('bundles/naocore/img/logo-nao-jaune.png') }}" alt="Logo NAO">
-                <ul class="socail_icon">
-                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 col-sm-6 footer_about quick">
-                <h2>Information Légales</h2>
-                <ul class="quick_link">
-                    <li><a href="#"><i class="fa fa-chevron-right"></i>Mention Légales</a></li>
-                    <li><a href="#"><i class="fa fa-chevron-right"></i>Condition général d'utilisation</a></li>
-                    <li><a href="#"><i class="fa fa-chevron-right"></i>Plan du site</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 col-sm-6 footer_about quick">
-                <h2>Nos Partenaires</h2>
-                <ul class="quick_link">
-                    <li><a href="#"><i class="fa fa-chevron-right"></i>L.P.O.</a></li>
-                    <li><a href="#"><i class="fa fa-chevron-right"></i>Oisillion.net</a></li>
-                    <li><a href="#"><i class="fa fa-chevron-right"></i>Ornithomedia.com</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 col-sm-6 footer_about">
-                <h2>Nous contacter</h2>
-                <address>
-                    <p>Vous avez des questions:</p>
-                    <ul class="my_address">
-                        <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i>info@thethemspro.com</a></li>
-                        <li><a href="#"><i class="fa fa-phone" aria-hidden="true"></i>+880 123 456 789</a></li>
-                        <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i><span>18 rue des Grives, 31830 PLAISANCE DU TOUCH </span></a></li>
+            <div class="footer_row row">
+                <div class="col-md-3 col-sm-6 footer_about quick">
+                    <h2>Information Légales</h2>
+                    <ul class="quick_link">
+                        <li><a href="#"><i class="fa fa-chevron-right"></i>Mention Légales</a></li>
+                        <li><a href="#"><i class="fa fa-chevron-right"></i>Condition général d'utilisation</a></li>
+                        <li><a href="#"><i class="fa fa-chevron-right"></i>Plan du site</a></li>
                     </ul>
-                </address>
+                </div>
+                <div class="col-md-3 col-sm-6 footer_about quick">
+                    <h2>Nos Partenaires</h2>
+                    <ul class="quick_link">
+                        <li><a href="#"><i class="fa fa-chevron-right"></i>L.P.O.</a></li>
+                        <li><a href="#"><i class="fa fa-chevron-right"></i>Oisillion.net</a></li>
+                        <li><a href="#"><i class="fa fa-chevron-right"></i>Ornithomedia.com</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-6 footer_about">
+                    <img src="{{ asset('bundles/naocore/img/logo-nao-gris.png') }}" alt="Logo NAO" />
+                    <address>
+                        <ul class="my_address">
+                            <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i>contact@nao.fr</a></li>
+                            <li><a href="#"><i class="fa fa-phone" aria-hidden="true"></i>01 40 33 77 91</a></li>
+                            <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i><span>18 rue des Grives, 31830 PLAISANCE DU TOUCH </span></a></li>
+                        </ul>
+                    </address>
+                </div>
             </div>
-        </div>
-        </div>
-        <div class="copyright_area">
-            Copyright 2017 All rights reserved. Designed by <a href="#">ENVF.</a>
+            <div class="copyright_area">
+                Copyright 2018 Tout droits réservés. Designed by <a href="#">ENVF.</a>
+            </div>
         </div>
     </footer>
 {% endblock %}

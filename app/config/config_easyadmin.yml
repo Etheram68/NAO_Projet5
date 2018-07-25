@@ -39,12 +39,12 @@ easy_admin:
                 fields: 
                     - { property: 'id', label: "Id de l'oiseau" }
                     - { property: 'name', label: "Nom" }
-                    - { property: 'latinName', label: "Nom latin" }
+                    # - { property: 'latinName', label: "Nom latin" }
                     - { property: 'family', label: "Famille" }
-                    - { property: 'featherColor', label: 'Plumage' }
-                    - { property: 'size', label: 'Taille en cm' }
-                    - { property: 'beakShape', label: 'Bec' }
-                    - { property: 'pawColor',  label: 'Pattes' }
+                    # - { property: 'featherColor', label: 'Plumage' }
+                    # - { property: 'size', label: 'Taille en cm' }
+                    # - { property: 'beakShape', label: 'Bec' }
+                    # - { property: 'pawColor',  label: 'Pattes' }
                     - { property: 'editDate',  label: 'Modifications' }
                     - { property: 'edit',  label: 'Contribution' }
             form:
@@ -63,14 +63,6 @@ easy_admin:
                 title:  'Créer une fiche'
             edit:
                 title:  'Modifier la fiche'
-                # fields:
-                #     - { property: 'name', label: "Nom" }
-                #     - { property: 'latinName', label: "Nom latin" }
-                #     - { property: 'family', label: "Famille" }
-                #     - { property: 'featherColor', label: 'Plumage' }
-                #     - { property: 'size', label: 'Taille en cm' }
-                #     - { property: 'beakShape', label: 'Bec' }
-                #     - { property: 'pawColor',  label: 'Pattes' }
         Edit:
             class: NAO\MapBundle\Entity\Edit
         Observation:
