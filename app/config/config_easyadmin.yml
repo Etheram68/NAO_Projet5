@@ -4,7 +4,7 @@ easy_admin:
         brand_color: '#707070'
         color_scheme: 'light'
         menu:
-            - { label: 'Le site', route: 'nao_core_homepage', icon: 'home' }
+            - { label: 'Le site', route: 'homepage', icon: 'home' }
             - label: 'Fiches et Observations'
               icon: 'file'
               children:
