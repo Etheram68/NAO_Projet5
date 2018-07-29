@@ -1,29 +1,3 @@
 nao_blog_homepage:
     path:    /index
     defaults: { _controller: NAOBlogBundle:Blog:index }
-
-nao_blog_view:
-    path:      /article/{id}
-    defaults:
-        _controller: NAOBlogBundle:Blog:view
-    requirements:
-        id: \d+
-nao_blog_add:
-    path:      /add
-    defaults:
-        _controller: NAOBlogBundle:Blog:add
-nao_blog_edit:
-    path:      /edit/{id}
-    defaults:
-        _controller: NAOBlogBundle:Blog:edit
-    requirements:
-        id: \d+
-
-nao_blog_delete:
-    path:      /delete/{id}
-    defaults:
-        _controller: NAOBlogBundle:Blog:delete
-    requirements:
-        id: \d+
-
-

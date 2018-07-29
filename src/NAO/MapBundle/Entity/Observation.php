@@ -56,13 +56,22 @@ class Observation
      */
     private $longitude;
 
-
     /**
      * @var int
      *
      * @ORM\Column(name="latitude", type="integer")
      */
     private $latitude;
+
+
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="validation", type="boolean")
+     */
+    private $validation;
+
 
     /**
      * Get id.
@@ -170,7 +179,29 @@ class Observation
         return $this->content;
     }
 
+    /**
+     * Set gps.
+     *
+     * @param int $gps
+     *
+     * @return Observation
+     */
+    public function setGps($gps)
+    {
+        $this->gps = $gps;
 
+        return $this;
+    }
+
+    /**
+     * Get gps.
+     *
+     * @return int
+     */
+    public function getGps()
+    {
+        return $this->gps;
+    }
 
     /**
      * Set longitude
@@ -182,7 +213,6 @@ class Observation
     public function setLongitude($longitude)
     {
         $this->longitude = $longitude;
-
         return $this;
     }
 
@@ -218,5 +248,28 @@ class Observation
     public function getLatitude()
     {
         return $this->latitude;
+    }
+    /**
+     * Set validation
+     *
+     * @param boolean $validation
+     *
+     * @return Observation
+     */
+    public function setValidation($validation)
+    {
+        $this->validation = $validation;
+
+        return $this;
+    }
+
+    /**
+     * Get validation
+     *
+     * @return boolean
+     */
+    public function getValidation()
+    {
+        return $this->validation;
     }
 }

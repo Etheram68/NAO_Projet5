@@ -4,6 +4,7 @@ namespace NAO\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * Comment
  *
@@ -38,17 +39,14 @@ class Comment
     /**
      * @var string
      *
-     * @ORM\Column(name="content", type="string", length=510)
+     * @ORM\Column(name="content", type="string", length=255)
      */
     private $content;
 
     /**
      * @ORM\ManyToOne(targetEntity="NAO\BlogBundle\Entity\Article")
      */
-    private  $article;
-
-
-
+    private $article;
 
     /**
      * Get id

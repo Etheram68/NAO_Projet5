@@ -4,6 +4,7 @@ namespace NAO\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * Article
  *
@@ -48,6 +49,16 @@ class Article
      * @ORM\Column(name="content", type="string", length=255)
      */
     private $content;
+
+    /**
+     * @ORM\OneToOne(targetEntity="NAO\BlogBundle\Entity\Image", cascade={"persist", "remove"})
+     */
+    private $image;
+
+    public function __construct()
+    {
+        $this->date         = new \DateTime();
+    }
 
     /**
      * Get id
@@ -132,7 +143,7 @@ class Article
     }
 
     /**
-     * Set content
+     * Set content.
      *
      * @param string $content
      *
@@ -146,7 +157,7 @@ class Article
     }
 
     /**
-     * Get content
+     * Get content.
      *
      * @return string
      */
@@ -155,4 +166,27 @@ class Article
         return $this->content;
     }
 
+    /**
+     * Set image.
+     *
+     * @param \NAO\BlogBundle\Entity\Image|null $image
+     *
+     * @return Article
+     */
+    public function setImage(\NAO\BlogBundle\Entity\Image $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image.
+     *
+     * @return \NAO\BlogBundle\Entity\Image|null
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
 }

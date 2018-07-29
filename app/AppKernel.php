@@ -13,7 +13,6 @@ class AppKernel extends Kernel
             new Symfony\Bundle\TwigBundle\TwigBundle(),
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
-            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle(),
@@ -22,6 +21,7 @@ class AppKernel extends Kernel
             new NAO\BlogBundle\NAOBlogBundle(),
             new NAO\MapBundle\NAOMapBundle(),
             new NAO\GameBundle\NAOGameBundle(),
+            new NAO\UserBundle\NAOUserBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

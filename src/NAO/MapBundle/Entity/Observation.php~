@@ -56,13 +56,15 @@ class Observation
      */
     private $longitude;
 
-
     /**
      * @var int
      *
      * @ORM\Column(name="latitude", type="integer")
      */
     private $latitude;
+
+
+
 
     /**
      * Get id.
@@ -170,5 +172,27 @@ class Observation
         return $this->content;
     }
 
+    /**
+     * Set gps.
+     *
+     * @param int $gps
+     *
+     * @return Observation
+     */
+    public function setGps($gps)
+    {
+        $this->gps = $gps;
 
+        return $this;
+    }
+
+    /**
+     * Get gps.
+     *
+     * @return int
+     */
+    public function getGps()
+    {
+        return $this->gps;
+    }
 }

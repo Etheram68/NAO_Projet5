@@ -1,20 +1,27 @@
+nao_user:
+    resource: "@NAOUserBundle/Controller/"
+    type:     annotation
+
 nao_game:
-    resource: "@NAOGameBundle/Resources/config/routing.yml"
-    prefix:   /game
+    resource: "@NAOGameBundle/Controller/"
+    type:     annotation
 
 nao_map:
-    resource: "@NAOMapBundle/Resources/config/routing.yml"
-    prefix:   /map
+    resource: "@NAOMapBundle/Controller/"
+    type:     annotation
 
 nao_blog:
-    resource: "@NAOBlogBundle/Resources/config/routing.yml"
-    prefix:   /blog
+    resource: "@NAOBlogBundle/Controller/"
+    type:     annotation
 
 nao_core:
-    resource: "@NAOCoreBundle/Resources/config/routing.yml"
-    prefix:   /core
+    resource: "@NAOCoreBundle/Controller/"
+    type:     annotation
 
 easy_admin_bundle:
     resource: "@EasyAdminBundle/Controller/AdminController.php"
     type:     annotation
     prefix:   /admin
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

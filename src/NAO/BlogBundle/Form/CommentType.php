@@ -2,8 +2,9 @@
 
 namespace NAO\BlogBundle\Form;
 
-use Doctrine\DBAL\Types\DateTimeType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -19,7 +20,9 @@ class CommentType extends AbstractType
         $builder
             ->add('date', DateTimeType::class)
             ->add('author', TextType::class)
-            ->add('content', TextareaType::class);
+            ->add('content', TextareaType::class)
+            ->add('submit', SubmitType::class);
+
     }/**
      * {@inheritdoc}
      */
