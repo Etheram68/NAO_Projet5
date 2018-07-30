@@ -22,7 +22,7 @@ class ArticleType extends AbstractType
             ->add('title', TextType::class)
             ->add('author', TextType::class)
             ->add('content', TextareaType::class)
-            ->add('image')
+            ->add('image', ImageType::class)
             ->add('submit', SubmitType::class);
     }/**
      * {@inheritdoc}

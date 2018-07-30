@@ -2,6 +2,7 @@
 
 namespace NAO\BlogBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 
@@ -54,6 +55,20 @@ class Article
      * @ORM\OneToOne(targetEntity="NAO\BlogBundle\Entity\Image", cascade={"persist", "remove"})
      */
     private $image;
+
+    /**
+     * @ORM\OneToMany(targetEntity="NAO\BlogBundle\Entity\Comment", mappedBy="article")
+     */
+    private $comments;
+
+    /**
+     * Article constructor.
+     */
+    public function __construct()
+    {
+        $this->date         = new \DateTime();
+        $this->comments     = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -159,5 +174,29 @@ class Article
     public function getContent()
     {
         return $this->content;
+    }
+
+    /**
+     * Set image.
+     *
+     * @param \NAO\BlogBundle\Entity\Image|null $image
+     *
+     * @return Article
+     */
+    public function setImage(\NAO\BlogBundle\Entity\Image $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image.
+     *
+     * @return \NAO\BlogBundle\Entity\Image|null
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

@@ -45,6 +45,7 @@ class Comment
 
     /**
      * @ORM\ManyToOne(targetEntity="NAO\BlogBundle\Entity\Article")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $article;
 
@@ -129,8 +130,6 @@ class Comment
     {
         return $this->content;
     }
-
-
 
 
 }

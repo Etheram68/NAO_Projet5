@@ -5,62 +5,78 @@
 
 
 {% block naoblog_body %}
-<section class="section-padding" id="article-page">
-    <div style="float: left; margin-right: 1em;">
-        {# On vérifie qu'une image soit bien associée à l'article #}
-        {% if article.image is not null %}
-            <img
-                    src="{{ asset(article.image.webPath) }}"
-                    alt="{{ article.image.alt }}"
-                    height="60"
-            />
-        {% endif %}
-    </div>
+    <section class="section-padding" id="article-page">
+        <div class="container">
+            <div class="blog-content">
+                <h1>{{ article.title }}</h1>
+                <div class="blog-meta">
+                    <i class="glyphicon glyphicon-user"> {{ article.author }}</i>
+                    <i class="glyphicon glyphicon-time"> {{ article.date|date('d/m/Y') }}</i>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        {{ article.content }}
+                    </div>
 
-    <h2>{{ article.title }}</h2>
-    <i>Par {{ article.author }}, le {{ article.date|date('d/m/Y') }}</i>
+                    <div class="col-xs-12 col-sm-4">
+                        {% if article.image is not null %}
+                            <img
+                                    src="{{ asset(article.image.webPath) }}"
+                                    alt="{{ article.image.alt }}"
+                                    height="60"
+                            />
+                        {% else %}
+                            <img src="{{ asset('bundles/naocore/img/blog/small1.jpg') }}" alt="default">
+                        {% endif %}
+                    </div>
 
-    <div class="well">
-        {{ article.content }}
-    </div>
+                </div>
+                <div class="comment-container">
 
-    {% if listComments|length > 0 %}
-        <div>
-            Commentaires
 
-            <button>Ajouter un commentaire</button>
-            <ul>
-                {% for comment in listComments %}
-                    <li> Posté par {{ comment.author }} le {{ comment.date }}
-                        {{ comment.content }}</li>
-                {% else %}
-                    <p>aucun commentaire!</p>
-                {% endfor %}
-            </ul>
-        </div>
-    {% endif %}
+                    <h3>Commentaires</h3>
 
-<h2>Ajouter un commentaire</h2>
+                    <a class="btn btn-default" href="{{ path('comment.add', {'id': article.id }) }}">Ajouter un
+                        commentaire</a>
 
-    <a class="btn btn-default" href="{{ path('comment.add') }}">Ajouter un commentaire</a>
 
-    <p>
-        <a href="{{ path('blog') }}" class="btn btn-default">
-            <i class="glyphicon glyphicon-chevron-left"></i>
-            Retour à la liste
-        </a>
-        <a href="{{ path('blog.edit', {'id': article.id}) }}" class="btn btn-default">
-            <i class="glyphicon glyphicon-edit"></i>
-            Modifier l'article
-        </a>
-        <a href="{{ path('blog.remove', {'id': article.id}) }}" class="btn btn-danger">
-            <i class="glyphicon glyphicon-trash"></i>
-            Supprimer l'article
-        </a>
-    </p>
-</section>
+                    <div class="comment-content" sty>
 
-    {% endblock %}
+                        <ul>
+                            {% for comment in listComments %}
+                                <li> Posté par {{ comment.author }}le {{ comment.date|date("d/m/Y  H:i") }}
+                                    <hr>
+                                    {{ comment.content }}
+                                </li>
+                            {% else %}
+                                <p>aucun commentaire!</p>
+                            {% endfor %}
+                        </ul>
+
+                        <a class="btn btn-default" href="{{ path('comment.add', {'id': article.id }) }}">Ajouter un
+                            commentaire</a>
+                    </div>
+
+
+                    <p>
+                </div>
+                <a href="{{ path('index') }}" class="btn btn-default">
+                    <i class="glyphicon glyphicon-chevron-left"></i>
+                    Retour à la liste
+                </a>
+                <a href="{{ path('article.edit', {'id': article.id}) }}" class="btn btn-default">
+                    <i class="glyphicon glyphicon-edit"></i>
+                    Modifier l'article
+                </a>
+                <a href="{{ path('article.delete', {'id': article.id}) }}" class="btn btn-danger">
+                    <i class="glyphicon glyphicon-trash"></i>
+                    Supprimer l'article
+                </a>
+                </p>
+            </div>
+    </section>
+
+{% endblock %}
 
 
 

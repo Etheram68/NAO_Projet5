@@ -44,7 +44,8 @@ class Comment
     private $content;
 
     /**
-     * @ORM\ManyToOne(targetEntity="NAO\BlogBundle\Entity\Article")
+     * @ORM\ManyToOne(targetEntity="NAO\BlogBundle\Entity\Article", inversedBy="comments")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $article;
 
@@ -133,11 +134,11 @@ class Comment
     /**
      * Set article.
      *
-     * @param \NAO\BlogBundle\Entity\Article|null $article
+     * @param \NAO\BlogBundle\Entity\Article $article
      *
      * @return Comment
      */
-    public function setArticle(\NAO\BlogBundle\Entity\Article $article = null)
+    public function setArticle(\NAO\BlogBundle\Entity\Article $article)
     {
         $this->article = $article;
 
@@ -147,7 +148,7 @@ class Comment
     /**
      * Get article.
      *
-     * @return \NAO\BlogBundle\Entity\Article|null
+     * @return \NAO\BlogBundle\Entity\Article
      */
     public function getArticle()
     {

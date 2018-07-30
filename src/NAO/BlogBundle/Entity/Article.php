@@ -2,6 +2,7 @@
 
 namespace NAO\BlogBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 
@@ -55,9 +56,18 @@ class Article
      */
     private $image;
 
+    /**
+     * @ORM\OneToMany(targetEntity="NAO\BlogBundle\Entity\Comment", mappedBy="article", cascade={"remove"})
+     */
+    private $comments;
+
+    /**
+     * Article constructor.
+     */
     public function __construct()
     {
         $this->date         = new \DateTime();
+        $this->comments     = new ArrayCollection();
     }
 
     /**
@@ -188,5 +198,41 @@ class Article
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Add comment.
+     *
+     * @param \NAO\BlogBundle\Entity\Comment $comment
+     *
+     * @return Article
+     */
+    public function addComment(\NAO\BlogBundle\Entity\Comment $comment)
+    {
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment.
+     *
+     * @param \NAO\BlogBundle\Entity\Comment $comment
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeComment(\NAO\BlogBundle\Entity\Comment $comment)
+    {
+        return $this->comments->removeElement($comment);
+    }
+
+    /**
+     * Get comments.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }

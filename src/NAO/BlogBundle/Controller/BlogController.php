@@ -15,11 +15,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 
+/**
+ * Class BlogController
+ * @package NAO\BlogBundle\Controller
+ * @Route("/blog")
+ */
 class BlogController extends Controller
 {
     /**
      * HomePage
-     * @Route("/blog", name="blog")
+     * @Route("/", name="index")
      * @Method({"GET"})
      *
      * @param Request $request Http request
@@ -49,7 +54,7 @@ class BlogController extends Controller
     /**
      * View
      *
-     * @Route("/view/{id}", name="blog.view")
+     * @Route("/blog/view/{id}",requirements={"id" = "\d+"}, name="article")
      * @param Article $article
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -70,7 +75,7 @@ class BlogController extends Controller
     /**
      * add article
      *
-     * @Route("/add", name="blog.add")
+     * @Route("/blog/add", name="article.add")
      *
      * @param Article $article
      * @return \Symfony\Component\HttpFoundation\Response
@@ -88,7 +93,7 @@ class BlogController extends Controller
 
             $request->getSession()->getFlashBag()->add('notice', 'Article bien enregistrée.');
 
-            return $this->redirectToRoute('blog.view', array('id' => $article->getId()));
+            return $this->redirectToRoute('article', array('id' => $article->getId()));
         }
         return $this->render('blog\add.html.twig', array(
             'form' => $form->createView(),
@@ -98,7 +103,7 @@ class BlogController extends Controller
     /**
      * edit article
      *
-     * @Route("/edit/{id}", name="blog.edit")
+     * @Route("/blog/view/{id}/edit", requirements={"id" = "\d+"} , name="article.edit")
      * @param Article $article
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -111,7 +116,7 @@ class BlogController extends Controller
 
             $request->getSession()->getFlashBag()->add('notice', 'Article bien modifiée');
 
-            return $this->redirectToRoute('blog.view', array('id' => $article->getId()));
+            return $this->redirectToRoute('article', array('id' => $article->getId()));
     }
 
     return $this->render('blog\edit.html.twig', array(
@@ -124,7 +129,7 @@ class BlogController extends Controller
     /**
      * delete article
      *
-     * @Route("/remove/{id}", name="blog.remove")
+     * @Route("/blog/view/{id}/delete", name="article.delete")
      *
      * @param Article $article Request $request Http request
      * @return \Symfony\Component\HttpFoundation\Response
@@ -132,14 +137,17 @@ class BlogController extends Controller
     public function deleteAction(Request $request, Article $article)
     {
         $em = $this->getDoctrine()->getManager();
-        // On crée un formulaire vide, qui ne contiendra que le champ CSRF
-        // Cela permet de protéger la suppression d'annonce contre cette faille
+
+
         $form = $this->get('form.factory')->create();
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+            foreach ($article->getComments() as $comment){
+                $em->remove($comment);
+            }
             $em->remove($article);
             $em->flush();
             $request->getSession()->getFlashBag()->add('info', "L'article a bien été supprimée.");
-            return $this->redirectToRoute('blog');
+            return $this->redirectToRoute('index');
         }
 
         return $this->render('blog\delete.html.twig', array(
@@ -149,17 +157,19 @@ class BlogController extends Controller
     }
 
     /**
-     * add article
+     * add comment
      *
-     * @Route("/addcomment/{id}", name="comment.add")
+     * @Route("/blog/comment/{id}", name="comment.add")
      *
      * @param Comment $comment
+     * @param Article $article
      * @return \Symfony\Component\HttpFoundation\Response
      */
 
-    public function addCommentAction(Request $request)
+    public function addCommentAction(Request $request, Article $article)
     {
         $comment = new Comment();
+        $comment->setArticle($article);
         $form = $this->get('form.factory')->create(CommentType::class, $comment);
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
@@ -170,12 +180,13 @@ class BlogController extends Controller
             $request->getSession()->getFlashBag()->add('notice', 'commentaire bien enregistrée.');
 
 
-            return $this->redirectToRoute('blog.view', array(
+            return $this->redirectToRoute('article', array(
                 'id' => $comment->getArticle()->getId(),
-                'comment' => $comment->getId()
+                'addComment' => $comment->getId()
             ));
         }
         return $this->render('blog\addComment.html.twig', array(
+            'comment' => $comment,
             'form' => $form->createView(),
         ));
     }
@@ -183,7 +194,7 @@ class BlogController extends Controller
     /**
      * edit article
      *
-     * @Route("/edit/{id}", name="comment.edit")
+     * @Route("/blog/edit/{id}", name="comment.edit")
      * @param Comment $comment
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -196,7 +207,7 @@ class BlogController extends Controller
 
             $request->getSession()->getFlashBag()->add('notice', 'Commentaire bien modifié');
 
-            return $this->redirectToRoute('blog.view', array('id' => $comment->getId()));
+            return $this->redirectToRoute('article', array('id' => $comment->getId()));
         }
 
         return $this->render('blog\edit.html.twig', array(
@@ -205,33 +216,5 @@ class BlogController extends Controller
         ));
 
     }
-
-    /**
-     * delete article
-     *
-     * @Route("/remove", name="comment.remove")
-     *
-     * @param Comment $comment
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function deleteCommentAction(Request $request, Article $article)
-    {
-        $em = $this->getDoctrine()->getManager();
-        // On crée un formulaire vide, qui ne contiendra que le champ CSRF
-        // Cela permet de protéger la suppression d'annonce contre cette faille
-        $form = $this->get('form.factory')->create();
-        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-            $em->remove($article);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add('info', "L'article a bien été supprimée.");
-            return $this->redirectToRoute('blog');
-        }
-
-        return $this->render('blog\delete.html.twig', array(
-            'article' => $article,
-            'form'   => $form->createView(),
-        ));
-    }
-
 
 }
