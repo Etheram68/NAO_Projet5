@@ -28,18 +28,18 @@ security:
                 csrf_token_generator: security.csrf.token_manager
                 login_path: fos_user_security_login
                 check_path: fos_user_security_check
-                default_target_path: /
+                default_target_path: /profile
             logout:
                 path: fos_user_security_logout
                 target: fos_user_security_login
             remember_me:
-                secret: %secret%
+                secret: '%secret%'
 
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/contact, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/profile, role: ROLE_USER }
+        - { path: ^/profile, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/observation, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, roles: ROLE_ADMIN}

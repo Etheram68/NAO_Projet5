@@ -8,6 +8,26 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
+    niveau00:
+        start: 0
+        step: 10
+        stop: 20
+    niveau01:
+        start: 30
+        step: 10
+        stop: 50
+    niveau02:
+        start: 60
+        step: 10
+        stop: 90
+    niveau03:
+        start: 100
+        step: 10
+        stop: 140
+    niveau04:
+        start: 150
+        step: 10
+        stop: 220
 
 framework:
     #esi: ~

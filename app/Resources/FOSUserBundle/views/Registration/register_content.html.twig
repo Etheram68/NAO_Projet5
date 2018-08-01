@@ -53,12 +53,12 @@
 			<div>
 				{{ form_label(form.plainPassword.first, 'Mot de passe', {'label_attr': {'class': 'control-label'}}) }}
 				{{ form_errors(form.plainPassword.first) }}			
-				{{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control'} }) }}	
+				{{ form_widget(form.plainPassword.first, {'attr': { 'class': 'form-control', 'placeholder': 'Choississez un mot de passe' } }) }}	
 			</div>
 			<div>
 				{{ form_label(form.plainPassword.second, 'Répetez le mot de passe', {'label_attr': {'class': 'control-label'}}) }}
 				{{ form_errors(form.plainPassword.second) }}			
-				{{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control'} }) }}	
+				{{ form_widget(form.plainPassword.second, {'attr': { 'class': 'form-control', 'placeholder': 'Encore une fois' } }) }}	
 			</div>
 		    {# RGPD #}
 			<div class="rgpdNewsletter">
@@ -75,6 +75,11 @@
 				<p>En soumettant ce formulaire, j’accepte de m’inscrire à la newsletter afin de recevoir par mail les derniers articles du blog</p>
 				{{ form_errors(form.newsletter) }}
 				{% do form.newsletter.setRendered %}
+			</div>
+			{# Politique de confidentialité #}
+			<div class="rgpdNewsletter">
+				<p id="politiqueConf">Pour connaitre et exercer vos droits, notamment de retrait de votre consentement à l’utilisation des données collectées par le formulaire, veuillez consulter notre <a href="#">politique de confidentialité</a>.
+			</p>
 			</div>
 			{# SUBMIT #}
 			<div>

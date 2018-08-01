@@ -7,3 +7,12 @@ services:
         class: NAO\UserBundle\Form\RegistrationType
         tags:
             - {name: form.type, alias: nao_user_registration }
+
+    nao_user.level_levelCalcul:
+        class: NAO\UserBundle\Level\LevelCalcul
+        arguments:
+            - %niveau00%
+            - %niveau01%
+            - %niveau02%
+            - %niveau03%
+            - %niveau04%

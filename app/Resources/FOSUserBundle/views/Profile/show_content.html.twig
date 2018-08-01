@@ -2,14 +2,66 @@
 
 
 <main role="main" class="container" id="pageProfile">
-    <div class="row col-lg-12">
-        <div class="col-lg-7 col-xs-12">
 
-			<div class="fos_user_user_show">
-			    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
-			    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
-			</div>
+	{# RANGÉE 1 #}
+    <div class="row col-lg-12 rangee-1">
+        <div class="avatar col-lg-4 col-xs-12">
+        	<img src="{{ asset('bundles/naocore/img/pictos/user-avatar.png') }}" width="50%" />
+        	<p>Niveau</p>
+        	<p>{{ user.points }} points</p>
+		</div>
 
+        <div class="infos col-lg-4 col-xs-12">
+			<p>Email : {{ user.email }}</p>
+		    <p>Ville : {{ user.town }}</p>
+		</div>
+
+        <div class="picto col-lg-4 col-xs-12">
+        	<img src="{{ asset('bundles/naocore/img/pictos/niveau-01.png') }}" height="50%" />
 		</div>
     </div>
+    <hr>   
+    {# RANGÉE 2 #}
+    <div class="row col-lg-12 rangee-2">
+        <div class="presentation col-lg-12">
+        	<p>À propos</p>
+        	<div>"{{ user.presentation }}"</div>
+		</div>
+    </div>
+	<hr>   
+    {# RANGÉE 3 #}
+    <div class="row col-lg-12 rangee-3">
+		<div class="lastObs col-lg-6 col-xs-12">
+        	<p>Dernières observations</p>
+        	<ul>
+        		<li>Lamlakd mlaa</li>
+        		<li>Lamlakd mlaa</li>
+        	</ul>
+        </div>
+        <div class="separation"></div>
+		<div class="lastCom col-lg-6 col-xs-12">
+        	<p>Derniers commentaires</p>
+        	<ul>
+        		<li>Lamlakd mlaa</li>
+        		<li>Lamlakd mlaa</li>
+        	</ul>
+		</div>
+    </div>
+
 </main>
+
+
+
+{# 			<div class="fos_user_user_show">
+				<p>Id : {{ user.id }}</p>
+				<p>Nom : {{ user.lastname }}</p>
+				<p>Prénom : {{ user.firstname }}</p>
+			    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+			    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+			    <p>Ville : {{ user.town }}</p>
+			    <p>Nombre de points : {{ user.points }}</p>
+			    <p>Niveau : {{ user.level }}</p>
+			</div> #}
+
+
+
