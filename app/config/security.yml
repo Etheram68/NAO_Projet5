@@ -20,6 +20,34 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
+        login:
+            pattern:  ^/API/login
+            stateless: true
+            anonymous: true
+            form_login:
+                check_path: /API/login_check
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+                require_previous_session: false
+
+        post_observation:
+           methods: [POST]
+           pattern: ^/API/observation/search
+           security: false
+
+        post_taxref:
+            methods: [POST]
+            pattern: ^/API/taxref/search
+            security: false
+
+        api:
+            pattern:    ^/API
+            stateless: true
+            guard:
+                authenticators:
+                    - lexik_jwt_authentication.jwt_token_authenticator
+
+
         main:
             pattern: ^/
             anonymous: true
@@ -33,7 +61,7 @@ security:
                 path: fos_user_security_logout
                 target: fos_user_security_login
             remember_me:
-                secret: %secret%
+                secret: "%secret%"
 
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
@@ -43,3 +71,5 @@ security:
         - { path: ^/profile, role: ROLE_USER }
         - { path: ^/observation, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, roles: ROLE_ADMIN}
+        - { path: ^/API, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/API/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
