@@ -1,3 +1,5 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/05b4e0c584d142d2b01718a445b835c8)](https://www.codacy.com/app/Etheram68/NAO_Projet5?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Etheram68/NAO_Projet5&amp;utm_campaign=Badge_Grade)
+
 Nao
 ===
 

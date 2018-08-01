@@ -40,7 +40,7 @@ class Bird
      *
      * @ORM\Column(name="familly", type="string", length=255)
      */
-    private $familly;
+    private $family;
 
     /**
      * @var string
@@ -168,27 +168,27 @@ class Bird
     }
 
     /**
-     * Set familly.
+     * Set family.
      *
-     * @param string $familly
+     * @param string $family
      *
      * @return Bird
      */
-    public function setFamilly($familly)
+    public function setFamily($family)
     {
-        $this->familly = $familly;
+        $this->family = $family;
 
         return $this;
     }
 
     /**
-     * Get familly.
+     * Get family.
      *
      * @return string
      */
-    public function getFamilly()
+    public function getFamily()
     {
-        return $this->familly;
+        return $this->family;
     }
 
     /**
@@ -405,5 +405,29 @@ class Bird
     public function getPicture()
     {
         return $this->picture;
+    }
+
+    /**
+     * Set edit
+     *
+     * @param \NAO\MapBundle\Entity\Edit $edit
+     *
+     * @return Bird
+     */
+    public function setEdit(\NAO\MapBundle\Entity\Edit $edit = null)
+    {
+        $this->edit = $edit;
+
+        return $this;
+    }
+
+    /**
+     * Get edit
+     *
+     * @return \NAO\MapBundle\Entity\Edit
+     */
+    public function getEdit()
+    {
+        return $this->edit;
     }
 }

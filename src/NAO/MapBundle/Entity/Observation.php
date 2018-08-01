@@ -63,8 +63,6 @@ class Observation
      */
     private $latitude;
 
-
-
     /**
      * @var bool
      *

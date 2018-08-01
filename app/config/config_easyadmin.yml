@@ -4,7 +4,7 @@ easy_admin:
         brand_color: '#707070'
         color_scheme: 'light'
         menu:
-            - { label: 'Le site', route: 'nao_core_homepage', icon: 'home' }
+            - { label: 'Le site', route: 'homepage', icon: 'home' }
             - label: 'Fiches et Observations'
               icon: 'file'
               children:
@@ -30,6 +30,39 @@ easy_admin:
 
         Bird:
             class: NAO\MapBundle\Entity\Bird
+            list:
+                actions:
+                    - { name: 'edit', icon: 'pencil', label: '', title: 'Éditer' }
+                    - { name: 'new', label: 'Créer une fiche'}
+                title: Les fiches oiseaux
+                sort: ['id', 'ASC']
+                fields: 
+                    - { property: 'id', label: "Id de l'oiseau" }
+                    - { property: 'name', label: "Nom" }
+                    # - { property: 'latinName', label: "Nom latin" }
+                    - { property: 'family', label: "Famille" }
+                    # - { property: 'featherColor', label: 'Plumage' }
+                    # - { property: 'size', label: 'Taille en cm' }
+                    # - { property: 'beakShape', label: 'Bec' }
+                    # - { property: 'pawColor',  label: 'Pattes' }
+                    - { property: 'editDate',  label: 'Modifications' }
+                    - { property: 'edit',  label: 'Contribution' }
+            form:
+                fields:
+                    - { property: 'name', label: "Nom" }
+                    - { property: 'latinName', label: "Nom latin" }
+                    - { property: 'family', label: "Famille" }
+                    - { property: 'featherColor', label: 'Plumage' }
+                    - { property: 'size', label: 'Taille en cm' }
+                    - { property: 'beakShape', label: 'Bec' }
+                    - { property: 'pawColor',  label: 'Pattes' }
+                    - { property: 'behavior',  label: 'Comportement' }
+                    - { property: 'description',  label: 'Description' }
+                    - { property: 'picture',  label: 'Photo' }
+            new:
+                title:  'Créer une fiche'
+            edit:
+                title:  'Modifier la fiche'
         Edit:
             class: NAO\MapBundle\Entity\Edit
         Observation:
@@ -45,8 +78,30 @@ easy_admin:
                     - date
                     - { property: 'content', label: 'Description' }
                     - { property: 'validation',  label: 'Validation' }
+            edit:
+                title:  'Modifier la fiche'
+                fields:
+                    - { property: 'author', label: 'Auteur' }
+                    - { property: 'content', label: 'Description' }
+                    - { property: 'validation',  label: 'Validation' }                
         Article:
             class: NAO\BlogBundle\Entity\Article
+            list:
+                actions:
+                    - { name: 'edit', icon: 'pencil', label: '', title: 'Éditer' }
+                title: Les articles
+                sort: ['id', 'ASC']
+                fields: 
+                    - id
+                    - { property: 'title', label: 'Titre' }
+                    - { property: 'author', label: 'Auteur' }
+                    - { property: 'content',  label: 'Contenu' }
+            edit:
+                title:  'Modifier la fiche'
+                fields:
+                    - { property: 'title', label: 'Titre' }
+                    - { property: 'author', label: 'Auteur' }
+                    - { property: 'content',  label: 'Contenu' }
         Comment:
             class: NAO\BlogBundle\Entity\Comment
         User:
@@ -64,6 +119,18 @@ easy_admin:
                     - { property: 'email', label: 'Contact', type: 'email' }
                     - { property: 'town', label: 'Ville' }
                     - { property: 'newsletter',  type: 'boolean' }
+                    - { property: 'roles', label: 'Rôle' }
+                    - { property: 'points', label: 'Nbr de points' }
+                    - { property: 'enabled',  label: 'Actif' }
+            edit:
+                title:  'Modifier le compte utilisateur'
+                fields:
+                    - { property: 'lastname', label: 'Nom' }
+                    - { property: 'firstname', label: 'Prénom' }
+                    - { property: 'username', label: 'Pseudo' }
+                    - { property: 'email', label: 'Contact', type: 'email' }
+                    - { property: 'town', label: 'Ville' }
+                    - { property: 'newsletter' }
                     - { property: 'roles', label: 'Rôle' }
                     - { property: 'points', label: 'Nbr de points' }
                     - { property: 'enabled',  label: 'Actif' }
