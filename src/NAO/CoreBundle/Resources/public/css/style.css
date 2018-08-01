@@ -270,6 +270,69 @@ ul#action-map-widget {
     color: #000000;
 }
 
+/*----- page Observation -----*/
+
+.card {
+    position: relative;
+    margin: .5rem 0 1rem 0;
+    background-color: #fff;
+    -webkit-transition: -webkit-box-shadow .25s;
+    transition: -webkit-box-shadow .25s;
+    transition: box-shadow .25s;
+    transition: box-shadow .25s,-webkit-box-shadow .25s;
+    border-radius: 2px;
+}
+.card .card-content {
+    padding: 10px;
+    border-radius: 2px;
+}
+.card {
+    min-height: 189px;
+    z-index: 0;
+}
+.card .card-content .message, .card .card-content form {
+    padding: 5px 60px 5px 60px;
+    min-height: 150px;
+}
+.card .card-content form .secondary-section.no-margin-top {
+    margin-top: 0;
+}
+.card .card-content form .secondary-section {
+    padding-left: 30px;
+    height: 100%;
+    margin-top: 6%;
+}
+
+.file-field input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+.file-field .btn, .file-field .btn-large {
+    height: auto!important;
+}
+.btn.white {
+    background-color: #FFF;
+    color: #000;
+}
+a#geoloc {
+    position: absolute;
+    right: 50px;
+    background-color: #FFF;
+    z-index: 10;
+}
+.light-2, .light-2-no-hov {
+    color: rgba(0,0,0,.54)!important;
+}
 /*---- page LOGIN ----*/
 
 .header-area-login {
@@ -1177,11 +1240,11 @@ input:-webkit-autofill:focus {
 *Testimonial-Page
 ***/
 
-.testimonial-area {
+/**.testimonial-area {
     background: url('images/parallax-7.jpg') no-repeat scroll center center / cover;
     position: relative;
     color: #ffffff;
-}
+}**/
 
 .testimonial-area:before {
     opacity: 0.9
