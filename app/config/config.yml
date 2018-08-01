@@ -91,7 +91,7 @@ lexik_jwt_authentication:
      user_identity_field: email
      encoder:
          # token encoder/decoder service - default implementation based on the namshi/jose library
-         service:            lexik_jwt_authentication.encoder.lcobucci
+         service:            lexik_jwt_authentication.encoder.default
          # crypto engine used by the encoder service
          crypto_engine:  openssl
          # encryption algorithm used by the encoder service
