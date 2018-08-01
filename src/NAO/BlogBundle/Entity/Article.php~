@@ -45,7 +45,7 @@ class Article
     /**
      * @var string
      *
-     * @ORM\Column(name="content", type="string", length=255)
+     * @ORM\Column(name="content", type="text")
      */
     private $content;
 
@@ -159,5 +159,45 @@ class Article
     {
         return $this->content;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->comment = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add comment
+     *
+     * @param \NAO\BlogBundle\Entity\Comment $comment
+     *
+     * @return Article
+     */
+    public function addComment(\NAO\BlogBundle\Entity\Comment $comment)
+    {
+        $this->comment[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \NAO\BlogBundle\Entity\Comment $comment
+     */
+    public function removeComment(\NAO\BlogBundle\Entity\Comment $comment)
+    {
+        $this->comment->removeElement($comment);
+    }
+
+    /**
+     * Get comment
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+}

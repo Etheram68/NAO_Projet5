@@ -822,3 +822,24 @@ ul:not(.browser-default) {
     cursor: pointer;
     vertical-align: middle;
 }
+
+.autocomplete-contents {
+  position: absolute;
+}
+.autocomplete-content {
+  margin-top: -20px;
+  margin-bottom: 20px;
+  display: block;
+  opacity: 1;
+  position: static;
+}
+#dropSpecimen {
+  position: absolute;
+  top: 77px;
+  left: 28%;
+  width: 45%;
+}
+.dropdown-content {
+  min-width: 50px;
+  min-height: 0;
+}

@@ -8,6 +8,9 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
+    obseravtions_directory: '%kernel.project_dir%/web/images/observations'
+    list_limit: 10
+    gps_distance: 10
 
 framework:
     #esi: ~
@@ -33,6 +36,8 @@ framework:
     assets: ~
     php_errors:
         log: true
+    serializer:
+        enabled: true
 
 # Twig Configuration
 twig:
@@ -40,7 +45,9 @@ twig:
     strict_variables: '%kernel.debug%'
     form_themes:
         - 'bootstrap_3_layout.html.twig'
-        
+    globals:
+        jwt: "@app.jwt"
+
 # Doctrine Configuration
 doctrine:
     dbal:
@@ -72,6 +79,36 @@ swiftmailer:
     spool: { type: memory }
 
 # Fos User Configuration
+fos_rest:
+     routing_loader:
+         default_format: json
+
+lexik_jwt_authentication:
+     private_key_path: '%jwt_private_key_path%'
+     public_key_path:  '%jwt_public_key_path%'
+     pass_phrase:      '%jwt_key_pass_phrase%'
+     token_ttl:        '%jwt_token_ttl%'
+     user_identity_field: email
+     encoder:
+         # token encoder/decoder service - default implementation based on the namshi/jose library
+         service:            lexik_jwt_authentication.encoder.default
+         # crypto engine used by the encoder service
+         crypto_engine:  openssl
+         # encryption algorithm used by the encoder service
+         signature_algorithm: RS256
+
+     token_extractors:
+         authorization_header:      # look for a token as Authorization Header
+             enabled: false
+             prefix:  Bearer
+             name:    Authorization
+         cookie:                    # check token in a cookie
+             enabled: false
+             name:    BEARER
+         query_parameter:           # check token in query string parameter
+             enabled: true
+             name:    bearer
+
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main

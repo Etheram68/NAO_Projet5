@@ -9,9 +9,9 @@
                 </button>
                 {# LOGO #}
                 {% if (app.request.requesturi == path('homepage')) %}
-                  <a href="{{ path('homepage') }}" class="navbar-brand logo"><img src="{{ asset('bundles/naocore/img/03-nao-logo-petit-noir.png') }}" \></a>
+                  <a href="{{ path('homepage') }}" class="navbar-brand logo"><img src="{{ asset('bundles/naocore/img/logo-nao-noir.png') }}" \></a>
                 {% else %}
-                  <a href="{{ path('homepage') }}" class="navbar-brand logo"><img src="{{ asset('bundles/naocore/img/04-nao-logo-petit-jaune.png') }}" \></a>
+                  <a href="{{ path('homepage') }}" class="navbar-brand logo"><img src="{{ asset('bundles/naocore/img/logo-nao-jaune.png') }}" \></a>
                 {% endif %}
             </div>
             <nav class="collapse navbar-collapse" id="primary-menu">
@@ -30,8 +30,11 @@
                       Connexion</a>
                       </li>
                     {% endif %}
-                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    {% if (is_granted("IS_AUTHENTICATED_REMEMBERED")) and (is_granted("ROLE_ADMIN")) %}
                       <li><a href="{{ path('admin') }}">Bonjour {{ app.user.username }} !</a>
+                      </li>
+                    {% elseif is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                      <li><a href="{{ path('fos_user_profile_show') }}">Bonjour {{ app.user.username }} !</a>
                       </li>
                     {% endif %}
                     <li><a href="javascript:void(0)" class="dropdown-button" data-activates="dropdown-search"><i class="material-icons">search</i></a></li>

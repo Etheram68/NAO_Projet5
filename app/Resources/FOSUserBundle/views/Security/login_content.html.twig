@@ -17,11 +17,16 @@
 
                 <label for="password">{{ 'security.login.password'|trans }}</label>
                 <input type="password" id="password" name="_password" required="required" autocomplete="current-password" />
-                <div id="dejaVu">
-                <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-                <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
-                </div>
 
+                <div id="dejaVu">
+                    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+                </div>
+                <div class="forgetAndSubscribe">
+                    <p>
+                        <a href="#" id="forget">Mot de passe oublié</a> ?<br><a href="{{ path('fos_user_registration_register') }}" id="subscribe">S'inscrire</a>
+                   </p>
+                </div>
                 <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="btn btn-light" />
             </form>
         </div>
