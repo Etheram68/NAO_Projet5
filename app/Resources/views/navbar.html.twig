@@ -20,7 +20,7 @@
                     <li><a href="{{ path('index') }}">Blog</a></li>
                     <li><a href="#">Salle de Jeux</a></li>
                     <li><a href="#">A propos</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="{{ path('contact') }}">Contact</a></li>
                     {# CONNEXION/DÉCONNEXION #}
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                       <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>

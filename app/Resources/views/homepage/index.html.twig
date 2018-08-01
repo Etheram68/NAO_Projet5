@@ -1,20 +1,24 @@
 {% extends "layout.html.twig" %}
 {% block headtitle %}{{ parent() }}{% endblock %}
-{% block head %}<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">{% endblock %}
+{% block head %}
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          rel="stylesheet">{% endblock %}
 {% block body %}
     <!--Header-area-->
     <header class="header-area overlay full-height relative v-center" id="home-page">
         <div class="absolute anlge-bg"></div>
-            <div class="container">
-                <div class="row v-center">
-                    <div class="col-xs-12 col-md-7 header-text">
-                        <img id="nao" src="{{ asset('bundles/naocore/img/04-nao-logo-petit-jaune.png') }}" alt="Logo Nos amis les oiseaux">
-                        <h2>Partagez votre passion pour les oiseaux et la nature</h2>
-                        <p>Venez avec nous contribuer au recensement des espèces sur le territoire et soutenir le programme de recherche sur la biodiversité</p>
-<!-- ajouter le liens -->                        <a href="#" class="button white">Decouvrez l'Ornithologie</a>
-                    </div>
+        <div class="container">
+            <div class="row v-center">
+                <div class="col-xs-12 col-md-7 header-text">
+                    <img id="nao" src="{{ asset('bundles/naocore/img/04-nao-logo-petit-jaune.png') }}"
+                         alt="Logo Nos amis les oiseaux">
+                    <h2>Partagez votre passion pour les oiseaux et la nature</h2>
+                    <p>Venez avec nous contribuer au recensement des espèces sur le territoire et soutenir le programme
+                        de recherche sur la biodiversité</p>
+                    <!-- ajouter le liens --> <a href="#" class="button white">Decouvrez l'Ornithologie</a>
                 </div>
             </div>
+        </div>
     </header>
     <!--Header-area/-->
 
@@ -26,7 +30,9 @@
                     <div class="box">
                         <div class="box-icon">
                             <div id="wb_FontAwesomeIcon3">
-                                <a href="{{ path('fos_user_registration_register') }}" title="Top"><div id="FontAwesomeIcon3"><i class="fa fa-pencil"></i></div></a>
+                                <a href="{{ path('fos_user_registration_register') }}" title="Top">
+                                    <div id="FontAwesomeIcon3"><i class="fa fa-pencil"></i></div>
+                                </a>
                             </div>
                         </div>
                         <h4>Inscrivez-Vous</h4>
@@ -37,7 +43,9 @@
                     <div class="box">
                         <div class="box-icon">
                             <div id="wb_FontAwesomeIcon3">
-                                <a href="#top" title="Top"><div id="FontAwesomeIcon3"><i class="fa fa-camera"></i></div></a>
+                                <a href="#top" title="Top">
+                                    <div id="FontAwesomeIcon3"><i class="fa fa-camera"></i></div>
+                                </a>
                             </div>
                         </div>
                         <h4>Observez / Partagez</h4>
@@ -48,7 +56,9 @@
                     <div class="box">
                         <div class="box-icon">
                             <div id="wb_FontAwesomeIcon3">
-                                <a href="#top" title="Top"><div id="FontAwesomeIcon3"><i class="fa fa-map-o"></i></div></a>
+                                <a href="#top" title="Top">
+                                    <div id="FontAwesomeIcon3"><i class="fa fa-map-o"></i></div>
+                                </a>
                             </div>
                         </div>
                         <h4>Consultez</h4>
@@ -74,7 +84,10 @@
                                             <h2>Observation du ....</h2>
                                         </div>
                                         <div class="caption-desc" data-animation="animated fadeInUp">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute</p>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                                                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                                                commodo consequat. Duis aute</p>
                                         </div>
                                         <div class="caption-button" data-animation="animated fadeInUp">
                                             <a href="#" class="button">Read more</a>
@@ -82,7 +95,8 @@
                                     </div>
                                     <div class="col-xs-12 col-md-6">
                                         <div class="caption-photo one" data-animation="animated fadeInRight">
-                                            <img src="{{ asset('bundles/naocore/img/oiseaux/carduelis-tristis.jpg') }}" alt="carduelis tristis">
+                                            <img src="{{ asset('bundles/naocore/img/oiseaux/carduelis-tristis.jpg') }}"
+                                                 alt="carduelis tristis">
                                         </div>
                                     </div>
                                 </div>
@@ -95,7 +109,10 @@
                                             <h2>Observation du ....</h2>
                                         </div>
                                         <div class="caption-desc" data-animation="animated fadeInUp">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute</p>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                                                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                                                commodo consequat. Duis aute</p>
                                         </div>
                                         <div class="caption-button" data-animation="animated fadeInUp">
                                             <a href="#" class="button">Read more</a>
@@ -103,7 +120,8 @@
                                     </div>
                                     <div class="col-xs-12 col-md-6">
                                         <div class="caption-photo one" data-animation="animated fadeInRight">
-                                            <img src="{{ asset('bundles/naocore/img/oiseaux/carduelis-tristis.jpg') }}" alt="carduelis tristis">
+                                            <img src="{{ asset('bundles/naocore/img/oiseaux/carduelis-tristis.jpg') }}"
+                                                 alt="carduelis tristis">
                                         </div>
                                     </div>
                                 </div>
@@ -116,7 +134,10 @@
                                             <h2>Observation du ....</h2>
                                         </div>
                                         <div class="caption-desc" data-animation="animated fadeInUp">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute</p>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                                                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                                                commodo consequat. Duis aute</p>
                                         </div>
                                         <div class="caption-button" data-animation="animated fadeInUp">
                                             <a href="#" class="button">Read more</a>
@@ -124,7 +145,8 @@
                                     </div>
                                     <div class="col-xs-12 col-md-6">
                                         <div class="caption-photo one" data-animation="animated fadeInRight">
-                                            <img src="{{ asset('bundles/naocore/img/oiseaux/carduelis-tristis.jpg') }}" alt="carduelis tristis">
+                                            <img src="{{ asset('bundles/naocore/img/oiseaux/carduelis-tristis.jpg') }}"
+                                                 alt="carduelis tristis">
                                         </div>
                                     </div>
                                 </div>
@@ -137,7 +159,10 @@
                                             <h2>Observation du ....</h2>
                                         </div>
                                         <div class="caption-desc" data-animation="animated fadeInUp">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute</p>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                                                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                                                commodo consequat. Duis aute</p>
                                         </div>
                                         <div class="caption-button" data-animation="animated fadeInUp">
                                             <a href="#" class="button">Read more</a>
@@ -145,7 +170,8 @@
                                     </div>
                                     <div class="col-xs-12 col-md-6">
                                         <div class="caption-photo one" data-animation="animated fadeInRight">
-                                            <img src="{{ asset('bundles/naocore/img/oiseaux/carduelis-tristis.jpg') }}" alt="carduelis tristis">
+                                            <img src="{{ asset('bundles/naocore/img/oiseaux/carduelis-tristis.jpg') }}"
+                                                 alt="carduelis tristis">
                                         </div>
                                     </div>
                                 </div>
@@ -155,16 +181,16 @@
                         <!-- Indicators -->
                         <ol class="carousel-indicators caption-indector">
                             <li data-target="#caption_slide" data-slide-to="0" class="active">
-                                <strong>Observation du  </strong>Nom de l'oiseau consectetur.
+                                <strong>Observation du </strong>Nom de l'oiseau consectetur.
                             </li>
                             <li data-target="#caption_slide" data-slide-to="1" class="active">
-                                <strong>Observation du  </strong>Nom de l'oiseau consectetur.
+                                <strong>Observation du </strong>Nom de l'oiseau consectetur.
                             </li>
                             <li data-target="#caption_slide" data-slide-to="2" class="active">
-                                <strong>Observation du  </strong>Nom de l'oiseau consectetur.
+                                <strong>Observation du </strong>Nom de l'oiseau consectetur.
                             </li>
                             <li data-target="#caption_slide" data-slide-to="3" class="active">
-                                <strong>Observation du  </strong>Nom de l'oiseau consectetur.
+                                <strong>Observation du </strong>Nom de l'oiseau consectetur.
                             </li>
                         </ol>
                         <!-- Fin Indicators -->
@@ -178,60 +204,36 @@
     <section class="section-padding gray-bg" id="blog-page">
         <div class="container">
             <div class="row">
-                <!-- Premier article de blog-->
-                <div class="col-xs-12 col-sm-4">
-                    <div class="single-blog">
-                        <div class="box" style="padding: 10px 10px; text-align: left;">
-                            <div class="blog-photo">
-                                <img src="{{ asset('bundles/naocore/img/blog/small1.jpg') }}" alt="default">
-                            </div>
-                            <div class="blog-content">
-                                <h3><a href="#">Altercation avec la ligue de protection des oiseaux </a></h3>
-                                <ul class="blog-meta">
-                                    <li><span class="ti-user"></span> <a href="#">Admin</a></li>
-                                    <li><span class="ti-calendar"></span> <a href="#">Feb 01, 2017</a></li>
-                                </ul>
-                                <p>Allain Bougrain Dubourg, président de la LPO s'était rendu chez un Landais ... Jean-Marc Dutouya, renommé « l'homme en slip », est jugé en ...</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- 2 article de blog-->
-                <div class="col-xs-12 col-sm-4">
-                    <div class="single-blog">
-                        <div class="box" style="padding: 10px 10px; text-align: left;">
-                            <div class="blog-photo">
-                                <img src="{{ asset('bundles/naocore/img/blog/small1.jpg') }}" alt="default">
-                            </div>
-                            <div class="blog-content">
-                                <h3><a href="#">Brenne : l'oiseau emblématique de la région est en déclin…</a></h3>
-                                <ul class="blog-meta">
-                                    <li><span class="ti-user"></span> <a href="#">Admin</a></li>
-                                    <li><span class="ti-calendar"></span> <a href="#">Feb 01, 2017</a></li>
-                                </ul>
-                                <p>Connaissez-vous la guifette moustac ? Ce petit oiseau qui affectionne les zones humides est l'animal symbole de la région de la Prenne, dans ...</p>
+                {% for article in listArticles %}
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="single-blog">
+                            <div class="box" style="padding: 10px 10px; text-align: left;">
+                                <div class="blog-photo">
+                                    {% if article.image is not null %}
+                                        <img
+                                                src="{{ asset(article.image.webPath) }}"
+                                                alt="{{ aticle.image.alt }}"
+                                                height="60"
+                                        />
+                                    {% else %}
+                                        <img src="{{ asset('bundles/naocore/img/blog/small1.jpg') }}" alt="default">
+                                    {% endif %}
+                                </div>
+                                <div class="blog-content">
+                                    <h3><a href="{{ path('article', {'id': article.id}) }}">{{ article.title }}</a></h3>
+                                    <ul class="blog-meta">
+                                        <li><span class="ti-user"></span> <a href="#">{{ article.author }}</a></li>
+                                        <li><span class="ti-calendar"></span> <a href="#">{{ article.date | date ('d/m/Y') }}</a></li>
+                                    </ul>
+                                    <p>{{ article.content|truncate(100, true) }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- 3 article de blog-->
-                <div class="col-xs-12 col-sm-4">
-                    <div class="single-blog">
-                        <div class="box" style="padding: 10px 10px; text-align: left;">
-                            <div class="blog-photo">
-                                <img src="{{ asset('bundles/naocore/img/blog/small1.jpg') }}" alt="default">
-                            </div>
-                            <div class="blog-content">
-                                <h3><a href="#">Pourquoi la disparition des oiseaux est un véritable désastre ?</a></h3>
-                                <ul class="blog-meta">
-                                    <li><span class="ti-user"></span> <a href="#">Admin</a></li>
-                                    <li><span class="ti-calendar"></span> <a href="#">Feb 01, 2017</a></li>
-                                </ul>
-                                <p>Selon les observations du CNRS et du Muséum d'histoire naturelle, environ un tiers des oiseaux ont disparu de nos campagnes françaises...</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% else %}
+                    Pas d'article
+                {% endfor %}
+
             </div>
         </div>
     </section>

@@ -8,15 +8,15 @@
 
 {% block naoblog_body %}
     <header class="header-404 overlay full-404 relative v-center" id="home-page">
-        <div class="absolute anlge-bg"></div>
-        <div class="container">
-            <div class="row v-center">
-                <div class="col-xs-12 col-md-7 header-text">
-                    <h2>BLOG</h2>
-                    <h3>Liste des Articles</h3>
+        <div class="absolute anlge-bg">
+            <div class="container">
+                <div class="row v-center">
+                    <div class="col-xs-12 col-md-7 header-text">
+                        <h2>BLOG</h2>
+                        <h3>Liste des Articles</h3>
+                    </div>
                 </div>
             </div>
-        </div>
         </div>
     </header>
 
@@ -25,31 +25,31 @@
             <div class="row">
                 <!-- Premier article de blog-->
                 {% for article in listArticles %}
-                <div class="col-xs-12 col-sm-6">
-                    <div class="single-blog">
-                        <div class="box" style="padding: 10px 10px; text-align: left;">
-                            <div class="blog-photo">
-                                <img src="{{ asset('bundles/naocore/img/blog/small1.jpg') }}" alt="default">
-                            </div>
-                            <div class="blog-content">
-                                <h3>
-                                    <a href="{{ path('article', {'id': article.id}) }}">
-                                        {{ article.title }}
-                                    </a>
-                                </h3>
-                                <ul class="blog-meta">
-                                    <li><span class="ti-user"></span> <a href="#">{{ article.author }}</a></li>
-                                    <li><span class="ti-calendar"></span> <a
-                                                href="#">{{ article.date|date('d/m/Y') }}</a>
-                                    </li>
-                                </ul>
-                                <p>{{ article.content|truncate(100, true) }}</p>
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="single-blog">
+                            <div class="box" style="padding: 10px 10px; text-align: left;">
+                                <div class="blog-photo">
+                                    <img src="{{ asset('bundles/naocore/img/blog/small1.jpg') }}" alt="default">
+                                </div>
+                                <div class="blog-content">
+                                    <h3>
+                                        <a href="{{ path('article', {'id': article.id}) }}">
+                                            {{ article.title }}
+                                        </a>
+                                    </h3>
+                                    <ul class="blog-meta">
+                                        <li><span class="ti-user"></span> <a href="#">{{ article.author }}</a></li>
+                                        <li><span class="ti-calendar"></span> <a
+                                                    href="#">{{ article.date|date('d/m/Y') }}</a>
+                                        </li>
+                                    </ul>
+                                    <p>{{ article.content|truncate(100, true) }}</p>
 
 
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 {% else %}
                     Pas (encore !) d'article
                 {% endfor %}
