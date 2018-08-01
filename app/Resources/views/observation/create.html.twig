@@ -228,7 +228,7 @@
                 map.removeMarkers();
                 map.addMarker({
                     position: location,
-                    icon: "{{ asset('assets/img/marker.png') }}",
+                    icon: "{{ asset('bundles/naocore/img/marker.png') }}",
                     title: 'cliquez de nouveau sur la localisation pour la valider',
                     click: function(e) {
                         updateLocalization(location.lat(), location.lng());
@@ -237,5 +237,32 @@
                 });
             }
         });
+    </script>
+    <script>
+        (function($){
+
+            $(function(){
+
+                /* ==================================================
+                 DATEPICKER
+                 ===========================================================*/
+                $('.datepicker').pickadate({
+                    monthsFull: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+                    monthsShort: ['Janv', 'Févr', 'Mars', 'Avr', 'Mai', 'Juin', 'Juill', 'Août', 'Sept', 'Oct', 'Nov', 'Déc'],
+                    weekdaysFull: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+                    weekdaysShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+                    weekdaysLetter: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+                    format: 'dd/mm/yyyy',
+                    selectMonths: true,
+                    selectYears: 2,
+                    today: 'Aujourd\'hui',
+                    clear: 'Supprimer',
+                    close: 'Ok',
+                    firstDay: 1,
+                    closeOnSelect: false,
+                    max: new Date()
+                });
+            });
+        })(jQuery);
     </script>
 {% endblock %}

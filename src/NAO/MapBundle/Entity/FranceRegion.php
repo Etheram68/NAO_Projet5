@@ -26,102 +26,88 @@ class FranceRegion
     /**
      * @var string
      *
-     * @ORM\Column(name="region", type="string", length=255)
+     * @ORM\Column(name="region", type="string", length=20)
      */
     private $region;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="regionCode", type="smallint")
-     */
-    private $regionCode;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="regionName", type="string", length=255)
-     */
-    private $regionName;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="chiefTown", type="string", length=255)
-     */
-    private $chiefTown;
-
     /**
      * @var smallint
      *
-     * @ORM\Column(name="county_code", type="string", length=1265)
+     * @ORM\Column(name="region_code", type="smallint")
+     *
+     */
+    private $regionCode;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="region_name", type="string", length=50)
+     */
+    private $regionName;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="chief_town", type="string", length=100)
+     */
+    private $chiefTown;
+    /**
+     * @var smallint
+     *
+     * @ORM\Column(name="county_code", type="smallint")
      */
     private $countyCode;
-
     /**
      * @var string
      *
-     * @ORM\Column(name="county", type="string", length=255)
+     * @ORM\Column(name="county", type="string", length=100)
      */
     private $county;
-
     /**
      * @var string
      *
-     * @ORM\Column(name="prefecture", type="string", length=255)
+     * @ORM\Column(name="prefecture", type="string", length=100)
      */
     private $prefecture;
-
     /**
-     * @var int
+     * @var smallint
      *
-     * @ORM\Column(name="disctrictCode", type="smallint")
+     * @ORM\Column(name="disctrict_code", type="smallint")
      */
     private $disctrictCode;
-
     /**
      * @var string
      *
-     * @ORM\Column(name="city", type="string", length=255)
+     * @ORM\Column(name="city", type="string", length=100)
      */
     private $city;
-
     /**
      * @var string           $franceRegion->setChiefTown($line[2]);
      *
-     * @ORM\Column(name="postcode", type="string", length=255)
+     * @ORM\Column(name="postcode", type="string", length=1406)
      */
     private $postcode;
-
     /**
-     * @var int
+     * @var integer
      *
      * @ORM\Column(name="insee", type="integer")
      */
     private $insee;
-
     /**
-     * @var string
+     * @var decimal
      *
      * @ORM\Column(name="latitude", type="decimal", precision=9, scale=7)
      */
     private $latitude;
-
     /**
-     * @var string
+     * @var decimal
      *
      * @ORM\Column(name="longitude", type="decimal", precision=10, scale=7)
      */
     private $longitude;
-
     /**
-     * @var string
+     * @var decimal
      *
      * @ORM\Column(name="distance", type="decimal", precision=3, scale=2, nullable=true)
      */
     private $distance;
-
-
     /**
      * Get id
      *
@@ -131,7 +117,6 @@ class FranceRegion
     {
         return $this->id;
     }
-
     /**
      * Set region
      *
@@ -142,10 +127,8 @@ class FranceRegion
     public function setRegion($region)
     {
         $this->region = $region;
-
         return $this;
     }
-
     /**
      * Get region
      *
@@ -155,7 +138,6 @@ class FranceRegion
     {
         return $this->region;
     }
-
     /**
      * Set regionCode
      *
@@ -166,10 +148,8 @@ class FranceRegion
     public function setRegionCode($regionCode)
     {
         $this->regionCode = $regionCode;
-
         return $this;
     }
-
     /**
      * Get regionCode
      *
@@ -179,31 +159,6 @@ class FranceRegion
     {
         return $this->regionCode;
     }
-
-    /**
-     * Set regionName
-     *
-     * @param string $regionName
-     *
-     * @return FranceRegion
-     */
-    public function setRegionName($regionName)
-    {
-        $this->regionName = $regionName;
-
-        return $this;
-    }
-
-    /**
-     * Get regionName
-     *
-     * @return string
-     */
-    public function getRegionName()
-    {
-        return $this->regionName;
-    }
-
     /**
      * Set chiefTown
      *
@@ -214,10 +169,8 @@ class FranceRegion
     public function setChiefTown($chiefTown)
     {
         $this->chiefTown = $chiefTown;
-
         return $this;
     }
-
     /**
      * Get chiefTown
      *
@@ -227,11 +180,10 @@ class FranceRegion
     {
         return $this->chiefTown;
     }
-
     /**
      * Set countyCode
      *
-     * @param string $countyCode
+     * @param integer $countyCode
      *
      * @return FranceRegion
      */
@@ -243,13 +195,12 @@ class FranceRegion
     /**
      * Get countyCode
      *
-     * @return string
+     * @return integer
      */
     public function getCountyCode()
     {
         return $this->countyCode;
     }
-
     /**
      * Set county
      *
@@ -260,10 +211,8 @@ class FranceRegion
     public function setCounty($county)
     {
         $this->county = $county;
-
         return $this;
     }
-
     /**
      * Get county
      *
@@ -273,7 +222,6 @@ class FranceRegion
     {
         return $this->county;
     }
-
     /**
      * Set prefecture
      *
@@ -284,10 +232,8 @@ class FranceRegion
     public function setPrefecture($prefecture)
     {
         $this->prefecture = $prefecture;
-
         return $this;
     }
-
     /**
      * Get prefecture
      *
@@ -297,7 +243,6 @@ class FranceRegion
     {
         return $this->prefecture;
     }
-
     /**
      * Set disctrictCode
      *
@@ -308,10 +253,8 @@ class FranceRegion
     public function setDisctrictCode($disctrictCode)
     {
         $this->disctrictCode = $disctrictCode;
-
         return $this;
     }
-
     /**
      * Get disctrictCode
      *
@@ -321,7 +264,6 @@ class FranceRegion
     {
         return $this->disctrictCode;
     }
-
     /**
      * Set city
      *
@@ -332,10 +274,8 @@ class FranceRegion
     public function setCity($city)
     {
         $this->city = $city;
-
         return $this;
     }
-
     /**
      * Get city
      *
@@ -345,7 +285,6 @@ class FranceRegion
     {
         return $this->city;
     }
-
     /**
      * Set postcode
      *
@@ -356,10 +295,8 @@ class FranceRegion
     public function setPostcode($postcode)
     {
         $this->postcode = $postcode;
-
         return $this;
     }
-
     /**
      * Get postcode
      *
@@ -369,7 +306,6 @@ class FranceRegion
     {
         return $this->postcode;
     }
-
     /**
      * Set insee
      *
@@ -380,10 +316,8 @@ class FranceRegion
     public function setInsee($insee)
     {
         $this->insee = $insee;
-
         return $this;
     }
-
     /**
      * Get insee
      *
@@ -393,7 +327,6 @@ class FranceRegion
     {
         return $this->insee;
     }
-
     /**
      * Set latitude
      *
@@ -404,10 +337,8 @@ class FranceRegion
     public function setLatitude($latitude)
     {
         $this->latitude = $latitude;
-
         return $this;
     }
-
     /**
      * Get latitude
      *
@@ -417,7 +348,6 @@ class FranceRegion
     {
         return $this->latitude;
     }
-
     /**
      * Set longitude
      *
@@ -428,10 +358,8 @@ class FranceRegion
     public function setLongitude($longitude)
     {
         $this->longitude = $longitude;
-
         return $this;
     }
-
     /**
      * Get longitude
      *
@@ -441,7 +369,6 @@ class FranceRegion
     {
         return $this->longitude;
     }
-
     /**
      * Set distance
      *
@@ -452,10 +379,8 @@ class FranceRegion
     public function setDistance($distance)
     {
         $this->distance = $distance;
-
         return $this;
     }
-
     /**
      * Get distance
      *
@@ -465,5 +390,25 @@ class FranceRegion
     {
         return $this->distance;
     }
+    /**
+     * Set regionName
+     *
+     * @param string $regionName
+     *
+     * @return FranceRegion
+     */
+    public function setRegionName($regionName)
+    {
+        $this->regionName = $regionName;
+        return $this;
+    }
+    /**
+     * Get regionName
+     *
+     * @return string
+     */
+    public function getRegionName()
+    {
+        return $this->regionName;
+    }
 }
-
