@@ -3020,3 +3020,6 @@ preloader
     margin-bottom: 8px;
     font-weight: 400;
 }
+.section-padding-card {
+    padding-bottom: 100px;
+}
