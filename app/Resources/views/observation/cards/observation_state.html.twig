@@ -3,22 +3,22 @@
         <div class="row no-pad-bot">
             <div class="col s4 m4">
                 {% if action is defined %}
-                    {% if action == 'detail' %}<a href="{{ path('observation.detail', {'id' : observation.id}) }}">{% endif %}
+                {% if action == 'detail' %}<a href="{{ path('observation.detail', {'id' : observation.id}) }}">{% endif %}
                     {% if action == 'edit' %}<a href="{{ path('observation.me.draft.edit', {'id' : observation.id}) }}">{% endif %}
-                        <div class="media-container" style="background: url('{{ asset('images/observations/' ~ observation.imagePath ) }}') center/cover no-repeat">
+                        <div class="media-container" style="background: url('{{ asset('bundles/naocore/img/oiseaux/observations/' ~ observation.imagePath ) }}') center/cover no-repeat">
                             &nbsp;
                         </div>
                     </a>
-                {% else %}
-                <div class="media-container" style="background: url('{{ asset('%kernel.project_dir%/src/NAO/CoreBundle/resources/public/img/oiseaux/observations/' ~ observation.imagePath ) }}') center/cover no-repeat">
-                   &nbsp;
-                </div>
-                {% endif %}
-                </a></div>
+                    {% else %}
+                        <div class="media-container" style="background: url('{{ asset('bundles/naocore/img/oiseaux/observations/' ~ observation.imagePath ) }}') center/cover no-repeat">
+                            &nbsp;
+                        </div>
+                    {% endif %}
+            </div>
             <div class="col s8 m8">
                 <h2>{{ observation.taxref.commonName }}</h2>
                 <p>
-                    {{ 'Observé le %date%'|trans({'%date%': observation.watched|date("d/m/Y")}) }}<br/>
+                    {{ 'observé le %date%'|trans({'%date%': observation.watched|date("d/m/Y")}) }}<br/>
                     {{ 'à %place%'|trans({'%place%': observation.place}) }}
                 </p>
                 <br/>

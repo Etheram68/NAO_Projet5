@@ -24,7 +24,7 @@
                     <main class="container full-map">
                         <section>
                             <div class="map-container">
-
+                                <div class="map-result-overlay"></div>
                                 <form id="search-map-widget" method="post">
                                     <a id="action-map-search" href="#" class="light-2"><i class="material-icons">search</i></a>
                                     <input type="text" id="search-bird" name="search-bird" autocomplete="off" placeholder="Rechercher par espèce"/>
@@ -41,6 +41,30 @@
                                     <li><a href="{{ path('observation.create') }}" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">add</i></a></li>
                                 </ul>
                             </div>
+                        </section>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding gray-bg" id="blog-page">
+        <div class="container">
+            <div class="row">
+                <div class="row v-center">
+                    <div class="col-xs-12 col-md-7 header-text">
+                        <h2>Liste des observation</h2>
+                        <h3>sur la Carte</h3>
+                    </div>
+                </div>
+                <div id="show_list" class="col s12">
+                    <main class="container marge-top">
+                        <section>
+                            <section>
+                                <div class="row">
+                                    <div id="eltlist"></div>
+                                </div>
+                            </section>
                         </section>
                     </main>
                 </div>
