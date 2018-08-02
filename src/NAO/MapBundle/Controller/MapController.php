@@ -112,7 +112,7 @@ class MapController extends Controller
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
         $obs = $em->getRepository('NAOMapBundle:Observation')->getMyDraftObservations($user, $page,$this->getParameter('list_limit'));
-        return $this->render('observation/me/draft.html.twig', [
+        return $this->render('observation/done/draft.html.twig', [
             'token' => $this->container->get('lexik_jwt_authentication.jwt_manager')->create($user),
             'paginate' => $this->container->get('app.obs')->getPagination($obs,$page),
             'obslist' => $obs->getIterator()
@@ -129,7 +129,7 @@ class MapController extends Controller
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
         $obs = $em->getRepository('NAOMapBundle:Observation')->getMyValidateObservations($user, $page,$this->getParameter('list_limit'));
-        return $this->render('observation/me/validate.html.twig', [
+        return $this->render('observation/done/validate.html.twig', [
             'token' => $this->container->get('lexik_jwt_authentication.jwt_manager')->create($user),
             'paginate' => $this->container->get('app.obs')->getPagination($obs,$page),
             'obslist' => $obs->getIterator()
@@ -145,7 +145,7 @@ class MapController extends Controller
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
         $obs = $em->getRepository('NAOMapBundle:Observation')->getMyWaitingObservations($user, $page,$this->getParameter('list_limit'));
-        return $this->render('observation/me/waiting.html.twig', [
+        return $this->render('observation/done/waiting.html.twig', [
             'token' => $this->container->get('lexik_jwt_authentication.jwt_manager')->create($user),
             'paginate' => $this->container->get('app.obs')->getPagination($obs,$page),
             'obslist' => $obs->getIterator()

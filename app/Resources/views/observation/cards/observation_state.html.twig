@@ -1,0 +1,31 @@
+<div class="card  no-style observation fix-height">
+    <div class="card-content">
+        <div class="row no-pad-bot">
+            <div class="col s4 m4">
+                {% if action is defined %}
+                    {% if action == 'detail' %}<a href="{{ path('observation.detail', {'id' : observation.id}) }}">{% endif %}
+                    {% if action == 'edit' %}<a href="{{ path('observation.me.draft.edit', {'id' : observation.id}) }}">{% endif %}
+                        <div class="media-container" style="background: url('{{ asset('images/observations/' ~ observation.imagePath ) }}') center/cover no-repeat">
+                            &nbsp;
+                        </div>
+                    </a>
+                {% else %}
+                <div class="media-container" style="background: url('{{ asset('%kernel.project_dir%/src/NAO/CoreBundle/resources/public/img/oiseaux/observations/' ~ observation.imagePath ) }}') center/cover no-repeat">
+                   &nbsp;
+                </div>
+                {% endif %}
+                </a></div>
+            <div class="col s8 m8">
+                <h2>{{ observation.taxref.commonName }}</h2>
+                <p>
+                    {{ 'Observé le %date%'|trans({'%date%': observation.watched|date("d/m/Y")}) }}<br/>
+                    {{ 'à %place%'|trans({'%place%': observation.place}) }}
+                </p>
+                <br/>
+                <p class="caption light-2-no-hov coordinate">
+                    {{ 'Coordonnées GPS %latitude% N, %longitude% E' | trans({'%latitude%': observation.latitude | gps_dms, "%longitude%": observation.longitude | gps_dms()}) }}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

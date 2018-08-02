@@ -241,7 +241,7 @@ class ObservationService
         // User want published observation,
         // only simple user need to have validation
         if ($form->get('save_published')->isClicked()) {
-            if($user->getRole() == 'ROLE_USER'){
+            if($user == 'ROLE_USER'){
                 $observation->setStatus(Observation::WAITING);
                 $redirect = 'WAITING';
             }else{
