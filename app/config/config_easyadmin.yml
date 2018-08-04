@@ -16,7 +16,7 @@ easy_admin:
               children:
                 - { entity: 'Article', label: 'Articles' }
                 - { entity: 'Comment', label: 'Commentaires' }
-            - { entity: 'User', label: 'Utilisateurs', icon: 'user' }
+                - { entity: 'User', label: 'Utilisateurs', icon: 'user' }
 
     formats:
         date:     'd/m/Y'
@@ -58,7 +58,6 @@ easy_admin:
                     - { property: 'pawColor',  label: 'Pattes' }
                     - { property: 'behavior',  label: 'Comportement' }
                     - { property: 'description',  label: 'Description' }
-                    - { property: 'picture',  label: 'Photo' }
             new:
                 title:  'Créer une fiche'
             edit:
@@ -73,17 +72,24 @@ easy_admin:
                 title: Les observations
                 sort: ['id', 'ASC']
                 fields: 
-                    - { property: 'birdId', label: "Id de l'oiseau" }
-                    - { property: 'author', label: 'Auteur' }
-                    - date
-                    - { property: 'content', label: 'Description' }
-                    - { property: 'validation',  label: 'Validation' }
+                    - { property: 'taxref.valid_name', label: "Nom de l'oiseau" }
+                    - { property: 'user', label: 'Auteur' }
+                    - { property: 'watched', label: 'Date' }
+                    - { property: 'place', label: 'Lieu' }
+                    - { property: 'comments', label: 'Description' }
+                    - { property: 'individuals',  label: 'Nombre aperçu' }
+                    - { property: 'naturalist',  label: 'Naturalist Validation' }
+                    - { property: 'status',  label: 'Validation' }
             edit:
                 title:  'Modifier la fiche'
                 fields:
-                    - { property: 'author', label: 'Auteur' }
-                    - { property: 'content', label: 'Description' }
-                    - { property: 'validation',  label: 'Validation' }                
+                    - { property: 'user', label: 'Auteur' }
+                    - { property: 'watched', label: 'Date' }
+                    - { property: 'place', label: 'Lieu' }
+                    - { property: 'comments', label: 'Description' }
+                    - { property: 'individuals',  label: 'Nombre aperçu' }
+                    - { property: 'naturalist',  label: 'Naturalist Validation' }
+                    - { property: 'status',  label: 'Validation', help: '0 = en Attente, 1 = Valider, 2 = Refuser, 4 = Broullions' }
         Article:
             class: NAO\BlogBundle\Entity\Article
             list:

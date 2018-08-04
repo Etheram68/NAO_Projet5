@@ -98,10 +98,7 @@ class Bird
      */
     private $editDate;
 
-    /**
-     * @ORM\OneToOne(targetEntity="NAO\MapBundle\Entity\Picture", cascade={"persist", "remove"})
-     */
-    private $picture;
+
 
     /**
      * @ORM\OneToOne (targetEntity="NAO\MapBundle\Entity\Edit", cascade={"persist", "remove"})

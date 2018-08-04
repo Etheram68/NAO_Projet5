@@ -8,7 +8,7 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
-    obseravtions_directory: '%kernel.project_dir%/src/NAO/CoreBundle/resources/public/img/oiseaux/observations'
+    obseravtions_directory: '%kernel.project_dir%/web/bundles/naocore/img/oiseaux/observations'
     list_limit: 10
     gps_distance: 10
 

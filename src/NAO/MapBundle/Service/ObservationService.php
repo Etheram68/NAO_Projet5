@@ -172,9 +172,9 @@ class ObservationService
         $filename = $obs->getId() . '_' . $user->getId() . '.jpg';
         if (isset($observation['image']) && !empty($observation['image'])) {
             $data = base64_decode($observation['image']);
-            file_put_contents('./images/obs/' . $filename, $data);
+            file_put_contents('./img/observation/' . $filename, $data);
         } else {
-            copy('images/obs/default-image_observation.jpg', 'images/obs/' . $filename);
+            copy('img/observation/default-image_observation.jpg', 'img/observation/' . $filename);
         }
         $obs->setImagePath($filename);
         $this->em->persist($obs);
@@ -241,7 +241,7 @@ class ObservationService
         // User want published observation,
         // only simple user need to have validation
         if ($form->get('save_published')->isClicked()) {
-            if($user == 'ROLE_USER'){
+            if ($user->hasRole('ROLE_USER')){
                 $observation->setStatus(Observation::WAITING);
                 $redirect = 'WAITING';
             }else{
