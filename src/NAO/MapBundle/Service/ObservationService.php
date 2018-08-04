@@ -181,15 +181,7 @@ class ObservationService
         $this->em->flush();
         return $this->obsArray($obs);
     }
-    /**
-     * Delete all observations for user
-     *
-     * @param User $user
-     */
-    public function deleteObservationsForUser(User $user)
-    {
-        $this->em->getRepository(Observation::class)->deleteByUser($user->getId());
-    }
+
     /**
      * Get observations validate for user
      *
@@ -283,97 +275,5 @@ class ObservationService
         $this->em->persist($observation);
         $this->em->flush();
         return $redirect;
-    }
-    /**
-     * Validate an observation
-     *
-     * @param Observation $observation
-     */
-    public function validate(Observation $observation)
-    {
-        $naturalist = $this->ts->getToken()->getUser();
-        $observation->setNaturalist($naturalist);
-        $observation->setValidated(new \DateTime('now'));
-        $observation->setStatus(Observation::VALIDATED);
-        $this->em->persist($observation);
-        // Notice Observer
-        $content = $this->translator->trans('observation_validation_notice', [], 'messages');
-        $notice = new Notification();
-        $notice->setContent($content);
-        $notice->setFromUser($naturalist);
-        $notice->setToUser($observation->getUser());
-        $this->em->persist($notice);
-        $this->em->flush();
-    }
-    /**
-     * Reject an observation
-     *
-     * @param Observation $observation
-     * @param $data
-     */
-    public function reject(Observation $observation, $data)
-    {
-        // Set to REFUSED
-        $naturalist = $this->ts->getToken()->getUser();
-        $observation->setNaturalist($naturalist);
-        $observation->setValidated(new \DateTime('now'));
-        $observation->setStatus(Observation::REFUSED);
-        $this->em->persist($observation);
-        // Duplicate record and set it as DRAFT
-        $draft = new Observation();
-        $draft->setStatus(Observation::DRAFT);
-        $draft->setValidated(null);
-        $draft->setUser($observation->getUser());
-        $draft->setTaxref($observation->getTaxref());
-        $draft->setWatched($observation->getWatched());
-        $draft->setPlace($observation->getPlace());
-        $draft->setLatitude($observation->getLatitude());
-        $draft->setLongitude($observation->getLongitude());
-        $draft->setImagePath($observation->getImagePath());
-        $draft->setComments($observation->getComments());
-        $draft->setIndividuals($observation->getIndividuals());
-        $this->em->persist($draft);
-        // Notice Observer
-        $notice = new Notification();
-        $title = $this->translator->trans(
-            'observation_refused_notice',
-            [
-                '%species%' => $observation->getTaxref()->getCommonName(),
-                '%date%' => $observation->getWatched()->format('d/m/Y')
-            ],
-            'messages'
-        );
-        $notice->setContent('<b>'.$title.'</b><br>'.$data['reason']);
-        $notice->setFromUser($naturalist);
-        $notice->setToUser($observation->getUser());
-        $this->em->persist($notice);
-        // Warn admin
-        if(isset($data['warn_admin']) && !empty($data['warn_admin'])) {
-            $admins = $this->em->getRepository(User::class)->searchUsersByRole(1,'ROLE_ADMIN');
-            foreach($admins as $admin) {
-                $notice = new Notification();
-                $title = $this->translator->trans(
-                    'notification_subject',
-                    [
-                        '%naturalist%' => $observation->getNaturalist()->getName(),
-                        '%observer%' => $observation->getUser()->getName()
-                    ],
-                    'messages'
-                );
-                $message = $this->translator->trans(
-                    'observation_refused_notice_admin',
-                    [
-                        '%species%' => $observation->getTaxref()->getCommonName(),
-                        '%date%' => $observation->getWatched()->format('d/m/Y')
-                    ],
-                    'messages'
-                );
-                $notice->setContent('<b>'.$title.'</b><br>'.$message.'<br>'.$data['reason']);
-                $notice->setFromUser($naturalist);
-                $notice->setToUser($admin);
-                $this->em->persist($notice);
-            }
-        }
-        $this->em->flush();
     }
 }
