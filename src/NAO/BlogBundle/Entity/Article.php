@@ -2,7 +2,9 @@
 
 namespace NAO\BlogBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+
 
 /**
  * Article
@@ -49,6 +51,24 @@ class Article
      */
     private $content;
 
+    /**
+     * @ORM\OneToOne(targetEntity="NAO\BlogBundle\Entity\Image", cascade={"persist", "remove"})
+     */
+    private $image;
+
+    /**
+     * @ORM\OneToMany(targetEntity="NAO\BlogBundle\Entity\Comment", mappedBy="article", cascade={"remove"})
+     */
+    private $comments;
+
+    /**
+     * Article constructor.
+     */
+    public function __construct()
+    {
+        $this->date         = new \DateTime();
+        $this->comments     = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -133,7 +153,7 @@ class Article
     }
 
     /**
-     * Set content
+     * Set content.
      *
      * @param string $content
      *
@@ -147,7 +167,7 @@ class Article
     }
 
     /**
-     * Get content
+     * Get content.
      *
      * @return string
      */
@@ -155,5 +175,64 @@ class Article
     {
         return $this->content;
     }
-}
 
+    /**
+     * Set image.
+     *
+     * @param \NAO\BlogBundle\Entity\Image|null $image
+     *
+     * @return Article
+     */
+    public function setImage(\NAO\BlogBundle\Entity\Image $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image.
+     *
+     * @return \NAO\BlogBundle\Entity\Image|null
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Add comment.
+     *
+     * @param \NAO\BlogBundle\Entity\Comment $comment
+     *
+     * @return Article
+     */
+    public function addComment(\NAO\BlogBundle\Entity\Comment $comment)
+    {
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment.
+     *
+     * @param \NAO\BlogBundle\Entity\Comment $comment
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeComment(\NAO\BlogBundle\Entity\Comment $comment)
+    {
+        return $this->comments->removeElement($comment);
+    }
+
+    /**
+     * Get comments.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+}

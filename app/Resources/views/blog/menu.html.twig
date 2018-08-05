@@ -1,0 +1,20 @@
+
+
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>Article les plus lus :</h3>
+        </div>
+        <ul class="list-groupe-item">
+            {% for article in listArticles %}
+                <li>
+                    <a href="{{ path('nao_blog_view', {'id': article.id}) }}">
+                        {{ article.title }}
+                    </a>
+                    par {{ article.author }},
+                    le {{ article.date|date('d/m/Y') }}
+                </li>
+            {% else %}
+                <li>Pas (encore !) d'article</li>
+            {% endfor %}
+        </ul>
+    </nav>

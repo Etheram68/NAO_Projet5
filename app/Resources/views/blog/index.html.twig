@@ -1,0 +1,72 @@
+{# blog/index.html.twig #}
+
+{% extends "blog/layout.html.twig" %}
+
+{% block title %}
+    Accueil - {{ parent() }}
+{% endblock %}
+
+{% block naoblog_body %}
+    <header class="header-404 overlay full-404 relative v-center" id="home-page">
+        <div class="absolute anlge-bg">
+            <div class="container">
+                <div class="row v-center">
+                    <div class="col-xs-12 col-md-7 header-text">
+                        <h2>BLOG</h2>
+                        <h3>Liste des Articles</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="section-padding gray-bg" id="blog-page">
+        <div class="container">
+            <div class="row">
+                <!-- Premier article de blog-->
+                {% for article in listArticles %}
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="single-blog">
+                            <div class="box" style="padding: 10px 10px; text-align: left;">
+                                <div class="blog-photo">
+                                    <img src="{{ asset('bundles/naocore/img/blog/small1.jpg') }}" alt="default">
+                                </div>
+                                <div class="blog-content">
+                                    <h3>
+                                        <a href="{{ path('article', {'id': article.id}) }}">
+                                            {{ article.title }}
+                                        </a>
+                                    </h3>
+                                    <ul class="blog-meta">
+                                        <li><span class="ti-user"></span> <a href="#">{{ article.author }}</a></li>
+                                        <li><span class="ti-calendar"></span> <a
+                                                    href="#">{{ article.date|date('d/m/Y') }}</a>
+                                        </li>
+                                    </ul>
+                                    <p>{{ article.content|truncate(100, true) }}</p>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    Pas (encore !) d'article
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+
+
+
+    {# <ul class="pagination">
+         #}{# On utilise la fonction range(a, b) qui crée un tableau de valeurs entre a et b #}{#
+         {% for p in range(1, nbPages) %}
+             <li{% if p == page %} class="active"{% endif %}>
+                 <a href="{{ path('oc_platform_home', {'page': p}) }}">{{ p }}</a>
+             </li>
+         {% endfor %}
+     </ul>#}
+
+{% endblock %}

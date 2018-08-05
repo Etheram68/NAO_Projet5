@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new NAO\BlogBundle\NAOBlogBundle(),
             new NAO\MapBundle\NAOMapBundle(),
             new NAO\GameBundle\NAOGameBundle(),
+            new NAO\UserBundle\NAOUserBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

@@ -4,6 +4,7 @@ namespace NAO\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * Comment
  *
@@ -42,6 +43,11 @@ class Comment
      */
     private $content;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="NAO\BlogBundle\Entity\Article", inversedBy="comments")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $article;
 
     /**
      * Get id
@@ -124,5 +130,28 @@ class Comment
     {
         return $this->content;
     }
-}
 
+    /**
+     * Set article.
+     *
+     * @param \NAO\BlogBundle\Entity\Article $article
+     *
+     * @return Comment
+     */
+    public function setArticle(\NAO\BlogBundle\Entity\Article $article)
+    {
+        $this->article = $article;
+
+        return $this;
+    }
+
+    /**
+     * Get article.
+     *
+     * @return \NAO\BlogBundle\Entity\Article
+     */
+    public function getArticle()
+    {
+        return $this->article;
+    }
+}
