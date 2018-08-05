@@ -14,9 +14,3 @@ services:
         # if you need to do this, you can override this setting on individual services
         public: false
 
-    twig.extension.text:
-        class: Twig_Extensions_Extension_Text
-        tag:
-            - { name: twig.extensions }
-
-    
