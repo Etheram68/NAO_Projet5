@@ -71,6 +71,7 @@ class Observation
      * @ORM\Column(name="image_path", type="string", length=255, nullable=true)
      */
     private $image_path;
+
     /**
      * @var text
      *

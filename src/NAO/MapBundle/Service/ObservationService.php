@@ -1,16 +1,18 @@
 <?php
+
 namespace NAO\MapBundle\Service;
+
 use NAO\MapBundle\Entity\FranceRegion;
 use NAO\MapBundle\Entity\Observation;
 use NAO\MapBundle\Entity\Taxref;
 use NAO\MapBundle\Entity\User;
-use NAO\MapBundle\Entity\Notification;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\Form;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Translation\TranslatorInterface;
+
 /**
  * Class ObservationService
  * @package NAO\MapBundle\Service
@@ -93,7 +95,7 @@ class ObservationService
         }
         $image = $ob->getImagePath();
         if ($image) {
-            $image = $url . '/images/obs/' . $image;
+            $image = $url . '/img/oiseaux/observation/' . $image;
         }
         $obs = [
             'place' => $ob->getPlace(),
@@ -172,9 +174,9 @@ class ObservationService
         $filename = $obs->getId() . '_' . $user->getId() . '.jpg';
         if (isset($observation['image']) && !empty($observation['image'])) {
             $data = base64_decode($observation['image']);
-            file_put_contents('./img/observation/' . $filename, $data);
+            file_put_contents('./img/oiseaux/observation/' . $filename, $data);
         } else {
-            copy('img/observation/default-image_observation.jpg', 'img/observation/' . $filename);
+            copy('img/oiseaux/default-image_observation.jpg', 'img/oiseaux/observation/' . $filename);
         }
         $obs->setImagePath($filename);
         $this->em->persist($obs);
