@@ -1,0 +1,31 @@
+
+<div id="caption_slide" class="carousel slide caption-slider" data-ride="carousel">
+    <div class="carousel-inner" role="listbox">
+<!-- Les différent article ce trouve ici -->
+<div class="item active row">
+    <div class="v-center">
+        <div class="col-xs-12 col-md-6">
+            <div class="caption-title" data-animation="animated fadeInUp">
+                <h2>{{ 'Observation du %date%'|trans({'%date%': observation.watched|date("d/m/Y")}) }}</h2>
+            </div>
+            <div class="caption-desc" data-animation="animated fadeInUp">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute</p>
+            </div>
+            <div class="caption-button" data-animation="animated fadeInUp">
+                <a href="#" class="button">Read more</a>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <div class="caption-photo one" data-animation="animated fadeInRight">
+                <img src="{{ asset('bundles/naocore/img/oiseaux/carduelis-tristis.jpg') }}" alt="carduelis tristis">
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+    <ol class="carousel-indicators caption-indector">
+        <li data-target="#caption_slide" data-slide-to="0" class="active">
+            <strong>Observation du  </strong>Nom de l'oiseau consectetur.
+        </li>
+    </ol>
+</div>
