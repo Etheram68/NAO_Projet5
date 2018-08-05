@@ -1,0 +1,71 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}En Attente - {{ parent() }}{% endblock %}
+
+{% block body %}
+    <header class="header-404 overlay full-404 relative v-center" id="home-page">
+        <div class="absolute anlge-bg"></div>
+        <div class="container">
+            <div class="row v-center">
+                <div class="col-xs-12 col-md-7 header-text">
+                    <h2>Votre Observation</h2>
+                    <h3>En attente</h3>
+                </div>
+            </div>
+        </div>
+        </div>
+    </header>
+
+    <section class="section-padding gray-bg" id="blog-page">
+        <div class="container">
+            <div class="row">
+                <main class="container marge-top">
+                    <section>
+                        {% if obslist|length > 0 %}
+                            <div class="row">
+                                <div id="eltlist" data-maxPage="{{ paginate.maxPages }}">
+                                    {% for observation in obslist %}
+                                        <div class="col s12 m6" >
+                                            {% include 'observation/cards/observation_state.html.twig' with {'observation':observation } only %}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="row">
+                                <div class="col s12">
+                                    <p>Vous n'avez pas d'observation en attente</p>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </section>
+                </main>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block script %}
+    <script>
+        /**
+         *
+         * @param pageno
+         * @param user_id
+         */
+        function getList(pageno, no) {
+            var status = $('.tab').find('.active').attr('id');
+            $.ajax({
+                url: "{{ path('api_obs_paginate') }}?bearer={{ token }}",
+                type: "POST",
+                dataType: "json",
+                data: {
+                    "page": pageno,
+                    "state": 'my_waiting'
+                },
+                success: function (response) {
+                    $('#eltlist').html(response.html);
+                }
+            });
+        }
+    </script>
+{% endblock %}

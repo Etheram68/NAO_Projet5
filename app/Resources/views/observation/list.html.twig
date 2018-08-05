@@ -1,11 +1,11 @@
 {% if obslist|length > 0 %}
     {% for observation in obslist %}
         <div class="col s12 m6" >
-            
+            {% include 'observation/cards/observation_state.html.twig' with {'observation':observation, 'action': 'detail' } only %}
         </div>
     {% endfor %}
 {% else %}
     <div class="col s12" >
-        Il n'y a pas d'observation correspondante aux critères de votre recherche.
+        <p>Il n'y a pas d'observation correspondante aux critères de votre recherche.</p>
     </div>
 {% endif %}

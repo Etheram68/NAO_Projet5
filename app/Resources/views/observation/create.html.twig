@@ -23,30 +23,30 @@
                     <main class="container marge-top">
                         <section>
                             <div class="row">
-                                <div class="col s12">
+                                <div class="col-s12">
                                     <div class="card no-style">
                                         <div class="card-content">
                                             <form id="observation_form" method="post" autocomplete="off" enctype="multipart/form-data">
                                                 <div class="row">
-                                                    <div class="col s12 l6 main-section">
+                                                    <div class="col-s12 l6 main-section">
 
-                                                        <div class="input-field col s12">
+                                                        <div class="input-field col-s12">
                                                             <label>Lieu</label>
-                                                            <a id="geoloc" href="#" class="light-2"><i class="material-icons">gps_fixed</i></a>
+                                                            <!--<a id="geoloc" href="#" class="light-2"><i class="material-icons">gps_fixed</i></a>-->
                                                             {{ form_widget(form.place) }}
                                                             <ul id="dropPlace" class="autocomplete-content dropdown-content"></ul>
                                                             <div class="error">{{ form_errors(form.place) }}</div>
-                                                            <p class="left-align"><a href="#pointer_map" id="action_map" class="caption light-2-no-hov small modal-trigger">Pointer sur la carte</a></p>
+                                                            <!--<p class="left-align"><a href="#pointer_map" id="action_map" class="caption light-2-no-hov small modal-trigger">Pointer sur la carte</a></p>-->
                                                         </div>
 
                                                         <input style="display:none">
-                                                        <div class="input-field col s12">
+                                                        <div class="input-field col-s12">
                                                             <label>Date</label>
                                                             {{ form_widget(form.watched) }}
                                                             <div class="error">{{ form_errors(form.watched) }}</div>
                                                         </div>
 
-                                                        <div class="input-field col s12">
+                                                        <div class="input-field col-s12">
                                                             <label>Espèce observée</label>
                                                             {{ form_widget(form.taxref.customname) }}
                                                             <ul id="dropBird" class="autocomplete-content dropdown-content" style="margin-top: -20px; opacity: 1; position: absolute;"></ul>
@@ -54,20 +54,17 @@
                                                             <p class="left-align"><a href="http://www.oiseaux.net/oiseaux/france.html" class="caption light-2-no-hov small" target="_blank">Besoin d'aide ?</a></p>
                                                         </div>
 
-                                                        <div class="input-field col s12">
+                                                        <div class="input-field col-s12">
                                                             <div class="row">
-                                                                <div class="col s9">
+                                                                <div class="col-s9">
                                                                     <label>Nombre d'individus observés</label>
                                                                 </div>
-                                                                <div class="col s3">
+                                                                <div class="col-s3">
                                                                     {{ form_widget(form.individuals) }}
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-
-                                                    <div class="col s12 l6 secondary-section no-margin-top">
-                                                        <div class="input-field col s12 center-align">
+                                                        <div class="input-field col-s12 center-align">
                                                             <div class="file-field input-field">
                                                                 <div class="btn-floating btn-large waves-effect waves-light">
                                                                     <i class="material-icons dp48">add_a_photo</i>
@@ -81,15 +78,14 @@
                                                             <div class="error">{{ form_errors(form.imagepath) }}</div>
                                                         </div>
 
-                                                        <div class="col s12 ">
+                                                        <div class="col-s12 ">
                                                             <label>Comportement observé (facultatif)</label>
                                                             {{ form_widget(form.comments) }}
                                                             <div class="error">{{ form_errors(form.comments) }}</div>
                                                         </div>
-
                                                     </div>
 
-                                                    <div id="obs-action" class="col s12 center-align">
+                                                    <div id="obs-action" class="col-s12 center-align">
                                                         {{ form_widget(form.save_draft) }}
                                                         {{ form_widget(form.save_published) }}
                                                     </div>
@@ -228,7 +224,7 @@
                 map.removeMarkers();
                 map.addMarker({
                     position: location,
-                    icon: "{{ asset('assets/img/marker.png') }}",
+                    icon: "{{ asset('bundles/naocore/img/marker.png') }}",
                     title: 'cliquez de nouveau sur la localisation pour la valider',
                     click: function(e) {
                         updateLocalization(location.lat(), location.lng());
@@ -237,5 +233,32 @@
                 });
             }
         });
+    </script>
+    <script>
+        (function($){
+
+            $(function(){
+
+                /* ==================================================
+                 DATEPICKER
+                 ===========================================================*/
+                $('.datepicker').pickadate({
+                    monthsFull: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+                    monthsShort: ['Janv', 'Févr', 'Mars', 'Avr', 'Mai', 'Juin', 'Juill', 'Août', 'Sept', 'Oct', 'Nov', 'Déc'],
+                    weekdaysFull: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+                    weekdaysShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+                    weekdaysLetter: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+                    format: 'dd/mm/yyyy',
+                    selectMonths: true,
+                    selectYears: 2,
+                    today: 'Aujourd\'hui',
+                    clear: 'Supprimer',
+                    close: 'Ok',
+                    firstDay: 1,
+                    closeOnSelect: false,
+                    max: new Date()
+                });
+            });
+        })(jQuery);
     </script>
 {% endblock %}

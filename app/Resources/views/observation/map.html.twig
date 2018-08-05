@@ -47,6 +47,30 @@
             </div>
         </div>
     </section>
+
+    <section class="section-padding-card gray-bg" id="blog-page">
+        <div class="container">
+            <div class="row">
+                <div class="row v-center">
+                    <div class="col-xs-12 col-md-7 header-text">
+                        <h2>Liste des observation</h2>
+                        <h3>sur la Carte</h3>
+                    </div>
+                </div>
+                <div id="show_list" class="col s12">
+                    <main class="container marge-top">
+                        <section>
+                            <section>
+                                <div class="row">
+                                    <div id="eltlist"></div>
+                                </div>
+                            </section>
+                        </section>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}
 
 {% block script %}
@@ -196,7 +220,7 @@
             function placeMarker(location){
                 map.addMarker({
                     position: location,
-                    icon: "{{ asset('assets/img/marker.png') }}",
+                    icon: "{{ asset('bundles/naocore/img/marker.png') }}",
                     title: 'Zoomer ici pour voir la zone d\'observation'
                 });
             }

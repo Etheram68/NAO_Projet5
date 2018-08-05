@@ -121,103 +121,103 @@ class Taxref
     /**
      * @var smallint
      *
-     * @ORM\Column(name="france", type="smallint", nullable=true)
+     * @ORM\Column(name="france", type="string", nullable=true)
      */
     private $france;
     /**
      * @var smallint
      *
-     * @ORM\Column(name="guyane_francaise", type="smallint", nullable=true)
+     * @ORM\Column(name="guyane_francaise", type="string", nullable=true)
      */
     private $guyane_francaise;
     /**
      * @var smallint
      *
-     * @ORM\Column(name="martique", type="smallint", nullable=true)
+     * @ORM\Column(name="martique", type="string", nullable=true)
      */
     private $martique;
     /**
      * @var smallint
      *
-     * @ORM\Column(name="guadeloupe", type="smallint", nullable=true)
+     * @ORM\Column(name="guadeloupe", type="string", nullable=true)
      */
     private $guadeloupe;
     /**
      * @var smallint
      *
-     * @ORM\Column(name="saint_martin", type="smallint", nullable=true)
+     * @ORM\Column(name="saint_martin", type="string", nullable=true)
      */
     private $saint_martin;
     /**
      * @var smallint
      *
-     * @ORM\Column(name="saint_barthelemy", type="smallint", nullable=true)
+     * @ORM\Column(name="saint_barthelemy", type="string", nullable=true)
      */
     private $saint_barthelemy;
     /**
      * @var smallint
      *
-     * @ORM\Column(name="saint_pierre_et_miquelon", type="smallint", nullable=true)
+     * @ORM\Column(name="saint_pierre_et_miquelon", type="string", nullable=true)
      */
     private $saint_pierre_et_miquelon;
     /**
      * @var smallint
      *
-     * @ORM\Column(name="mayotte", type="smallint", nullable=true)
+     * @ORM\Column(name="mayotte", type="string", nullable=true)
      */
     private $mayotte;
     /**
      * @var smallint
      *
-     * @ORM\Column(name="iles_eparses", type="smallint", nullable=true)
+     * @ORM\Column(name="iles_eparses", type="string", nullable=true)
      */
     private $iles_eparses;
     /**
      * @var smallint
      *
-     * @ORM\Column(name="reunion", type="smallint", nullable=true)
+     * @ORM\Column(name="reunion", type="string", nullable=true)
      */
     private $reunion;
     /**
      * @var smallint
      *
-     * @ORM\Column(name="saint_paul", type="smallint", nullable=true)
+     * @ORM\Column(name="saint_paul", type="string", nullable=true)
      */
     private $saint_paul;
     /**
      * @var smallint
      *
-     * @ORM\Column(name="terre_adelie", type="smallint", nullable=true)
+     * @ORM\Column(name="terre_adelie", type="string", nullable=true)
      */
     private $terre_adelie;
     /**
      * @var smallint
      *
-     * @ORM\Column(name="iles_sub_antartique", type="smallint", nullable=true)
+     * @ORM\Column(name="iles_sub_antartique", type="string", nullable=true)
      */
     private $iles_sub_antartique;
     /**
      * @var smallint
      *
-     * @ORM\Column(name="nouvelle_caledonie", type="smallint", nullable=true)
+     * @ORM\Column(name="nouvelle_caledonie", type="string", nullable=true)
      */
     private $nouvelle_caledonie;
     /**
      * @var smallint
      *
-     * @ORM\Column(name="wallis_et_futuna", type="smallint", nullable=true)
+     * @ORM\Column(name="wallis_et_futuna", type="string", nullable=true)
      */
     private $wallis_et_futuna;
     /**
      * @var smallint
      *
-     * @ORM\Column(name="polynesie_francaise", type="smallint", nullable=true)
+     * @ORM\Column(name="polynesie_francaise", type="string", nullable=true)
      */
     private $polynesie_francaise;
     /**
      * @var smallint
      *
-     * @ORM\Column(name="clipperton", type="smallint", nullable=true)
+     * @ORM\Column(name="clipperton", type="string", nullable=true)
      */
     private $clipperton;
     /**
@@ -576,7 +576,7 @@ class Taxref
     /**
      * Set france
      *
-     * @param integer $france
+     * @param string $france
      *
      * @return Taxref
      */
@@ -588,7 +588,7 @@ class Taxref
     /**
      * Get france
      *
-     * @return integer
+     * @return string
      */
     public function getFrance()
     {
@@ -597,7 +597,7 @@ class Taxref
     /**
      * Set guyaneFrancaise
      *
-     * @param integer $guyaneFrancaise
+     * @param string $guyaneFrancaise
      *
      * @return Taxref
      */
@@ -609,7 +609,7 @@ class Taxref
     /**
      * Get guyaneFrancaise
      *
-     * @return integer
+     * @return string
      */
     public function getGuyaneFrancaise()
     {
@@ -618,7 +618,7 @@ class Taxref
     /**
      * Set martique
      *
-     * @param integer $martique
+     * @param string $martique
      *
      * @return Taxref
      */
@@ -630,7 +630,7 @@ class Taxref
     /**
      * Get martique
      *
-     * @return integer
+     * @return string
      */
     public function getMartique()
     {
@@ -639,7 +639,7 @@ class Taxref
     /**
      * Set guadeloupe
      *
-     * @param integer $guadeloupe
+     * @param string $guadeloupe
      *
      * @return Taxref
      */
@@ -651,7 +651,7 @@ class Taxref
     /**
      * Get guadeloupe
      *
-     * @return integer
+     * @return string
      */
     public function getGuadeloupe()
     {
@@ -660,7 +660,7 @@ class Taxref
     /**
      * Set saintMartin
      *
-     * @param integer $saintMartin
+     * @param string $saintMartin
      *
      * @return Taxref
      */
@@ -672,7 +672,7 @@ class Taxref
     /**
      * Get saintMartin
      *
-     * @return integer
+     * @return string
      */
     public function getSaintMartin()
     {
@@ -681,7 +681,7 @@ class Taxref
     /**
      * Set saintBarthelemy
      *
-     * @param integer $saintBarthelemy
+     * @param string $saintBarthelemy
      *
      * @return Taxref
      */
@@ -693,7 +693,7 @@ class Taxref
     /**
      * Get saintBarthelemy
      *
-     * @return integer
+     * @return string
      */
     public function getSaintBarthelemy()
     {
@@ -702,7 +702,7 @@ class Taxref
     /**
      * Set saintPierreEtMiquelon
      *
-     * @param integer $saintPierreEtMiquelon
+     * @param string $saintPierreEtMiquelon
      *
      * @return Taxref
      */
@@ -714,7 +714,7 @@ class Taxref
     /**
      * Get saintPierreEtMiquelon
      *
-     * @return integer
+     * @return string
      */
     public function getSaintPierreEtMiquelon()
     {
@@ -723,7 +723,7 @@ class Taxref
     /**
      * Set mayotte
      *
-     * @param integer $mayotte
+     * @param string $mayotte
      *
      * @return Taxref
      */
@@ -735,7 +735,7 @@ class Taxref
     /**
      * Get mayotte
      *
-     * @return integer
+     * @return string
      */
     public function getMayotte()
     {
@@ -744,7 +744,7 @@ class Taxref
     /**
      * Set ilesEparses
      *
-     * @param integer $ilesEparses
+     * @param string $ilesEparses
      *
      * @return Taxref
      */
@@ -756,7 +756,7 @@ class Taxref
     /**
      * Get ilesEparses
      *
-     * @return integer
+     * @return string
      */
     public function getIlesEparses()
     {
@@ -765,7 +765,7 @@ class Taxref
     /**
      * Set reunion
      *
-     * @param integer $reunion
+     * @param string $reunion
      *
      * @return Taxref
      */
@@ -777,7 +777,7 @@ class Taxref
     /**
      * Get reunion
      *
-     * @return integer
+     * @return string
      */
     public function getReunion()
     {
@@ -786,7 +786,7 @@ class Taxref
     /**
      * Set saintPaul
      *
-     * @param integer $saintPaul
+     * @param string $saintPaul
      *
      * @return Taxref
      */
@@ -798,7 +798,7 @@ class Taxref
     /**
      * Get saintPaul
      *
-     * @return integer
+     * @return string
      */
     public function getSaintPaul()
     {
@@ -807,7 +807,7 @@ class Taxref
     /**
      * Set terreAdelie
      *
-     * @param integer $terreAdelie
+     * @param string $terreAdelie
      *
      * @return Taxref
      */
@@ -819,7 +819,7 @@ class Taxref
     /**
      * Get terreAdelie
      *
-     * @return integer
+     * @return string
      */
     public function getTerreAdelie()
     {
@@ -828,7 +828,7 @@ class Taxref
     /**
      * Set ilesSubAntartique
      *
-     * @param integer $ilesSubAntartique
+     * @param string $ilesSubAntartique
      *
      * @return Taxref
      */
@@ -840,7 +840,7 @@ class Taxref
     /**
      * Get ilesSubAntartique
      *
-     * @return integer
+     * @return string
      */
     public function getIlesSubAntartique()
     {
@@ -849,7 +849,7 @@ class Taxref
     /**
      * Set nouvelleCaledonie
      *
-     * @param integer $nouvelleCaledonie
+     * @param string $nouvelleCaledonie
      *
      * @return Taxref
      */
@@ -861,7 +861,7 @@ class Taxref
     /**
      * Get nouvelleCaledonie
      *
-     * @return integer
+     * @return string
      */
     public function getNouvelleCaledonie()
     {
@@ -870,7 +870,7 @@ class Taxref
     /**
      * Set wallisEtFutuna
      *
-     * @param integer $wallisEtFutuna
+     * @param string $wallisEtFutuna
      *
      * @return Taxref
      */
@@ -882,7 +882,7 @@ class Taxref
     /**
      * Get wallisEtFutuna
      *
-     * @return integer
+     * @return string
      */
     public function getWallisEtFutuna()
     {
@@ -891,7 +891,7 @@ class Taxref
     /**
      * Set polynesieFrancaise
      *
-     * @param integer $polynesieFrancaise
+     * @param string $polynesieFrancaise
      *
      * @return Taxref
      */
@@ -903,7 +903,7 @@ class Taxref
     /**
      * Get polynesieFrancaise
      *
-     * @return integer
+     * @return string
      */
     public function getPolynesieFrancaise()
     {
@@ -912,7 +912,7 @@ class Taxref
     /**
      * Set clipperton
      *
-     * @param integer $clipperton
+     * @param string $clipperton
      *
      * @return Taxref
      */
@@ -924,7 +924,7 @@ class Taxref
     /**
      * Get clipperton
      *
-     * @return integer
+     * @return string
      */
     public function getClipperton()
     {

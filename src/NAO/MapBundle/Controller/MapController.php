@@ -112,7 +112,7 @@ class MapController extends Controller
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
         $obs = $em->getRepository('NAOMapBundle:Observation')->getMyDraftObservations($user, $page,$this->getParameter('list_limit'));
-        return $this->render('observation/me/draft.html.twig', [
+        return $this->render('observation/done/draft.html.twig', [
             'token' => $this->container->get('lexik_jwt_authentication.jwt_manager')->create($user),
             'paginate' => $this->container->get('app.obs')->getPagination($obs,$page),
             'obslist' => $obs->getIterator()
@@ -129,7 +129,7 @@ class MapController extends Controller
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
         $obs = $em->getRepository('NAOMapBundle:Observation')->getMyValidateObservations($user, $page,$this->getParameter('list_limit'));
-        return $this->render('observation/me/validate.html.twig', [
+        return $this->render('observation/done/validate.html.twig', [
             'token' => $this->container->get('lexik_jwt_authentication.jwt_manager')->create($user),
             'paginate' => $this->container->get('app.obs')->getPagination($obs,$page),
             'obslist' => $obs->getIterator()
@@ -145,84 +145,7 @@ class MapController extends Controller
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
         $obs = $em->getRepository('NAOMapBundle:Observation')->getMyWaitingObservations($user, $page,$this->getParameter('list_limit'));
-        return $this->render('observation/me/waiting.html.twig', [
-            'token' => $this->container->get('lexik_jwt_authentication.jwt_manager')->create($user),
-            'paginate' => $this->container->get('app.obs')->getPagination($obs,$page),
-            'obslist' => $obs->getIterator()
-        ]);
-    }
-
-    /**
-     * @Route("/validation/en-attente", name="observation.validation.waiting")
-     * @Security("is_granted('ROLE_NATURALIST')")
-     * @Method({"GET"})
-     */
-    public function showWaitingValidationAction(Request $request, $page = 1)
-    {
-        $user = $this->get('security.token_storage')->getToken()->getUser();
-        $em = $this->getDoctrine()->getManager();
-        $obs = $em->getRepository('NAOMapBundle:Observation')->getWaitingValidation($page,$this->getParameter('list_limit'));
-        return $this->render('observation/validation/waiting.html.twig', [
-            'token' => $this->container->get('lexik_jwt_authentication.jwt_manager')->create($user),
-            'paginate' => $this->container->get('app.obs')->getPagination($obs,$page),
-            'obslist' => $obs->getIterator()
-        ]);
-    }
-
-    /**
-     * @Route("/validation/validation/{id}", requirements={"id" = "\d+"}, name="observation.validation.validation")
-     * @Security("is_granted('ROLE_NATURALIST')")
-     * @Method({"GET","POST"})
-     */
-    public function validationValidationAction(Request $request, Observation $obs)
-    {
-        $form = $this->createForm(ObservationChoiceType::class);
-        $form->handleRequest($request);
-        $form_reject = $this->createForm(RejectType::class);
-        $form_reject->handleRequest($request);
-        if ($form->isSubmitted()) {
-            $this->container->get('app.obs')->validate($obs);
-            return $this->redirectToRoute('observation.validation.waiting');
-        }
-        if ($form_reject->isSubmitted()) {
-            $this->container->get('app.obs')->reject($obs,$form_reject->getData());
-            return $this->redirectToRoute('observation.validation.waiting');
-        }
-        return $this->render(':observation/validation:validate_dialog.html.twig', [
-            'form' => $form->createView(),
-            'observation' => $obs,
-            'reject' => $form_reject->createView()
-        ]);
-    }
-
-    /**
-     * @Route("/validation/vos-validations", name="observation.validation.validate")
-     * @Security("is_granted('ROLE_NATURALIST')")
-     * @Method({"GET"})
-     */
-    public function showValidateValidationAction(Request $request, $page = 1)
-    {
-        $user = $this->get('security.token_storage')->getToken()->getUser();
-        $em = $this->getDoctrine()->getManager();
-        $obs = $em->getRepository('NAOMapBundle:Observation')->getValidateValidation($user, $page,$this->getParameter('list_limit'));
-        return $this->render('observation/validation/validate.html.twig', [
-            'token' => $this->container->get('lexik_jwt_authentication.jwt_manager')->create($user),
-            'paginate' => $this->container->get('app.obs')->getPagination($obs,$page),
-            'obslist' => $obs->getIterator()
-        ]);
-    }
-
-    /**
-     * @Route("/validation/vos-refus", name="observation.validation.decline")
-     * @Security("is_granted('ROLE_NATURALIST')")
-     * @Method({"GET"})
-     */
-    public function showDeclineValidationAction(Request $request, $page = 1)
-    {
-        $user = $this->get('security.token_storage')->getToken()->getUser();
-        $em = $this->getDoctrine()->getManager();
-        $obs = $em->getRepository('NAOMapBundle:Observation')->getDeclineValidation($user, $page,$this->getParameter('list_limit'));
-        return $this->render('observation/validation/refuse.html.twig', [
+        return $this->render('observation/done/waiting.html.twig', [
             'token' => $this->container->get('lexik_jwt_authentication.jwt_manager')->create($user),
             'paginate' => $this->container->get('app.obs')->getPagination($obs,$page),
             'obslist' => $obs->getIterator()

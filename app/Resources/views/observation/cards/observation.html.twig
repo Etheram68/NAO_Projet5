@@ -1,0 +1,21 @@
+<div class="card observation">
+    <div class="card-content">
+        <div class="row no-pad-bot">
+            <div class="col s6">
+                <h2>{{ observation.taxref.commonName }}</h2>
+                <p class="caption light-2-no-hov">
+                    {{ 'observé le %date%'|trans({'%date%': observation.watched|date("d/m/Y")}) }}<br />
+                    {{ 'à %place%'|trans({'%place%': observation.place}) }}
+                </p>
+            </div>
+            <div class="col s62">
+                <div class="media-container" style="background: url('{{ asset('bundles/naocore/img/oiseaux/observations/' ~ observation.imagePath ) }}') center/cover no-repeat">
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-action">
+        <a href="{{ path('observation.detail', {'id' : observation.id}) }}" class="bleen">Lire</a>
+    </div>
+</div>

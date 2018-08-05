@@ -19,7 +19,7 @@ class RegistrationType extends AbstractType
         ->add('lastname', TextType::class)
         ->add('firstname', TextType::class)
         ->add('town', TextType::class)
-        ->add('presentation', TextareaType::class)
+        ->add('presentation', TextareaType::class, array('required' => false))
         ->add('newsletter', CheckboxType::class, array('required' => false))
         ->add('rgpd', CheckboxType::class)
         ;
