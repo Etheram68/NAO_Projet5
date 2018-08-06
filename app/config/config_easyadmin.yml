@@ -80,7 +80,7 @@ easy_admin:
                 fields:
                     - { property: 'user', label: 'Auteur' }
                     - { property: 'watched', label: 'Date' }
-                    - { property: 'place', label: 'Lieu' }
+                    - { property: 'place', label: 'Lieu', help: 'Ville (département) ex: Paris (75)' }
                     - { property: 'comments', label: 'Description' }
                     - { property: 'individuals',  label: 'Nombre aperçu' }
                     - { property: 'naturalist',  label: 'Naturalist Validation' }
