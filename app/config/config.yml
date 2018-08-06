@@ -9,6 +9,7 @@ imports:
 parameters:
     locale: fr
 
+
     niveau00: Oeuf
     niveau01: Oisillon
     niveau02: Mésange
@@ -23,6 +24,7 @@ parameters:
     obseravtions_directory: '%kernel.project_dir%/web/bundles/naocore/img/oiseaux/observations'
     list_limit: 10
     gps_distance: 10
+
 
 
 framework:
@@ -58,6 +60,7 @@ twig:
     strict_variables: '%kernel.debug%'
     form_themes:
         - 'bootstrap_3_layout.html.twig'
+
     globals:
 
         niveau00: Oeuf
@@ -72,6 +75,7 @@ twig:
         niveau09: Black Stork
         niveau10: Imperial Eagle
         jwt: "@app.jwt"
+
 
 
 # Doctrine Configuration
@@ -146,10 +150,22 @@ fos_user:
         form:
             type: NAO\UserBundle\Form\RegistrationType
         confirmation:
-            enabled: false
+
+            enabled: true
             from_email:
                 address: "%mailer_user%"
                 sender_name: "%mailer_user%"
+
     profile:
         form:
             type: NAO\UserBundle\Form\ProfileType
+
+sensio_framework_extra:
+    router:      { annotations: true }
+    request:     { converters: true, auto_convert: true }
+    view:        { annotations: true }
+    cache:       { annotations: true }
+    security:    { annotations: true }
+    psr_message: { enabled: false } # Defaults to true if the PSR-7 bridge is installed
+
+

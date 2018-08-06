@@ -1,0 +1,50 @@
+
+<h3>Formulaire d'article</h3>
+
+<div class="well">
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(form) }}
+
+    {# Génération du label + error + widget pour un champ. #}
+    {% if form.date is defined %}
+        {{ form_row(form.date) }}
+    {% endif %}
+
+    {# Génération manuelle et éclatée : #}
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.title, "Titre de l'article", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+
+        {# Affichage des erreurs pour ce champ précis. #}
+        {{ form_errors(form.title) }}
+
+        <div class="col-sm-10">
+            {# Génération de l'input. #}
+            {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    {# Idem pour un autre champ. #}
+    <div class="form-group">
+        {{ form_label(form.content, "Contenu de l'article", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+        {{ form_errors(form.content) }}
+        <div class="col-sm-10">
+            {{ form_widget(form.content) }}
+        </div>
+    </div>
+
+    {{ form_row(form.author) }}
+
+
+
+    {{ form_row(form.image) }}
+
+
+    {{ form_rest(form) }}
+
+    {# Fermeture de la balise <form> du formulaire HTML #}
+    {{ form_end(form) }}
+</div>
+

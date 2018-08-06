@@ -1,0 +1,14 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+
+    <h2>Ajouter une annonce</h2>
+
+    {{ include("blog/articleForm.html.twig") }}
+
+    <p>
+        Attention : cette article sera ajoutée directement
+        sur la page d'accueil après validation du formulaire.
+    </p>
+
+{% endblock %}

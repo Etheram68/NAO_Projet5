@@ -8,7 +8,10 @@ Version: 1.0
 -----------------------------------------------------------------------------------
 CSS INDEX
 ===================
+<<<<<<< HEAD
+=======
 0. Modifications #teamENVF
+>>>>>>> Francois-Dev-Branch
 1. Google font
 2. Theme Default CSS
 3. Helper-class
@@ -61,10 +64,18 @@ CSS INDEX
     width: 91px;
 }
 
+
 #wb_FontAwesomeIcon3:hover i
 {
     color: #7B8087;
 }
+
+.full-404 {
+    width: 100%;
+    height: 35vh;
+    background-color: #737373;
+}
+
 
 @font-face {
     font-family: 'WhitneyHTF-BlackSC';
@@ -146,6 +157,7 @@ h1, h2 {
     color: #848484;
 }
 
+
 #scrollUp {
     bottom: 0;
     font-size: 24px;
@@ -157,6 +169,8 @@ h1, h2 {
     height: 50px;
     line-height: 50px;
 }
+
+
 
 #service-page {
     background-color: #F6F6F6;
@@ -1786,10 +1800,10 @@ a#forget:hover, a#subscribe:hover {
 }
 
 
-
 /*-----------------
 1. Google font
 ------------------*/
+
 
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
 
@@ -1836,6 +1850,7 @@ body {
 
 body {
     font-family: 'Roboto', sans-serif;
+
     font-weight: 400;
     font-size: 15px;
     line-height: 1.8;
@@ -2090,7 +2105,9 @@ input:-webkit-autofill:focus {
     color: #000000;
     font: 14px/0px "Roboto", sans-serif;
     text-transform: uppercase;
+
 }*/
+
 
 .mainmenu-area #primary-menu > ul > li > a:before {
     content: "";
@@ -2171,6 +2188,7 @@ input:-webkit-autofill:focus {
 
 .header-text .button {
     margin-top: 10px;
+
 }
 
 /*.screen-slider .item {
@@ -2377,6 +2395,7 @@ input:-webkit-autofill:focus {
     position: relative;
     color: #ffffff;
 }**/
+
 
 .testimonial-area:before {
     opacity: 0.9
@@ -2614,7 +2633,9 @@ input:-webkit-autofill:focus {
 .footer_area .footer_row .footer_about .socail_icon li:first-child {
     padding: 0;
 }
+
 /*.footer_area .footer_row .footer_about .socail_icon li a {
+>>>>>>> Francois-Dev-Branch
     border: 2px solid #f6b60b;
     display: block;
     line-height: 26px;
@@ -2622,7 +2643,11 @@ input:-webkit-autofill:focus {
     text-align: center;
     position: relative;
     z-index: 1;
+<<<<<<< HEAD
+}
+=======
 }*/
+
 .footer_area .footer_row .footer_about .socail_icon li a:after {
     content: "";
     position: absolute;
@@ -2647,9 +2672,11 @@ input:-webkit-autofill:focus {
 .footer_area .footer_row .footer_about .socail_icon li a:hover:after, .footer_area .footer_row .footer_about .socail_icon li a:focus:after {
     transform: scaleY(1);
 }
+
 .footer_about.quick {
     padding-top: 60px;
 }
+
 .footer_area .footer_row .footer_about .quick_link {
     padding: 0;
     margin: 0;
@@ -2679,6 +2706,7 @@ input:-webkit-autofill:focus {
 .footer_area .footer_row .footer_about .quick_link li a:hover i, .footer_area .footer_row .footer_about .quick_link li a:focus i {
     left: 8px;
     color: #212121;
+
 }
 .footer_area .footer_row .footer_about .twitter {
     font: 400 14px/28px "Roboto", sans-serif;
@@ -2723,6 +2751,7 @@ input:-webkit-autofill:focus {
 }
 .footer_area .footer_row .footer_about address .my_address li a:hover, .footer_area .footer_row .footer_about address .my_address li a:focus {
     color: #212121;
+
 }
 .footer_area .footer_row .footer_about address .my_address li span {
     display: inline-block;

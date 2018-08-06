@@ -9,18 +9,22 @@
                 </button>
                 {# LOGO #}
                 {% if (app.request.requesturi == path('homepage')) %}
+
                   <a href="{{ path('homepage') }}" class="navbar-brand logo"><img src="{{ asset('bundles/naocore/img/logo-nao-noir.png') }}" \></a>
                 {% else %}
                   <a href="{{ path('homepage') }}" class="navbar-brand logo"><img src="{{ asset('bundles/naocore/img/logo-nao-jaune.png') }}" \></a>
+
                 {% endif %}
             </div>
             <nav class="collapse navbar-collapse" id="primary-menu">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="{{ path('observation.map') }}">Carte</a></li>
-                    <li><a href="#">Blog</a></li>
+
+                    <li><a href="{{ path('index') }}">Blog</a></li>
                     <li><a href="#">Salle de Jeux</a></li>
                     <li><a href="#">A propos</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="{{ path('contact') }}">Contact</a></li>
+
                     {# CONNEXION/DÉCONNEXION #}
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                       <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
@@ -30,6 +34,7 @@
                       Connexion</a>
                       </li>
                     {% endif %}
+
                     {% if (is_granted("IS_AUTHENTICATED_REMEMBERED")) and (is_granted("ROLE_ADMIN")) %}
                       <li><a href="{{ path('admin') }}" class="helloUser" >Bonjour {{ app.user.username }} !</a>
                       </li>
@@ -38,6 +43,7 @@
                         <a href="{{ path('user.username', {'username': app.user.username } ) }}" class="helloUser" >
                           Bonjour {{ app.user.username }} !
                         </a>
+
                       </li>
                     {% endif %}
                     <li><a href="javascript:void(0)" class="dropdown-button" data-activates="dropdown-search"><i class="material-icons">search</i></a></li>

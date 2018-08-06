@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
+
 class RegistrationType extends AbstractType
 {
     /**
@@ -19,7 +20,6 @@ class RegistrationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-
         ->add('lastname', TextType::class, array(
             'attr' => array('placeholder' => 'Entrez votre nom'),
         ))

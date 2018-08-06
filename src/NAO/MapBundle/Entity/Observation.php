@@ -391,4 +391,28 @@ class Observation
                 return 'Erreur';
         }
     }
+
+    /**
+     * Set validation
+     *
+     * @param boolean $validation
+     *
+     * @return Observation
+     */
+    public function setValidation($validation)
+    {
+        $this->validation = $validation;
+
+        return $this;
+    }
+
+    /**
+     * Get validation
+     *
+     * @return boolean
+     */
+    public function getValidation()
+    {
+        return $this->validation;
+    }
 }

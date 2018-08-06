@@ -1,0 +1,14 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+
+    <h2>Ajouter un commentaire</h2>
+
+    {{ include("blog/commentForm.html.twig") }}
+
+    <p>
+        Attention : ce commentaire sera ajoutée directement
+        sur la page de l'article après validation du formulaire.
+    </p>
+
+{% endblock %}

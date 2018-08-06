@@ -1,58 +1,80 @@
 {# src/OC/PlatformBundle/Resources/view/Advert/view.html.twig #}
 
-{% extends "NAOBlogBundle::layout.html.twig" %}
+{% extends "blog/layout.html.twig" %}
 
 
 
-{% block ocplatform_body %}
+{% block naoblog_body %}
+    <section class="section-padding" id="article-page">
+        <div class="container">
+            <div class="blog-content">
+                <h1>{{ article.title }}</h1>
+                <div class="blog-meta">
+                    <i class="glyphicon glyphicon-user"> {{ article.author }}</i>
+                    <i class="glyphicon glyphicon-time"> {{ article.date|date('d/m/Y') }}</i>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        {{ article.content }}
+                    </div>
 
-    <div style="float: left; margin-right: 1em;">
-        {# On vérifie qu'une image soit bien associée à l'article #}
-        {% if article.image is not null %}
-            <img
-                    src="{{ asset(article.image.webPath) }}"
-                    alt="{{ article.image.alt }}"
-                    height="60"
-            />
-        {% endif %}
-    </div>
+                    <div class="col-xs-12 col-sm-4">
+                        {% if article.image is not null %}
+                            <img
+                                    src="{{ asset(article.image.webPath) }}"
+                                    alt="{{ article.image.alt }}"
+                                    height="60"
+                            />
+                        {% else %}
+                            <img src="{{ asset('bundles/naocore/img/blog/small1.jpg') }}" alt="default">
+                        {% endif %}
+                    </div>
 
-    <h2>{{ article.title }}</h2>
-    <i>Par {{ article.author }}, le {{ article.date|date('d/m/Y') }}</i>
+                </div>
+                <div class="comment-container">
 
-    <div class="well">
-        {{ article.content }}
-    </div>
 
-    {% if listComments|length > 0 %}
-        <div>
-            Commentaires
+                    <h3>Commentaires</h3>
 
-            <button>Ajouter un commentaire</button>
-            <ul>
-                {% for comment in listComments %}
-                    <li> Posté par {{ comment.author }} le {{ comment.date }}
-                         {{ comment.content }}</li>
-                {% else %}
-                    <p>aucune commentaire!</p>
-                {% endfor %}
-            </ul>
+                    <a class="btn btn-default" href="{{ path('comment.add', {'id': article.id }) }}">Ajouter un
+                        commentaire</a>
+
+
+                    <div class="comment-content" sty>
+
+                        <ul>
+                            {% for comment in listComments %}
+                                <li> Posté par {{ comment.author }}le {{ comment.date|date("d/m/Y  H:i") }}
+                                    <hr>
+                                    {{ comment.content }}
+                                </li>
+                            {% else %}
+                                <p>aucun commentaire!</p>
+                            {% endfor %}
+                        </ul>
+
+                        <a class="btn btn-default" href="{{ path('comment.add', {'id': article.id }) }}">Ajouter un
+                            commentaire</a>
+                    </div>
+
+
+                    <p>
+                </div>
+                <a href="{{ path('index') }}" class="btn btn-default">
+                    <i class="glyphicon glyphicon-chevron-left"></i>
+                    Retour à la liste
+                </a>
+                <a href="{{ path('article.edit', {'id': article.id}) }}" class="btn btn-default">
+                    <i class="glyphicon glyphicon-edit"></i>
+                    Modifier l'article
+                </a>
+                <a href="{{ path('article.delete', {'id': article.id}) }}" class="btn btn-danger">
+                    <i class="glyphicon glyphicon-trash"></i>
+                    Supprimer l'article
+                </a>
+                </p>
+            </div>
         </div>
-    {% endif %}
-
-    <p>
-        <a href="{{ path('oc_platform_home') }}" class="btn btn-default">
-            <i class="glyphicon glyphicon-chevron-left"></i>
-            Retour à la liste
-        </a>
-        <a href="{{ path('oc_platform_edit', {'id': advert.id}) }}" class="btn btn-default">
-            <i class="glyphicon glyphicon-edit"></i>
-            Modifier l'annonce
-        </a>
-        <a href="{{ path('oc_platform_delete', {'id': advert.id}) }}" class="btn btn-danger">
-            <i class="glyphicon glyphicon-trash"></i>
-            Supprimer l'annonce
-        </a>
-    </p>
+    </section>
 
 {% endblock %}

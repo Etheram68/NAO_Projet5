@@ -74,9 +74,11 @@ class User extends BaseUser
     public $level;
 
 
+
     public function __construct()
     {
         parent::__construct();
+
     }
 
 
@@ -262,5 +264,6 @@ class User extends BaseUser
     {
         return $this->roles;
     }
+
 }
 
