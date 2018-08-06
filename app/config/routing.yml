@@ -15,8 +15,10 @@ nao_blog:
     type:     annotation
 
 nao_core:
-    resource: "@NAOCoreBundle/Resources/config/routing.yml"
-    prefix:   /
+    resource: "@NAOCoreBundle/Controller/"
+    type:     annotation
+
+
 
 easy_admin_bundle:
     resource: "@EasyAdminBundle/Controller/AdminController.php"
@@ -25,3 +27,7 @@ easy_admin_bundle:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+api_login_check:
+    path: /API/login_check
+

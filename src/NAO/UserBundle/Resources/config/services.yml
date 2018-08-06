@@ -7,3 +7,25 @@ services:
         class: NAO\UserBundle\Form\RegistrationType
         tags:
             - {name: form.type, alias: nao_user_registration }
+
+    naouser.level.levelCalcul:
+        class: NAO\UserBundle\Level\LevelCalcul
+        arguments:
+            - %niveau00%
+            - %niveau01%
+            - %niveau02%
+            - %niveau03%
+            - %niveau04%
+            - %niveau05%
+            - %niveau06%
+            - %niveau07%
+            - %niveau08%
+            - %niveau09%
+            - %niveau10%
+
+    naouser.profile.change:
+        class: NAO\UserBundle\EventListener\ProfilChangeListener
+        arguments: ['@router']
+        tags:
+            - { name: kernel.event_subscriber }
+

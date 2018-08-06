@@ -10,13 +10,17 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 /**
+<<<<<<< HEAD
  * Class CoreBundleController
+=======
+ * Class AppBundleController
+>>>>>>> Francois-Dev-Branch
  *
  * @package NAO\CoreBundle\Controller
  */
 class CoreController extends Controller
 {
-    /**
+	/**
      * HomePage
      * @Route("/", name="homepage")
      * @Method({"GET"})
@@ -28,6 +32,7 @@ class CoreController extends Controller
     public function indexAction()
     {
 
+
         $em = $this->getDoctrine()->getManager();
 
         $listArticles = $em->getRepository('NAOBlogBundle:Article')->findBy(
@@ -37,7 +42,8 @@ class CoreController extends Controller
             0
         );
         return $this->render('homepage\index.html.twig', array(
-            'listArticles' => $listArticles
+            'listArticles' => $listArticles,
+            'observations'   => $this->container->get('app.obs')->getLastObersations(4)
         ));
     }
 

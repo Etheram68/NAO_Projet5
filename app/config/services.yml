@@ -14,3 +14,55 @@ services:
         # if you need to do this, you can override this setting on individual services
         public: false
 
+    twig.extension.text:
+        class: Twig_Extensions_Extension_Text
+        tag:
+            - { name: twig.extensions }
+
+    NAO\MapBundle\Controller\:
+            resource: '../../src/NAO/MapBundle/Controller'
+            public: true
+            tags: ['controller.service_arguments']
+
+    app.gps:
+            class: NAO\MapBundle\Service\GPSService
+            public: true
+            arguments: []
+
+    app.obs:
+            class: NAO\MapBundle\Service\ObservationService
+            public: true
+            arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", '%list_limit%', '%obseravtions_directory%']
+
+    app.geoloc:
+            class: NAO\MapBundle\Service\GeolocService
+            public: true
+            arguments: ["@doctrine.orm.entity_manager", "@app.gps"]
+
+    app.jwt:
+            class: NAO\MapBundle\Service\JwtService
+            public: true
+            arguments: ["@security.token_storage", "@lexik_jwt_authentication.jwt_manager"]
+
+    app.validator.city.check:
+            class: NAO\MapBundle\Validator\CityCheckValidator
+            arguments: ["@doctrine.orm.entity_manager"]
+            tags:
+                - { name: validator.constraint_validator, alias: app.city.check }
+
+    app.validator.bird.check:
+            class: NAO\MapBundle\Validator\BirdCheckValidator
+            arguments: ["@doctrine.orm.entity_manager"]
+            tags:
+                - { name: validator.constraint_validator, alias: app.bird.check }
+
+    appbundle.twig.gps_extension:
+                class: NAO\MapBundle\Twig\Extension\GpsDMSExtension
+                tags:
+                    - { name: twig.extension }
+
+    appbundle.twig.html_extension:
+            class: NAO\MapBundle\Twig\Extension\HtmlExtension
+            tags:
+                - { name: twig.extension }
+
