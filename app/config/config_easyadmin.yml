@@ -8,8 +8,8 @@ easy_admin:
             - label: 'Fiches et Observations'
               icon: 'file'
               children:
-                - { entity: 'Bird', label: 'Fiches oiseaux' }
-                - { entity: 'Edit', label: 'Contributions' }
+                - { entity: 'Observation', label: 'Fiches oiseaux' }
+                - { entity: 'Observation', label: 'Contributions' }
                 - { entity: 'Observation', label: 'Observations' }
             - label: 'Blog'
               icon: 'sticky-note'
@@ -17,7 +17,6 @@ easy_admin:
                 - { entity: 'Article', label: 'Articles' }
                 - { entity: 'Comment', label: 'Commentaires' }
                 - { entity: 'User', label: 'Utilisateurs', icon: 'user' }
-
 
     formats:
         date:     'd/m/Y'
@@ -30,8 +29,7 @@ easy_admin:
     entities:
 
         Bird:
-            class: NAO\MapBundle\Entity\Bird
-
+            class: NAO\MapBundle\Entity\Observation
             list:
                 actions:
                     - { name: 'edit', icon: 'pencil', label: '', title: 'Éditer' }
@@ -59,9 +57,8 @@ easy_admin:
                 title:  'Créer une fiche'
             edit:
                 title:  'Modifier la fiche'
-
         Edit:
-            class: NAO\MapBundle\Entity\Edit
+            class: NAO\MapBundle\Entity\Observation
         Observation:
             class: NAO\MapBundle\Entity\Observation
             list:
@@ -69,7 +66,7 @@ easy_admin:
                     - { name: 'edit', icon: 'pencil', label: '', title: 'Éditer' }
                 title: Les observations
                 sort: ['id', 'ASC']
-                fields:
+                fields: 
                     - { property: 'taxref.valid_name', label: "Nom de l'oiseau" }
                     - { property: 'user', label: 'Auteur' }
                     - { property: 'watched', label: 'Date' }
@@ -83,7 +80,7 @@ easy_admin:
                 fields:
                     - { property: 'user', label: 'Auteur' }
                     - { property: 'watched', label: 'Date' }
-                    - { property: 'place', label: 'Lieu' }
+                    - { property: 'place', label: 'Lieu', help: 'Ville (département) ex: Paris (75)' }
                     - { property: 'comments', label: 'Description' }
                     - { property: 'individuals',  label: 'Nombre aperçu' }
                     - { property: 'naturalist',  label: 'Naturalist Validation' }
@@ -106,7 +103,6 @@ easy_admin:
                     - { property: 'title', label: 'Titre' }
                     - { property: 'author', label: 'Auteur' }
                     - { property: 'content',  label: 'Contenu' }
-
         Comment:
             class: NAO\BlogBundle\Entity\Comment
         User:
@@ -127,7 +123,6 @@ easy_admin:
                     - { property: 'roles', label: 'Rôle' }
                     - { property: 'points', label: 'Nbr de points' }
                     - { property: 'enabled',  label: 'Actif' }
-
             edit:
                 title:  'Modifier le compte utilisateur'
                 fields:
@@ -140,4 +135,3 @@ easy_admin:
                     - { property: 'roles', label: 'Rôle' }
                     - { property: 'points', label: 'Nbr de points' }
                     - { property: 'enabled',  label: 'Actif' }
-
