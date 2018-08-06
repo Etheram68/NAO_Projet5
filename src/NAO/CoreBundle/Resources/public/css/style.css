@@ -85,6 +85,16 @@ h1, h2 {
     width: 90%;
 }
 
+.mainmenu-area #primary-menu > ul > li > a.helloUser {
+    text-transform: none;
+    text-decoration: underline;
+    font-size: 13.5px;
+}
+
+.mainmenu-area #primary-menu > ul > li > a.helloUser:hover {
+    text-decoration: none;
+}
+
 .mainmenu-area #primary-menu > ul > li > a.dropdown-button {
     padding-top: 27px;
 }
@@ -103,6 +113,8 @@ h1, h2 {
 .mainmenu-area #primary-menu > ul > li > a:hover {
     color: #FFDE00;
 }
+
+
 
 /*---- Mini HEADER ----*/
 
@@ -1362,6 +1374,12 @@ button.picker__clear:focus,button.picker__close:focus,button.picker__today:focus
     width: 35%;
 }
 
+#pageLogin form input::placeholder {
+    color: #9a9a9a;
+    font-size: 0.8em;
+    padding-left: 10px;
+}
+
 #pageLogin form input[type="submit"] {
     width: 20%;
 }
@@ -1417,7 +1435,7 @@ a#forget:hover, a#subscribe:hover {
 }
 
 #pageRegister {
-    height: 960px;
+    height: auto;
     background-color: #F6F6F6;
     padding: 100px 200px 100px 200px;
 }
@@ -1440,18 +1458,152 @@ a#forget:hover, a#subscribe:hover {
     color: #848484;
 }
 
+#politiqueConf {
+    margin-left: 25px;
+    margin-bottom: 35px;
+}
+
+#politiqueConf a {
+    text-decoration: underline;
+}
+
+#politiqueConf a:hover {
+    text-decoration: none;
+    color: #848484;
+}
+
 .rgpdNewsletter input[type="checkbox"] {
     margin-right: 1em;
 }
 
 .rgpdNewsletter input[type="checkbox"]:required:invalid + p {
-
-color: red;
+    color: #A80000;
 }
 
 .rgpdNewsletter input[type="checkbox"]:required:valid + p {
+    color: #848484;
+}
 
-color: #848484;
+
+/*---- page PROFILE ----*/
+
+.header-area-profile {
+    background: #000000 url('../img/header-profile-photo.jpg') no-repeat scroll center center / cover;
+}
+#pageProfile {
+    height: auto;
+    background-color: #F6F6F6;
+    padding: 50px 200px 100px 200px;
+}
+.header-text-profile h2 {
+    margin-top: 216px;
+    font-size: 120px;
+    color: #FFDE00;
+}
+#pageProfile {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+#pageProfile hr {
+    margin: 40px 0px 40px 0px;
+    width: 95%;
+    border-top: 1px solid #aaaa;
+}
+.avatar p, .infos p {
+    margin: 0px;
+}
+.profilTexte {
+    font-weight: 700;
+    font-size: 13.5px;
+    /*padding-bottom: 0px;*/
+    line-height: 1.5em;
+}
+
+/* RANGÉE 1 */
+#pageProfile .rangee-1 {
+    display: flex;
+    justify-content: space-around;
+}
+#pageProfile .rangee-1 .avatar.col-lg-4 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+#pageProfile .rangee-1 .avatar.col-lg-4 img {
+    padding-bottom: 10px;
+}
+#pageProfile .rangee-1 .infos.col-lg-4 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+#pageProfile .rangee-1 .picto.col-lg-4 {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+/* RANGÉE 2 */
+#pageProfile .rangee-2 .presentation {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#pageProfile .rangee-2 .presentation div {
+    height: auto;
+    background-color: white;
+    padding: 15px;
+    font-style: italic;
+}
+#pageProfile .rangee-2 .presentation div#emptyPresentation {
+    padding: 0px;
+    font-style: italic;
+    background-color: #F6F6F6;
+    height: 50px;
+}
+
+/* RANGÉE 3 */
+#pageProfile .rangee-3 {
+    display: flex;
+    justify-content: space-around;
+}
+#pageProfile .rangee-3 ul {
+    background-color: white;
+    padding: 30px;
+}
+#pageProfile .rangee-3 .lastObs.col-lg-6 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#pageProfile .rangee-3 .lastCom.col-lg-6 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#pageProfile .rangee-3 .separation {
+    height: auto;
+    background-color: #F6F6F6;
+}
+
+
+/*---- page EDIT PROFILE  ----*/
+
+.header-text-profile-edit h2 {
+    margin-top: 240px;
+    font-size: 108px;
+    color: #FFDE00;
+    line-height: 0.7em;
+}
+.editProfileButton {
+    display: flex;
+    margin-top: 60px;
+}
+.editProfileButton input[type="submit"] {
+    margin-right: 20px;
 }
 
 /*---- PAGE 404 ----*/
@@ -1633,30 +1785,6 @@ color: #848484;
    width: 27px;
 }
 
-/*#wb_FontAwesomeIcon1:hover i,
-#wb_FontAwesomeIcon2:hover i,
-#wb_FontAwesomeIcon4:hover i,
-#wb_FontAwesomeIcon6:hover i {
-   color: #575757;
-}*/
-
-/*---- page PROFILE ----*/
-
-.header-area-profile {
-    background: #000000 url('../img/header-profile-photo.jpg') no-repeat scroll center center / cover;
-}
-
-#pageProfile {
-    height: 960px;
-    background-color: #F6F6F6;
-    padding: 100px 200px 100px 200px;
-}
-
-.header-text-profile h2 {
-    margin-top: 216px;
-    font-size: 120px;
-    color: #FFDE00;
-}
 
 
 /*-----------------

@@ -8,9 +8,22 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
+
+    niveau00: Oeuf
+    niveau01: Oisillon
+    niveau02: Mésange
+    niveau03: Pic noir
+    niveau04: Perroquet
+    niveau05: Grand Héron
+    niveau06: Grue
+    niveau07: Aigle Royal
+    niveau08: Hirondelle Rustique
+    niveau09: Black Stork
+    niveau10: Imperial Eagle
     obseravtions_directory: '%kernel.project_dir%/web/bundles/naocore/img/oiseaux/observations'
     list_limit: 10
     gps_distance: 10
+
 
 framework:
     #esi: ~
@@ -46,7 +59,20 @@ twig:
     form_themes:
         - 'bootstrap_3_layout.html.twig'
     globals:
+
+        niveau00: Oeuf
+        niveau01: Oisillon
+        niveau02: Mésange
+        niveau03: Pic noir
+        niveau04: Perroquet
+        niveau05: Grand Héron
+        niveau06: Grue
+        niveau07: Aigle Royal
+        niveau08: Hirondelle Rustique
+        niveau09: Black Stork
+        niveau10: Imperial Eagle
         jwt: "@app.jwt"
+
 
 # Doctrine Configuration
 doctrine:
@@ -120,7 +146,10 @@ fos_user:
         form:
             type: NAO\UserBundle\Form\RegistrationType
         confirmation:
-            enabled: true
+            enabled: false
             from_email:
                 address: "%mailer_user%"
                 sender_name: "%mailer_user%"
+    profile:
+        form:
+            type: NAO\UserBundle\Form\ProfileType

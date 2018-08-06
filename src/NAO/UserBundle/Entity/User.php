@@ -71,11 +71,12 @@ class User extends BaseUser
      */
     private $points;
 
+    public $level;
+
 
     public function __construct()
     {
         parent::__construct();
-        // your own logic
     }
 
 
