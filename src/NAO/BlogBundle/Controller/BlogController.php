@@ -169,6 +169,7 @@ class BlogController extends Controller
     public function addCommentAction(Request $request, Article $article)
     {
         $comment = new Comment();
+        $comment->setDate(new \DateTime());
         $comment->setArticle($article);
         $form = $this->get('form.factory')->create(CommentType::class, $comment);
 

@@ -1363,6 +1363,8 @@ button.picker__clear:focus,button.picker__close:focus,button.picker__today:focus
     cursor: pointer;
     display: block
 }
+
+
 /*---- page LOGIN ----*/
 
 .header-area-login {
@@ -1799,7 +1801,28 @@ a#forget:hover, a#subscribe:hover {
    width: 27px;
 }
 
+/*---- BLOG ----*/
 
+#pageArticle {
+    height: auto;
+    background-color: #F6F6F6;
+    padding: 50px 50px 100px 150px;
+}
+
+section#article-page.section-padding {
+    padding: 120px 0px 0px 0px;
+}
+.comment-container {
+    margin-top: 50px;
+}
+.comment-content {
+    margin-bottom: 50px;
+}
+#pageComment {
+    height: auto;
+    background-color: #F6F6F6;
+    padding: 120px 100px 100px 150px;
+}
 /*-----------------
 1. Google font
 ------------------*/

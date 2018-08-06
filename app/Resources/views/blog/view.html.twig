@@ -6,7 +6,7 @@
 
 {% block naoblog_body %}
     <section class="section-padding" id="article-page">
-        <div class="container">
+        <div class="container" id="pageArticle">
             <div class="blog-content">
                 <h1>{{ article.title }}</h1>
                 <div class="blog-meta">
@@ -35,16 +35,17 @@
 
 
                     <h3>Commentaires</h3>
-
-                    <a class="btn btn-default" href="{{ path('comment.add', {'id': article.id }) }}">Ajouter un
+                    {% if (is_granted("IS_AUTHENTICATED_REMEMBERED")) and (is_granted("ROLE_USER")) %}
+                        <a class="btn btn-light" href="{{ path('comment.add', {'id': article.id }) }}">Ajouter un
                         commentaire</a>
+                    {% endif %}
 
 
-                    <div class="comment-content" sty>
+                    <div class="comment-content">
 
                         <ul>
                             {% for comment in listComments %}
-                                <li> Posté par {{ comment.author }}le {{ comment.date|date("d/m/Y  H:i") }}
+                                <li> Posté par {{ comment.author }} le {{ comment.date|date("d/m/Y  H:i") }}
                                     <hr>
                                     {{ comment.content }}
                                 </li>
@@ -52,29 +53,31 @@
                                 <p>aucun commentaire!</p>
                             {% endfor %}
                         </ul>
-
-                        <a class="btn btn-default" href="{{ path('comment.add', {'id': article.id }) }}">Ajouter un
+                        {% if (is_granted("IS_AUTHENTICATED_REMEMBERED")) and (is_granted("ROLE_USER")) %}
+                            <a class="btn btn-light" href="{{ path('comment.add', {'id': article.id }) }}">Ajouter un
                             commentaire</a>
+                        {% endif %}
                     </div>
 
 
                     <p>
                 </div>
-                <a href="{{ path('index') }}" class="btn btn-default">
+                <a href="{{ path('index') }}" class="btn btn-light">
                     <i class="glyphicon glyphicon-chevron-left"></i>
                     Retour à la liste
                 </a>
-                <a href="{{ path('article.edit', {'id': article.id}) }}" class="btn btn-default">
-                    <i class="glyphicon glyphicon-edit"></i>
-                    Modifier l'article
-                </a>
-                <a href="{{ path('article.delete', {'id': article.id}) }}" class="btn btn-danger">
-                    <i class="glyphicon glyphicon-trash"></i>
-                    Supprimer l'article
-                </a>
+                {% if (is_granted("IS_AUTHENTICATED_REMEMBERED")) and (is_granted("ROLE_ADMIN")) %}
+                    <a href="{{ path('article.edit', {'id': article.id}) }}" class="btn btn-light">
+                        <i class="glyphicon glyphicon-edit"></i>
+                        Modifier l'article
+                    </a>
+                    <a href="{{ path('article.delete', {'id': article.id}) }}" class="btn btn-danger">
+                        <i class="glyphicon glyphicon-trash"></i>
+                        Supprimer l'article
+                    </a>
+                {% endif %}
                 </p>
             </div>
         </div>
     </section>
-
 {% endblock %}
