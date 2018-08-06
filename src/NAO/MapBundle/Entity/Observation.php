@@ -104,7 +104,7 @@ class Observation
      */
     public function __construct()
     {
-        $this->image_path   = 'default-image_observation.jpg';
+        $this->image_path   = 'default-image_observation.png';
     }
     /**
      * Get id
@@ -390,5 +390,29 @@ class Observation
             default:
                 return 'Erreur';
         }
+    }
+
+    /**
+     * Set validation
+     *
+     * @param boolean $validation
+     *
+     * @return Observation
+     */
+    public function setValidation($validation)
+    {
+        $this->validation = $validation;
+
+        return $this;
+    }
+
+    /**
+     * Get validation
+     *
+     * @return boolean
+     */
+    public function getValidation()
+    {
+        return $this->validation;
     }
 }

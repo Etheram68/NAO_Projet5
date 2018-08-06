@@ -48,6 +48,7 @@
         </div>
     </section>
 
+
     <section class="section-padding-card gray-bg" id="blog-page">
         <div class="container">
             <div class="row">
@@ -71,6 +72,7 @@
             </div>
         </div>
     </section>
+
 {% endblock %}
 
 {% block script %}
@@ -93,8 +95,10 @@
                 getData: function (value, callback) {
                     var data = [];
                     $.ajax({
+
                         url: "{{ url('taxref.search.name') }}?bearer={{ jwt.token }}",
                         type: "POST",
+
                         dataType: "json",
                         data: { "name": value },
                         success: function (response) {
@@ -200,7 +204,9 @@
              */
             function updateMapsWithObservations(bird, department){
                 var data = {bird: bird, department: department};
+
                 $.post( "{{ url('obs.search') }}?bearer={{ jwt.token }}", data , function( response ) {
+
                     map.removePolygons();
                     map.removeMarkers();
                     $.each(response, function(index, item) {
@@ -220,7 +226,9 @@
             function placeMarker(location){
                 map.addMarker({
                     position: location,
+
                     icon: "{{ asset('bundles/naocore/img/marker.png') }}",
+
                     title: 'Zoomer ici pour voir la zone d\'observation'
                 });
             }

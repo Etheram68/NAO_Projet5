@@ -26,11 +26,12 @@
 
 NAO_Projet5.iml
 
-# Backup entities generated with doctrine:generate:entities command
-src/NAO/BlogBundle/Entity/*~
-src/NAO/CoreBundle/Entity/*~
-src/NAO/GameBundle/Entity/*~
-src/NAO/MapBundle/Entity/*~
-
 # Composer PHAR
 /composer.phar
+
+node_modules/
+assets/css/global.scss
+composer.lock
+composer.lock
+src/NAO/BlogBundle/Entity/Article.php~
+*.php~

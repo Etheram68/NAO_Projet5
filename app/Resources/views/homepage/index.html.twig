@@ -1,6 +1,9 @@
 {% extends "layout.html.twig" %}
 {% block headtitle %}{{ parent() }}{% endblock %}
 
+{% block head %}
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          rel="stylesheet">{% endblock %}
 {% block body %}
     <!--Header-area-->
     <header class="header-area overlay full-height relative v-center" id="home-page">
@@ -15,6 +18,7 @@
               <a href="#" class="mainButton">Découvrez l'Ornithologie</a>
             </div>
           </div>
+
         </div>
     </header>
     <!--Header-area/-->
@@ -29,6 +33,7 @@
                         <div class="box-icon">
                             <div id="wb_FontAwesomeIcon3">
                                 <div id="FontAwesomeIcon3"><i class="fa fa-pencil"></i></div>
+
                             </div>
                         </div>
                         <h4>Inscrivez-Vous</h4>
@@ -42,6 +47,7 @@
                         <div class="box-icon">
                             <div id="wb_FontAwesomeIcon3">
                                 <div id="FontAwesomeIcon3"><i class="fa fa-camera"></i></div>
+
                             </div>
                         </div>
                         <h4>Observez / Partagez</h4>
@@ -55,6 +61,7 @@
                         <div class="box-icon">
                             <div id="wb_FontAwesomeIcon3">
                                 <div id="FontAwesomeIcon3"><i class="fa fa-map-o"></i></div>
+
                             </div>
                         </div>
                         <h4>Consultez</h4>
@@ -71,6 +78,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
+
                     {% if observations|length > 0 %}
                     <div id="caption_slide" class="carousel slide caption-slider" data-ride="carousel">
                         <div class="carousel-inner" role="listbox">
@@ -79,7 +87,7 @@
                             <div class="item row">
                                 <div class="v-center">
                                     <div class="col-xs-12 col-md-6">
-                                        <div class="caption-title" data-animation="animated fadeInUp">
+                                        <div class="caption-title" data-animation="animated fadeInUp">=======
                                             <h2>{{ 'Observation du %date%'|trans({'%date%': observation.watched|date("d/m/Y")}) }}</h2>
                                         </div>
                                         <div class="caption-desc" data-animation="animated fadeInUp">
@@ -97,8 +105,8 @@
                                     </div>
                                 </div>
                             </div>
+<
                             {% endfor %}
-
 
                             <!-- Fin des observation -->
                         </div>
@@ -124,60 +132,39 @@
     <section class="section-padding gray-bg" id="blog-page">
         <div class="container">
             <div class="row">
-                <!-- Premier article de blog-->
-                <div class="col-xs-12 col-sm-4">
-                    <div class="single-blog">
-                        <div class="box" style="padding: 10px 10px; text-align: left;">
-                            <div class="blog-photo">
-                                <img src="{{ asset('bundles/naocore/img/blog/small1.jpg') }}" alt="default">
-                            </div>
-                            <div class="blog-content">
-                                <h3><a href="#">Altercation avec la ligue de protection des oiseaux </a></h3>
-                                <ul class="blog-meta">
-                                    <li><span class="ti-user"></span> <a href="#">Admin</a></li>
-                                    <li><span class="ti-calendar"></span> <a href="#">Feb 01, 2017</a></li>
-                                </ul>
-                                <p>Allain Bougrain Dubourg, président de la LPO s'était rendu chez un Landais ... Jean-Marc Dutouya, renommé « l'homme en slip », est jugé en ...</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- 2 article de blog-->
-                <div class="col-xs-12 col-sm-4">
-                    <div class="single-blog">
-                        <div class="box" style="padding: 10px 10px; text-align: left;">
-                            <div class="blog-photo">
-                                <img src="{{ asset('bundles/naocore/img/blog/small1.jpg') }}" alt="default">
-                            </div>
-                            <div class="blog-content">
-                                <h3><a href="#">Brenne : l'oiseau emblématique de la région est en déclin…</a></h3>
-                                <ul class="blog-meta">
-                                    <li><span class="ti-user"></span> <a href="#">Admin</a></li>
-                                    <li><span class="ti-calendar"></span> <a href="#">Feb 01, 2017</a></li>
-                                </ul>
-                                <p>Connaissez-vous la guifette moustac ? Ce petit oiseau qui affectionne les zones humides est l'animal symbole de la région de la Prenne, dans ...</p>
+                {% for article in listArticles %}
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="single-blog">
+                            <div class="box" style="padding: 10px 10px; text-align: left;">
+                                <div class="blog-photo">
+                                    {% if article.image is not null %}
+                                        <img
+                                                src="{{ asset(article.image.webPath) }}"
+                                                alt="{{ aticle.image.alt }}"
+                                                height="800"
+                                                width="533"
+                                        />
+                                    {% else %}
+                                        <img src="{{ asset('bundles/naocore/img/blog/small1.jpg') }}" alt="default"
+                                        height="800"
+                                        width="533">
+                                    {% endif %}
+                                </div>
+                                <div class="blog-content">
+                                    <h3><a href="{{ path('article', {'id': article.id}) }}">{{ article.title }}</a></h3>
+                                    <ul class="blog-meta">
+                                        <li><span class="ti-user"></span> <a href="#">{{ article.author }}</a></li>
+                                        <li><span class="ti-calendar"></span> <a href="#">{{ article.date | date ('d/m/Y') }}</a></li>
+                                    </ul>
+                                    <p>{{ article.content|truncate(100, true) }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- 3 article de blog-->
-                <div class="col-xs-12 col-sm-4">
-                    <div class="single-blog">
-                        <div class="box" style="padding: 10px 10px; text-align: left;">
-                            <div class="blog-photo">
-                                <img src="{{ asset('bundles/naocore/img/blog/small1.jpg') }}" alt="default">
-                            </div>
-                            <div class="blog-content">
-                                <h3><a href="#">Pourquoi la disparition des oiseaux est un véritable désastre ?</a></h3>
-                                <ul class="blog-meta">
-                                    <li><span class="ti-user"></span> <a href="#">Admin</a></li>
-                                    <li><span class="ti-calendar"></span> <a href="#">Feb 01, 2017</a></li>
-                                </ul>
-                                <p>Selon les observations du CNRS et du Muséum d'histoire naturelle, environ un tiers des oiseaux ont disparu de nos campagnes françaises...</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% else %}
+                    Pas d'article
+                {% endfor %}
+
             </div>
         </div>
     </section>

@@ -14,6 +14,11 @@ services:
         # if you need to do this, you can override this setting on individual services
         public: false
 
+    twig.extension.text:
+        class: Twig_Extensions_Extension_Text
+        tag:
+            - { name: twig.extensions }
+
     NAO\MapBundle\Controller\:
             resource: '../../src/NAO/MapBundle/Controller'
             public: true
@@ -51,12 +56,13 @@ services:
             tags:
                 - { name: validator.constraint_validator, alias: app.bird.check }
 
-    AppBundle.twig.gps_extension:
+    appbundle.twig.gps_extension:
                 class: NAO\MapBundle\Twig\Extension\GpsDMSExtension
                 tags:
                     - { name: twig.extension }
 
-    AppBundle.twig.html_extension:
+    appbundle.twig.html_extension:
             class: NAO\MapBundle\Twig\Extension\HtmlExtension
             tags:
                 - { name: twig.extension }
+

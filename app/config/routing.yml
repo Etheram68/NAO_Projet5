@@ -18,6 +18,8 @@ nao_core:
     resource: "@NAOCoreBundle/Controller/"
     type:     annotation
 
+
+
 easy_admin_bundle:
     resource: "@EasyAdminBundle/Controller/AdminController.php"
     type:     annotation
@@ -28,3 +30,4 @@ fos_user:
 
 api_login_check:
     path: /API/login_check
+
