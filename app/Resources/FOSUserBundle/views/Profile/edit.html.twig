@@ -1,5 +1,21 @@
-{% extends "@FOSUser/layout.html.twig" %}
+{% extends "@FOSUser/fosuser_layout.html.twig" %}
+{% block headtitle %}{{ parent() }}{% endblock %}
 
-{% block fos_user_content %}
-{% include "@FOSUser/Profile/edit_content.html.twig" %}
-{% endblock fos_user_content %}
+{% block body %}
+    <!--Header-area-->
+    <header class="header-area-profile overlay full-height-miniHeader relative v-center">
+        <div class="absolute anlge-bg"></div>
+            <div class="container">
+                <div class="row v-center">
+                    <div class="col-lg-6 col-md-7 header-text-profile-edit">
+                        <h2>Édition profil</h2>
+                    </div>
+                </div>
+            </div>
+    </header>
+
+	{% block fos_user_content %}
+	{% include "@FOSUser/Profile/edit_content.html.twig" %}
+	{% endblock fos_user_content %}
+
+{% endblock %}

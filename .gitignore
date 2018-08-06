@@ -34,3 +34,5 @@ src/NAO/MapBundle/Entity/*~
 
 # Composer PHAR
 /composer.phar
+
+node_modules/

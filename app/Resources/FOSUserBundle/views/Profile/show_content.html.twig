@@ -4,64 +4,105 @@
 <main role="main" class="container" id="pageProfile">
 
 	{# RANGÉE 1 #}
-    <div class="row col-lg-12 rangee-1">
-        <div class="avatar col-lg-4 col-xs-12">
-        	<img src="{{ asset('bundles/naocore/img/pictos/user-avatar.png') }}" width="50%" />
-        	<p>Niveau</p>
-        	<p>{{ user.points }} points</p>
+	<div class="row col-lg-12 rangee-1">
+		<div class="avatar col-lg-4 col-xs-12">
+			<img src="{{ asset('bundles/naocore/img/pictos/user-avatar.png') }}" width="50%" />
+			<p class="profilTexte">Niveau 
+				{% if userLevel == niveau00 %}0
+				{% elseif userLevel == niveau01 %}1
+				{% elseif userLevel == niveau02 %}2
+				{% elseif userLevel == niveau03 %}3
+				{% elseif userLevel == niveau04 %}4
+				{% elseif userLevel == niveau05 %}5
+				{% elseif userLevel == niveau06 %}6
+				{% elseif userLevel == niveau07 %}7
+				{% elseif userLevel == niveau08 %}8
+				{% elseif userLevel == niveau09 %}9
+				{% elseif userLevel == niveau10 %}10
+				{% endif %}
+			</p>
+			<em><p>{{ userLevel }}</p></em>
+			<p>{{ user.points }} points</p>
 		</div>
-
-        <div class="infos col-lg-4 col-xs-12">
-			<p>Email : {{ user.email }}</p>
-		    <p>Ville : {{ user.town }}</p>
+		<div class="infos col-lg-4 col-xs-12">
+			{% if (is_granted("IS_AUTHENTICATED_REMEMBERED")) and ( app.user == user ) %}
+			<p class="profilTexte">Nom</p>
+			<p>{{ user.lastname }}</p>
+			<p class="profilTexte">Prénom</p>
+			<p>{{ user.firstname }}</p>
+			{% endif %}
+			<p class="profilTexte">Email</p>
+			<p>{{ user.email }}</p>
+			<p class="profilTexte">Ville</p>
+			<p>{{ user.town }}</p>
 		</div>
-
-        <div class="picto col-lg-4 col-xs-12">
-        	<img src="{{ asset('bundles/naocore/img/pictos/niveau-01.png') }}" height="50%" />
+		<div class="picto col-lg-4 col-xs-12">
+			{% if userLevel == niveau00 %}
+				<img src="{{ asset('bundles/naocore/img/pictos/niveau-00.png') }}" height="30%" />
+			{% elseif userLevel == niveau01 %}
+				<img src="{{ asset('bundles/naocore/img/pictos/niveau-01.png') }}" height="50%" />
+			{% elseif userLevel == niveau02 %}
+				<img src="{{ asset('bundles/naocore/img/pictos/niveau-02.png') }}" height="50%" />
+			{% elseif userLevel == niveau03 %}
+				<img src="{{ asset('bundles/naocore/img/pictos/niveau-03.png') }}" height="50%" />
+			{% elseif userLevel == niveau04 %}
+				<img src="{{ asset('bundles/naocore/img/pictos/niveau-04.png') }}" height="50%" />
+			{% elseif userLevel == niveau05 %}
+				<img src="{{ asset('bundles/naocore/img/pictos/niveau-05.png') }}" height="50%" />
+			{% elseif userLevel == niveau06 %}
+				<img src="{{ asset('bundles/naocore/img/pictos/niveau-06.png') }}" height="50%" />
+			{% elseif userLevel == niveau07 %}
+				<img src="{{ asset('bundles/naocore/img/pictos/niveau-07.png') }}" height="50%" />
+			{% elseif userLevel == niveau08 %}
+				<img src="{{ asset('bundles/naocore/img/pictos/niveau-08.png') }}" height="50%" />
+			{% elseif userLevel == niveau09 %}
+				<img src="{{ asset('bundles/naocore/img/pictos/niveau-09.png') }}" height="50%" />
+			{% elseif userLevel == niveau10 %}
+				<img src="{{ asset('bundles/naocore/img/pictos/niveau-10.png') }}" height="50%" />
+			{% endif %}
 		</div>
     </div>
     <hr>   
     {# RANGÉE 2 #}
     <div class="row col-lg-12 rangee-2">
         <div class="presentation col-lg-12">
-        	<p>À propos</p>
-        	<div>"{{ user.presentation }}"</div>
+        	<p class="profilTexte">À propos</p>
+        	{% if (user.presentation) == null %}
+        	<div id="emptyPresentation">L'utilisateur n'a pas rempli ce champ</div>
+        	{% else %}
+        		<div>"{{ user.presentation }}"</div>
+    		{% endif %}
 		</div>
     </div>
 	<hr>   
     {# RANGÉE 3 #}
     <div class="row col-lg-12 rangee-3">
 		<div class="lastObs col-lg-6 col-xs-12">
-        	<p>Dernières observations</p>
+        	<p class="profilTexte">Dernières observations</p>
         	<ul>
+        		<li>Lamlakd mlaa</li>
         		<li>Lamlakd mlaa</li>
         		<li>Lamlakd mlaa</li>
         	</ul>
         </div>
         <div class="separation"></div>
 		<div class="lastCom col-lg-6 col-xs-12">
-        	<p>Derniers commentaires</p>
+        	<p class="profilTexte">Derniers commentaires</p>
         	<ul>
+        		<li>Lamlakd mlaa</li>
         		<li>Lamlakd mlaa</li>
         		<li>Lamlakd mlaa</li>
         	</ul>
 		</div>
     </div>
+    {# BOUTONS #}
+    <div class="editProfileButton">
+		{% if (is_granted("IS_AUTHENTICATED_REMEMBERED")) and (is_granted("ROLE_USER")) and ( app.user == user ) %}
+			<input type="button" value="Modifier votre profil" class="btn btn-light" onclick="window.location.href='{{ path('fos_user_profile_edit', {'username': app.user.username } ) }}'"/>
+		{% endif %}
+	</div>
 
 </main>
-
-
-
-{# 			<div class="fos_user_user_show">
-				<p>Id : {{ user.id }}</p>
-				<p>Nom : {{ user.lastname }}</p>
-				<p>Prénom : {{ user.firstname }}</p>
-			    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
-			    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
-			    <p>Ville : {{ user.town }}</p>
-			    <p>Nombre de points : {{ user.points }}</p>
-			    <p>Niveau : {{ user.level }}</p>
-			</div> #}
 
 
 

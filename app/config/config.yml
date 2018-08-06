@@ -8,26 +8,17 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
-    niveau00:
-        start: 0
-        step: 10
-        stop: 20
-    niveau01:
-        start: 30
-        step: 10
-        stop: 50
-    niveau02:
-        start: 60
-        step: 10
-        stop: 90
-    niveau03:
-        start: 100
-        step: 10
-        stop: 140
-    niveau04:
-        start: 150
-        step: 10
-        stop: 220
+    niveau00: Oeuf
+    niveau01: Oisillon
+    niveau02: Mésange
+    niveau03: Pic noir
+    niveau04: Perroquet
+    niveau05: Grand Héron
+    niveau06: Grue
+    niveau07: Aigle Royal
+    niveau08: Hirondelle Rustique
+    niveau09: Black Stork
+    niveau10: Imperial Eagle
 
 framework:
     #esi: ~
@@ -60,6 +51,18 @@ twig:
     strict_variables: '%kernel.debug%'
     form_themes:
         - 'bootstrap_3_layout.html.twig'
+    globals:
+        niveau00: Oeuf
+        niveau01: Oisillon
+        niveau02: Mésange
+        niveau03: Pic noir
+        niveau04: Perroquet
+        niveau05: Grand Héron
+        niveau06: Grue
+        niveau07: Aigle Royal
+        niveau08: Hirondelle Rustique
+        niveau09: Black Stork
+        niveau10: Imperial Eagle
         
 # Doctrine Configuration
 doctrine:
@@ -103,7 +106,10 @@ fos_user:
         form:
             type: NAO\UserBundle\Form\RegistrationType
         confirmation:
-            enabled: true
+            enabled: false
             from_email:
                 address: "%mailer_user%"
                 sender_name: "%mailer_user%"
+    profile:
+        form:
+            type: NAO\UserBundle\Form\ProfileType

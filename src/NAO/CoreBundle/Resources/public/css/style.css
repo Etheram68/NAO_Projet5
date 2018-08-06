@@ -85,6 +85,7 @@ h1, h2 {
 .mainmenu-area #primary-menu > ul > li > a.helloUser {
     text-transform: none;
     text-decoration: underline;
+    font-size: 13.5px;
 }
 
 .mainmenu-area #primary-menu > ul > li > a.helloUser:hover {
@@ -422,30 +423,35 @@ a#forget:hover, a#subscribe:hover {
 .header-area-profile {
     background: #000000 url('../img/header-profile-photo.jpg') no-repeat scroll center center / cover;
 }
-
 #pageProfile {
     height: auto;
     background-color: #F6F6F6;
-    padding: 100px 200px 100px 200px;
+    padding: 50px 200px 100px 200px;
 }
-
 .header-text-profile h2 {
     margin-top: 216px;
     font-size: 120px;
     color: #FFDE00;
 }
-
 #pageProfile {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
-
 #pageProfile hr {
-    margin: 60px 0px 60px 0px;
+    margin: 40px 0px 40px 0px;
     width: 95%;
     border-top: 1px solid #aaaa;
+}
+.avatar p, .infos p {
+    margin: 0px;
+}
+.profilTexte {
+    font-weight: 700;
+    font-size: 13.5px;
+    /*padding-bottom: 0px;*/
+    line-height: 1.5em;
 }
 
 /* RANGÉE 1 */
@@ -479,13 +485,17 @@ a#forget:hover, a#subscribe:hover {
     flex-direction: column;
     justify-content: space-between;
 }
-
 #pageProfile .rangee-2 .presentation div {
-    height: 150px;
+    height: auto;
     background-color: white;
     padding: 15px;
-    overflow: auto;
     font-style: italic;
+}
+#pageProfile .rangee-2 .presentation div#emptyPresentation {
+    padding: 0px;
+    font-style: italic;
+    background-color: #F6F6F6;
+    height: 50px;
 }
 
 /* RANGÉE 3 */
@@ -512,6 +522,22 @@ a#forget:hover, a#subscribe:hover {
     background-color: #F6F6F6;
 }
 
+
+/*---- page EDIT PROFILE  ----*/
+
+.header-text-profile-edit h2 {
+    margin-top: 240px;
+    font-size: 108px;
+    color: #FFDE00;
+    line-height: 0.7em;
+}
+.editProfileButton {
+    display: flex;
+    margin-top: 60px;
+}
+.editProfileButton input[type="submit"] {
+    margin-right: 20px;
+}
 
 /*---- PAGE 404 ----*/
 
