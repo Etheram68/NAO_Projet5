@@ -56,7 +56,7 @@ class ObservationType extends AbstractType
                 'label'         => false,
                 'mapped'        => false,
                 'data_class'    => null,
-                'required'      => true,
+                'required'      => false,
                 'attr'          => array('class' => 'upload'),
                 'constraints' => [
                     new File([
