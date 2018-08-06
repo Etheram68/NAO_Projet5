@@ -39,12 +39,7 @@ easy_admin:
                 fields: 
                     - { property: 'id', label: "Id de l'oiseau" }
                     - { property: 'name', label: "Nom" }
-                    # - { property: 'latinName', label: "Nom latin" }
                     - { property: 'family', label: "Famille" }
-                    # - { property: 'featherColor', label: 'Plumage' }
-                    # - { property: 'size', label: 'Taille en cm' }
-                    # - { property: 'beakShape', label: 'Bec' }
-                    # - { property: 'pawColor',  label: 'Pattes' }
                     - { property: 'editDate',  label: 'Modifications' }
                     - { property: 'edit',  label: 'Contribution' }
             form:

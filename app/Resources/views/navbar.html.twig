@@ -31,10 +31,13 @@
                       </li>
                     {% endif %}
                     {% if (is_granted("IS_AUTHENTICATED_REMEMBERED")) and (is_granted("ROLE_ADMIN")) %}
-                      <li><a href="{{ path('admin') }}">Bonjour {{ app.user.username }} !</a>
+                      <li><a href="{{ path('admin') }}" class="helloUser" >Bonjour {{ app.user.username }} !</a>
                       </li>
                     {% elseif is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                      <li><a href="{{ path('fos_user_profile_show') }}">Bonjour {{ app.user.username }} !</a>
+                      <li>
+                        <a href="{{ path('user.username', {'username': app.user.username } ) }}" class="helloUser" >
+                          Bonjour {{ app.user.username }} !
+                        </a>
                       </li>
                     {% endif %}
                     <li><a href="javascript:void(0)" class="dropdown-button" data-activates="dropdown-search"><i class="material-icons">search</i></a></li>
