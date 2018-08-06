@@ -1,5 +1,8 @@
 /.web-server-pid
+# Parameters
 /app/config/parameters.yml
+/app/config/parameters.ini
+
 /build/
 /phpunit.xml
 /var/*
@@ -14,5 +17,21 @@
 !var/sessions/.gitkeep
 !var/SymfonyRequirements.php
 /vendor/
+
+# Assets
 /web/bundles/
+
+# Ide folder
 /.idea/
+
+NAO_Projet5.iml
+
+# Composer PHAR
+/composer.phar
+
+node_modules/
+assets/css/global.scss
+composer.lock
+composer.lock
+src/NAO/BlogBundle/Entity/Article.php~
+*.php~

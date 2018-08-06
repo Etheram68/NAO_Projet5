@@ -1,9 +1,6 @@
 <?php
-
 namespace NAO\MapBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Bird
  *
@@ -20,84 +17,72 @@ class Bird
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
-
     /**
      * @var string
      *
      * @ORM\Column(name="latinName", type="string", length=255)
      */
     private $latinName;
-
     /**
      * @var string
      *
-     * @ORM\Column(name="familly", type="string", length=255)
+     * @ORM\Column(name="family", type="string", length=255)
      */
-    private $familly;
-
+    private $family;
     /**
      * @var string
      *
      * @ORM\Column(name="featherColor", type="string", length=255)
      */
     private $featherColor;
-
     /**
      * @var int
      *
      * @ORM\Column(name="size", type="integer")
      */
     private $size;
-
     /**
      * @var string
      *
      * @ORM\Column(name="beakShape", type="string", length=255)
      */
     private $beakShape;
-
     /**
      * @var string
      *
      * @ORM\Column(name="pawColor", type="string", length=255)
      */
     private $pawColor;
-
     /**
      * @var string
      *
      * @ORM\Column(name="behavior", type="string", length=255)
      */
     private $behavior;
-
     /**
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
-
     /**
      * @var int
      *
      * @ORM\Column(name="watchers", type="integer")
      */
     private $watchers;
-
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="editDate", type="datetime")
      */
     private $editDate;
-
     /**
      * @ORM\OneToOne(targetEntity="NAO\MapBundle\Entity\Picture", cascade={"persist", "remove"})
      */
@@ -108,7 +93,6 @@ class Bird
      */
     private $edit;
 
-
     /**
      * Get id.
      *
@@ -118,7 +102,6 @@ class Bird
     {
         return $this->id;
     }
-
     /**
      * Set name.
      *
@@ -129,10 +112,8 @@ class Bird
     public function setName($name)
     {
         $this->name = $name;
-
         return $this;
     }
-
     /**
      * Get name.
      *
@@ -142,7 +123,6 @@ class Bird
     {
         return $this->name;
     }
-
     /**
      * Set latinName.
      *
@@ -153,10 +133,8 @@ class Bird
     public function setLatinName($latinName)
     {
         $this->latinName = $latinName;
-
         return $this;
     }
-
     /**
      * Get latinName.
      *
@@ -166,31 +144,27 @@ class Bird
     {
         return $this->latinName;
     }
-
     /**
-     * Set familly.
+     * Set family.
      *
-     * @param string $familly
+     * @param string $family
      *
      * @return Bird
      */
-    public function setFamilly($familly)
+    public function setFamily($family)
     {
-        $this->familly = $familly;
-
+        $this->family = $family;
         return $this;
     }
-
     /**
-     * Get familly.
+     * Get family.
      *
      * @return string
      */
-    public function getFamilly()
+    public function getFamily()
     {
-        return $this->familly;
+        return $this->family;
     }
-
     /**
      * Set featherColor.
      *
@@ -201,10 +175,8 @@ class Bird
     public function setFeatherColor($featherColor)
     {
         $this->featherColor = $featherColor;
-
         return $this;
     }
-
     /**
      * Get featherColor.
      *
@@ -214,7 +186,6 @@ class Bird
     {
         return $this->featherColor;
     }
-
     /**
      * Set size.
      *
@@ -225,10 +196,8 @@ class Bird
     public function setSize($size)
     {
         $this->size = $size;
-
         return $this;
     }
-
     /**
      * Get size.
      *
@@ -238,7 +207,6 @@ class Bird
     {
         return $this->size;
     }
-
     /**
      * Set beakShape.
      *
@@ -249,10 +217,8 @@ class Bird
     public function setBeakShape($beakShape)
     {
         $this->beakShape = $beakShape;
-
         return $this;
     }
-
     /**
      * Get beakShape.
      *
@@ -262,7 +228,6 @@ class Bird
     {
         return $this->beakShape;
     }
-
     /**
      * Set pawColor.
      *
@@ -273,10 +238,8 @@ class Bird
     public function setPawColor($pawColor)
     {
         $this->pawColor = $pawColor;
-
         return $this;
     }
-
     /**
      * Get pawColor.
      *
@@ -286,7 +249,6 @@ class Bird
     {
         return $this->pawColor;
     }
-
     /**
      * Set behavior.
      *
@@ -297,10 +259,8 @@ class Bird
     public function setBehavior($behavior)
     {
         $this->behavior = $behavior;
-
         return $this;
     }
-
     /**
      * Get behavior.
      *
@@ -310,7 +270,6 @@ class Bird
     {
         return $this->behavior;
     }
-
     /**
      * Set description.
      *
@@ -321,10 +280,8 @@ class Bird
     public function setDescription($description)
     {
         $this->description = $description;
-
         return $this;
     }
-
     /**
      * Get description.
      *
@@ -334,7 +291,6 @@ class Bird
     {
         return $this->description;
     }
-
     /**
      * Set watchers.
      *
@@ -345,10 +301,8 @@ class Bird
     public function setWatchers($watchers)
     {
         $this->watchers = $watchers;
-
         return $this;
     }
-
     /**
      * Get watchers.
      *
@@ -358,7 +312,6 @@ class Bird
     {
         return $this->watchers;
     }
-
     /**
      * Set editDate.
      *
@@ -369,10 +322,8 @@ class Bird
     public function setEditDate($editDate)
     {
         $this->editDate = $editDate;
-
         return $this;
     }
-
     /**
      * Get editDate.
      *
@@ -393,7 +344,6 @@ class Bird
     public function setPicture(\NAO\MapBundle\Entity\Picture $picture = null)
     {
         $this->picture = $picture;
-
         return $this;
     }
 
@@ -417,7 +367,6 @@ class Bird
     public function setEdit(\NAO\MapBundle\Entity\Edit $edit = null)
     {
         $this->edit = $edit;
-
         return $this;
     }
 
@@ -431,3 +380,4 @@ class Bird
         return $this->edit;
     }
 }
+

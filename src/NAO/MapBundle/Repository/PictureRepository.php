@@ -1,7 +1,5 @@
 <?php
-
 namespace NAO\MapBundle\Repository;
-
 /**
  * PictureRepository
  *

@@ -1,9 +1,6 @@
 <?php
-
 namespace NAO\MapBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Picture
  *
@@ -20,14 +17,12 @@ class Picture
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
     /**
      * @var string
      *
      * @ORM\Column(name="url", type="string", length=255)
      */
     private $url;
-
     /**
      * @var string
      *
@@ -40,10 +35,6 @@ class Picture
      */
     private $observation;
 
-
-
-
-
     /**
      * Get id.
      *
@@ -53,7 +44,6 @@ class Picture
     {
         return $this->id;
     }
-
     /**
      * Set url.
      *
@@ -64,10 +54,8 @@ class Picture
     public function setUrl($url)
     {
         $this->url = $url;
-
         return $this;
     }
-
     /**
      * Get url.
      *
@@ -77,7 +65,6 @@ class Picture
     {
         return $this->url;
     }
-
     /**
      * Set alt.
      *
@@ -88,10 +75,8 @@ class Picture
     public function setAlt($alt)
     {
         $this->alt = $alt;
-
         return $this;
     }
-
     /**
      * Get alt.
      *
@@ -112,7 +97,6 @@ class Picture
     public function setObservation(\NAO\MapBundle\Entity\Observation $observation = null)
     {
         $this->observation = $observation;
-
         return $this;
     }
 
@@ -125,4 +109,6 @@ class Picture
     {
         return $this->observation;
     }
+
 }
+

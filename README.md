@@ -1,5 +1,9 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/05b4e0c584d142d2b01718a445b835c8)](https://www.codacy.com/app/Etheram68/NAO_Projet5?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Etheram68/NAO_Projet5&amp;utm_campaign=Badge_Grade)
+
 Nao
 ===
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9c30e3214b4b47f8ae98e838099f6d52)](https://app.codacy.com/app/Etheram68/NAO_Projet5?utm_source=github.com&utm_medium=referral&utm_content=Etheram68/NAO_Projet5&utm_campaign=badger)
 
 A Symfony project created on June 3, 2018, 10:26 am.
 

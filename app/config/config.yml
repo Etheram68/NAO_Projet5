@@ -9,6 +9,24 @@ imports:
 parameters:
     locale: fr
 
+
+    niveau00: Oeuf
+    niveau01: Oisillon
+    niveau02: Mésange
+    niveau03: Pic noir
+    niveau04: Perroquet
+    niveau05: Grand Héron
+    niveau06: Grue
+    niveau07: Aigle Royal
+    niveau08: Hirondelle Rustique
+    niveau09: Black Stork
+    niveau10: Imperial Eagle
+    obseravtions_directory: '%kernel.project_dir%/web/bundles/naocore/img/oiseaux/observations'
+    list_limit: 10
+    gps_distance: 10
+
+
+
 framework:
     #esi: ~
     translator: { fallbacks: ['%locale%'] }
@@ -33,6 +51,8 @@ framework:
     assets: ~
     php_errors:
         log: true
+    serializer:
+        enabled: true
 
 # Twig Configuration
 twig:
@@ -40,7 +60,24 @@ twig:
     strict_variables: '%kernel.debug%'
     form_themes:
         - 'bootstrap_3_layout.html.twig'
-        
+
+    globals:
+
+        niveau00: Oeuf
+        niveau01: Oisillon
+        niveau02: Mésange
+        niveau03: Pic noir
+        niveau04: Perroquet
+        niveau05: Grand Héron
+        niveau06: Grue
+        niveau07: Aigle Royal
+        niveau08: Hirondelle Rustique
+        niveau09: Black Stork
+        niveau10: Imperial Eagle
+        jwt: "@app.jwt"
+
+
+
 # Doctrine Configuration
 doctrine:
     dbal:
@@ -72,6 +109,36 @@ swiftmailer:
     spool: { type: memory }
 
 # Fos User Configuration
+fos_rest:
+     routing_loader:
+         default_format: json
+
+lexik_jwt_authentication:
+     private_key_path: '%jwt_private_key_path%'
+     public_key_path:  '%jwt_public_key_path%'
+     pass_phrase:      '%jwt_key_pass_phrase%'
+     token_ttl:        '%jwt_token_ttl%'
+     user_identity_field: email
+     encoder:
+         # token encoder/decoder service - default implementation based on the namshi/jose library
+         service:            lexik_jwt_authentication.encoder.default
+         # crypto engine used by the encoder service
+         crypto_engine:  openssl
+         # encryption algorithm used by the encoder service
+         signature_algorithm: RS256
+
+     token_extractors:
+         authorization_header:      # look for a token as Authorization Header
+             enabled: false
+             prefix:  Bearer
+             name:    Authorization
+         cookie:                    # check token in a cookie
+             enabled: false
+             name:    BEARER
+         query_parameter:           # check token in query string parameter
+             enabled: true
+             name:    bearer
+
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
@@ -83,10 +150,15 @@ fos_user:
         form:
             type: NAO\UserBundle\Form\RegistrationType
         confirmation:
+
             enabled: true
             from_email:
                 address: "%mailer_user%"
                 sender_name: "%mailer_user%"
+
+    profile:
+        form:
+            type: NAO\UserBundle\Form\ProfileType
 
 sensio_framework_extra:
     router:      { annotations: true }
@@ -95,3 +167,5 @@ sensio_framework_extra:
     cache:       { annotations: true }
     security:    { annotations: true }
     psr_message: { enabled: false } # Defaults to true if the PSR-7 bridge is installed
+
+

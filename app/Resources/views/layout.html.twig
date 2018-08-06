@@ -10,6 +10,9 @@
     <title>{% block headtitle %}{% endblock %} Nos Amis les Oiseaux</title>
     <!-- Include in header -->
     {% block head %}
+
+      <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
     {% endblock %}
     <!-- Add CSS -->
     <link rel="stylesheet" href="{{ asset('bundles/naocore/css/bootstrap.min.css') }}">
@@ -61,9 +64,12 @@
     <script src="{{ asset('bundles/naocore/js/magnific-popup.min.js') }}"></script>
     <script src="{{ asset('bundles/naocore/js/wow.min.js') }}"></script>
     <script src="{{ asset('bundles/naocore/js/footer-reveal.min.js') }}"></script>
-    <script src="{{ asset('bundles/naocore/js/active.js') }}"></script>
     <!--Main-active-JS-->
     <script src="{{ asset('bundles/naocore/js/main.js') }}"></script>
+    <script src="{{ asset('bundles/naocore/js/active.js') }}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASSHQxYAWG48ya6foaegZOev9J7VqKvk8&libraries=geometry,places">
+</script>
+
 
     {% block script %}
         <!-- Block Script -->
