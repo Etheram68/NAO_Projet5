@@ -176,7 +176,7 @@ class ObservationService
             $data = base64_decode($observation['image']);
             file_put_contents('./img/oiseaux/observation/' . $filename, $data);
         } else {
-            copy('img/oiseaux/default-image_observation.jpg', 'img/oiseaux/observation/' . $filename);
+            copy('img/oiseaux/default-image_observation.png', 'img/oiseaux/observation/' . $filename);
         }
         $obs->setImagePath($filename);
         $this->em->persist($obs);
@@ -259,7 +259,21 @@ class ObservationService
         $latin_name     = substr($taxref_name, ($p = strpos($taxref_name, '(')+1), strrpos($taxref_name, ')')-$p);
         $taxref         = $this->em->getRepository('NAOMapBundle:Taxref')->findOneBy(array('taxon_sc' => $latin_name));
         $observation->setTaxref($taxref);
-
+        // finaly we need to keep information about observation image
+        $file_upload = $request->files->get('observation');
+        if(array_key_exists('imagepath', $file_upload)){
+            // Before upload delete existing old observation image
+            if( $observation->getImagePath() !== 'default-image_observation.png'){
+                $old_file = $this->observations_directory.'/'. $observation->getImagePath();
+                if ($old_file) {
+                    unlink($old_file);
+                }
+            }
+            $file = $file_upload['imagepath'];
+            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+            $file->move($this->observations_directory, $fileName);
+            $observation->setImagePath($fileName);
+        }
         $this->em->persist($observation);
         $this->em->flush();
         return $redirect;
