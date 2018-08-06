@@ -259,7 +259,7 @@ class ObservationService
         $latin_name     = substr($taxref_name, ($p = strpos($taxref_name, '(')+1), strrpos($taxref_name, ')')-$p);
         $taxref         = $this->em->getRepository('NAOMapBundle:Taxref')->findOneBy(array('taxon_sc' => $latin_name));
         $observation->setTaxref($taxref);
-        
+
         $this->em->persist($observation);
         $this->em->flush();
         return $redirect;

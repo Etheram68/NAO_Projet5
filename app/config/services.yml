@@ -51,12 +51,12 @@ services:
             tags:
                 - { name: validator.constraint_validator, alias: app.bird.check }
 
-    AppBundle.twig.gps_extension:
+    appbundle.twig.gps_extension:
                 class: NAO\MapBundle\Twig\Extension\GpsDMSExtension
                 tags:
                     - { name: twig.extension }
 
-    AppBundle.twig.html_extension:
+    appbundle.twig.html_extension:
             class: NAO\MapBundle\Twig\Extension\HtmlExtension
             tags:
                 - { name: twig.extension }

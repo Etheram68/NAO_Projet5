@@ -104,7 +104,7 @@ class Observation
      */
     public function __construct()
     {
-        $this->image_path   = 'default-image_observation.jpg';
+        $this->image_path   = 'default-image_observation.png';
     }
     /**
      * Get id

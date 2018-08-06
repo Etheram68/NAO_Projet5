@@ -29,7 +29,7 @@ easy_admin:
     entities:
 
         Bird:
-            class: NAO\MapBundle\Entity\Bird
+            class: NAO\MapBundle\Entity\Observation
             list:
                 actions:
                     - { name: 'edit', icon: 'pencil', label: '', title: 'Éditer' }
@@ -58,7 +58,7 @@ easy_admin:
             edit:
                 title:  'Modifier la fiche'
         Edit:
-            class: NAO\MapBundle\Entity\Edit
+            class: NAO\MapBundle\Entity\Observation
         Observation:
             class: NAO\MapBundle\Entity\Observation
             list:
