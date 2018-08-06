@@ -34,13 +34,37 @@
                                         <label>Tous les départements</label>
                                     </div>
                                 </form>
-                                <ul id="dropSpecimen" class="autocomplete-content dropdown-content"></ul>
+                                <ul id="dropSpecimen" class="autocomplete-content dropdown-content" style="display: block; position: absolute; top: 77px; left: 28%; margin-top: -20px; margin-bottom: 20px; min-width: 50px; min-height: 0; display: block; opacity: 1; position: ABSOLUTE; width: 45%;"></ul>
                                 <div id="google-maps"></div>
                                 <ul id="action-map-widget">
                                     <li><a href="#" id="map-geoloc-zoom" class="btn-floating btn-large waves-effect waves-light white"><i class="material-icons">gps_fixed</i></a></li>
-                                    <li><a href="#" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">add</i></a></li>
+                                    <li><a href="{{ path('observation.create') }}" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">add</i></a></li>
                                 </ul>
                             </div>
+                        </section>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding-card gray-bg" id="blog-page">
+        <div class="container">
+            <div class="row">
+                <div class="row v-center">
+                    <div class="col-xs-12 col-md-7 header-text">
+                        <h2>Liste des observation</h2>
+                        <h3>sur la Carte</h3>
+                    </div>
+                </div>
+                <div id="show_list" class="col s12">
+                    <main class="container marge-top">
+                        <section>
+                            <section>
+                                <div class="row">
+                                    <div id="eltlist"></div>
+                                </div>
+                            </section>
                         </section>
                     </main>
                 </div>
@@ -69,8 +93,8 @@
                 getData: function (value, callback) {
                     var data = [];
                     $.ajax({
-                        url: "#",
-                        type: "",
+                        url: "{{ url('taxref.search.name') }}?bearer={{ jwt.token }}",
+                        type: "POST",
                         dataType: "json",
                         data: { "name": value },
                         success: function (response) {
@@ -176,7 +200,7 @@
              */
             function updateMapsWithObservations(bird, department){
                 var data = {bird: bird, department: department};
-                $.post( "#", data , function( response ) {
+                $.post( "{{ url('obs.search') }}?bearer={{ jwt.token }}", data , function( response ) {
                     map.removePolygons();
                     map.removeMarkers();
                     $.each(response, function(index, item) {
@@ -196,7 +220,7 @@
             function placeMarker(location){
                 map.addMarker({
                     position: location,
-                    icon: "{{ asset('assets/img/marker.png') }}",
+                    icon: "{{ asset('bundles/naocore/img/marker.png') }}",
                     title: 'Zoomer ici pour voir la zone d\'observation'
                 });
             }
@@ -227,8 +251,6 @@
                 });
             }
         });
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASSHQxYAWG48ya6foaegZOev9J7VqKvk8&libraries=geometry,places">
     </script>
 
 {% endblock %}

@@ -257,5 +257,10 @@ class User extends BaseUser
     {
         return $this->points;
     }
+
+    public function getRole()
+    {
+        return $this->roles;
+    }
 }
 

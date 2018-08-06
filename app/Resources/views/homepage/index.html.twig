@@ -24,37 +24,43 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-4">
+                    <a href="{{ path('fos_user_registration_register') }}" title="Register">
                     <div class="box">
                         <div class="box-icon">
                             <div id="wb_FontAwesomeIcon3">
-                                <a href="{{ path('fos_user_registration_register') }}" title="Top"><div id="FontAwesomeIcon3"><i class="fa fa-pencil"></i></div></a>
+                                <div id="FontAwesomeIcon3"><i class="fa fa-pencil"></i></div>
                             </div>
                         </div>
                         <h4>Inscrivez-Vous</h4>
                         <p>Créez un compte en remplissant le formulaire</p>
                     </div>
+                    </a>
                 </div>
                 <div class="col-xs-12 col-sm-4">
+                    <a href="{{ path('observation.create') }}" title="Observation">
                     <div class="box">
                         <div class="box-icon">
                             <div id="wb_FontAwesomeIcon3">
-                                <a href="#top" title="Top"><div id="FontAwesomeIcon3"><i class="fa fa-camera"></i></div></a>
+                                <div id="FontAwesomeIcon3"><i class="fa fa-camera"></i></div>
                             </div>
                         </div>
                         <h4>Observez / Partagez</h4>
                         <p>Entrez les informations que vous avez recueilli</p>
                     </div>
+                    </a>
                 </div>
                 <div class="col-xs-12 col-sm-4">
+                    <a href="{{ path('observation.map') }}" title="Carte">
                     <div class="box">
                         <div class="box-icon">
                             <div id="wb_FontAwesomeIcon3">
-                                <a href="#top" title="Top"><div id="FontAwesomeIcon3"><i class="fa fa-map-o"></i></div></a>
+                                <div id="FontAwesomeIcon3"><i class="fa fa-map-o"></i></div>
                             </div>
                         </div>
                         <h4>Consultez</h4>
                         <p>Parcourez la liste des especes recensées</p>
                     </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -65,111 +71,50 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
+                    {% if observations|length > 0 %}
                     <div id="caption_slide" class="carousel slide caption-slider" data-ride="carousel">
                         <div class="carousel-inner" role="listbox">
                             <!-- Les différent article ce trouve ici -->
-                            <div class="item active row">
-                                <div class="v-center">
-                                    <div class="col-xs-12 col-md-6">
-                                        <div class="caption-title" data-animation="animated fadeInUp">
-                                            <h2>Observation du ....</h2>
-                                        </div>
-                                        <div class="caption-desc" data-animation="animated fadeInUp">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute</p>
-                                        </div>
-                                        <div class="caption-button" data-animation="animated fadeInUp">
-                                            <a href="#" class="button">Read more</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-md-6">
-                                        <div class="caption-photo one" data-animation="animated fadeInRight">
-                                            <img src="{{ asset('bundles/naocore/img/oiseaux/carduelis-tristis.jpg') }}" alt="carduelis tristis">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- seconde observation -->
+                            {% for observation in observations %}
                             <div class="item row">
                                 <div class="v-center">
                                     <div class="col-xs-12 col-md-6">
                                         <div class="caption-title" data-animation="animated fadeInUp">
-                                            <h2>Observation du ....</h2>
+                                            <h2>{{ 'Observation du %date%'|trans({'%date%': observation.watched|date("d/m/Y")}) }}</h2>
                                         </div>
                                         <div class="caption-desc" data-animation="animated fadeInUp">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute</p>
+                                            <h3>{{ observation.taxref.commonName }}</h3>
+                                            <p>{{ 'À %place%'|trans({'%place%': observation.place}) }}</p>
                                         </div>
                                         <div class="caption-button" data-animation="animated fadeInUp">
-                                            <a href="#" class="button">Read more</a>
+                                            <a href="{{ path('observation.detail', {'id' : observation.id}) }}" class="button">Read more</a>
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-md-6">
                                         <div class="caption-photo one" data-animation="animated fadeInRight">
-                                            <img src="{{ asset('bundles/naocore/img/oiseaux/carduelis-tristis.jpg') }}" alt="carduelis tristis">
+                                            <img src="{{ asset('bundles/naocore/img/oiseaux/observations/' ~ observation.imagePath ) }}" alt="Image d'un oiseaux">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- 3 observation -->
-                            <div class="item row">
-                                <div class="v-center">
-                                    <div class="col-xs-12 col-md-6">
-                                        <div class="caption-title" data-animation="animated fadeInUp">
-                                            <h2>Observation du ....</h2>
-                                        </div>
-                                        <div class="caption-desc" data-animation="animated fadeInUp">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute</p>
-                                        </div>
-                                        <div class="caption-button" data-animation="animated fadeInUp">
-                                            <a href="#" class="button">Read more</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-md-6">
-                                        <div class="caption-photo one" data-animation="animated fadeInRight">
-                                            <img src="{{ asset('bundles/naocore/img/oiseaux/carduelis-tristis.jpg') }}" alt="carduelis tristis">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- 4 observation -->
-                            <div class="item row">
-                                <div class="v-center">
-                                    <div class="col-xs-12 col-md-6">
-                                        <div class="caption-title" data-animation="animated fadeInUp">
-                                            <h2>Observation du ....</h2>
-                                        </div>
-                                        <div class="caption-desc" data-animation="animated fadeInUp">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute</p>
-                                        </div>
-                                        <div class="caption-button" data-animation="animated fadeInUp">
-                                            <a href="#" class="button">Read more</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-md-6">
-                                        <div class="caption-photo one" data-animation="animated fadeInRight">
-                                            <img src="{{ asset('bundles/naocore/img/oiseaux/carduelis-tristis.jpg') }}" alt="carduelis tristis">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            {% endfor %}
+
+
                             <!-- Fin des observation -->
                         </div>
                         <!-- Indicators -->
                         <ol class="carousel-indicators caption-indector">
-                            <li data-target="#caption_slide" data-slide-to="0" class="active">
-                                <strong>Observation du  </strong>Nom de l'oiseau consectetur.
+                            {% for observation in observations %}
+                            <li data-target="#caption_slide" data-slide-to="" class="active">
+                                <strong>{{ 'Observation du %date%'|trans({'%date%': observation.watched|date("d/m/Y")}) }} </strong>{{ observation.taxref.commonName }}
                             </li>
-                            <li data-target="#caption_slide" data-slide-to="1" class="active">
-                                <strong>Observation du  </strong>Nom de l'oiseau consectetur.
-                            </li>
-                            <li data-target="#caption_slide" data-slide-to="2" class="active">
-                                <strong>Observation du  </strong>Nom de l'oiseau consectetur.
-                            </li>
-                            <li data-target="#caption_slide" data-slide-to="3" class="active">
-                                <strong>Observation du  </strong>Nom de l'oiseau consectetur.
-                            </li>
+                            {% endfor %}
                         </ol>
                         <!-- Fin Indicators -->
                     </div>
+                    {% else %}
+                        <h2>Il n'y a pas encore d'observations</h2>
+                    {% endif %}
                 </div>
             </div>
         </div>
