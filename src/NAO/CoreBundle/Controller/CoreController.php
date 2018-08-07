@@ -67,7 +67,7 @@ class CoreController extends Controller
 
             $message = (new \Swift_Message())
                 ->setFrom([$mail])
-                ->setTo('estebangrabette@gmail.com')
+                ->setTo('nao.support@projet5-site.fr')
                 ->setBody($this->renderView('emails/contactMail.html.twig', array(
                     'firstName' => $name,
                     'lastName' => $lastName,

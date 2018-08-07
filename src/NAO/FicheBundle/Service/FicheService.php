@@ -115,6 +115,56 @@ Class FicheService
     }
 
     /**
+     * Add an fiche
+     *
+     * @param $bird
+     * @return array
+     */
+    public function add($bird)
+    {
+        $user = $this->ts->getToken()->getUser();
+        if (!$user) {
+            return [];
+        }
+        $fch = new Bird();
+        $fch->setUser($user);
+        if (isset($bird['size'])) {
+            $fch->setSize($bird['size']);
+        }
+        if (isset($bird['weight'])) {
+            $fch->setWeight($bird['weight']);
+        }
+        if (isset($bird['color'])) {
+            $fch->setColor($bird['color']);
+        }
+        if (isset($bird['feature'])) {
+            $fch->setFeature($bird['feature']);
+        }
+        $fch->setStatus(Bird::WAITING);
+        // TAXREF
+        if (isset($bird['TAXREF_id'])) {
+            $taxref = $this->em->getRepository('NAOMapBundle:Taxref')->findOneById($bird['TAXREF_id']);
+            if ($taxref) {
+                $fch->setTaxref($taxref);
+            }
+        }
+        $this->em->persist($fch);
+        $this->em->flush();
+        // Process image after save, because we need to use the observation id as filename
+        $filename = $fch->getId() . '_' . $user->getId() . '.jpg';
+        if (isset($observation['image']) && !empty($observation['image'])) {
+            $data = base64_decode($observation['image']);
+            file_put_contents('./img/oiseaux/observation/' . $filename, $data);
+        } else {
+            copy('img/oiseaux/default-image_observation.png', 'img/oiseaux/observation/' . $filename);
+        }
+        $fch->setImagePath($filename);
+        $this->em->persist($fch);
+        $this->em->flush();
+        return $this->obsArray($fch);
+    }
+
+    /**
      * Save Fiche
      *
      * @param Bird $bird
