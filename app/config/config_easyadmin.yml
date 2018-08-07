@@ -8,8 +8,7 @@ easy_admin:
             - label: 'Fiches et Observations'
               icon: 'file'
               children:
-                - { entity: 'Observation', label: 'Fiches oiseaux' }
-                - { entity: 'Observation', label: 'Contributions' }
+                - { entity: 'Bird', label: 'Fiches oiseaux' }
                 - { entity: 'Observation', label: 'Observations' }
             - label: 'Blog'
               icon: 'sticky-note'
@@ -29,7 +28,7 @@ easy_admin:
     entities:
 
         Bird:
-            class: NAO\MapBundle\Entity\Observation
+            class: NAO\FicheBundle\Entity\Bird
             list:
                 actions:
                     - { name: 'edit', icon: 'pencil', label: '', title: 'Éditer' }
@@ -37,7 +36,7 @@ easy_admin:
                 title: Les fiches oiseaux
                 sort: ['id', 'ASC']
                 fields: 
-                    - { property: 'id', label: "Id de l'oiseau" }
+                    - { property: 'id', label: "Id de la fiche" }
                     - { property: 'name', label: "Nom" }
                     - { property: 'family', label: "Famille" }
                     - { property: 'editDate',  label: 'Modifications' }
@@ -57,8 +56,7 @@ easy_admin:
                 title:  'Créer une fiche'
             edit:
                 title:  'Modifier la fiche'
-        Edit:
-            class: NAO\MapBundle\Entity\Observation
+
         Observation:
             class: NAO\MapBundle\Entity\Observation
             list:
