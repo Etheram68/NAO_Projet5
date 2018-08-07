@@ -27,7 +27,9 @@ class FicheController extends Controller
      */
     public function showFicheAction(Request $request)
     {
-        return $this->render('fiche/fiche.html.twig');
+        return $this->render('fiche/fiche.html.twig', array(
+            'bird'   => $this->container->get('app.fch')->getLastBird(50)
+        ));
     }
 
     /**
@@ -41,7 +43,7 @@ class FicheController extends Controller
         $form = $this->createForm(FicheType::class, $bird);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
-            $action = $this->container->get('app.obs')->saveObservation($bird, $form, $request);
+            $action = $this->container->get('app.fch')->saveObservation($bird, $form, $request);
             if($action == 'DRAFT'){
                 return $this->redirectToRoute('fiche.me.draft');
             }elseif($action == 'WAITING'){

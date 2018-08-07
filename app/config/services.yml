@@ -34,6 +34,11 @@ services:
             public: true
             arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", '%list_limit%', '%obseravtions_directory%']
 
+    app.fch:
+                class: NAO\FicheBundle\Service\FicheService
+                public: true
+                arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", '%list_limit%', '%obseravtions_directory%']
+
     app.geoloc:
             class: NAO\MapBundle\Service\GeolocService
             public: true

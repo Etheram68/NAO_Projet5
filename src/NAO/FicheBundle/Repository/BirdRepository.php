@@ -3,6 +3,7 @@
 namespace NAO\FicheBundle\Repository;
 use NAO\MapBundle\Entity\Bird;
 use Doctrine\ORM\Tools\Pagination\Paginator;
+use Doctrine\ORM\EntityRepository;
 
 /**
  * Class BirdRepository
