@@ -1,3 +1,7 @@
+nao_fiche:
+    resource: "@NAOFicheBundle/Controller/"
+    type:     annotation
+
 nao_user:
     resource: "@NAOUserBundle/Controller/"
     type:     annotation
