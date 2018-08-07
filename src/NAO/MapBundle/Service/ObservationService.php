@@ -270,9 +270,14 @@ class ObservationService
                 }
             }
             $file = $file_upload['imagepath'];
-            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
-            $file->move($this->observations_directory, $fileName);
-            $observation->setImagePath($fileName);
+            if ($file_upload['imagepath'] !== null) {
+                $fileName = md5(uniqid()) . '.' . $file->getExtension();
+                $file->move($this->observations_directory, $fileName);
+                $observation->setImagePath($fileName);
+            }
+            else{
+                $observation->getImagePath() == 'default-image_observation.png';
+            }
         }
         $this->em->persist($observation);
         $this->em->flush();

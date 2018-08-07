@@ -6,7 +6,7 @@
  * Time: 17:43
  */
 
-namespace NAO\BlogBundle\DataFixtures\ORM;
+namespace NAO\DataFixtures;
 
 
 use NAO\BlogBundle\Entity\Article;
