@@ -19,8 +19,21 @@
     <section class="section-padding gray-bg" id="blog-page">
         <div class="container">
             <div class="row">
-
                 <div class="col-xs-12 col-sm-4">
+                            <form id="search-map-widget" method="post" style="width: 145%; top: 0px;">
+                                <a id="action-map-search" href="#" class="light-2"><i class="material-icons">search</i></a>
+                                <input type="text" id="search-bird" name="search-bird" autocomplete="off" placeholder="Rechercher par espèce"/>
+                            </form>
+                    <a href="{{ path('fiche.create') }}" class="btn-floating btn-large waves-effect waves-light" style="background-color: #FFDE00;"><i class="material-icons" style="color: #333;">add</i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding-card gray-bg" id="blog-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
                     {% if bird|length > 0 %}
                     {% for bird in bird %}
                     {% endfor %}
