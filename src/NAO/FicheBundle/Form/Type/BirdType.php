@@ -55,10 +55,17 @@ class BirdType extends AbstractType
                     ])
                 ]
             ))
+            ->add('save_draft', SubmitType::class,
+                [
+                    'attr' => array('class' => 'btn waves-effect white min-pad'),
+                    'label' => 'Sauvegarder le brouillon',
+                    'translation_domain' => 'messages',
+                ]
+            )
             ->add('save_published', SubmitType::class,
                 [
                     'attr' => array('class' => 'btn waves-effect min-pad'),
-                    'label' => 'Soumettre l\'observation',
+                    'label' => 'Soumettre la Fiche',
                     'translation_domain' => 'messages',
                 ]
             )

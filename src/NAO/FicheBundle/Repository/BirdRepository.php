@@ -1,7 +1,7 @@
 <?php
 
 namespace NAO\FicheBundle\Repository;
-use NAO\MapBundle\Entity\Bird;
+use NAO\FicheBundle\Entity\Bird;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\ORM\EntityRepository;
 
@@ -159,7 +159,7 @@ class BirdRepository extends EntityRepository
             ->setParameter('status', Bird::WAITING)
             ->andWhere('b.user = :user')
             ->setParameter('user', $user)
-            ->orderBy('b.watched', 'DESC')
+            ->orderBy('b.id', 'DESC')
             ->getQuery();
         $paginator = $this->paginate($query, $currentPage, $limit);
         return $paginator;
@@ -175,7 +175,7 @@ class BirdRepository extends EntityRepository
         $query = $this->createQueryBuilder('b')
             ->where('b.status = :status')
             ->setParameter('status', Bird::WAITING)
-            ->orderBy('b.watched', 'ASC')
+            ->orderBy('b.id', 'ASC')
             ->getQuery();
         $paginator = $this->paginate($query, $currentPage, $limit);
         return $paginator;

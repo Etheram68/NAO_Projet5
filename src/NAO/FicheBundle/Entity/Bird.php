@@ -93,7 +93,6 @@ class Bird
     public function __construct()
     {
         $this->image_path   = 'default-image_observation.png';
-        $this->status       = '0';
     }
 
 

@@ -36,22 +36,24 @@ easy_admin:
                 title: Les fiches oiseaux
                 sort: ['id', 'ASC']
                 fields: 
-                    - { property: 'id', label: "Id de la fiche" }
-                    - { property: 'name', label: "Nom" }
-                    - { property: 'family', label: "Famille" }
-                    - { property: 'editDate',  label: 'Modifications' }
-                    - { property: 'edit',  label: 'Contribution' }
+                    - { property: 'id', label: "Numéro de la fiche" }
+                    - { property: 'taxref.valid_name', label: "Nom de l'oiseau" }
+                    - { property: 'taxref.familia', label: "Famille" }
+                    - { property: 'size',  label: 'Taille' }
+                    - { property: 'weight',  label: 'Poids' }
+                    - { property: 'color',  label: 'Principal Couleur' }
+                    - { property: 'feature',  label: 'Information complémentaire' }
+                    - { property: 'naturalist',  label: 'Naturalist Validation' }
+                    - { property: 'status',  label: 'Validation' }
             form:
                 fields:
-                    - { property: 'name', label: "Nom" }
-                    - { property: 'latinName', label: "Nom latin" }
-                    - { property: 'family', label: "Famille" }
-                    - { property: 'featherColor', label: 'Plumage' }
-                    - { property: 'size', label: 'Taille en cm' }
-                    - { property: 'beakShape', label: 'Bec' }
-                    - { property: 'pawColor',  label: 'Pattes' }
-                    - { property: 'behavior',  label: 'Comportement' }
-                    - { property: 'description',  label: 'Description' }
+                    - { property: 'size',  label: 'Taille' }
+                    - { property: 'weight',  label: 'Poids' }
+                    - { property: 'color',  label: 'Principal Couleur' }
+                    - { property: 'feature',  label: 'Information complémentaire' }
+                    - { property: 'naturalist',  label: 'Naturalist Validation' }
+                    - { property: 'status',  label: 'Validation', help: '0 = en Attente, 1 = Valider, 2 = Refuser, 4 = Broullions' }
+                    
             new:
                 title:  'Créer une fiche'
             edit:

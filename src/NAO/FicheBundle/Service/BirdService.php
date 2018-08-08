@@ -21,19 +21,19 @@ Class BirdService
     private $em;
     private $ts;
     private $list_limit;
-    private $bird_directory;
+    private $obseravtions_directory;
     private $translator = null;
 
     /**
      * FicheService constructor.
      * @param EntityManager $em
      */
-    public function __construct(EntityManager $em, TokenStorage $ts, $list_limit, $bird_directory, TranslatorInterface $translator)
+    public function __construct(EntityManager $em, TokenStorage $ts, $list_limit, $obseravtions_directory, TranslatorInterface $translator)
     {
         $this->em = $em;
         $this->ts = $ts;
         $this->list_limit = $list_limit;
-        $this->bird_directory = $bird_directory;
+        $this->obseravtions_directory = $obseravtions_directory;
         $this->translator = $translator;
     }
 
@@ -98,7 +98,7 @@ Class BirdService
         }
         $image = $ob->getImagePath();
         if ($image) {
-            $image = $url . '/img/oiseaux/fiche/' . $image;
+            $image = $url . '/img/oiseaux/observation/' . $image;
         }
         $bird = [
             'size' => $ob->getSize(),
@@ -203,9 +203,9 @@ Class BirdService
         $filename = $bird->getId() . '_' . $user->getId() . '.jpg';
         if (isset($bird['image']) && !empty($bird['image'])) {
             $data = base64_decode($bird['image']);
-            file_put_contents('./img/oiseaux/fiche/' . $filename, $data);
+            file_put_contents('./img/oiseaux/observation/' . $filename, $data);
         } else {
-            copy('img/oiseaux/default-image_observation.png', 'img/oiseaux/fiche/' . $filename);
+            copy('img/oiseaux/default-image_observation.png', 'img/oiseaux/observation/' . $filename);
         }
         $bird->setImagePath($filename);
         $this->em->persist($bird);
@@ -252,15 +252,12 @@ Class BirdService
         if(array_key_exists('imagepath', $file_upload)){
             // Before upload delete existing old Bird image
             if( $bird->getImagePath() !== 'default-image_observation.png'){
-                $old_file = $this->bird_directory.'/'. $bird->getImagePath();
-                if ($old_file) {
-                    unlink($old_file);
-                }
+                $old_file = $this->obseravtions_directory.'/'. $bird->getImagePath();
             }
             $file = $file_upload['imagepath'];
             if ($file_upload['imagepath'] !== null) {
                 $fileName = md5(uniqid()) . '.' . $file->getExtension();
-                $file->move($this->bird_directory, $fileName);
+                $file->move($this->obseravtions_directory, $fileName);
                 $bird->setImagePath($fileName);
             }
             else{

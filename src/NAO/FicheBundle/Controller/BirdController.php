@@ -43,7 +43,7 @@ class BirdController extends Controller
         $form = $this->createForm(BirdType::class, $bird);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
-            $action = $this->container->get('app.fch')->saveObservation($bird, $form, $request);
+            $action = $this->container->get('app.bird')->saveBird($bird, $form, $request);
             if($action == 'DRAFT'){
                 return $this->redirectToRoute('bird.me.draft');
             }elseif($action == 'WAITING'){
@@ -65,7 +65,7 @@ class BirdController extends Controller
     public function showDetailAction(Bird $bird)
     {
         if($bird->getStatus() != $bird::VALIDATED){
-            throw $this->createNotFoundException('Observation need to be validate !');
+            throw $this->createNotFoundException('Fiche need to be validate !');
         }
         $em = $this->getDoctrine()->getManager();
         $lastbird = $em->getRepository('NAOFicheBundle:Bird')
@@ -74,5 +74,22 @@ class BirdController extends Controller
             'bird'   => $bird,
             'lastbird'       => $lastbird != [] ? $lastbird[0] : null
         ));
+    }
+
+    /**
+     * @Route("/vos-fiche/en-attente", name="bird.me.waiting")
+     * @Security("is_granted('ROLE_USER')")
+     * @Method({"GET"})
+     */
+    public function showWaitingAction(Request $request, $page = 1)
+    {
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $bird = $em->getRepository('NAOFicheBundle:Bird')->getMyWaitingBird($user, $page,$this->getParameter('list_limit'));
+        return $this->render('fiche/done/waiting.html.twig', [
+            'token' => $this->container->get('lexik_jwt_authentication.jwt_manager')->create($user),
+            'paginate' => $this->container->get('app.bird')->getPagination($bird,$page),
+            'birdlist' => $bird->getIterator()
+        ]);
     }
 }

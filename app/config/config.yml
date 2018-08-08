@@ -22,7 +22,6 @@ parameters:
     niveau09: Black Stork
     niveau10: Imperial Eagle
     obseravtions_directory: '%kernel.project_dir%/web/bundles/naocore/img/oiseaux/observations'
-    bird_directory: '%kernel.project_dir%/web/bundles/naocore/img/oiseaux/fiche'
     list_limit: 10
     gps_distance: 10
 
