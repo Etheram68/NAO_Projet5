@@ -3,7 +3,7 @@
 namespace NAO\FicheBundle\Service;
 
 use NAO\MapBundle\Entity\Taxref;
-use NAO\MapBundle\Entity\User;
+use NAO\UserBundle\Entity\User;
 use NAO\FicheBundle\Entity\Bird;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\Form;
@@ -46,7 +46,7 @@ Class BirdService
      */
     public function getLastBird($max)
     {
-        $obs = $this->em->getRepository('NAOFicheBundle:Bird')->findBy(
+        $bird = $this->em->getRepository('NAOFicheBundle:Bird')->findBy(
             [
                 'status' => Bird::VALIDATED
             ],
@@ -55,7 +55,7 @@ Class BirdService
             ],
             $max
         );
-        return $obs;
+        return $bird;
     }
 
     /**
@@ -70,15 +70,64 @@ Class BirdService
         if (!$user) {
             return [];
         }
-        $obs = $this->em->getRepository('NAOFicheBundle:Bird')->findByUser($user);
-        if (!$obs) {
+        $bird = $this->em->getRepository('NAOFicheBundle:Bird')->findByUser($user);
+        if (!$bird) {
             return [];
         }
         $response = [];
-        foreach ($obs as $ob) {
-            $response[] = $this->obsArray($ob, $url);
+        foreach ($bird as $bird) {
+            $response[] = $this->birdArray($bird, $url);
         }
         return $response;
+    }
+
+    /**
+     * Convert an observation entity to an array (not all fields)
+     *
+     * @param Bird $ob
+     * @param string $url
+     *
+     * @return array
+     */
+    private function birdArray(Bird $ob, $url = '')
+    {
+        $naturalist = '';
+        $n = $ob->getNaturalist();
+        if ($n) {
+            $naturalist = $n->getName();
+        }
+        $image = $ob->getImagePath();
+        if ($image) {
+            $image = $url . '/img/oiseaux/fiche/' . $image;
+        }
+        $bird = [
+            'size' => $ob->getSize(),
+            'validated' => $ob->getValidated(),
+            'weight' => $ob->getWeight(),
+            'color' => $ob->getColor(),
+            'feature' => $ob->getFeature(),
+            'imagePath' => $image,
+            'naturalist' => $naturalist,
+            'status' => $ob->getStatus(),
+            'statusText' => $ob->getStatusString(),
+            'TAXREF' => [
+                'regnum' => $ob->getTaxref()->getRegnum(),
+                'phylum' => $ob->getTaxref()->getPhylum(),
+                'classis' => $ob->getTaxref()->getClassis(),
+                'ordo' => $ob->getTaxref()->getOrdo(),
+                'familia' => $ob->getTaxref()->getFamilia(),
+                'scientificId' => $ob->getTaxref()->getScientificId(),
+                'taxonId' => $ob->getTaxref()->getTaxonId(),
+                'taxonRefId' => $ob->getTaxref()->getTaxonRefId(),
+                'taxonRank' => $ob->getTaxref()->getTaxonRank(),
+                'taxonSc' => $ob->getTaxref()->getTaxonSc(),
+                'author' => $ob->getTaxref()->getAuthor(),
+                'fullname' => $ob->getTaxref()->getFullname(),
+                'validName' => $ob->getTaxref()->getValidName(),
+                'commonName' => $ob->getTaxref()->getCommonName()
+            ]
+        ];
+        return $bird;
     }
 
     /**
@@ -89,28 +138,28 @@ Class BirdService
      */
     public function getBirdValidate(User $user)
     {
-        $obs = $this->em->getRepository('NAOFicheBundle:Bird')->findBy(array(
+        $bird = $this->em->getRepository('NAOFicheBundle:Bird')->findBy(array(
             'status' => Bird::VALIDATED,
             'user' => $user->getId()
         ));
-        return $obs;
+        return $bird;
     }
 
     /**
-     * @param Paginator $obs
+     * @param Paginator $bird
      * @param $page
      * @return array
      */
-    public function getPagination(Paginator $obs, $page)
+    public function getPagination(Paginator $bird, $page)
     {
-        $totalObs = $obs->count();
-        $totalDisplayed = $obs->getIterator()->count();
-        $maxPages = ceil($obs->count() / $this->list_limit);
-        return ['totalObs' => $totalObs,
+        $totalbird = $bird->count();
+        $totalDisplayed = $bird->getIterator()->count();
+        $maxPages = ceil($bird->count() / $this->list_limit);
+        return ['totalbird' => $totalbird,
             'totalDisplayed' => $totalDisplayed,
             'current' => $page,
             'maxPages' => $maxPages,
-            'totalItems' => count($obs)
+            'totalItems' => count($bird)
         ];
     }
 
@@ -126,42 +175,42 @@ Class BirdService
         if (!$user) {
             return [];
         }
-        $fch = new Bird();
-        $fch->setUser($user);
+        $bird = new Bird();
+        $bird->setUser($user);
         if (isset($bird['size'])) {
-            $fch->setSize($bird['size']);
+            $bird->setSize($bird['size']);
         }
         if (isset($bird['weight'])) {
-            $fch->setWeight($bird['weight']);
+            $bird->setWeight($bird['weight']);
         }
         if (isset($bird['color'])) {
-            $fch->setColor($bird['color']);
+            $bird->setColor($bird['color']);
         }
         if (isset($bird['feature'])) {
-            $fch->setFeature($bird['feature']);
+            $bird->setFeature($bird['feature']);
         }
-        $fch->setStatus(Bird::WAITING);
+        $bird->setStatus(Bird::WAITING);
         // TAXREF
         if (isset($bird['TAXREF_id'])) {
             $taxref = $this->em->getRepository('NAOMapBundle:Taxref')->findOneById($bird['TAXREF_id']);
             if ($taxref) {
-                $fch->setTaxref($taxref);
+                $bird->setTaxref($taxref);
             }
         }
-        $this->em->persist($fch);
+        $this->em->persist($bird);
         $this->em->flush();
-        // Process image after save, because we need to use the observation id as filename
-        $filename = $fch->getId() . '_' . $user->getId() . '.jpg';
-        if (isset($observation['image']) && !empty($observation['image'])) {
-            $data = base64_decode($observation['image']);
-            file_put_contents('./img/oiseaux/observation/' . $filename, $data);
+        // Process image after save, because we need to use the birdervation id as filename
+        $filename = $bird->getId() . '_' . $user->getId() . '.jpg';
+        if (isset($bird['image']) && !empty($bird['image'])) {
+            $data = base64_decode($bird['image']);
+            file_put_contents('./img/oiseaux/fiche/' . $filename, $data);
         } else {
-            copy('img/oiseaux/default-image_observation.png', 'img/oiseaux/observation/' . $filename);
+            copy('img/oiseaux/default-image_observation.png', 'img/oiseaux/fiche/' . $filename);
         }
-        $fch->setImagePath($filename);
-        $this->em->persist($fch);
+        $bird->setImagePath($filename);
+        $this->em->persist($bird);
         $this->em->flush();
-        return $this->obsArray($fch);
+        return $this->birdArray($bird);
     }
 
     /**

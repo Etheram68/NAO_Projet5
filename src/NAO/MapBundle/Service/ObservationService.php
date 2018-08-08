@@ -5,7 +5,7 @@ namespace NAO\MapBundle\Service;
 use NAO\MapBundle\Entity\FranceRegion;
 use NAO\MapBundle\Entity\Observation;
 use NAO\MapBundle\Entity\Taxref;
-use NAO\MapBundle\Entity\User;
+use NAO\UserBundle\Entity\User;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\Form;
 use Doctrine\ORM\Tools\Pagination\Paginator;

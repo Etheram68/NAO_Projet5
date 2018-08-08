@@ -19,12 +19,12 @@ class BirdRepository extends EntityRepository
      */
     public function getValidateValidation($user, $currentPage, $limit = 50)
     {
-        $query = $this->createQueryBuilder('o')
-            ->where('o.status = :status')
+        $query = $this->createQueryBuilder('b')
+            ->where('b.status = :status')
             ->setParameter('status', Bird::VALIDATED)
-            ->andWhere('o.naturalist = :user')
+            ->andWhere('b.naturalist = :user')
             ->setParameter('user', $user)
-            ->orderBy('o.validated', 'DESC')
+            ->orderBy('b.validated', 'DESC')
             ->getQuery();
         $paginator = $this->paginate($query, $currentPage, $limit);
         return $paginator;
@@ -65,6 +65,130 @@ class BirdRepository extends EntityRepository
             ->where('b.status = :status')
             ->setParameter('status', Bird::VALIDATED)
             ->orderBy('b.id', 'DESC')
+            ->getQuery();
+        $paginator = $this->paginate($query, $currentPage, $limit);
+        return $paginator;
+    }
+
+    /**
+     *
+     * @return array
+     */
+    public function getBirdWithFilter($speciment, $department)
+    {
+        $query = $this->createQueryBuilder('b')
+            ->innerJoin('b.taxref', 't')
+            ->addSelect('t')
+            ->where('b.status = :status')->setParameter('status', Observation::VALIDATED);
+        if (!empty($speciment)) {
+            $query->andwhere('t.taxon_sc = :specimen')->setParameter('specimen', $speciment);
+        }
+        $query->orderBy('o.id', 'DESC');
+        return $query->getQuery()->getResult();
+    }
+
+    public function getMyBird($state, $user, $currentPage, $limit = 50)
+    {
+        switch ($state) {
+            case 'my_draft':
+                return $this->getMyDraftBird($user, $currentPage, $limit);
+                break;
+            case Bird::REFUSED:
+                break;
+            case 'my_validate':
+                return $this->getMyValidateBird($user, $currentPage, $limit);
+            case 'my_waiting':
+                return $this->getMyWaitingBird($user, $currentPage, $limit);
+            case 'waiting':
+                return $this->getWaitingValidation($currentPage, $limit);
+            case 'refuse':
+                return $this->getDeclineValidation($user, $currentPage, $limit);
+            case 'my_validatevalidation':
+                return $this->getValidateValidation($user, $currentPage, $limit);
+        }
+    }
+
+    /**
+     *
+     * @param $currentPage
+     * @param int $limit
+     * @return Paginator
+     */
+    public function getMyDraftBird($user, $currentPage, $limit = 50)
+    {
+        $query = $this->createQueryBuilder('b')
+            ->where('b.status = :status')
+            ->setParameter('status', Bird::DRAFT)
+            ->andWhere('b.user = :user')
+            ->setParameter('user', $user)
+            ->orderBy('b.id', 'DESC')
+            ->getQuery();
+        $paginator = $this->paginate($query, $currentPage, $limit);
+        return $paginator;
+    }
+
+    /**
+     *
+     * @param $currentPage
+     * @param int $limit
+     * @return Paginator
+     */
+    public function getMyValidateBird($user, $currentPage, $limit = 50)
+    {
+        $query = $this->createQueryBuilder('b')
+            ->where('b.status = :status')
+            ->setParameter('status', Bird::VALIDATED)
+            ->andWhere('b.user = :user')
+            ->setParameter('user', $user)
+            ->orderBy('b.id', 'DESC')
+            ->getQuery();
+        $paginator = $this->paginate($query, $currentPage, $limit);
+        return $paginator;
+    }
+
+    /**
+     *
+     * @param $currentPage
+     * @param int $limit
+     * @return Paginator
+     */
+    public function getMyWaitingBird($user, $currentPage, $limit = 50)
+    {
+        $query = $this->createQueryBuilder('b')
+            ->where('b.status = :status')
+            ->setParameter('status', Bird::WAITING)
+            ->andWhere('b.user = :user')
+            ->setParameter('user', $user)
+            ->orderBy('b.watched', 'DESC')
+            ->getQuery();
+        $paginator = $this->paginate($query, $currentPage, $limit);
+        return $paginator;
+    }
+
+    /**
+     * @param $currentPage
+     * @param int $limit
+     * @return Paginator
+     */
+    public function getWaitingValidation($currentPage, $limit = 50)
+    {
+        $query = $this->createQueryBuilder('b')
+            ->where('b.status = :status')
+            ->setParameter('status', Bird::WAITING)
+            ->orderBy('b.watched', 'ASC')
+            ->getQuery();
+        $paginator = $this->paginate($query, $currentPage, $limit);
+        return $paginator;
+    }
+
+    public function getDeclineValidation($user, $currentPage, $limit = 50)
+    {
+        $query = $this->createQueryBuilder('b')
+            ->where('b.status = :status')
+            ->setParameter('status', Bird::REFUSED)
+            ->andWhere('b.naturalist = :user')
+            ->setParameter('user', $user)
+            ->orderBy('b.validated', 'DESC')
             ->getQuery();
         $paginator = $this->paginate($query, $currentPage, $limit);
         return $paginator;
