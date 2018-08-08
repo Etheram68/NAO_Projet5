@@ -1517,12 +1517,6 @@ button.picker__clear:focus,button.picker__close:focus,button.picker__today:focus
     width: 35%;
 }
 
-/*#pageLogin form input::placeholder {
-    color: #9a9a9a;
-    font-size: 1.2em;
-    padding-left: 10px;
-}*/
-
 #pageLogin form input[type="submit"] {
     width: 20%;
 }
@@ -1550,11 +1544,11 @@ label[for="remember_me"] {
     padding-left: 24px;
 }
 
-#forget, #subscribe {
+#forget, .subscribe, .login {
     text-decoration: underline;
 }
 
-a#forget:hover, a#subscribe:hover {
+a#forget:hover, a.subscribe:hover, a.login:hover {
     color: #212121;
     text-decoration: none;
 }
@@ -1581,7 +1575,11 @@ a#forget:hover, a#subscribe:hover {
     font-size: 120px;
     color: #FFDE00;
 }
-
+#pageRegister .textWarning {
+    font-size: 0.8em;
+    font-style: italic;
+    margin: 0px 0px 50px 0px;
+}
 .rgpdNewsletter {
     display: flex;
     justify-content: space-around;
@@ -1755,7 +1753,7 @@ a#forget:hover, a#subscribe:hover {
     background: #000000 url('../img/header404.jpg') no-repeat scroll center center / cover;
 }
 
-/*---- SOCIAL MEDIA ----*/
+/*---- HOME SOCIAL MEDIA ----*/
 
 #nao_socialMedia
 {
@@ -1949,6 +1947,7 @@ section#blog-page.section-padding {
     padding: 0px 0px 0px 0px;
 }
 /* Page d'un article */
+
 #pageArticle {
     height: auto;
     background-color: #F6F6F6;
@@ -1961,6 +1960,11 @@ section#blog-page.section-padding {
 }
 .blog-meta a:hover {
     color: #FFDE00;
+}
+#connectOrSubscribe {
+    margin: 20px 0px 30px 0px;
+    font-size: 15px;
+    font-weight: 300;
 }
 .comment-container a.btn.btn-light{
     font-size: 0.7em;
@@ -2063,8 +2067,13 @@ section#article-page.section-padding {
     color: #FFDE00;
     line-height: 0.7em;
 }
+#pageContact .textWarning {
+    font-size: 0.8em;
+    font-style: italic;
+    margin: 0px 0px 50px 0px;
+}
 section#contact-page.section-padding {
-    padding: 120px 0px 120px 0px;
+    padding: 0px 0px 0px 0px;
 }
 
 

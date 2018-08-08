@@ -35,6 +35,11 @@
                         {% if (is_granted("IS_AUTHENTICATED_REMEMBERED")) and (is_granted("ROLE_USER")) %}
                             <a class="btn btn-light" href="{{ path('comment.add', {'id': article.id }) }}">Ajouter<br>un
                             commentaire</a>
+                        {% else %}
+                            <div id="connectOrSubscribe">
+                                <a href="{{ path('fos_user_security_login') }}" class="login" >Connecter vous</a> ou 
+                                <a href="{{ path('fos_user_registration_register') }}" class="subscribe">créer un compte</a> pour commenter.
+                            </div>
                         {% endif %}
                     <div class="comment-content">
                         <ul>
@@ -42,7 +47,7 @@
                                 {% if comment.moderation == 1 %}
                                     <li>
                                         <div id="commentUser"> 
-                                            Posté par <a href="{{ path('user.username', {'username': app.user.username } ) }}" >{{ comment.user }}</a> le {{ comment.date|date("d/m/Y  H:i") }}
+                                            Posté par <a href="{{ path('user.username', {'username': comment.user } ) }}" >{{ comment.user }}</a> le {{ comment.date|date("d/m/Y  H:i") }}
                                         </div>
                                         <hr class="hrComment">
                                         <div id="commentContent">

@@ -1,81 +1,56 @@
 
 
-<div class="container">
+<main role="main" class="container" id="pageContact">
 
     {{ form_start(form, {'attr': {'class':'form-horizontal'}}) }}
     {{ form_errors(form) }}
 
+    <div class="textWarning">* Indique un champ obligatoire</div>
 
     {# selecteur Prénom #}
-    <div class="row">
+    <div class="col-xs-12 col-sm-6">
+        {{ form_label(form.lastName, "Votre nom*") }}
 
+        {{ form_errors(form.lastName) }}
 
-        <div class="col-xs-12 col-sm-6">
-
-            {{ form_label(form.lastName, "Votre nom*") }}
-
-            {{ form_errors(form.lastName) }}
-
-            {{ form_widget(form.lastName, {'attr': {'class':'form-control'}}) }}
-
-        </div>
-
-        {# selecteur Nom #}
-
-        <div class="col-xs-12 col-sm-6">
-
-            {{ form_label(form.firstName, "Votre prénom*") }}
-
-            {{ form_errors(form.firstName) }}
-
-            {{ form_widget(form.firstName, {'attr': {'class':'form-control'}}) }}
-
-        </div>
+        {{ form_widget(form.lastName, {'attr': {'class':'form-control'}}) }}
     </div>
+    {# selecteur Nom #}
+    <div class="col-xs-12 col-sm-6">
+        {{ form_label(form.firstName, "Votre prénom*") }}
 
+        {{ form_errors(form.firstName) }}
+
+        {{ form_widget(form.firstName, {'attr': {'class':'form-control'}}) }}
+    </div>
     {# selecteur adresse mail #}
-
     <div class="col-xs-12 col-sm-12">
-
         {{ form_label(form.mailAdress, "Votre email *") }}
 
         {{ form_errors(form.mailAdress) }}
 
         {{ form_widget(form.mailAdress, {'attr': {'class':'form-control'}}) }}
-
     </div>
-
     {# selecteur ville #}
-
     <div class="col-xs-12 col-sm-12">
-
         {{ form_label(form.town, "Votre ville *") }}
 
         {{ form_errors(form.town) }}
 
         {{ form_widget(form.town, {'attr': {'class':'form-control'}}) }}
-
     </div>
-
-
-
     <div class="col-xs-12 col-sm-12">
-
         {{ form_label(form.content, "Votre Message") }}
         {{ form_widget(form.content, {'attr': {'id':'textForm'} })}}
-
     </div>
-
     <div>
         {{ form_label(form.envoyer, "Envoyer") }}
         {{ form_widget(form.envoyer, {'attr': {'class':'btn-light'} })}}
     </div>
 
-        {{ form_widget(form.envoyer)}}
-
-
+    {{ form_widget(form.envoyer)}}
 
     {{ form_end(form) }}
 
-</div>
+</main>
 
