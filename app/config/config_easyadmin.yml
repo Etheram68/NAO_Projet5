@@ -16,7 +16,7 @@ easy_admin:
               children:
                 - { entity: 'Article', label: 'Articles' }
                 - { entity: 'Comment', label: 'Commentaires' }
-                - { entity: 'User', label: 'Utilisateurs', icon: 'user' }
+            - { entity: 'User', label: 'Utilisateurs', icon: 'user' }
 
     formats:
         date:     'd/m/Y'
@@ -95,16 +95,35 @@ easy_admin:
                 fields: 
                     - id
                     - { property: 'title', label: 'Titre' }
-                    - { property: 'author', label: 'Auteur' }
+                    - { property: 'user', label: 'Auteur' }
+                    - { property: 'date',  label: 'Date' }
                     - { property: 'content',  label: 'Contenu' }
+                    - { property: 'moderation',  label: 'Publié' }
             edit:
-                title:  'Modifier la fiche'
+                title:  "Modifier l'article"
                 fields:
                     - { property: 'title', label: 'Titre' }
                     - { property: 'author', label: 'Auteur' }
                     - { property: 'content',  label: 'Contenu' }
         Comment:
             class: NAO\BlogBundle\Entity\Comment
+            list:
+                actions:
+                    - { name: 'edit', icon: 'pencil', label: '', title: 'Éditer' }
+                title: Les commentaires
+                sort: ['id', 'ASC']
+                fields: 
+                    - { property: 'user', label: 'Auteur' }
+                    - { property: 'date', label: 'Date' }
+                    - { property: 'content',  label: 'Contenu' }
+                    - { property: 'article',  label: 'Article correspondant' }
+                    - { property: 'moderation',  label: 'Actif' }
+            edit:
+                title:  'Modérer le commentaire'
+                fields:
+                    - { property: 'content',  label: 'Contenu' }
+                    - { property: 'date', label: 'Date' }
+                    - { property: 'moderation',  label: 'Actif' }
         User:
             class: NAO\UserBundle\Entity\User
             list:

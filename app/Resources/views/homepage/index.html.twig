@@ -15,7 +15,7 @@
               <h2>Partagez votre passion pour les oiseaux et la nature</h2>
               <h3>Venez avec nous contribuer au recensement des espèces sur le territoire et soutenir le programme de recherche sur la biodiversité</h3>
               <!-- ajouter le lien -->                        
-              <a href="#" class="mainButton">Découvrez l'Ornithologie</a>
+              <a href="{{ path('observation.map') }}" class="btn btn-light">Aidez nous à recenser les oiseaux</a>
             </div>
           </div>
 
@@ -152,8 +152,10 @@
                                 <div class="blog-content">
                                     <h3><a href="{{ path('article', {'id': article.id}) }}">{{ article.title }}</a></h3>
                                     <ul class="blog-meta">
-                                        <li><span class="ti-user"></span> <a href="#">{{ article.author }}</a></li>
-                                        <li><span class="ti-calendar"></span> <a href="#">{{ article.date | date ('d/m/Y') }}</a></li>
+                                      <i class="glyphicon glyphicon-user"></i>
+                                      <a href="{{ path('user.username', {'username': article.user } ) }}">{{ article.user }}</a>
+                                      <i class="glyphicon glyphicon-calendar"></i>
+                                      <span>{{ article.date|date('d/m/Y') }}</span>
                                     </ul>
                                     <p>{{ article.content|truncate(100, true) }}</p>
                                 </div>

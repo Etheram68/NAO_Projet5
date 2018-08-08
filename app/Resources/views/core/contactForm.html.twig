@@ -1,7 +1,6 @@
 
 
 <div class="container">
-    <h3>Remplissez le formulaire</h3>
 
     {{ form_start(form, {'attr': {'class':'form-horizontal'}}) }}
     {{ form_errors(form) }}
@@ -67,6 +66,10 @@
 
     </div>
 
+    <div>
+        {{ form_label(form.envoyer, "Envoyer") }}
+        {{ form_widget(form.envoyer, {'attr': {'class':'btn-light'} })}}
+    </div>
 
         {{ form_widget(form.envoyer)}}
 

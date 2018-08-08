@@ -3,21 +3,22 @@
 {% block title %}Carte - {{ parent() }}{% endblock %}
 
 {% block body %}
-    <header class="header-404 overlay full-404 relative v-center" id="home-page">
+    <!--Header-area-->
+    <header class="header-area-map overlay full-height-miniHeader relative v-center">
         <div class="absolute anlge-bg"></div>
-        <div class="container">
-            <div class="row v-center">
-                <div class="col-xs-12 col-md-7 header-text">
-                    <h2>LES OBSERVATIONS</h2>
-                    <h3>sur la Carte</h3>
+            <div class="container">
+                <div class="row v-center">
+                    <div class="col-xs-12 col-md-7 header-text-map">
+                        <h2>La Carte des observations</h2>
+                        <h3>Venez contribuer avec nous au recensement des espèces sur le territoire et soutenir le programme de recherche sur la biodiversité</h3>
+
+                    </div>
                 </div>
             </div>
-        </div>
-        </div>
     </header>
 
-    <section class="section-padding gray-bg" id="blog-page">
-        <div class="container">
+    <section class="section-padding" id="map-page">
+        <div class="container" id="pageMap">
             <div class="row">
 
                 <div class="col-xs-12 col-sm-4">
@@ -46,16 +47,12 @@
                 </div>
             </div>
         </div>
-    </section>
-
-
-    <section class="section-padding-card gray-bg" id="blog-page">
-        <div class="container">
+        <div class="container" id="listeObs">
             <div class="row">
                 <div class="row v-center">
                     <div class="col-xs-12 col-md-7 header-text">
-                        <h2>Liste des observation</h2>
-                        <h3>sur la Carte</h3>
+                        <span id="titreListeObs">Liste des observations sur la carte</span>
+                        {# <h3>sur la Carte</h3> #}
                     </div>
                 </div>
                 <div id="show_list" class="col s12">
@@ -72,6 +69,30 @@
             </div>
         </div>
     </section>
+
+
+{#     <section class="section-padding-card" id="blog-page">
+        <div class="container" id="listeObs">
+            <div class="row">
+                <div class="row v-center">
+                    <div class="col-xs-12 col-md-7 header-text">
+                        <span id="titreListeObs">Liste des observation<br>sur la carte</span>
+                    </div>
+                </div>
+                <div id="show_list" class="col s12">
+                    <main class="container marge-top">
+                        <section>
+                            <section>
+                                <div class="row">
+                                    <div id="eltlist"></div>
+                                </div>
+                            </section>
+                        </section>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </section> #}
 
 {% endblock %}
 

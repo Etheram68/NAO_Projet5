@@ -10,8 +10,10 @@
             <div class="blog-content">
                 <h1>{{ article.title }}</h1>
                 <div class="blog-meta">
-                    <i class="glyphicon glyphicon-user"> {{ article.author }}</i>
-                    <i class="glyphicon glyphicon-time"> {{ article.date|date('d/m/Y') }}</i>
+                    <i class="glyphicon glyphicon-user"></i>
+                    <a href="{{ path('user.username', {'username': article.user } ) }}">{{ article.user }}</a>
+                    <i class="glyphicon glyphicon-time"></i>
+                    <span>{{ article.date|date('d/m/Y') }}</span>                
                 </div>
                 <div class="row">
                     <div class="col-xs-12 col-sm-6">
@@ -32,40 +34,41 @@
 
                 </div>
                 <div class="comment-container">
-
-
                     <h3>Commentaires</h3>
                     {% if (is_granted("IS_AUTHENTICATED_REMEMBERED")) and (is_granted("ROLE_USER")) %}
-                        <a class="btn btn-light" href="{{ path('comment.add', {'id': article.id }) }}">Ajouter un
+                        <a class="btn btn-light" href="{{ path('comment.add', {'id': article.id }) }}">Ajouter<br>un
                         commentaire</a>
                     {% endif %}
 
 
                     <div class="comment-content">
-
                         <ul>
                             {% for comment in listComments %}
-                                <li> Posté par {{ comment.author }} le {{ comment.date|date("d/m/Y  H:i") }}
-                                    <hr>
-                                    {{ comment.content }}
-                                </li>
+                                {% if comment.moderation == 1 %}
+                                    <li> Posté par {{ comment.user }} le {{ comment.date|date("d/m/Y  H:i") }}
+                                        <hr>
+                                        {{ comment.content }}
+                                    </li>
+                                {% endif %}
                             {% else %}
                                 <p>aucun commentaire!</p>
                             {% endfor %}
                         </ul>
-                        {% if (is_granted("IS_AUTHENTICATED_REMEMBERED")) and (is_granted("ROLE_USER")) %}
+{#                         {% if (is_granted("IS_AUTHENTICATED_REMEMBERED")) and (is_granted("ROLE_USER")) %}
                             <a class="btn btn-light" href="{{ path('comment.add', {'id': article.id }) }}">Ajouter un
                             commentaire</a>
-                        {% endif %}
+                        {% endif %} #}
                     </div>
 
 
                     <p>
                 </div>
-                <a href="{{ path('index') }}" class="btn btn-light">
-                    <i class="glyphicon glyphicon-chevron-left"></i>
-                    Retour à la liste
-                </a>
+                <div class="buttonChevron">
+                    <a href="{{ path('index') }}" class="btn btn-light">
+                        <i class="glyphicon glyphicon-chevron-left"></i>
+                        <p>Retour à la liste</p>
+                    </a>
+                </div>
                 {% if (is_granted("IS_AUTHENTICATED_REMEMBERED")) and (is_granted("ROLE_ADMIN")) %}
                     <a href="{{ path('article.edit', {'id': article.id}) }}" class="btn btn-light">
                         <i class="glyphicon glyphicon-edit"></i>

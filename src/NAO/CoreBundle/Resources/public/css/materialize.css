@@ -190,6 +190,10 @@ button.btn-floating {
 .btn:hover, .btn-large:hover {
   background-color: #2bbbad;
 }
+
+/*a.btn-light:hover {
+  background-color: #F9F9F9;
+}*/
 .btn-large {
   height: 54px;
   line-height: 54px;
