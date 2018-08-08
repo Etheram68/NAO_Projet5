@@ -74,16 +74,16 @@ class BirdRepository extends EntityRepository
      *
      * @return array
      */
-    public function getBirdWithFilter($speciment, $department)
+    public function getBirdWithFilter($speciment)
     {
         $query = $this->createQueryBuilder('b')
             ->innerJoin('b.taxref', 't')
             ->addSelect('t')
-            ->where('b.status = :status')->setParameter('status', Observation::VALIDATED);
+            ->where('b.status = :status')->setParameter('status', Bird::VALIDATED);
         if (!empty($speciment)) {
             $query->andwhere('t.taxon_sc = :specimen')->setParameter('specimen', $speciment);
         }
-        $query->orderBy('o.id', 'DESC');
+        $query->orderBy('b.id', 'DESC');
         return $query->getQuery()->getResult();
     }
 

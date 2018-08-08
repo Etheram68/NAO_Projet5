@@ -3,6 +3,7 @@
 namespace NAO\MapBundle\Controller\API;
 
 use NAO\MapBundle\Entity\Observation;
+use NAO\FicheBundle\Entity\Bird;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -174,5 +175,38 @@ class ObservationController extends Controller
             'obslist' => $obs->getIterator(),
         ])->getContent();
         return new JsonResponse(['html' => $html]);
+    }
+
+    /**
+     * Get Fiche With filters
+     *
+     * @Route("/searchs", name="bird.search")
+     * @Method({"POST"})
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function getFicheForMapAction(Request $request)
+    {
+        // Get filters
+        $specimen   = trim($request->get('bird'));
+        $result         = array();
+        $latin_name = substr($specimen, ($p = strpos($specimen, '(')+1), strrpos($specimen, ')')-$p);
+        $em = $this->getDoctrine()->getManager();
+        $bird = $em->getRepository('NAOFicheBundle:Bird')->getBirdWithFilter($latin_name);
+        // Generate observations list
+        $html = $this->render('fiche/list.html.twig', [
+            'birdlist' => $bird,
+        ])->getContent();
+        $result['html'] = $html;
+        // Return message after searching
+        if(empty($specimen)){
+            $result['message'] = $this->get('translator')->trans('%nombre% observations ont été validées sur le site. Consultez la liste pour plus de détails', array('%nombre%' => sizeof($bird)));
+        }else{
+            $result['message'] = ( sizeof($bird) > 0 ) ?
+                $this->get('translator')->trans('Il y a %nombre% observation(s) trouvée(s) correspondante aux critères de votre recherche. Consultez la liste pour plus de détails', array('%nombre%' => sizeof($bird))) :
+                $this->get('translator')->trans('Il n\'y a pas d\'observation correspondante aux critères de votre recherche.');
+        }
+        return new JsonResponse($result);
     }
 }

@@ -36,13 +36,28 @@
     <section class="section-padding-card gray-bg" id="blog-page">
         <div class="container">
             <div class="row">
-                <div class="col-sm-12">
-                    {% if bird|length > 0 %}
-                    {% for bird in bird %}
-                    {% endfor %}
-                    {% else %}
-                        <h2>Il n'y a pas encore de fiche</h2>
-                    {% endif %}
+                <div class="row v-center">
+                    <div class="col-xs-12 col-md-7 header-text">
+                        <h2>Les Fiches</h2>
+                        <h3></h3>
+                    </div>
+                </div>
+                <div id="show_list" class="col s12">
+                    <main class="container marge-top">
+                        <section>
+                            <section>
+                                <div class="row">
+                                    {% if bird|length > 0 %}
+                                    {% for bird in bird %}
+                                    {% endfor %}
+                                    {% else %}
+                                        <h2>Il n'y a pas encore de fiche</h2>
+                                    {% endif %}
+                                    <div id="eltlist"></div>
+                                </div>
+                            </section>
+                        </section>
+                    </main>
                 </div>
             </div>
         </div>
@@ -131,62 +146,16 @@
              * Update current maps with observations generate with filters
              *
              * @param bird
-             * @param department
+             * 
              */
-            function updateMapsWithObservations(bird, department){
-                var data = {bird: bird, department: department};
+            function updateMapsWithObservations(bird){
+                var data = {bird: bird};
 
-                $.post( "{{ url('obs.search') }}?bearer={{ jwt.token }}", data , function( response ) {
+                $.post( "{{ url('bird.search') }}?bearer={{ jwt.token }}", data , function( response ) {
 
-                    map.removePolygons();
-                    map.removeMarkers();
                     $.each(response, function(index, item) {
-                        var location = new google.maps.LatLng(item.latitude, item.longitude);
-                        drawRect(location);
-                        placeMarker(location);
                     });
                     $('#eltlist').html(response.html);
-                    mapOverlay.html(response.message);
-                    mapOverlay.show();
-                });
-            }
-            /**
-             * Add custom marker for position
-             * @param location
-             */
-            function placeMarker(location){
-                map.addMarker({
-                    position: location,
-
-                    icon: "{{ asset('bundles/naocore/img/marker.png') }}",
-
-                    title: 'Zoomer ici pour voir la zone d\'observation'
-                });
-            }
-            /**
-             * Draw rectangle
-             * @param location
-             */
-            function drawRect(location) {
-                var NORTH       = 0;
-                var WEST        = -90;
-                var SOUTH       = 180;
-                var EAST        = 90;
-                var distance    = 3000; // 3Km
-                var north = google.maps.geometry.spherical.computeOffset(location, distance / 2, NORTH);
-                var south = google.maps.geometry.spherical.computeOffset(location, distance / 2, SOUTH);
-                var northEast = google.maps.geometry.spherical.computeOffset(north, distance / 2, EAST);
-                var northWest = google.maps.geometry.spherical.computeOffset(north, distance / 2, WEST);
-                var southEast = google.maps.geometry.spherical.computeOffset(south, distance / 2, EAST);
-                var southWest = google.maps.geometry.spherical.computeOffset(south, distance / 2, WEST);
-                var path = [northEast, northWest, southWest, southEast];
-                polygon = map.drawPolygon({
-                    paths: path,
-                    strokeColor: '#f67d79',
-                    strokeOpacity: 0.9,
-                    strokeWeight: 1,
-                    fillColor: '#eec0b7',
-                    fillOpacity: 0.5,
                 });
             }
         });
