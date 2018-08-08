@@ -16,24 +16,24 @@ use Symfony\Component\Translation\TranslatorInterface;
  * Class BirdService
  * @package NAO\FicheBundle\Service
  */
-Class FicheService
+Class BirdService
 {
     private $em;
     private $ts;
     private $list_limit;
-    private $fiche_directory;
+    private $bird_directory;
     private $translator = null;
 
     /**
      * FicheService constructor.
      * @param EntityManager $em
      */
-    public function __construct(EntityManager $em, TokenStorage $ts, $list_limit, $fiche_directory, TranslatorInterface $translator)
+    public function __construct(EntityManager $em, TokenStorage $ts, $list_limit, $bird_directory, TranslatorInterface $translator)
     {
         $this->em = $em;
         $this->ts = $ts;
         $this->list_limit = $list_limit;
-        $this->fiche_directory = $fiche_directory;
+        $this->bird_directory = $bird_directory;
         $this->translator = $translator;
     }
 
@@ -87,7 +87,7 @@ Class FicheService
      * @param User $user
      * @return array
      */
-    public function getFicheValidate(User $user)
+    public function getBirdValidate(User $user)
     {
         $obs = $this->em->getRepository('NAOFicheBundle:Bird')->findBy(array(
             'status' => Bird::VALIDATED,
@@ -172,7 +172,7 @@ Class FicheService
      * @param Request $request
      * @return string
      */
-    public function saveFiche(Bird $bird, Form $form, Request $request){
+    public function saveBird(Bird $bird, Form $form, Request $request){
         // Get user informations
         $user = $this->ts->getToken()->getUser();
         $bird->setUser($user);
@@ -203,7 +203,7 @@ Class FicheService
         if(array_key_exists('imagepath', $file_upload)){
             // Before upload delete existing old Bird image
             if( $bird->getImagePath() !== 'default-image_observation.png'){
-                $old_file = $this->fiche_directory.'/'. $bird->getImagePath();
+                $old_file = $this->bird_directory.'/'. $bird->getImagePath();
                 if ($old_file) {
                     unlink($old_file);
                 }
@@ -211,7 +211,7 @@ Class FicheService
             $file = $file_upload['imagepath'];
             if ($file_upload['imagepath'] !== null) {
                 $fileName = md5(uniqid()) . '.' . $file->getExtension();
-                $file->move($this->fiche_directory, $fileName);
+                $file->move($this->bird_directory, $fileName);
                 $bird->setImagePath($fileName);
             }
             else{

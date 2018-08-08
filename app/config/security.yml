@@ -72,6 +72,7 @@ security:
         - { path: ^/contact, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/user, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/observation, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/bird, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, roles: ROLE_ADMIN}
         - { path: ^/API, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/API/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }

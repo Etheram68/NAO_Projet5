@@ -14,7 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Validator\Constraints\File;
 
-class FicheType extends AbstractType
+class BirdType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -74,6 +74,6 @@ class FicheType extends AbstractType
 
     public function getName()
     {
-        return 'fiche_form';
+        return 'bird_form';
     }
 }

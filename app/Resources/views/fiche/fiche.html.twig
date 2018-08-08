@@ -8,7 +8,7 @@
         <div class="container">
             <div class="row v-center">
                 <div class="col-xs-12 col-md-7 header-text">
-                    <h2>LES OBSERVATIONS</h2>
+                    <h2>LES FICHE</h2>
                     <h3>sur la Carte</h3>
                 </div>
             </div>
@@ -19,12 +19,15 @@
     <section class="section-padding gray-bg" id="blog-page">
         <div class="container">
             <div class="row">
+
                 <div class="col-xs-12 col-sm-4">
                             <form id="search-map-widget" method="post" style="width: 145%; top: 0px;">
-                                <a id="action-map-search" href="#" class="light-2"><i class="material-icons">search</i></a>
-                                <input type="text" id="search-bird" name="search-bird" autocomplete="off" placeholder="Rechercher par espèce"/>
-                            </form>
-                    <a href="{{ path('fiche.create') }}" class="btn-floating btn-large waves-effect waves-light" style="background-color: #FFDE00;"><i class="material-icons" style="color: #333;">add</i></a>
+                                    <a id="action-map-search" href="#" class="light-2"><i class="material-icons">search</i></a>
+                                    <input type="text" id="search-bird" name="search-bird" autocomplete="off" placeholder="Rechercher par espèce"/>        
+                                </form>
+                                <ul id="dropSpecimen" class="autocomplete-content dropdown-content" style="display: block; position: absolute; top: 77px; left: 28%; margin-top: -20px; margin-bottom: 20px; min-width: 50px; min-height: 0; display: block; opacity: 1; position: ABSOLUTE; width: 45%; width: 145%;"></ul>
+
+                    <a href="{{ path('bird.create') }}" class="btn-floating btn-large waves-effect waves-light" style="background-color: #FFDE00;"><i class="material-icons" style="color: #333;">add</i></a>
                 </div>
             </div>
         </div>
@@ -48,5 +51,144 @@
 {% endblock %}
 
 {% block script %}
+    <script>
+        $(function () {
+            $('ul.tabs').tabs();
+            /**************************
+             * Autocomplete Bird
+             ***************************************/
+            var searchBird      = $('#search-bird');
+            searchBird.materialize_autocomplete({
+                limit: 6,
+                cacheable: true,
+                multiple: {
+                    enable: false
+                },
+                dropdown : {
+                    el: '#dropSpecimen'
+                },
+                getData: function (value, callback) {
+                    var data = [];
+                    $.ajax({
 
+                        url: "{{ url('taxref.search.name') }}?bearer={{ jwt.token }}",
+                        type: "POST",
+
+                        dataType: "json",
+                        data: { "name": value },
+                        success: function (response) {
+                            callback(value, response);
+                        }
+                    });
+                },
+            });
+            
+            /**************************
+             * search form management
+             ***************************************/
+            var actionSearch    = $('#action-map-search');
+            var actionFilter    = $('#action-map-filter');
+            var formSearch      = $('#search-map-widget');
+            var extraFilter     = $('#extra-filter');
+            var bird            = $('#search-bird');
+            var department      = $('#extra-filter select');
+            var mapOverlay      = $('.map-result-overlay');
+            // Update map with all observations when page are finish to load
+            updateMapsWithObservations('', 0);
+            // Submit form by clinking on search button
+            actionSearch.on('click', function(e){
+                e.preventDefault();
+                formSearch.submit();
+            });
+            // submit by pressing enter
+            bird.on('keyup', function (event) {
+                if (event.which == 13) {
+                    formSearch.submit();
+                }
+            });
+            // Refresh when changing department
+            $('select').on('change', function() {
+                formSearch.submit();
+            })
+            ;
+            // Show or hide filter additional menu
+            actionFilter.on('click', function(e){
+                e.preventDefault();
+                extraFilter.toggle();
+                var arrowItem = actionFilter.find('i');
+                if(arrowItem.html() == 'keyboard_arrow_down'){
+                    arrowItem.html('keyboard_arrow_up');
+                }else{
+                    arrowItem.html('keyboard_arrow_down');
+                }
+            });
+            // When user submit form
+            formSearch.on('submit',function(e){
+                e.preventDefault();
+                updateMapsWithObservations(bird.val(), department.val());
+            });
+            /**
+             * Update current maps with observations generate with filters
+             *
+             * @param bird
+             * @param department
+             */
+            function updateMapsWithObservations(bird, department){
+                var data = {bird: bird, department: department};
+
+                $.post( "{{ url('obs.search') }}?bearer={{ jwt.token }}", data , function( response ) {
+
+                    map.removePolygons();
+                    map.removeMarkers();
+                    $.each(response, function(index, item) {
+                        var location = new google.maps.LatLng(item.latitude, item.longitude);
+                        drawRect(location);
+                        placeMarker(location);
+                    });
+                    $('#eltlist').html(response.html);
+                    mapOverlay.html(response.message);
+                    mapOverlay.show();
+                });
+            }
+            /**
+             * Add custom marker for position
+             * @param location
+             */
+            function placeMarker(location){
+                map.addMarker({
+                    position: location,
+
+                    icon: "{{ asset('bundles/naocore/img/marker.png') }}",
+
+                    title: 'Zoomer ici pour voir la zone d\'observation'
+                });
+            }
+            /**
+             * Draw rectangle
+             * @param location
+             */
+            function drawRect(location) {
+                var NORTH       = 0;
+                var WEST        = -90;
+                var SOUTH       = 180;
+                var EAST        = 90;
+                var distance    = 3000; // 3Km
+                var north = google.maps.geometry.spherical.computeOffset(location, distance / 2, NORTH);
+                var south = google.maps.geometry.spherical.computeOffset(location, distance / 2, SOUTH);
+                var northEast = google.maps.geometry.spherical.computeOffset(north, distance / 2, EAST);
+                var northWest = google.maps.geometry.spherical.computeOffset(north, distance / 2, WEST);
+                var southEast = google.maps.geometry.spherical.computeOffset(south, distance / 2, EAST);
+                var southWest = google.maps.geometry.spherical.computeOffset(south, distance / 2, WEST);
+                var path = [northEast, northWest, southWest, southEast];
+                polygon = map.drawPolygon({
+                    paths: path,
+                    strokeColor: '#f67d79',
+                    strokeOpacity: 0.9,
+                    strokeWeight: 1,
+                    fillColor: '#eec0b7',
+                    fillOpacity: 0.5,
+                });
+            }
+        });
+    </script>
 {% endblock %}
