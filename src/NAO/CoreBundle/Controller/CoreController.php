@@ -77,9 +77,9 @@ class CoreController extends Controller
                 )));
             $this->get('mailer')->send($message);
 
-            $request->getSession()->getFlashBag()->add('notice', 'Votre message à bien été envoyé');
+            $request->getSession()->getFlashBag()->add('notice', 'Votre E-mail à bien été envoyée, nous vous répondrons dans les plus brefs délais');
 
-            $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('homepage');
         }
         return $this->render('core/contact.html.twig', array(
             'form' => $form->createView(),

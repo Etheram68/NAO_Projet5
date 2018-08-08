@@ -5,6 +5,14 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
           rel="stylesheet">{% endblock %}
 {% block body %}
+    <!--Notice-area-->
+    <div class="col-md-12">
+        {% for message in app.session.flashbag.get('notice') %}
+            <div class="alert alert-success" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
     <!--Header-area-->
     <header class="header-area overlay full-height relative v-center" id="home-page">
         <div class="absolute anlge-bg"></div>
