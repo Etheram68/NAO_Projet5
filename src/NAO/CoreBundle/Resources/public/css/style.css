@@ -1999,7 +1999,7 @@ section#article-page.section-padding {
     margin-bottom: 50px;
 }
 #commentUser {
-    font-size: 12px;
+    font-size: 10.5px;
     font-style: italic;
 }
 #commentUser a {
@@ -2014,7 +2014,7 @@ section#article-page.section-padding {
     border-top: 1px solid #aaaa;
 }
 #commentContent {
-    font-size: 15px;
+    font-size: 16.5px;
     margin: 10px 0px 20px 0px;
 }
 

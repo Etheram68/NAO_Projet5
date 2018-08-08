@@ -47,7 +47,7 @@
                                 {% if comment.moderation == 1 %}
                                     <li>
                                         <div id="commentUser"> 
-                                            Posté par <a href="{{ path('user.username', {'username': comment.user } ) }}" >{{ comment.user }}</a> le {{ comment.date|date("d/m/Y  H:i") }}
+                                            posté par <a href="{{ path('user.username', {'username': comment.user } ) }}" >{{ comment.user }}</a> le {{ comment.date|date("d/m/Y  H:i") }}
                                         </div>
                                         <hr class="hrComment">
                                         <div id="commentContent">
