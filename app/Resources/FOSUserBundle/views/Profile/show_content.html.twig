@@ -68,7 +68,7 @@
         <div class="presentation col-lg-12">
         	<p class="profilTexte">À propos</p>
         	{% if (user.presentation) == null %}
-        	<div id="emptyPresentation">L'utilisateur n'a pas rempli ce champ</div>
+        	<div class="emptyInfos">L'utilisateur n'a pas rempli ce champ</div>
         	{% else %}
         		<div>"{{ user.presentation }}"</div>
     		{% endif %}
@@ -78,21 +78,32 @@
     {# RANGÉE 3 #}
     <div class="row col-lg-12 rangee-3">
 		<div class="lastObs col-lg-6 col-xs-12">
-        	<p class="profilTexte">Dernières observations</p>
-        	<ul>
-        		<li>Lamlakd mlaa</li>
-        		<li>Lamlakd mlaa</li>
-        		<li>Lamlakd mlaa</li>
-        	</ul>
-        </div>
+			<p class="profilTexte">Dernières observations</p>
+			{% if infosObs == null %}
+				<div class="emptyInfos">Aucune observation</div>
+			{% else %}
+				{% for info in infosObs|reverse %}
+					<ul>        	
+						<li>{{ info.oiseau }}</li>
+						<li>{{ info.lieu }}</li>
+						<li>{{ info.date|date('d/m/Y') }}</li>       	
+					</ul>
+				{% endfor %}
+			{% endif %}
+		</div>
         <div class="separation"></div>
 		<div class="lastCom col-lg-6 col-xs-12">
-        	<p class="profilTexte">Derniers commentaires</p>
-        	<ul>
-        		<li>Lamlakd mlaa</li>
-        		<li>Lamlakd mlaa</li>
-        		<li>Lamlakd mlaa</li>
-        	</ul>
+			<p class="profilTexte">Derniers commentaires</p>
+			{% if infosComment == null %}
+				<div class="emptyInfos">Aucun commentaire</div>
+			{% else %}
+				{% for info in infosComment|reverse %}
+					<ul>        	
+						<li>{{ info.contenu }}</li>
+						<li>{{ info.date|date('d/m/Y') }}</li>       	
+					</ul>
+				{% endfor %}
+			{% endif %}
 		</div>
     </div>
     {# BOUTONS #}
