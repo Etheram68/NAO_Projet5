@@ -196,6 +196,7 @@ class BlogController extends Controller
             ));
         }
         return $this->render('blog\addComment.html.twig', array(
+            'article' => $article,
             'comment' => $comment,
             'form' => $form->createView(),
         ));

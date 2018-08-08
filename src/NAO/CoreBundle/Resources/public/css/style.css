@@ -1967,7 +1967,7 @@ section#blog-page.section-padding {
     font-weight: 700;
     line-height: 1.3em;
     padding-top: 5px;
-    margin: 10px 0px 20px 0px;
+    margin: 10px 0px 40px 0px;
 }
 .buttonBlog a.btn.btn-light,
 .buttonBlog a.btn.btn-secondary,
@@ -1994,12 +1994,40 @@ section#article-page.section-padding {
 .comment-content {
     margin-bottom: 50px;
 }
-/* Page commentaire */
+#commentUser {
+    font-size: 12px;
+    font-style: italic;
+}
+#commentUser a {
+    text-transform: uppercase;
+}
+#commentUser a:hover {
+    color: #FFDE00;
+}
+.hrComment {
+    margin: 0px 0px 0px 0px;
+    width: 50%;
+    border-top: 1px solid #aaaa;
+}
+#commentContent {
+    font-size: 15px;
+    margin: 10px 0px 20px 0px;
+}
+
+/* Page Ajout commentaire */
 
 #pageComment {
     height: auto;
     background-color: #F6F6F6;
     padding: 120px 100px 100px 150px;
+}
+#pageComment input[type="submit"] {
+    margin: 15px 0px 20px 0px;
+}
+#pageComment p.textWarning {
+    font-size: 0.8em;
+    font-style: italic;
+    margin: 20px 0px 20px 20px;
 }
 /* Page modification Article */
 

@@ -40,9 +40,14 @@
                         <ul>
                             {% for comment in listComments %}
                                 {% if comment.moderation == 1 %}
-                                    <li> Posté par {{ comment.user }} le {{ comment.date|date("d/m/Y  H:i") }}
-                                        <hr>
-                                        {{ comment.content }}
+                                    <li>
+                                        <div id="commentUser"> 
+                                            Posté par <a href="{{ path('user.username', {'username': app.user.username } ) }}" >{{ comment.user }}</a> le {{ comment.date|date("d/m/Y  H:i") }}
+                                        </div>
+                                        <hr class="hrComment">
+                                        <div id="commentContent">
+                                            {{ comment.content }}
+                                        </div>
                                     </li>
                                 {% endif %}
                             {% else %}
