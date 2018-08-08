@@ -36,7 +36,9 @@
                     {% endif %}
 
                     {% if (is_granted("IS_AUTHENTICATED_REMEMBERED")) and (is_granted("ROLE_ADMIN")) %}
-                      <li><a href="{{ path('admin') }}" class="helloUser" >Bonjour {{ app.user.username }} !</a>
+                      <li><a href="{{ path('user.username', {'username': app.user.username } ) }}" class="helloAdmin" >Bonjour {{ app.user.username }} !</a>
+                      </li>
+                      <li><a href="{{ path('admin') }}" class="helloAdmin" >Administration</a>
                       </li>
                     {% elseif is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                       <li>

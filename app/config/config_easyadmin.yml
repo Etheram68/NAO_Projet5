@@ -90,26 +90,36 @@ easy_admin:
             list:
                 actions:
                     - { name: 'edit', icon: 'pencil', label: '', title: 'Éditer' }
+                    - { name: 'new', label: 'Créer un article'}
                 title: Les articles
                 sort: ['id', 'ASC']
                 fields: 
-                    - id
                     - { property: 'title', label: 'Titre' }
                     - { property: 'user', label: 'Auteur' }
                     - { property: 'date',  label: 'Date' }
-                    - { property: 'content',  label: 'Contenu' }
                     - { property: 'moderation',  label: 'Publié' }
             edit:
                 title:  "Modifier l'article"
                 fields:
                     - { property: 'title', label: 'Titre' }
-                    - { property: 'author', label: 'Auteur' }
+                    - { property: 'date',  label: 'Date' }
                     - { property: 'content',  label: 'Contenu' }
+                    - { property: 'image',  label: 'Image' }
+            new:
+                title:  "Créer un article"
+                fields:
+                    - { property: 'title', label: 'Titre' }
+                    - { property: 'date',  label: 'Date' }
+                    - { property: 'user', label: 'Auteur' }
+                    - { property: 'content',  label: 'Contenu' }
+                    - { property: 'image',  label: 'Image' }
         Comment:
             class: NAO\BlogBundle\Entity\Comment
             list:
                 actions:
                     - { name: 'edit', icon: 'pencil', label: '', title: 'Éditer' }
+                    - '-new'
+                    - '-search'
                 title: Les commentaires
                 sort: ['id', 'ASC']
                 fields: 
@@ -117,18 +127,19 @@ easy_admin:
                     - { property: 'date', label: 'Date' }
                     - { property: 'content',  label: 'Contenu' }
                     - { property: 'article',  label: 'Article correspondant' }
-                    - { property: 'moderation',  label: 'Actif' }
+                    - { property: 'moderation',  label: 'Publié' }
             edit:
                 title:  'Modérer le commentaire'
                 fields:
                     - { property: 'content',  label: 'Contenu' }
-                    - { property: 'date', label: 'Date' }
-                    - { property: 'moderation',  label: 'Actif' }
+                    # - { property: 'date', label: 'Date' }
+                    - { property: 'moderation',  label: 'Publié' }
         User:
             class: NAO\UserBundle\Entity\User
             list:
                 actions:
                     - { name: 'edit', icon: 'pencil', label: '', title: 'Éditer' }
+                    - { name: 'new', label: 'Créer un compte' }
                 title: Les utilisateurs
                 sort: ['id', 'ASC']
                 fields: 
@@ -151,6 +162,20 @@ easy_admin:
                     - { property: 'email', label: 'Contact', type: 'email' }
                     - { property: 'town', label: 'Ville' }
                     - { property: 'newsletter' }
-                    - { property: 'roles', label: 'Rôle' }
+                    - { property: 'roles', label: 'Rôle', help: 'ROLE_USER (Particulier) ou ROLE_ADMIN (Naturaliste)' }
                     - { property: 'points', label: 'Nbr de points' }
-                    - { property: 'enabled',  label: 'Actif' }
+                    - { property: 'enabled',  label: 'Activation du compte' }
+            new:
+                title:  'Créer un compte'
+                fields:
+                    - { property: 'lastname', label: 'Nom' }
+                    - { property: 'firstname', label: 'Prénom' }
+                    - { property: 'username', label: 'Pseudo' }
+                    - { property: 'email', label: 'Email', type: 'email' }
+                    - { property: 'town', label: 'Ville' }
+                    - { property: 'rgpd',  label: 'RGPD' }
+                    - { property: 'newsletter' }
+                    - { property: 'roles', label: 'Rôle', help: 'ROLE_USER (Particulier) ou ROLE_ADMIN (Naturaliste)' }
+                    - { property: 'enabled',  label: 'Activation du compte' }
+                    - { property: 'plainPassword',  label: 'Mot de passe' }
+                    - { property: 'password',  label: 'Répétez le mot de passe' }
