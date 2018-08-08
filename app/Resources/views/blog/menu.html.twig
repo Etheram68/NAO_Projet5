@@ -10,7 +10,7 @@
                     <a href="{{ path('nao_blog_view', {'id': article.id}) }}">
                         {{ article.title }}
                     </a>
-                    par {{ article.author }},
+                    par {{ article.user }},
                     le {{ article.date|date('d/m/Y') }}
                 </li>
             {% else %}

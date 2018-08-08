@@ -13,7 +13,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use NAO\MapBundle\Entity\User;
 
 /**
  * Class BlogController
@@ -66,6 +68,7 @@ class BlogController extends Controller
         $listComments = $em
             ->getRepository('NAOBlogBundle:Comment')
             ->findBy(array('article' => $article));
+
         return $this->render('blog\view.html.twig', array(
             'article' => $article,
             'listComments' => $listComments,
@@ -160,16 +163,23 @@ class BlogController extends Controller
      * add comment
      *
      * @Route("/blog/comment/{id}", name="comment.add")
-     *
+     * @Security("is_granted('ROLE_USER')")
+     * @Method({"GET", "POST"})
      * @param Comment $comment
      * @param Article $article
+     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
 
     public function addCommentAction(Request $request, Article $article)
-    {
+    {        
+        $user = $this->getUser();
         $comment = new Comment();
+        $comment->setDate(new \DateTime());
+        $comment->setUser($user);
+        $comment->setModeration(1);
         $comment->setArticle($article);
+
         $form = $this->get('form.factory')->create(CommentType::class, $comment);
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
@@ -186,6 +196,7 @@ class BlogController extends Controller
             ));
         }
         return $this->render('blog\addComment.html.twig', array(
+            'article' => $article,
             'comment' => $comment,
             'form' => $form->createView(),
         ));

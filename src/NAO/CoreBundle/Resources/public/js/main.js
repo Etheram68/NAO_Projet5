@@ -107,6 +107,10 @@
     $('.header-area-register').parallax("50%", -0.6);
     $('.header-area-login').parallax("50%", -0.6);
     $('.header-area-profile').parallax("50%", -0.6);
+    $('.header-area-blog').parallax("50%", -0.6);
+    $('.header-area-contact').parallax("50%", -0.6);
+    $('.header-area-map').parallax("50%", -0.6);
+    $('.header-area-observation').parallax("50%", -0.6);
     $('.price-area').parallax("50%", -0.5);
     $('.testimonial-area').parallax("10%", -0.2);
 
