@@ -21,7 +21,7 @@ parameters:
     niveau08: Hirondelle Rustique
     niveau09: Black Stork
     niveau10: Imperial Eagle
-    obseravtions_directory: '%kernel.project_dir%/web/bundles/naocore/img/oiseaux/observations'
+    observations_directory: '%kernel.project_dir%/web/bundles/naocore/img/oiseaux/observations'
     list_limit: 10
     gps_distance: 10
 

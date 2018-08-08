@@ -40,7 +40,7 @@ class BirdType extends AbstractType
                 'label'         => false,
                 'mapped'        => false,
                 'data_class'    => null,
-                'required'      => false,
+                'required'      => true,
                 'attr'          => array('class' => 'upload'),
                 'constraints' => [
                     new File([

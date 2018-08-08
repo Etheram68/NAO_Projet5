@@ -21,19 +21,19 @@ Class BirdService
     private $em;
     private $ts;
     private $list_limit;
-    private $obseravtions_directory;
+    private $observations_directory;
     private $translator = null;
 
     /**
      * FicheService constructor.
      * @param EntityManager $em
      */
-    public function __construct(EntityManager $em, TokenStorage $ts, $list_limit, $obseravtions_directory, TranslatorInterface $translator)
+    public function __construct(EntityManager $em, TokenStorage $ts, $list_limit, $observations_directory, TranslatorInterface $translator)
     {
         $this->em = $em;
         $this->ts = $ts;
         $this->list_limit = $list_limit;
-        $this->obseravtions_directory = $obseravtions_directory;
+        $this->observations_directory = $observations_directory;
         $this->translator = $translator;
     }
 
@@ -98,7 +98,7 @@ Class BirdService
         }
         $image = $ob->getImagePath();
         if ($image) {
-            $image = $url . '/img/oiseaux/observation/' . $image;
+            $image = $url . '/img/oiseaux/observations/' . $image;
         }
         $bird = [
             'size' => $ob->getSize(),
@@ -203,9 +203,9 @@ Class BirdService
         $filename = $bird->getId() . '_' . $user->getId() . '.jpg';
         if (isset($bird['image']) && !empty($bird['image'])) {
             $data = base64_decode($bird['image']);
-            file_put_contents('./img/oiseaux/observation/' . $filename, $data);
+            file_put_contents('./img/oiseaux/observations/' . $filename, $data);
         } else {
-            copy('img/oiseaux/default-image_observation.png', 'img/oiseaux/observation/' . $filename);
+            copy('img/oiseaux/default-image_observation.png', 'img/oiseaux/observations/' . $filename);
         }
         $bird->setImagePath($filename);
         $this->em->persist($bird);
@@ -225,12 +225,12 @@ Class BirdService
         // Get user informations
         $user = $this->ts->getToken()->getUser();
         $bird->setUser($user);
-        // User want to save Bird as draft
+        // User want to save observation as draft
         if ($form->get('save_draft')->isClicked()) {
             $bird->setStatus(Bird::DRAFT);
             $redirect = 'DRAFT';
         }
-        // User want published Bird,
+        // User want published Fiche,
         // only simple user need to have validation
         if ($form->get('save_published')->isClicked()) {
             if ($user->hasRole('ROLE_USER')){
@@ -247,14 +247,14 @@ Class BirdService
         $latin_name     = substr($taxref_name, ($p = strpos($taxref_name, '(')+1), strrpos($taxref_name, ')')-$p);
         $taxref         = $this->em->getRepository('NAOMapBundle:Taxref')->findOneBy(array('taxon_sc' => $latin_name));
         $bird->setTaxref($taxref);
-        // finaly we need to keep information about Bird image
+        // finaly we need to keep information about observation image
         $file_upload = $request->files->get('bird');
         if(array_key_exists('imagepath', $file_upload)){
-            // Before upload delete existing old Bird image
+            // Before upload delete existing old observation image
             if( $bird->getImagePath() !== 'default-image_observation.png'){
-                $old_file = $this->obseravtions_directory.'/'. $bird->getImagePath();
+                $old_file = $this->observations_directory.'/'. $bird->getImagePath();
             }
-             $file = $file_upload['imagepath'];
+            $file = $file_upload['imagepath'];
             if ($file_upload['imagepath'] !== null) {
                 $fileName = md5(uniqid()) . '.' . $file->getExtension();
                 $file->move($this->observations_directory, $fileName);

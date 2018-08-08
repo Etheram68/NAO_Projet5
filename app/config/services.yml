@@ -32,12 +32,12 @@ services:
     app.obs:
             class: NAO\MapBundle\Service\ObservationService
             public: true
-            arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", '%list_limit%', '%obseravtions_directory%']
+            arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", '%list_limit%', '%observations_directory%']
 
     app.bird:
                 class: NAO\FicheBundle\Service\BirdService
                 public: true
-                arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", '%list_limit%', '%obseravtions_directory%']
+                arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", '%list_limit%', '%observations_directory%']
 
     app.geoloc:
             class: NAO\MapBundle\Service\GeolocService
