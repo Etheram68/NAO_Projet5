@@ -22,7 +22,7 @@
         ]
     },
     "require": {
-        "php": ">=5.6.35",
+        "php": ">=5.6.30",
         "beberlei/DoctrineExtensions": "^1.0",
         "cocur/slugify": "^3.0",
         "doctrine/doctrine-bundle": "^1.6",
