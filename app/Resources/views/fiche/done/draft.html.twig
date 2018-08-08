@@ -8,7 +8,7 @@
         <div class="container">
             <div class="row v-center">
                 <div class="col-xs-12 col-md-7 header-text">
-                    <h2>Votre Observation</h2>
+                    <h2>Votre Fiche</h2>
                     <h3>Brouillons</h3>
                 </div>
             </div>
@@ -21,12 +21,12 @@
             <div class="row">
                 <main class="container marge-top">
                     <section>
-                        {% if obslist|length > 0 %}
+                        {% if birdlist|length > 0 %}
                             <div class="row">
                                 <div id="eltlist" data-maxPage="{{ paginate.maxPages }}">
-                                    {% for observation in obslist %}
+                                    {% for bird in birdlist %}
                                         <div class="col s12 m6" >
-                                            {% include 'observation/cards/observation_state.html.twig' with {'observation':observation, 'action': 'edit' } only %}
+                                            {% include 'fiche/cards/bird_state.html.twig' with {'bird':bird, 'action': 'edit' } only %}
                                         </div>
                                     {% endfor %}
                                 </div>
@@ -34,7 +34,7 @@
                         {% else %}
                             <div class="row">
                                 <div class="col s12">
-                                    <p>Vous n'avez pas d'observation en brouillons</p>
+                                    <p>Vous n'avez pas de Fiche en brouillons</p>
                                 </div>
                             </div>
                         {% endif %}

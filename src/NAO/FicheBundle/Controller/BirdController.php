@@ -92,4 +92,50 @@ class BirdController extends Controller
             'birdlist' => $bird->getIterator()
         ]);
     }
+
+    /**
+     * @Route("/vos-fiche/brouillon", name="bird.me.draft")
+     * @Security("is_granted('ROLE_USER')")
+     * @Method({"GET"})
+     */
+    public function showDraftAction(Request $request, $page = 1)
+    {
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $obs = $em->getRepository('NAOFicheBundle:Bird')->getMyDraftBird($user, $page,$this->getParameter('list_limit'));
+        return $this->render('fiche/done/draft.html.twig', [
+            'token' => $this->container->get('lexik_jwt_authentication.jwt_manager')->create($user),
+            'paginate' => $this->container->get('app.obs')->getPagination($obs,$page),
+            'birdlist' => $obs->getIterator()
+        ]);
+    }
+
+    /**
+     * @Route("/vos-fiche/brouillon/edition/{id}", name="bird.me.draft.edit")
+     * @ParamConverter("obs", options={"mapping": {"id": "id"}})
+     * @Security("is_granted('ROLE_USER')")
+     * @Method({"GET", "POST"})
+     */
+    public function editDraftAction(Bird $bird, Request $request)
+    {
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        if($bird->getStatus() != $bird::DRAFT || $bird->getUser() != $user){
+            throw $this->createNotFoundException('you cannot access of this page !');
+        }
+        $form = $this->createForm(BirdType::class, $bird);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()){
+            $action = $this->container->get('app.bird')->saveBird($bird, $form, $request);
+            if($action == 'DRAFT'){
+                return $this->redirectToRoute('bird.me.draft');
+            }elseif($action == 'WAITING'){
+                return $this->redirectToRoute('bird.me.waiting');
+            }elseif($action == 'PUBLISHED'){
+                return $this->redirectToRoute('bird.me.validate');
+            }
+        }
+        return $this->render('Fiche/create.html.twig', array(
+            'form'      => $form->createView()
+        ));
+    }
 }

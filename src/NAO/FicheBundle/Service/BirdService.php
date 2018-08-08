@@ -254,10 +254,10 @@ Class BirdService
             if( $bird->getImagePath() !== 'default-image_observation.png'){
                 $old_file = $this->obseravtions_directory.'/'. $bird->getImagePath();
             }
-            $file = $file_upload['imagepath'];
+             $file = $file_upload['imagepath'];
             if ($file_upload['imagepath'] !== null) {
                 $fileName = md5(uniqid()) . '.' . $file->getExtension();
-                $file->move($this->obseravtions_directory, $fileName);
+                $file->move($this->observations_directory, $fileName);
                 $bird->setImagePath($fileName);
             }
             else{
