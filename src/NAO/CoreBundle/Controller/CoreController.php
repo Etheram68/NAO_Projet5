@@ -10,11 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 /**
-<<<<<<< HEAD
  * Class CoreBundleController
-=======
- * Class AppBundleController
->>>>>>> Francois-Dev-Branch
  *
  * @package NAO\CoreBundle\Controller
  */
@@ -84,6 +80,17 @@ class CoreController extends Controller
         return $this->render('core/contact.html.twig', array(
             'form' => $form->createView(),
         ));
+    }
+
+    /**
+     * Mention Légale
+     * @Route("/Mention", name="mention")
+     * @Method({"GET"})
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function mentionAction()
+    {
+        return $this->render('ressource\mentionlegale.html.twig');
     }
 
 }
