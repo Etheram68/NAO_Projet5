@@ -3,6 +3,7 @@
 namespace NAO\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
@@ -30,11 +31,10 @@ class Comment
     private $date;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="author", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="NAO\UserBundle\Entity\User", fetch="EAGER")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $author;
+    private $user;
 
     /**
      * @var string
@@ -48,6 +48,13 @@ class Comment
      * @ORM\JoinColumn(nullable=false)
      */
     private $article;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="moderation", type="boolean")
+     */
+    private $moderation;
 
     /**
      * Get id
@@ -81,30 +88,6 @@ class Comment
     public function getDate()
     {
         return $this->date;
-    }
-
-    /**
-     * Set author
-     *
-     * @param string $author
-     *
-     * @return Comment
-     */
-    public function setAuthor($author)
-    {
-        $this->author = $author;
-
-        return $this;
-    }
-
-    /**
-     * Get author
-     *
-     * @return string
-     */
-    public function getAuthor()
-    {
-        return $this->author;
     }
 
     /**
@@ -153,5 +136,53 @@ class Comment
     public function getArticle()
     {
         return $this->article;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \NAO\UserBundle\Entity\User $user
+     *
+     * @return Comment
+     */
+    public function setUser(\NAO\UserBundle\Entity\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \NAO\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set moderation
+     *
+     * @param boolean $moderation
+     *
+     * @return Comment
+     */
+    public function setModeration($moderation)
+    {
+        $this->moderation = $moderation;
+
+        return $this;
+    }
+
+    /**
+     * Get moderation
+     *
+     * @return boolean
+     */
+    public function getModeration()
+    {
+        return $this->moderation;
     }
 }

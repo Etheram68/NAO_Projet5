@@ -20,7 +20,7 @@ class ArticleType extends AbstractType
         $builder
             ->add('date', DateTimeType::class)
             ->add('title', TextType::class)
-            ->add('author', TextType::class)
+            // ->add('user', TextType::class)
             ->add('content', TextareaType::class)
             ->add('image', ImageType::class)
             ->add('submit', SubmitType::class);

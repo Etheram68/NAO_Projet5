@@ -8,51 +8,52 @@
 {% endblock %}
 
 {% block naoblog_body %}
-    <header class="header-404 overlay full-404 relative v-center" id="home-page">
-        <div class="absolute anlge-bg">
+    <!--Header-area-->
+    <header class="header-area-blog overlay full-height-miniHeader relative v-center">
+        <div class="absolute anlge-bg"></div>
             <div class="container">
                 <div class="row v-center">
-                    <div class="col-xs-12 col-md-7 header-text">
-                        <h2>BLOG</h2>
-                        <h3>Liste des Articles</h3>
+                    <div class="col-xs-12 col-md-7 header-text-blog">
+                        <h2>Le Blog</h2>
+                        <h3>Consulter les dernières actualités</h3>
                     </div>
                 </div>
             </div>
-        </div>
     </header>
-
-    <section class="section-padding gray-bg" id="blog-page">
-        <div class="container">
+    <section class="section-padding" id="blog-page">
+        <div class="container" id="pageBlog">
             <div class="row">
                 <!-- Premier article de blog-->
                 {% for article in listArticles %}
-                    <div class="col-xs-12 col-sm-6">
-                        <div class="single-blog">
-                            <div class="box" style="padding: 10px 10px; text-align: left;">
-                                <div class="blog-photo">
-                                    <img src="{{ asset('bundles/naocore/img/blog/small1.jpg') }}" alt="default">
-                                </div>
-                                <div class="blog-content">
-                                    <h3>
-                                        <a href="{{ path('article', {'id': article.id}) }}">
-                                            {{ article.title }}
-                                        </a>
-                                    </h3>
-                                    <ul class="blog-meta">
-                                        <li><span class="ti-user"></span> <a href="#">{{ article.author }}</a></li>
-                                        <li><span class="ti-calendar"></span> <a
-                                                    href="#">{{ article.date|date('d/m/Y') }}</a>
-                                        </li>
-                                    </ul>
-                                    <p>{{ article.content|truncate(100, true) }}</p>
-
-
+                    {% if article.moderation == 1 %}
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="single-blog">
+                                <div class="box" style="padding: 10px 10px; text-align: left;">
+                                    <div class="blog-photo">
+                                        <img src="{{ asset('bundles/naocore/img/blog/small1.jpg') }}" alt="default">
+                                    </div>
+                                    <div class="blog-content">
+                                        <h3>
+                                            <a href="{{ path('article', {'id': article.id}) }}">
+                                                {{ article.title }}
+                                            </a>
+                                        </h3>
+                                        <ul class="blog-meta">
+                                            <i class="glyphicon glyphicon-user"></i>
+                                            <a href="{{ path('user.username', {'username': article.user } ) }}">{{ article.user }}</a>
+                                            <i class="glyphicon glyphicon-calendar"></i>
+                                            <span>{{ article.date|date('d/m/Y') }}</span>
+                                        </ul>  
+                                        <p>{{ article.content|truncate(100, true) }}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    {% endif %}
                 {% else %}
-                    Pas (encore !) d'article
+                    <div class="col-xs-12 col-sm-6">
+                       <h3> Pas (encore !) d'article</h3>
+                    </div>
                 {% endfor %}
             </div>
         </div>

@@ -5,6 +5,14 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
           rel="stylesheet">{% endblock %}
 {% block body %}
+    <!--Notice-area-->
+    <div class="col-md-12">
+        {% for message in app.session.flashbag.get('notice') %}
+            <div class="alert alert-success" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
     <!--Header-area-->
     <header class="header-area overlay full-height relative v-center" id="home-page">
         <div class="absolute anlge-bg"></div>
@@ -15,7 +23,7 @@
               <h2>Partagez votre passion pour les oiseaux et la nature</h2>
               <h3>Venez avec nous contribuer au recensement des espèces sur le territoire et soutenir le programme de recherche sur la biodiversité</h3>
               <!-- ajouter le lien -->                        
-              <a href="#" class="mainButton">Découvrez l'Ornithologie</a>
+              <a href="{{ path('observation.map') }}" class="btn btn-light mainButton">Aidez nous à recenser les oiseaux</a>
             </div>
           </div>
 
@@ -28,18 +36,31 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-4">
-                    <a href="{{ path('fos_user_registration_register') }}" title="Register">
+                  {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <a href="{{ path('user.username', {'username': app.user.username } ) }}" title="Register">
                     <div class="box">
                         <div class="box-icon">
                             <div id="wb_FontAwesomeIcon3">
                                 <div id="FontAwesomeIcon3"><i class="fa fa-pencil"></i></div>
-
                             </div>
                         </div>
                         <h4>Inscrivez-Vous</h4>
                         <p>Créez un compte en remplissant le formulaire</p>
                     </div>
                     </a>
+                  {% else %}
+                    <a href="{{ path('fos_user_registration_register') }}" title="Register">
+                    <div class="box">
+                        <div class="box-icon">
+                            <div id="wb_FontAwesomeIcon3">
+                                <div id="FontAwesomeIcon3"><i class="fa fa-pencil"></i></div>
+                            </div>
+                        </div>
+                        <h4>Inscrivez-Vous</h4>
+                        <p>Créez un compte en remplissant le formulaire</p>
+                    </div>
+                    </a>
+                  {% endif %}
                 </div>
                 <div class="col-xs-12 col-sm-4">
                     <a href="{{ path('observation.create') }}" title="Observation">
@@ -152,8 +173,10 @@
                                 <div class="blog-content">
                                     <h3><a href="{{ path('article', {'id': article.id}) }}">{{ article.title }}</a></h3>
                                     <ul class="blog-meta">
-                                        <li><span class="ti-user"></span> <a href="#">{{ article.author }}</a></li>
-                                        <li><span class="ti-calendar"></span> <a href="#">{{ article.date | date ('d/m/Y') }}</a></li>
+                                      <i class="glyphicon glyphicon-user"></i>
+                                      <a href="{{ path('user.username', {'username': article.user } ) }}">{{ article.user }}</a>
+                                      <i class="glyphicon glyphicon-calendar"></i>
+                                      <span>{{ article.date|date('d/m/Y') }}</span>
                                     </ul>
                                     <p>{{ article.content|truncate(100, true) }}</p>
                                 </div>

@@ -1,0 +1,52 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}Fiche - {{ parent() }}{% endblock %}
+
+{% block body %}
+    <header class="header-404 overlay full-404 relative v-center" id="home-page">
+        <div class="absolute anlge-bg"></div>
+        <div class="container">
+            <div class="row v-center">
+                <div class="col-xs-12 col-md-7 header-text">
+                    <h2>Fiche</h2>
+                    <h3>En détail</h3>
+                </div>
+            </div>
+        </div>
+        </div>
+    </header>
+
+    <section class="section-padding gray-bg" id="blog-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="card no-style observation no-border">
+                            <div class="item active row">
+                                <div class="v-center">
+                                    <div class="col-xs-12 col-md-6">
+                                        <div class="caption-photo one" data-animation="animated fadeInRight">
+                                            <img src="{{ asset('bundles/naocore/img/oiseaux/observations/' ~ bird.imagePath ) }}" alt="Image d'un oiseaux">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-6">
+                                        <div class="caption-title" data-animation="animated fadeInUp">
+                                            <h2>{{ bird.taxref.commonName }}<br/></h2>
+                                        </div>
+                                        <div class="caption-desc" data-animation="animated fadeInUp">
+                                            <p>{{ bird.taxref.familia }}</p>
+                                            <p>{{ bird.size }}</p>
+                                            <p>{{ bird.color }}</p>
+                                            <p>Commentaire: <br />{{ bird.feature }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="observedby">
+                                        <p>Valider par : <br />{% include ':observation/validation:observer.html.twig' %}</p>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

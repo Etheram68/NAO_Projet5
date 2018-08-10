@@ -1,0 +1,154 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}Ajouter - {{ parent() }}{% endblock %}
+
+{% block body %}
+
+    <header class="header-404 overlay full-404 relative v-center" id="home-page">
+        <div class="absolute anlge-bg"></div>
+        <div class="container">
+            <div class="row v-center">
+                <div class="col-xs-12 col-md-7 header-text">
+                    <h2>CONTRIBUER A UNE FICHE</h2>
+                    <h3>Merci de contribuer</h3>
+                </div>
+            </div>
+        </div>
+        </div>
+    </header>
+
+    <section class="section-padding gray-bg" id="blog-page">
+        <div class="container">
+            <div class="row">
+
+                    <main class="container marge-top">
+                        <section>
+                            <div class="row">
+                                <div class="col-s12">
+                                    <div class="card no-style">
+                                        <div class="card-content">
+                                            <form id="bird_form" method="post" autocomplete="off" enctype="multipart/form-data">
+                                                <div class="row">
+                                                    <div class="col-s12 l6 main-section">
+
+                                                        <div class="input-field col-s12">
+                                                            <div class="col-md-12">
+                                                                {% for message in app.session.flashbag.get('fiche') %}
+                                                                    <div class="alert alert-danger" role="alert">
+                                                                        {{ message }}
+                                                                    </div>
+                                                                {% endfor %}
+                                                            </div>
+                                                            <label>Espèce observée</label>
+                                                            {{ form_widget(form.taxref.customname, {'attr':{'class':'form-control'}}) }}
+                                                            <ul id="dropBird" class="autocomplete-content dropdown-content" style="margin-top: -20px; opacity: 1; position: absolute;"></ul>
+                                                            <div class="error">{{ form_errors(form.taxref.customname) }}</div>
+                                                            <p class="left-align"><a href="http://www.oiseaux.net/oiseaux/france.html" class="caption light-2-no-hov small" target="_blank">Besoin d'aide ?</a></p>
+                                                        </div>
+
+                                                        <div class="input-field col-s12">
+                                                            <label>Taille</label>
+                                                            {{ form_widget(form.size) }}
+                                                            <div class="error">{{ form_errors(form.size) }}</div>
+                                                        </div>
+
+                                                        <input style="display:none">
+                                                        <div class="input-field col-s12">
+                                                            <label>Poids</label>
+                                                            {{ form_widget(form.weight) }}
+                                                            <div class="error">{{ form_errors(form.weight) }}</div>
+                                                        </div>
+
+                                                        <div class="input-field col-s12">
+                                                            <div class="row">
+                                                                <div class="col-s9">
+                                                                    <label>Principal Couleur</label>
+                                                                </div>
+                                                                <div class="col-s3">
+                                                                    {{ form_widget(form.color) }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="input-field col-s12">
+                                                            <div class="row">
+                                                                <div class="col-s9">
+                                                                    <label>Information complémentaire</label>
+                                                                </div>
+                                                                <div class="col-s3">
+                                                                    {{ form_widget(form.feature) }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="input-field col-s12 center-align">
+                                                            <div class="file-field input-field">
+                                                                <div class="btn-floating btn-large waves-effect waves-light">
+                                                                    <i class="material-icons dp48" >add_a_photo</i>
+                                                                    {{ form_widget(form.imagepath) }}
+                                                                </div>
+                                                                <div class="file-path-wrapper">
+                                                                    <input class="file-path validate valid" type="text">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="error">{{ form_errors(form.imagepath) }}</div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div id="obs-action" class="col-s12 center-align">
+                                                        {{ form_widget(form.save_draft) }}
+                                                        {{ form_widget(form.save_published) }}
+                                                    </div>
+
+                                                </div>
+                                                {{ form_end(form) }}
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- MAPS MODAL -->
+                            <div id="pointer_map" class="modal">
+                                <div id="maps"></div>
+                            </div>
+                        </section>
+                    </main>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block script %}
+    <script>
+        $(function () {
+            /**************************
+             * Autocomplete Bird
+             ***************************************/
+            $('#bird_taxref_customname').materialize_autocomplete({
+                limit: 6,
+                cacheable: true,
+                multiple: {
+                    enable: false
+                },
+                dropdown : {
+                    el: '#dropBird'
+                },
+                getData: function (value, callback) {
+                    var data = [];
+                    $.ajax({
+                        url: "{{ url('taxref.search.name') }}?bearer={{ jwt.token }}",
+                        type: "POST",
+                        dataType: "json",
+                        data: { "name": value },
+                        success: function (response) {
+                            callback(value, response);
+                        }
+                    });
+                },
+            });
+        });
+    </script>
+{% endblock %}

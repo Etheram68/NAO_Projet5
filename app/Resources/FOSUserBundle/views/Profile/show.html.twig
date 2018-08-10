@@ -9,6 +9,13 @@
                 <div class="row v-center">
                     <div class="col-xs-12 col-md-7 header-text-profile">
                         <h2>{{ user.username }}</h2>
+                        {% if user.roles is iterable %}
+                            {% for role in user.roles %}
+                                {% if role == "ROLE_ADMIN" %}
+                                    <h3>Admin Naturaliste</h3>
+                                {% endif %}
+                            {% endfor %}      
+                        {% endif %}
                     </div>
                 </div>
             </div>

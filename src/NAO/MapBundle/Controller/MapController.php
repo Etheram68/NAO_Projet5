@@ -3,8 +3,6 @@
 namespace NAO\MapBundle\Controller;
 
 use NAO\MapBundle\Entity\Observation;
-use NAO\MapBundle\Form\Type\ObservationChoiceType;
-use NAO\MapBundle\Form\Type\RejectType;
 use NAO\MapBundle\Form\Type\ObservationType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;

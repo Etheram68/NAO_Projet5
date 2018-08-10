@@ -1,21 +1,19 @@
 {% extends "layout.html.twig" %}
 
 {% block body %}
-
-<header class="header-404 overlay full-404 relative v-center" id="home-page">
-    <div class="absolute anlge-bg">
+<!--Header-area-->
+<header class="header-area-contact overlay full-height-miniHeader relative v-center">
+    <div class="absolute anlge-bg"></div>
         <div class="container">
             <div class="row v-center">
-                <div class="col-xs-12 col-md-7 header-text">
+                <div class="col-xs-12 col-md-7 header-text-contact">
                     <h2>Nous contacter</h2>
                     <h3>Envoyez nous un message via le formulaire de contact</h3>
                 </div>
             </div>
         </div>
-    </div>
 </header>
-
-<section class="section-padding gray-bg" id="blog-page">
+<section class="section-padding" id="contact-page">
 
     {{ include("core/contactForm.html.twig") }}
 
