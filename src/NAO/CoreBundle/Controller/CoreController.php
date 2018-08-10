@@ -93,4 +93,15 @@ class CoreController extends Controller
         return $this->render('ressource\mentionlegale.html.twig');
     }
 
+    /**
+     * CGU
+     * @Route("/cgu", name="cgu")
+     * @Method({"GET"})
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function cguAction()
+    {
+        return $this->render('ressource\cgu.html.twig');
+    }
+
 }
