@@ -174,4 +174,10 @@ sensio_framework_extra:
     security:    { annotations: true }
     psr_message: { enabled: false } # Defaults to true if the PSR-7 bridge is installed
 
+indigo_cookie_consent:
+    options:
+        # any options you would pass to the plugins (except labels: message, dismiss, learnMore)
+        # see https://silktide.com/tools/cookie-consent/docs/installation
+    script: false # You can turn script off or pass a script location (eg. to use a specific version)        
+
 

@@ -27,6 +27,7 @@ class AppKernel extends Kernel
             new NAO\GameBundle\NAOGameBundle(),
             new NAO\UserBundle\NAOUserBundle(),
             new NAO\FicheBundle\NAOFicheBundle(),
+            new Indigo\Bundle\CookieConsentBundle\IndigoCookieConsentBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
