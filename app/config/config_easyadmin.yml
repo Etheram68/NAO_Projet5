@@ -50,7 +50,7 @@ easy_admin:
                     - { property: 'size',  label: 'Taille' }
                     - { property: 'weight',  label: 'Poids' }
                     - { property: 'color',  label: 'Principal Couleur' }
-                    - { property: 'feature',  label: 'Information complémentaire' }
+                    - { property: 'feature',  label: 'Information complémentaire', type: 'Ivory\CKEditorBundle\Form\Type\CKEditorType' }
                     - { property: 'naturalist',  label: 'Naturalist Validation' }
                     - { property: 'status',  label: 'Validation', help: '0 = en Attente, 1 = Valider, 2 = Refuser, 4 = Broullions' }
                     
@@ -103,7 +103,7 @@ easy_admin:
                 fields:
                     - { property: 'title', label: 'Titre' }
                     - { property: 'date',  label: 'Date' }
-                    - { property: 'content',  label: 'Contenu' }
+                    - { property: 'content',  label: 'Contenu', type: 'Ivory\CKEditorBundle\Form\Type\CKEditorType' }
                     - { property: 'image',  label: 'Image' }
             new:
                 title:  "Créer un article"
@@ -111,7 +111,7 @@ easy_admin:
                     - { property: 'title', label: 'Titre' }
                     - { property: 'date',  label: 'Date' }
                     - { property: 'user', label: 'Auteur' }
-                    - { property: 'content',  label: 'Contenu' }
+                    - { property: 'content',  label: 'Contenu', type: 'Ivory\CKEditorBundle\Form\Type\CKEditorType' }
                     - { property: 'image',  label: 'Image' }
         Comment:
             class: NAO\BlogBundle\Entity\Comment
