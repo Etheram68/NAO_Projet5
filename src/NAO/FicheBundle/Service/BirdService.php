@@ -242,6 +242,7 @@ Class BirdService
                 $redirect = 'PUBLISHED';
             }
         }
+        
         // Get taxref informations
         $taxref_name    = $request->request->get('bird')['taxref']['customname'];
         $latin_name     = substr($taxref_name, ($p = strpos($taxref_name, '(')+1), strrpos($taxref_name, ')')-$p);
@@ -264,8 +265,14 @@ Class BirdService
                 $bird->getImagePath() == 'default-image_observation.png';
             }
         }
-        $this->em->persist($bird);
-        $this->em->flush();
-        return $redirect;
+
+        try {
+            $this->em->persist($bird);
+            $this->em->flush();
+            return $redirect;
+        } catch (\Doctrine\DBAL\Exception\UniqueConstraintViolationException $ex)
+        {
+            $request->getSession()->getFlashBag()->add('fiche', 'La fiche que vous tentez de créer existe déjà. Vous ne pouvez pas créer une autre fiche pour cet oiseau');
+        }
     }
 }

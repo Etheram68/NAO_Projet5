@@ -20,19 +20,19 @@ class BirdType extends AbstractType
     {
         $builder
             ->add('size', TextType::class, array(
-                'required'       => false,
+                'required'       => true,
                 'label'          => 'Taille'
             ))
             ->add('weight', TextType::class, array(
-                'required'       => false,
+                'required'       => true,
                 'label'          => 'Poids'
             ))
             ->add('color',TextType::class, array(
-                'required'       => false,
+                'required'       => true,
                 'label'          => 'Principal Couleur'
             ))
             ->add('feature', TextareaType::class, array(
-                'required'       => false,
+                'required'       => true,
                 'label'          => 'Information complémentaire'
             ))
             ->add('taxref', TaxrefType::class)
@@ -78,6 +78,7 @@ class BirdType extends AbstractType
             'error_bubbling' => true
         ));
     }
+
 
     public function getName()
     {

@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle(),
+            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new Http\HttplugBundle\HttplugBundle(),
             new NAO\CoreBundle\NAOCoreBundle(),
             new NAO\BlogBundle\NAOBlogBundle(),
@@ -26,6 +27,7 @@ class AppKernel extends Kernel
             new NAO\GameBundle\NAOGameBundle(),
             new NAO\UserBundle\NAOUserBundle(),
             new NAO\FicheBundle\NAOFicheBundle(),
+            new Indigo\Bundle\CookieConsentBundle\IndigoCookieConsentBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

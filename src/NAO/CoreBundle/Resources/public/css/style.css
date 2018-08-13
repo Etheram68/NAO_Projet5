@@ -295,6 +295,11 @@ section#service-page-home.gray-bg.section-padding {
 #section-observation div.item.row .caption-desc h3,
 #section-observation div.item.row.active .caption-desc h3 {
     font-size: 54px;
+    color: #575757;
+}
+#section-observation div.item.row .caption-desc h3:hover,
+#section-observation div.item.row.active .caption-desc h3:hover {
+    color: #FFDE00;
 }
 section#blog-page.section-padding.gray-bg {
     padding: 3%;
@@ -442,7 +447,7 @@ ul#action-map-widget {
 .btn-floating.white i {
     color: #000000;
 }
-
+/* Liste des observations */
 #listeObs {
     height: auto;
     background-color: #F6F6F6;
@@ -455,6 +460,13 @@ span#titreListeObs {
     color: #575757;
     line-height: 0.7em;
     margin-left: 30px;
+}
+/* Nom de l'oiseau */
+#listeObs #show_list #eltlist h2 {
+    color: #575757;
+}
+#listeObs #show_list #eltlist h2:hover {
+    color: #FFDE00;
 }
 
 /*------------------- CREATE OBSERVATION -------------------*/
@@ -2188,7 +2200,7 @@ i.glyphicon.glyphicon-trash {
 #pageContact {
     height: auto;
     background-color: #F6F6F6;
-    padding: 7% 7% 7% 7%;
+    padding: 2% 7% 5% 7%;
 }
 .header-text-contact h2 {
     margin-top: 25%;
@@ -4025,6 +4037,7 @@ preloader
         display: none;
         bottom: 0;
     }
+    /* Liste des observations */
     span#titreListeObs {
         margin-left: 0;
     }
@@ -4033,6 +4046,14 @@ preloader
     }
     #show_list #eltlist .card-content a div.media-container {
         display: none;
+    }
+    /* Observations en attente */
+    #blog-page #eltlist .card-content div.media-container {
+        display: none;
+    }
+    #blog-page #eltlist .card-content p {
+        line-height: 1.3em;
+        font-size: 13.5px;
     }
     /*---- OBSERVATION ----*/
     div.col-xs-12.col-md-7.header-text-observation {
@@ -4324,6 +4345,7 @@ preloader
     #listeObs div.col-xs-12.col-md-7 #titreListeObs {
         font-size: 21px;
     }
+    /* Liste des observations */
     #listeObs #show_list {
         font-size: 13.5px;
         line-height: 1.5em;

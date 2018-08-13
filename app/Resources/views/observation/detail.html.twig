@@ -25,7 +25,7 @@
                                 <div class="v-center">
                                     <div class="col-xs-12 col-md-6">
                                         <div class="caption-photo one" data-animation="animated fadeInRight">
-                                            <img src="{{ asset('bundles/naocore/img/oiseaux/observations/' ~ observation.imagePath ) }}" alt="Image d'un oiseaux">
+                                            <img src="{{ asset('bundles/naocore/img/oiseaux/observations/' ~ observation.imagePath ) }}" alt="Image d'un oiseaux" style="max-width: 300px;">
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-md-6">
@@ -41,7 +41,18 @@
                                         </div>
                                     </div>
                                     <div class="observedby">
-                                        <p>Valider par : <br />{% include ':observation/validation:observer.html.twig' %}</p>
+                                        <p>Valider par : <br />
+                                            <div class="observation-validate-content">
+                                            <span>
+                                                <img class="circle" src="{{ asset('bundles/naocore/img/pictos/user-avatar.png' ) }}" alt="Photo de profil" style="max-width: 60%;"/>
+                                            </span>
+                                                <div class="observation-validate-detail">                                       
+                                                    <a href="{{ path('user.username', {'id' : observation.user.id, 'username' : observation.naturalist }) }}"
+                                                       class="bleen">
+                                                       {{ observation.naturalist }}
+                                                   </a>
+                                                </div>
+                                            </div>
                                     </div>
                                 </div>
                             </div>

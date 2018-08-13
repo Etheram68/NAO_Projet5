@@ -27,21 +27,34 @@
                                         <div class="caption-photo one" data-animation="animated fadeInRight">
                                             <img src="{{ asset('bundles/naocore/img/oiseaux/observations/' ~ bird.imagePath ) }}" alt="Image d'un oiseaux">
                                         </div>
+                                        <div class="observedby">
+                                        <p>Valider par : <br />
+                                        <div class="observation-validate-content">
+                                            <span>
+                                                <img class="circle" src="{{ asset('bundles/naocore/img/pictos/user-avatar.png' ) }}" alt="Photo de profil" style="max-width: 15%;"/>
+                                            </span>
+                                            <div class="observation-validate-detail">
+                                                <a href="{{ path('user.username', {'id' : bird.user.id, 'username' : bird.user }) }}"
+                                                   class="bleen">{{ bird.user }}</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                     </div>
                                     <div class="col-xs-12 col-md-6">
                                         <div class="caption-title" data-animation="animated fadeInUp">
                                             <h2>{{ bird.taxref.commonName }}<br/></h2>
                                         </div>
                                         <div class="caption-desc" data-animation="animated fadeInUp">
-                                            <p>{{ bird.taxref.familia }}</p>
-                                            <p>{{ bird.size }}</p>
-                                            <p>{{ bird.color }}</p>
+                                            <p>Ordre: {{ bird.taxref.ordo }}</p>
+                                            <p>Famille: {{ bird.taxref.familia }}</p>
+                                            <p>Genre: {{ bird.taxref.taxonsc }}</p>
+                                        </div><br />
+                                        <div class="caption-desc" data-animation="animated fadeInUp">
+                                            <p>Taille: {{ bird.size }}</p>
+                                            <p>Principal Couleur: {{ bird.color }}</p> <br />
                                             <p>Commentaire: <br />{{ bird.feature }}</p>
                                         </div>
-                                    </div>
-                                    <div class="observedby">
-                                        <p>Valider par : <br />{% include ':observation/validation:observer.html.twig' %}</p>
-                                    </div>
+                                    </div>                               
                                 </div>
                             </div>
                     </div>
