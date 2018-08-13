@@ -22,10 +22,8 @@ nao_core:
     resource: "@NAOCoreBundle/Controller/"
     type:     annotation
 
-
-
 easy_admin_bundle:
-    resource: "@EasyAdminBundle/Controller/AdminController.php"
+    resource: "@NAOCoreBundle/Controller/AdminController.php"
     type:     annotation
     prefix:   /admin
 
