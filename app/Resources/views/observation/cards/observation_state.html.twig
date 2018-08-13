@@ -16,7 +16,19 @@
                     {% endif %}
             </div>
             <div class="col s8 m8">
-                <h2>{{ observation.taxref.commonName }}</h2>
+                {# <h2>{{ observation.taxref.commonName }}</h2> #}
+                {% if action is defined %}
+                    {% if action == 'detail' %}
+                        <a href="{{ path('observation.detail', {'id' : observation.id}) }}">
+                    {% endif %}
+                    {% if action == 'edit' %}
+                        <a href="{{ path('observation.me.draft.edit', {'id' : observation.id}) }}">
+                    {% endif %}
+                        <h2>{{ observation.taxref.commonName }}</h2>
+                    </a>
+                    {% else %}
+                        <h2>{{ observation.taxref.commonName }}</h2>
+                {% endif %}
                 <p>
                     {{ 'observé le %date%'|trans({'%date%': observation.watched|date("d/m/Y")}) }}<br/>
                     {{ 'à %place%'|trans({'%place%': observation.place}) }}

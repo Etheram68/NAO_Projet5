@@ -39,12 +39,40 @@ class UserController extends Controller
         if ( $user == null) {
             throw new NotFoundHttpException("Pseudo non valide");
         }
+        // Calcul du niveau par rapport aux points
         $points = $user->getPoints();
         $userLevel = $this->container->get('naouser.level.levelCalcul')->guessLevel($points);
-
+        // Récupération des observations
+        $listObservations = $user->getObservations();
+        $infosObs = [];
+        if (isset($listObservations) && !is_null($listObservations)) {
+            foreach ($listObservations as $observation) {
+                $infosObs[] = [
+                    'id' => $observation->getId(),
+                    'oiseau' => $observation->getTaxref()->getCommonName(),
+                    'lieu' => $observation->getPlace(),
+                    'date' => $observation->getWatched()
+                ];
+            }
+        }
+        // Récupération des commentaires
+        $listComments = $user->getComments();
+        $infosComment = [];
+        if (isset($listComments) && !is_null($listComments)) {
+            foreach ($listComments as $commentaire) {
+                $infosComment[] = [
+                    'id' => $commentaire->getArticle()->getId(),
+                    'date' => $commentaire->getDate(),
+                    'contenu' => $commentaire->getContent()
+                ];
+            }
+        }
         return $this->container->get('templating')->renderResponse('@FOSUser/Profile/show.html.twig', array(
             'user' => $user,
             'userLevel' => $userLevel,
+            'listObservations' => $listObservations,
+            'infosObs' => $infosObs,
+            'infosComment' => $infosComment,
         ));
     }
 

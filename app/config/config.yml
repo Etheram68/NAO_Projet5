@@ -14,12 +14,12 @@ parameters:
     niveau01: Oisillon
     niveau02: Mésange
     niveau03: Pic noir
-    niveau04: Perroquet
-    niveau05: Grand Héron
-    niveau06: Grue
-    niveau07: Aigle Royal
-    niveau08: Hirondelle Rustique
-    niveau09: Black Stork
+    niveau04: Martinet
+    niveau05: Mouette de Ross
+    niveau06: Perroquet
+    niveau07: Pélican
+    niveau08: Aigle Royal
+    niveau09: Faucon Pèlerin
     niveau10: Imperial Eagle
     observations_directory: '%kernel.project_dir%/web/bundles/naocore/img/oiseaux/observations'
     list_limit: 10
@@ -67,12 +67,12 @@ twig:
         niveau01: Oisillon
         niveau02: Mésange
         niveau03: Pic noir
-        niveau04: Perroquet
-        niveau05: Grand Héron
-        niveau06: Grue
-        niveau07: Aigle Royal
-        niveau08: Hirondelle Rustique
-        niveau09: Black Stork
+        niveau04: Martinet
+        niveau05: Mouette de Ross
+        niveau06: Perroquet
+        niveau07: Pélican
+        niveau08: Aigle Royal
+        niveau09: Faucon Pèlerin
         niveau10: Imperial Eagle
         jwt: "@app.jwt"
 

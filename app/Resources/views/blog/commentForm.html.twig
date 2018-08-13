@@ -7,12 +7,12 @@
 
     {# Génération du label + error + widget pour un champ. #}
 
-    <div class="col-lg-12 col-sm-12">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
         {{ form_label(form.content, "Votre commentaire", {'label_attr': {'class': 'control-label'}}) }}
         {{ form_errors(form.content) }}
         {{ form_widget(form.content) }}
     </div>
-    <div class="col-lg-12">
+    <div class="col-lg-12 buttonCommentSubmit">
         <input type="submit" value="Commenter" class="btn btn-light" />
         {% do form.submit.setRendered %}
     </div>

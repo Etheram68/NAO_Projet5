@@ -115,10 +115,11 @@ easy_admin:
                 fields:
                     - { property: 'title', label: 'Titre' }
                     - { property: 'date',  label: 'Date' }
-                    - { property: 'user', label: 'Auteur' }
+                    - { property: 'user', label: 'Auteur', help: "Choississez l'auteur" }
                     - { property: 'content',  label: 'Contenu', type: 'Ivory\CKEditorBundle\Form\Type\CKEditorType' }
                     - { property: 'moderation',  label: 'Publié' }
                     - { property: 'image',  label: 'Image' }
+                    - { property: 'moderation',  label: 'Publié' }
         Comment:
             class: NAO\BlogBundle\Entity\Comment
             list:

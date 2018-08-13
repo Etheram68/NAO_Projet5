@@ -104,6 +104,7 @@
 
     //Background Parallax
     $('.header-area').parallax("50%", -0.6);
+    $('#section-observation').parallax("50%", -0.4);
     $('.header-area-register').parallax("50%", -0.6);
     $('.header-area-login').parallax("50%", -0.6);
     $('.header-area-profile').parallax("50%", -0.6);
