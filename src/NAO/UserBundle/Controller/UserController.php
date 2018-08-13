@@ -49,6 +49,7 @@ class UserController extends Controller
             foreach ($listObservations as $observation) {
                 $infosObs[] = [
                     'id' => $observation->getId(),
+                    'statut' => $observation->getStatus(),
                     'oiseau' => $observation->getTaxref()->getCommonName(),
                     'lieu' => $observation->getPlace(),
                     'date' => $observation->getWatched()

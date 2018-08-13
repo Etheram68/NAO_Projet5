@@ -84,13 +84,15 @@
 				<div class="emptyInfos">Aucune observation</div>
 			{% else %}
 				{% for info in infosObs|reverse %}
-				<a href="{{ path('observation.detail', {'id' : info.id}) }}">
-					<ul>        	
-						<li id="lastObs-infoOiseau">{{ info.oiseau }}</li>
-						<li> lieu : {{ info.lieu }}</li>
-						<li id="lastObs-date">le : {{ info.date|date('d/m/Y') }}</li>       	
-					</ul>
-				</a>
+					{% if info.statut == 1 %}
+						<a href="{{ path('observation.detail', {'id' : info.id}) }}">
+							<ul>        	
+								<li id="lastObs-infoOiseau">{{ info.oiseau }}</li>
+								<li> lieu : {{ info.lieu }}</li>
+								<li id="lastObs-date">le : {{ info.date|date('d/m/Y') }}</li>       	
+							</ul>
+						</a>
+					{% endif %}
 				{% endfor %}
 			{% endif %}
 		</div>
