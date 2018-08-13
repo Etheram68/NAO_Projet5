@@ -1,5 +1,5 @@
 {% extends "@FOSUser/fosuser_layout.html.twig" %}
-{% block headtitle %}{{ parent() }}{% endblock %}
+{% block headtitle %}Profil – {{ parent() }} {% endblock %}
 
 {% block body %}
     <!--Header-area-->
@@ -8,14 +8,12 @@
             <div class="container">
                 <div class="row v-center">
                     <div class="col-xs-12 col-md-7 header-text-profile">
-                        <h2>{{ user.username }}</h2>
-                        {% if user.roles is iterable %}
-                            {% for role in user.roles %}
-                                {% if role == "ROLE_ADMIN" %}
-                                    <h3>Admin Naturaliste</h3>
-                                {% endif %}
-                            {% endfor %}      
-                        {% endif %}
+                        {% if user.roles|length > 1 %}
+                            <h2 id="adminProfile">{{ user.username }}</h2>
+                            <h3>Admin Naturaliste</h3>
+                        {% else %} 
+                            <h2 id="userProfile">{{ user.username }}</h2>
+                        {% endif %} 
                     </div>
                 </div>
             </div>

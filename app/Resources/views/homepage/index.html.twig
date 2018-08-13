@@ -32,7 +32,7 @@
     <!--Header-area/-->
 
     <!--Feature-area-->
-    <section class="gray-bg section-padding" id="service-page">
+    <section class="gray-bg section-padding" id="service-page-home">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-4">
@@ -68,7 +68,6 @@
                         <div class="box-icon">
                             <div id="wb_FontAwesomeIcon3">
                                 <div id="FontAwesomeIcon3"><i class="fa fa-camera"></i></div>
-
                             </div>
                         </div>
                         <h4>Observez / Partagez</h4>
@@ -82,7 +81,6 @@
                         <div class="box-icon">
                             <div id="wb_FontAwesomeIcon3">
                                 <div id="FontAwesomeIcon3"><i class="fa fa-map-o"></i></div>
-
                             </div>
                         </div>
                         <h4>Consultez</h4>
@@ -95,7 +93,7 @@
     </section>
     <!--Feature-area-->
     <!-- section Observation -->
-    <section class="angle-bg sky-bg section-padding">
+    <section id="section-observation" class="angle-bg sky-bg section-padding">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
@@ -112,11 +110,13 @@
                                             <h2>{{ 'Observation du %date%'|trans({'%date%': observation.watched|date("d/m/Y")}) }}</h2>
                                         </div>
                                         <div class="caption-desc" data-animation="animated fadeInUp">
+                                          <a href="{{ path('observation.detail', {'id' : observation.id}) }}" >
                                             <h3>{{ observation.taxref.commonName }}</h3>
+                                          </a>
                                             <p>{{ 'À %place%'|trans({'%place%': observation.place}) }}</p>
                                         </div>
                                         <div class="caption-button" data-animation="animated fadeInUp">
-                                            <a href="{{ path('observation.detail', {'id' : observation.id}) }}" class="button">Read more</a>
+                                            <a href="{{ path('observation.detail', {'id' : observation.id}) }}" class="button">Voir</a>
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-md-6">

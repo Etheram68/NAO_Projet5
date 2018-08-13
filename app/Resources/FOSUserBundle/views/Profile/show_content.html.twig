@@ -4,9 +4,9 @@
 <main role="main" class="container" id="pageProfile">
 
 	{# RANGÉE 1 #}
-	<div class="row col-lg-12 rangee-1">
+	<div class="row col-lg-12 col-xs-12 rangee-1">
 		<div class="avatar col-lg-4 col-xs-12">
-			<img src="{{ asset('bundles/naocore/img/pictos/user-avatar.png') }}" width="50%" />
+			<img src="{{ asset('bundles/naocore/img/pictos/user-avatar.png') }}" />
 			<p class="profilTexte">Niveau 
 				{% if userLevel == niveau00 %}0
 				{% elseif userLevel == niveau01 %}1
@@ -38,34 +38,34 @@
 		</div>
 		<div class="picto col-lg-4 col-xs-12">
 			{% if userLevel == niveau00 %}
-				<img src="{{ asset('bundles/naocore/img/pictos/niveau-00.png') }}" height="30%" />
+				<img id="pictoNiv00" src="{{ asset('bundles/naocore/img/pictos/niveau-00.png') }}" />
 			{% elseif userLevel == niveau01 %}
-				<img src="{{ asset('bundles/naocore/img/pictos/niveau-01.png') }}" height="50%" />
+				<img id="pictoNiv01" src="{{ asset('bundles/naocore/img/pictos/niveau-01.png') }}" />
 			{% elseif userLevel == niveau02 %}
-				<img src="{{ asset('bundles/naocore/img/pictos/niveau-02.png') }}" height="50%" />
+				<img id="pictoNiv02" src="{{ asset('bundles/naocore/img/pictos/niveau-02.png') }}" />
 			{% elseif userLevel == niveau03 %}
-				<img src="{{ asset('bundles/naocore/img/pictos/niveau-03.png') }}" height="50%" />
+				<img id="pictoNiv03" src="{{ asset('bundles/naocore/img/pictos/niveau-03.png') }}" />
 			{% elseif userLevel == niveau04 %}
-				<img src="{{ asset('bundles/naocore/img/pictos/niveau-04.png') }}" height="50%" />
+				<img id="pictoNiv04" src="{{ asset('bundles/naocore/img/pictos/niveau-04.png') }}" />
 			{% elseif userLevel == niveau05 %}
-				<img src="{{ asset('bundles/naocore/img/pictos/niveau-05.png') }}" height="50%" />
+				<img id="pictoNiv05" src="{{ asset('bundles/naocore/img/pictos/niveau-05.png') }}" />
 			{% elseif userLevel == niveau06 %}
-				<img src="{{ asset('bundles/naocore/img/pictos/niveau-06.png') }}" height="50%" />
+				<img id="pictoNiv06" src="{{ asset('bundles/naocore/img/pictos/niveau-06.png') }}" />
 			{% elseif userLevel == niveau07 %}
-				<img src="{{ asset('bundles/naocore/img/pictos/niveau-07.png') }}" height="50%" />
+				<img id="pictoNiv07" src="{{ asset('bundles/naocore/img/pictos/niveau-07.png') }}" />
 			{% elseif userLevel == niveau08 %}
-				<img src="{{ asset('bundles/naocore/img/pictos/niveau-08.png') }}" height="50%" />
+				<img id="pictoNiv08" src="{{ asset('bundles/naocore/img/pictos/niveau-08.png') }}" />
 			{% elseif userLevel == niveau09 %}
-				<img src="{{ asset('bundles/naocore/img/pictos/niveau-09.png') }}" height="50%" />
+				<img id="pictoNiv09" src="{{ asset('bundles/naocore/img/pictos/niveau-09.png') }}" />
 			{% elseif userLevel == niveau10 %}
-				<img src="{{ asset('bundles/naocore/img/pictos/niveau-10.png') }}" height="50%" />
+				<img id="pictoNiv10" src="{{ asset('bundles/naocore/img/pictos/niveau-10.png') }}" />
 			{% endif %}
 		</div>
     </div>
     <hr>   
     {# RANGÉE 2 #}
-    <div class="row col-lg-12 rangee-2">
-        <div class="presentation col-lg-12">
+    <div class="row col-lg-12 col-xs-12 rangee-2">
+        <div class="presentation col-lg-12 col-xs-12">
         	<p class="profilTexte">À propos</p>
         	{% if (user.presentation) == null %}
         	<div class="emptyInfos">L'utilisateur n'a pas rempli ce champ</div>
@@ -76,32 +76,39 @@
     </div>
 	<hr>   
     {# RANGÉE 3 #}
-    <div class="row col-lg-12 rangee-3">
+    <div class="row col-lg-12 col-xs-12 rangee-3">
+
 		<div class="lastObs col-lg-6 col-xs-12">
 			<p class="profilTexte">Dernières observations</p>
 			{% if infosObs == null %}
 				<div class="emptyInfos">Aucune observation</div>
 			{% else %}
 				{% for info in infosObs|reverse %}
+				<a href="{{ path('observation.detail', {'id' : info.id}) }}">
 					<ul>        	
-						<li>{{ info.oiseau }}</li>
-						<li>{{ info.lieu }}</li>
-						<li>{{ info.date|date('d/m/Y') }}</li>       	
+						<li id="lastObs-infoOiseau">{{ info.oiseau }}</li>
+						<li> lieu : {{ info.lieu }}</li>
+						<li id="lastObs-date">le : {{ info.date|date('d/m/Y') }}</li>       	
 					</ul>
+				</a>
 				{% endfor %}
 			{% endif %}
 		</div>
+
         <div class="separation"></div>
+
 		<div class="lastCom col-lg-6 col-xs-12">
 			<p class="profilTexte">Derniers commentaires</p>
 			{% if infosComment == null %}
 				<div class="emptyInfos">Aucun commentaire</div>
 			{% else %}
 				{% for info in infosComment|reverse %}
+				<a href="{{ path('article', {'id': info.id}) }}#ancreCommentaires">
 					<ul>        	
-						<li>{{ info.contenu }}</li>
-						<li>{{ info.date|date('d/m/Y') }}</li>       	
+						<li id="lastCom-content">"{{ info.contenu }}"</li>
+						<li id="lastCom-date">le : {{ info.date|date('d/m/Y') }}</li>       	
 					</ul>
+				</a>
 				{% endfor %}
 			{% endif %}
 		</div>

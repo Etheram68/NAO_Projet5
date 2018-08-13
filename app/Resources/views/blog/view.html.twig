@@ -1,6 +1,7 @@
 {# src/OC/PlatformBundle/Resources/view/Advert/view.html.twig #}
 
 {% extends "blog/layout.html.twig" %}
+{% block headtitle %}Article – {{ parent() }}{% endblock %}
 
 {% block naoblog_body %}
     <section class="section-padding" id="article-page">
@@ -30,8 +31,8 @@
                         {% endif %}
                     </div>
                 </div>
-                <div class="comment-container">
-                    <h3>Commentaires</h3>
+                <div class="comment-container col-xs-12">
+                    <h3 id="ancreCommentaires">Commentaires</h3>
                         {% if (is_granted("IS_AUTHENTICATED_REMEMBERED")) and (is_granted("ROLE_USER")) %}
                             <a class="btn btn-light" href="{{ path('comment.add', {'id': article.id }) }}">Ajouter<br>un
                             commentaire</a>
@@ -41,7 +42,7 @@
                                 <a href="{{ path('fos_user_registration_register') }}" class="subscribe">créer un compte</a> pour commenter.
                             </div>
                         {% endif %}
-                    <div class="comment-content">
+                    <div class="comment-content col-xs-12">
                         <ul>
                             {% for comment in listComments %}
                                 {% if comment.moderation == 1 %}

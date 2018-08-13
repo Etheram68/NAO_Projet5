@@ -48,6 +48,7 @@ class UserController extends Controller
         if (isset($listObservations) && !is_null($listObservations)) {
             foreach ($listObservations as $observation) {
                 $infosObs[] = [
+                    'id' => $observation->getId(),
                     'oiseau' => $observation->getTaxref()->getCommonName(),
                     'lieu' => $observation->getPlace(),
                     'date' => $observation->getWatched()
@@ -60,6 +61,7 @@ class UserController extends Controller
         if (isset($listComments) && !is_null($listComments)) {
             foreach ($listComments as $commentaire) {
                 $infosComment[] = [
+                    'id' => $commentaire->getArticle()->getId(),
                     'date' => $commentaire->getDate(),
                     'contenu' => $commentaire->getContent()
                 ];

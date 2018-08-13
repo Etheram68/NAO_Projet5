@@ -110,9 +110,10 @@ easy_admin:
                 fields:
                     - { property: 'title', label: 'Titre' }
                     - { property: 'date',  label: 'Date' }
-                    - { property: 'user', label: 'Auteur' }
+                    - { property: 'user', label: 'Auteur', help: "Choississez l'auteur" }
                     - { property: 'content',  label: 'Contenu' }
                     - { property: 'image',  label: 'Image' }
+                    - { property: 'moderation',  label: 'Publié' }
         Comment:
             class: NAO\BlogBundle\Entity\Comment
             list:
