@@ -4,12 +4,14 @@ namespace NAO\FicheBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Bird
  *
  * @ORM\Table(name="bird")
  * @ORM\Entity(repositoryClass="NAO\FicheBundle\Repository\BirdRepository")
+ * @UniqueEntity("taxref")
  */
 class Bird
 {
@@ -83,7 +85,7 @@ class Bird
 
     /**
      * @ORM\ManyToOne(targetEntity="NAO\MapBundle\Entity\Taxref", fetch="EAGER")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, unique=true)
      */
     private $taxref;
 

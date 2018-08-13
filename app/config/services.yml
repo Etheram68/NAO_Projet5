@@ -70,4 +70,3 @@ services:
             class: NAO\MapBundle\Twig\Extension\HtmlExtension
             tags:
                 - { name: twig.extension }
-

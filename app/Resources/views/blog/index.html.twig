@@ -45,7 +45,7 @@
                                             <i class="glyphicon glyphicon-calendar"></i>
                                             <span>{{ article.date|date('d/m/Y') }}</span>
                                         </ul>  
-                                        <p>{{ article.content|truncate(100, true) }}</p>
+                                        <p>{{ article.content|truncate(100, true)|raw }}</p>
                                     </div>
                                 </div>
                             </div>

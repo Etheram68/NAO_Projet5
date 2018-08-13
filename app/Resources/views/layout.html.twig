@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="{{ asset('bundles/naocore/css/materialize.css') }}"/>
     <link rel="stylesheet" href="{{ asset('bundles/naocore/css/style.css') }}"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
 </head>
 
 <body data-spy="scroll" data-target="#primary-menu">
@@ -70,6 +71,30 @@
     <script src="{{ asset('bundles/naocore/js/main.js') }}"></script>
     <script src="{{ asset('bundles/naocore/js/active.js') }}"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASSHQxYAWG48ya6foaegZOev9J7VqKvk8&libraries=geometry,places">
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#eaf7f7",
+      "text": "#5c7291"
+    },
+    "button": {
+      "background": "#56cbdb",
+      "text": "#ffffff"
+    }
+  },
+  "theme": "edgeless",
+  "type": "opt-in",
+  "content": {
+    "message": "Ce site utilise des cookies pour vous offrir le meilleur service. En poursuivant votre navigation, vous acceptez l’utilisation des cookies.",
+    "dismiss": "Je l'ai!",
+    "link": "Plus d'informations",
+    "href": "https://www.cnil.fr/fr/cookies-traceurs-que-dit-la-loi"
+  }
+})});
 </script>
 
 

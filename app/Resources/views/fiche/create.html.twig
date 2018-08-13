@@ -3,6 +3,7 @@
 {% block title %}Ajouter - {{ parent() }}{% endblock %}
 
 {% block body %}
+
     <header class="header-404 overlay full-404 relative v-center" id="home-page">
         <div class="absolute anlge-bg"></div>
         <div class="container">
@@ -31,8 +32,15 @@
                                                     <div class="col-s12 l6 main-section">
 
                                                         <div class="input-field col-s12">
+                                                            <div class="col-md-12">
+                                                                {% for message in app.session.flashbag.get('fiche') %}
+                                                                    <div class="alert alert-danger" role="alert">
+                                                                        {{ message }}
+                                                                    </div>
+                                                                {% endfor %}
+                                                            </div>
                                                             <label>Espèce observée</label>
-                                                            {{ form_widget(form.taxref.customname) }}
+                                                            {{ form_widget(form.taxref.customname, {'attr':{'class':'form-control'}}) }}
                                                             <ul id="dropBird" class="autocomplete-content dropdown-content" style="margin-top: -20px; opacity: 1; position: absolute;"></ul>
                                                             <div class="error">{{ form_errors(form.taxref.customname) }}</div>
                                                             <p class="left-align"><a href="http://www.oiseaux.net/oiseaux/france.html" class="caption light-2-no-hov small" target="_blank">Besoin d'aide ?</a></p>
