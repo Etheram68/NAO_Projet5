@@ -88,6 +88,10 @@ CSS INDEX
 .btn.btn-danger:hover {
     background-color: #801414;
 }
+
+.right {
+    float: right!important;
+}
 /* Text inputs */
 input:not([type]),
 input[type=text]:not(.browser-default),

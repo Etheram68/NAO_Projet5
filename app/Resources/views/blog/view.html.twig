@@ -6,6 +6,15 @@
 {% block naoblog_body %}
     <section class="section-padding" id="article-page">
         <div class="container" id="pageArticle">
+        	{% if article.image is not null %}
+                            <img
+                                    src="{{ asset(article.image.webPath) }}"
+                                    alt="{{ article.image.alt }}"
+                                    height="60"
+                            />
+                        {% else %}
+                            <img src="{{ asset('bundles/naocore/img/blog/small1.jpg') }}" alt="default">
+                        {% endif %}
             <div class="blog-content">
                 <h1>{{ article.title }}</h1>
                 <div class="blog-meta">
@@ -15,20 +24,8 @@
                     <span>{{ article.date|date('d/m/Y') }}</span>                
                 </div>
                 <div class="row">
-                    <div class="col-xs-12 col-sm-6">
+                    <div class="col-xs-12">
                         {{ article.content|raw }}
-                    </div>
-
-                    <div class="col-xs-12 col-sm-4">
-                        {% if article.image is not null %}
-                            <img
-                                    src="{{ asset(article.image.webPath) }}"
-                                    alt="{{ article.image.alt }}"
-                                    height="60"
-                            />
-                        {% else %}
-                            <img src="{{ asset('bundles/naocore/img/blog/small1.jpg') }}" alt="default">
-                        {% endif %}
                     </div>
                 </div>
                 <div class="comment-container col-xs-12">
