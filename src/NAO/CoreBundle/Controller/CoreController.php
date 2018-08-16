@@ -104,4 +104,15 @@ class CoreController extends Controller
         return $this->render('ressource\cgu.html.twig');
     }
 
+    /**
+     * about
+     * @Route("/about", name="about")
+     * @Method({"GET"})
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function aboutAction()
+    {
+        return $this->render('about\about.html.twig');
+    }
+
 }
