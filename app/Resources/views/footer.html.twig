@@ -45,23 +45,23 @@
     <footer class="footer_area">
         <div class="container">
             <div class="footer_row row">
-                <div class="col-md-3 col-sm-6 footer_about quick">
+                <div class="col-md-3 col-sm-6 col-xs-12 footer_about quick">
                     <h2>Information Légales</h2>
                     <ul class="quick_link">
-                        <li><a href="#"><i class="fa fa-chevron-right"></i>Mention Légales</a></li>
-                        <li><a href="#"><i class="fa fa-chevron-right"></i>Condition général d'utilisation</a></li>
+                        <li><a href="{{ path('mention') }}"><i class="fa fa-chevron-right"></i>Mention Légales</a></li>
+                        <li><a href="{{ path('cgu') }}"><i class="fa fa-chevron-right"></i>Condition général d'utilisation</a></li>
                         <li><a href="#"><i class="fa fa-chevron-right"></i>Plan du site</a></li>
                     </ul>
                 </div>
-                <div class="col-md-3 col-sm-6 footer_about quick">
+                <div class="col-md-3 col-sm-6 col-xs-12 footer_about quick">
                     <h2>Nos Partenaires</h2>
                     <ul class="quick_link">
-                        <li><a href="#"><i class="fa fa-chevron-right"></i>L.P.O.</a></li>
-                        <li><a href="#"><i class="fa fa-chevron-right"></i>Oisillion.net</a></li>
-                        <li><a href="#"><i class="fa fa-chevron-right"></i>Ornithomedia.com</a></li>
+                        <li><a href="https://www.lpo.fr/"><i class="fa fa-chevron-right"></i>L.P.O.</a></li>
+                        <li><a href="https://www.oisillon.net/fr/"><i class="fa fa-chevron-right"></i>Oisillion.net</a></li>
+                        <li><a href="http://www.ornithomedia.com/"><i class="fa fa-chevron-right"></i>Ornithomedia.com</a></li>
                     </ul>
                 </div>
-                <div class="col-md-3 col-sm-6 footer_about">
+                <div class="col-md-3 col-sm-6 col-xs-12 footer_about">
                     <img src="{{ asset('bundles/naocore/img/logo-nao-gris.png') }}" alt="Logo NAO" />
                     <address>
                         <ul class="my_address">

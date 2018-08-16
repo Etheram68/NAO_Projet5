@@ -1,26 +1,24 @@
 
 {% extends "layout.html.twig" %}
-
-{% block title %}
-    Modifier un article - {{ parent() }}
-{% endblock %}
+{% block headtitle %}Modifier l'article – {{ parent() }}{% endblock %}
 
 {% block body %}
+<main role="main" class="container" id="pageEditArticle">
 
-    <h2>Modifier une annonce</h2>
+    <h2>Modifier l'article</h2>
 
     {{ include("blog/articleForm.html.twig") }}
 
-    <p>
-        Vous éditez un article déjà existant, merci de ne pas changer
-        l'esprit générale de l'article déjà publié.
+    <p class="textWarning">
+        Vous éditez un article déjà existant, merci de ne pas changer l'esprit générale de l'article déjà publié.
     </p>
 
-    <p>
-        <a href="{{ path('article', {'id': article.id}) }}" class="btn btn-default">
+    <div class="buttonBlog">
+        <a href="{{ path('article', {'id': article.id}) }}" class="btn btn-light">
             <i class="glyphicon glyphicon-chevron-left"></i>
-            Retour à l'annonce
+            <p>Retour à l'article</p>
         </a>
-    </p>
+    </div>
+</main>
 
 {% endblock %}

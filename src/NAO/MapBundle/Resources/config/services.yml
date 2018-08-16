@@ -2,3 +2,7 @@ services:
 #    nao_map.example:
 #        class: NAO\MapBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+    nao.obs.addPoints:
+        class: NAO\MapBundle\Service\AddPoints
+        arguments: ["@request_stack", "@doctrine.orm.entity_manager"]

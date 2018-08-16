@@ -1,0 +1,43 @@
+<div class="card  no-style observation fix-height">
+    <div class="card-content">
+        <div class="row no-pad-bot">
+            <div class="col s4 m4">
+                {% if action is defined %}
+                {% if action == 'detail' %}<a href="{{ path('bird.detail', {'id' : bird.id}) }}">{% endif %}
+                    {% if action == 'edit' %}<a href="{{ path('bird.me.draft.edit', {'id' : bird.id}) }}">{% endif %}
+                        <div class="media-container" style="background: url('{{ asset('bundles/naocore/img/oiseaux/observations/' ~ bird.imagePath ) }}') center/cover no-repeat">
+                            &nbsp;
+                        </div>
+                    </a>
+                    {% else %}
+                        <div class="media-container" style="background: url('{{ asset('bundles/naocore/img/oiseaux/observations/' ~ bird.imagePath ) }}') center/cover no-repeat">
+                            &nbsp;
+                        </div>
+                    {% endif %}
+            </div>
+            <div class="col s8 m8">
+                {# <h2>{{ bird.taxref.commonName }}</h2> #}
+                {% if action is defined %}
+                    {% if action == 'detail' %}
+                        <a href="{{ path('bird.detail', {'id' : bird.id}) }}">
+                    {% endif %}
+                    {% if action == 'edit' %}
+                        <a href="{{ path('bird.me.draft.edit', {'id' : bird.id}) }}">
+                    {% endif %}
+                        <h2>{{ bird.taxref.commonName }}</h2>
+                    </a>
+                    {% else %}
+                        <h2>{{ bird.taxref.commonName }}</h2>
+                {% endif %}
+                <p>
+                    {{ bird.taxref.familia }}</p>
+                <p class="caption light-2-no-hov coordinate">
+                    {{ bird.size }}
+                </p>
+                <p class="caption light-2-no-hov coordinate">
+                    {{ bird.color }}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,7 +1,7 @@
 
-<h3>Formulaire d'article</h3>
+{# <h3>Formulaire d'article</h3> #}
 
-<div class="well">
+<div class="row col-lg-12 col-sm-12">
     {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
 
     {# Les erreurs générales du formulaire. #}
@@ -13,34 +13,29 @@
     {% endif %}
 
     {# Génération manuelle et éclatée : #}
-    <div class="form-group">
+    <div class="col-lg-12 col-sm-12">
         {# Génération du label. #}
-        {{ form_label(form.title, "Titre de l'article", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
-
+        {{ form_label(form.title, "Titre de l'article", {'label_attr': {'class': 'control-label'}}) }}
         {# Affichage des erreurs pour ce champ précis. #}
-        {{ form_errors(form.title) }}
-
-        <div class="col-sm-10">
-            {# Génération de l'input. #}
-            {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
-        </div>
+        {{ form_errors(form.title) }}    
+        {# Génération de l'input. #}
+        {{ form_widget(form.title, {'attr': {'class': 'form-control'}} ) }}      
     </div>
 
     {# Idem pour un autre champ. #}
-    <div class="form-group">
-        {{ form_label(form.content, "Contenu de l'article", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    <div class="col-lg-12 col-sm-12">
+        {{ form_label(form.content, "Contenu de l'article", {'label_attr': {'class': 'control-label'} } ) }}
         {{ form_errors(form.content) }}
-        <div class="col-sm-10">
-            {{ form_widget(form.content) }}
-        </div>
+        {{ form_widget(form.content) }} 
+
+    {# {{ form_row(form.user) }} #}
+
+    <div class="col-lg-12 col-sm-12">
+        {{ form_row(form.image) }}
     </div>
 
-    {{ form_row(form.author) }}
-
-
-
-    {{ form_row(form.image) }}
-
+    <input type="submit" value="Modifier" class="btn btn-light" />
+    {% do form.submit.setRendered %}
 
     {{ form_rest(form) }}
 

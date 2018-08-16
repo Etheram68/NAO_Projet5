@@ -1,25 +1,12 @@
 {# src/OC/PlatformBundle/Resources/view/Advert/view.html.twig #}
 
 {% extends "blog/layout.html.twig" %}
-
-
+{% block headtitle %}Article – {{ parent() }}{% endblock %}
 
 {% block naoblog_body %}
     <section class="section-padding" id="article-page">
-        <div class="container">
-            <div class="blog-content">
-                <h1>{{ article.title }}</h1>
-                <div class="blog-meta">
-                    <i class="glyphicon glyphicon-user"> {{ article.author }}</i>
-                    <i class="glyphicon glyphicon-time"> {{ article.date|date('d/m/Y') }}</i>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-6">
-                        {{ article.content }}
-                    </div>
-
-                    <div class="col-xs-12 col-sm-4">
-                        {% if article.image is not null %}
+        <div class="container" id="pageArticle">
+        	{% if article.image is not null %}
                             <img
                                     src="{{ asset(article.image.webPath) }}"
                                     alt="{{ article.image.alt }}"
@@ -28,53 +15,73 @@
                         {% else %}
                             <img src="{{ asset('bundles/naocore/img/blog/small1.jpg') }}" alt="default">
                         {% endif %}
-                    </div>
-
+            <div class="blog-content">
+                <h1>{{ article.title }}</h1>
+                <div class="blog-meta">
+                    <i class="glyphicon glyphicon-user"></i>
+                    <a href="{{ path('user.username', {'username': article.user } ) }}">{{ article.user }}</a>
+                    <i class="glyphicon glyphicon-time"></i>
+                    <span>{{ article.date|date('d/m/Y') }}</span>                
                 </div>
-                <div class="comment-container">
-
-
-                    <h3>Commentaires</h3>
-
-                    <a class="btn btn-default" href="{{ path('comment.add', {'id': article.id }) }}">Ajouter un
-                        commentaire</a>
-
-
-                    <div class="comment-content" sty>
-
+                <div class="row">
+                    <div class="col-xs-12">
+                        {{ article.content|raw }}
+                    </div>
+                </div>
+                <div class="comment-container col-xs-12">
+                    <h3 id="ancreCommentaires">Commentaires</h3>
+                        {% if (is_granted("IS_AUTHENTICATED_REMEMBERED")) and (is_granted("ROLE_USER")) %}
+                            <a class="btn btn-light" href="{{ path('comment.add', {'id': article.id }) }}">Ajouter<br>un
+                            commentaire</a>
+                        {% else %}
+                            <div id="connectOrSubscribe">
+                                <a href="{{ path('fos_user_security_login') }}" class="login" >Connecter vous</a> ou 
+                                <a href="{{ path('fos_user_registration_register') }}" class="subscribe">créer un compte</a> pour commenter.
+                            </div>
+                        {% endif %}
+                    <div class="comment-content col-xs-12">
                         <ul>
                             {% for comment in listComments %}
-                                <li> Posté par {{ comment.author }}le {{ comment.date|date("d/m/Y  H:i") }}
-                                    <hr>
-                                    {{ comment.content }}
-                                </li>
+                                {% if comment.moderation == 1 %}
+                                    <li>
+                                        <div id="commentUser"> 
+                                            posté par <a href="{{ path('user.username', {'username': comment.user } ) }}" >{{ comment.user }}</a> le {{ comment.date|date("d/m/Y  H:i") }}
+                                        </div>
+                                        <hr class="hrComment">
+                                        <div id="commentContent">
+                                            {{ comment.content }}
+                                        </div>
+                                    </li>
+                                {% endif %}
                             {% else %}
                                 <p>aucun commentaire!</p>
                             {% endfor %}
                         </ul>
-
-                        <a class="btn btn-default" href="{{ path('comment.add', {'id': article.id }) }}">Ajouter un
-                            commentaire</a>
                     </div>
-
-
-                    <p>
                 </div>
-                <a href="{{ path('index') }}" class="btn btn-default">
-                    <i class="glyphicon glyphicon-chevron-left"></i>
-                    Retour à la liste
-                </a>
-                <a href="{{ path('article.edit', {'id': article.id}) }}" class="btn btn-default">
-                    <i class="glyphicon glyphicon-edit"></i>
-                    Modifier l'article
-                </a>
-                <a href="{{ path('article.delete', {'id': article.id}) }}" class="btn btn-danger">
-                    <i class="glyphicon glyphicon-trash"></i>
-                    Supprimer l'article
-                </a>
-                </p>
+                <div class="buttonBlog">
+                    <a href="{{ path('index') }}" class="btn btn-light">
+                        <i class="glyphicon glyphicon-chevron-left"></i>
+                        <p>Retour à la liste</p>
+                    </a>
+                </div>
+                {% if (is_granted("IS_AUTHENTICATED_REMEMBERED")) and (is_granted("ROLE_ADMIN")) %}
+                <div class="buttonCommentAdmin">
+                    <div class="buttonBlog">
+                        <a href="{{ path('article.edit', {'id': article.id}) }}" class="btn btn-secondary">
+                            <i class="glyphicon glyphicon-edit"></i>
+                            <p>Modifier l'article</p>
+                        </a>
+                    </div>
+                    <div class="buttonBlog">
+                        <a href="{{ path('article.delete', {'id': article.id}) }}" class="btn btn-danger">
+                            <i class="glyphicon glyphicon-trash"></i>
+                            <p>Supprimer l'article</p>
+                        </a>
+                    </div>
+                </div>
+                {% endif %}               
             </div>
         </div>
     </section>
-
 {% endblock %}

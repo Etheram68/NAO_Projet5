@@ -2,27 +2,24 @@
     <div class="mainmenu-area" data-spy="affix" data-offset-top="100">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#primary-menu">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                {# LOGO #}
                 {% if (app.request.requesturi == path('homepage')) %}
-
-                  <a href="{{ path('homepage') }}" class="navbar-brand logo"><img src="{{ asset('bundles/naocore/img/logo-nao-noir.png') }}" \></a>
+                  <a href="{{ path('homepage') }}" class="navbar-brand logo"><img src="{{ asset('bundles/naocore/img/logo-nao-gris.png') }}" \></a>
                 {% else %}
                   <a href="{{ path('homepage') }}" class="navbar-brand logo"><img src="{{ asset('bundles/naocore/img/logo-nao-jaune.png') }}" \></a>
-
                 {% endif %}
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#primary-menu">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
             </div>
             <nav class="collapse navbar-collapse" id="primary-menu">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="{{ path('observation.map') }}">Carte</a></li>
-
+                    <li class="active"><a href="{{ path('bird.list') }}">Fiche Oiseaux</a></li>
+                    <li><a href="{{ path('observation.map') }}">Carte</a></li>
                     <li><a href="{{ path('index') }}">Blog</a></li>
-                    <li><a href="#">Salle de Jeux</a></li>
-                    <li><a href="#">A propos</a></li>
+                    <li><a href="{{ path('game') }}">Salle de Jeux</a></li>
+                    <li><a href="{{ path('about') }}">A propos</a></li>
                     <li><a href="{{ path('contact') }}">Contact</a></li>
 
                     {# CONNEXION/DÉCONNEXION #}
@@ -36,7 +33,9 @@
                     {% endif %}
 
                     {% if (is_granted("IS_AUTHENTICATED_REMEMBERED")) and (is_granted("ROLE_ADMIN")) %}
-                      <li><a href="{{ path('admin') }}" class="helloUser" >Bonjour {{ app.user.username }} !</a>
+                      <li><a href="{{ path('user.username', {'username': app.user.username } ) }}" class="helloAdmin" >Bonjour {{ app.user.username }} !</a>
+                      </li>
+                      <li><a href="{{ path('admin') }}" class="helloAdmin" >Administration</a>
                       </li>
                     {% elseif is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                       <li>

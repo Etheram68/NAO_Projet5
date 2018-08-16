@@ -104,9 +104,23 @@
 
     //Background Parallax
     $('.header-area').parallax("50%", -0.6);
+    $('#section-observation').parallax("50%", -0.4);
     $('.header-area-register').parallax("50%", -0.6);
     $('.header-area-login').parallax("50%", -0.6);
     $('.header-area-profile').parallax("50%", -0.6);
+    $('.header-area-blog').parallax("50%", -0.6);
+    $('.header-area-contact').parallax("50%", -0.6);
+    $('.header-area-map').parallax("50%", -0.6);
+    $('.header-area-observation').parallax("50%", -0.6);
+    $('.header-area-observationWaiting').parallax("50%", -0.6);
+    $('.header-area-observationValidate').parallax("50%", -0.6);
+    $('.header-area-observationDraft').parallax("50%", -0.6);
+    $('.header-area-fiches').parallax("50%", -0.6);
+    $('.header-area-ficheNew').parallax("50%", -0.6);
+    $('.header-area-ficheWaiting').parallax("50%", -0.6);
+    $('.header-area-ficheValidate').parallax("50%", -0.6);
+    $('.header-area-ficheDraft').parallax("50%", -0.6);
+    $('.header-area-game').parallax("50%", -0.6);
     $('.price-area').parallax("50%", -0.5);
     $('.testimonial-area').parallax("10%", -0.2);
 

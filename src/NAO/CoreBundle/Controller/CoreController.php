@@ -10,11 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 /**
-<<<<<<< HEAD
  * Class CoreBundleController
-=======
- * Class AppBundleController
->>>>>>> Francois-Dev-Branch
  *
  * @package NAO\CoreBundle\Controller
  */
@@ -67,7 +63,7 @@ class CoreController extends Controller
 
             $message = (new \Swift_Message())
                 ->setFrom([$mail])
-                ->setTo('estebangrabette@gmail.com')
+                ->setTo('nao.support@projet5-site.fr')
                 ->setBody($this->renderView('emails/contactMail.html.twig', array(
                     'firstName' => $name,
                     'lastName' => $lastName,
@@ -77,13 +73,46 @@ class CoreController extends Controller
                 )));
             $this->get('mailer')->send($message);
 
-            $request->getSession()->getFlashBag()->add('notice', 'Votre message à bien été envoyé');
+            $request->getSession()->getFlashBag()->add('notice', 'Votre E-mail à bien été envoyée, nous vous répondrons dans les plus brefs délais');
 
-            $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('homepage');
         }
         return $this->render('core/contact.html.twig', array(
             'form' => $form->createView(),
         ));
+    }
+
+    /**
+     * Mention Légale
+     * @Route("/Mention", name="mention")
+     * @Method({"GET"})
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function mentionAction()
+    {
+        return $this->render('ressource\mentionlegale.html.twig');
+    }
+
+    /**
+     * CGU
+     * @Route("/cgu", name="cgu")
+     * @Method({"GET"})
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function cguAction()
+    {
+        return $this->render('ressource\cgu.html.twig');
+    }
+
+    /**
+     * about
+     * @Route("/about", name="about")
+     * @Method({"GET"})
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function aboutAction()
+    {
+        return $this->render('about\about.html.twig');
     }
 
 }

@@ -10,19 +10,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 class RegistrationController extends BaseController
 {
-    // private $eventDispatcher;
-    // private $formFactory;
-    // private $userManager;
-    // private $tokenStorage;
-
-    // public function __construct(EventDispatcherInterface $eventDispatcher, FactoryInterface $formFactory, UserManagerInterface $userManager, TokenStorageInterface $tokenStorage)
-    // {
-    //     $this->eventDispatcher = $eventDispatcher;
-    //     $this->formFactory = $formFactory;
-    //     $this->userManager = $userManager;
-    //     $this->tokenStorage = $tokenStorage;
-    // }
-
     public function registerAction(Request $request)
     {
         /** @var $formFactory FactoryInterface */

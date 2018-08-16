@@ -1,0 +1,11 @@
+{% if birdlist|length > 0 %}
+    {% for bird in birdlist %}
+        <div class="col s12 m6" >
+            {% include 'fiche/cards/bird_state.html.twig' with {'bird':bird, 'action': 'detail' } only %}
+        </div>
+    {% endfor %}
+{% else %}
+    <div class="col s12" >
+        <p>Il n'y a pas d'observation correspondante aux critères de votre recherche.</p>
+    </div>
+{% endif %}

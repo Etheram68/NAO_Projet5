@@ -1,6 +1,10 @@
 easy_admin:
     site_name: 'Nos Amis les Oiseaux'
     design:
+        assets:
+            js:
+              - '/bundles/cksourceckfinder/ckfinder/ckfinder.js'
+              - '/js/setup-ckfinder.js'
         brand_color: '#707070'
         color_scheme: 'light'
         menu:
@@ -8,15 +12,14 @@ easy_admin:
             - label: 'Fiches et Observations'
               icon: 'file'
               children:
-                - { entity: 'Observation', label: 'Fiches oiseaux' }
-                - { entity: 'Observation', label: 'Contributions' }
+                - { entity: 'Bird', label: 'Fiches oiseaux' }
                 - { entity: 'Observation', label: 'Observations' }
             - label: 'Blog'
               icon: 'sticky-note'
               children:
                 - { entity: 'Article', label: 'Articles' }
                 - { entity: 'Comment', label: 'Commentaires' }
-                - { entity: 'User', label: 'Utilisateurs', icon: 'user' }
+            - { entity: 'User', label: 'Utilisateurs', icon: 'user' }
 
     formats:
         date:     'd/m/Y'
@@ -29,7 +32,7 @@ easy_admin:
     entities:
 
         Bird:
-            class: NAO\MapBundle\Entity\Observation
+            class: NAO\FicheBundle\Entity\Bird
             list:
                 actions:
                     - { name: 'edit', icon: 'pencil', label: '', title: 'Éditer' }
@@ -37,28 +40,29 @@ easy_admin:
                 title: Les fiches oiseaux
                 sort: ['id', 'ASC']
                 fields: 
-                    - { property: 'id', label: "Id de l'oiseau" }
-                    - { property: 'name', label: "Nom" }
-                    - { property: 'family', label: "Famille" }
-                    - { property: 'editDate',  label: 'Modifications' }
-                    - { property: 'edit',  label: 'Contribution' }
+                    - { property: 'id', label: "Numéro de la fiche" }
+                    - { property: 'taxref.valid_name', label: "Nom de l'oiseau" }
+                    - { property: 'taxref.familia', label: "Famille" }
+                    - { property: 'size',  label: 'Taille' }
+                    - { property: 'weight',  label: 'Poids' }
+                    - { property: 'color',  label: 'Principal Couleur' }
+                    - { property: 'feature',  label: 'Information complémentaire' }
+                    - { property: 'naturalist',  label: 'Naturalist Validation' }
+                    - { property: 'status',  label: 'Validation' }
             form:
                 fields:
-                    - { property: 'name', label: "Nom" }
-                    - { property: 'latinName', label: "Nom latin" }
-                    - { property: 'family', label: "Famille" }
-                    - { property: 'featherColor', label: 'Plumage' }
-                    - { property: 'size', label: 'Taille en cm' }
-                    - { property: 'beakShape', label: 'Bec' }
-                    - { property: 'pawColor',  label: 'Pattes' }
-                    - { property: 'behavior',  label: 'Comportement' }
-                    - { property: 'description',  label: 'Description' }
+                    - { property: 'size',  label: 'Taille' }
+                    - { property: 'weight',  label: 'Poids' }
+                    - { property: 'color',  label: 'Principal Couleur' }
+                    - { property: 'feature',  label: 'Information complémentaire', type: 'Ivory\CKEditorBundle\Form\Type\CKEditorType' }
+                    - { property: 'naturalist',  label: 'Naturalist Validation' }
+                    - { property: 'status',  label: 'Validation', help: '0 = en Attente, 1 = Valider, 2 = Refuser, 4 = Broullions' }
+                    
             new:
                 title:  'Créer une fiche'
             edit:
                 title:  'Modifier la fiche'
-        Edit:
-            class: NAO\MapBundle\Entity\Observation
+
         Observation:
             class: NAO\MapBundle\Entity\Observation
             list:
@@ -76,7 +80,7 @@ easy_admin:
                     - { property: 'naturalist',  label: 'Naturalist Validation' }
                     - { property: 'status',  label: 'Validation' }
             edit:
-                title:  'Modifier la fiche'
+                title:  "Modifier l'observation"
                 fields:
                     - { property: 'user', label: 'Auteur' }
                     - { property: 'watched', label: 'Date' }
@@ -90,26 +94,59 @@ easy_admin:
             list:
                 actions:
                     - { name: 'edit', icon: 'pencil', label: '', title: 'Éditer' }
+                    - { name: 'new', label: 'Créer un article'}
                 title: Les articles
                 sort: ['id', 'ASC']
                 fields: 
-                    - id
                     - { property: 'title', label: 'Titre' }
-                    - { property: 'author', label: 'Auteur' }
-                    - { property: 'content',  label: 'Contenu' }
+                    - { property: 'user', label: 'Auteur' }
+                    - { property: 'date',  label: 'Date' }
+                    - { property: 'moderation',  label: 'Publié' }
             edit:
-                title:  'Modifier la fiche'
+                title:  "Modifier l'article"
                 fields:
                     - { property: 'title', label: 'Titre' }
-                    - { property: 'author', label: 'Auteur' }
-                    - { property: 'content',  label: 'Contenu' }
+                    - { property: 'date',  label: 'Date' }
+                    - { property: 'content',  label: 'Contenu', type: 'Ivory\CKEditorBundle\Form\Type\CKEditorType' }
+                    - { property: 'moderation',  label: 'Publié' }
+                    - { property: 'image',  label: 'Image' }
+            new:
+                title:  "Créer un article"
+                fields:
+                    - { property: 'title', label: 'Titre' }
+                    - { property: 'date',  label: 'Date' }
+                    - { property: 'user', label: 'Auteur', help: "Choississez l'auteur" }
+                    - { property: 'content',  label: 'Contenu', type: 'Ivory\CKEditorBundle\Form\Type\CKEditorType' }
+                    - { property: 'moderation',  label: 'Publié' }
+                    - { property: 'image',  label: 'Image' }
+                    - { property: 'moderation',  label: 'Publié' }
         Comment:
             class: NAO\BlogBundle\Entity\Comment
+            list:
+                actions:
+                    - { name: 'edit', icon: 'pencil', label: '', title: 'Éditer' }
+                    - '-new'
+                    - '-search'
+                title: Les commentaires
+                sort: ['id', 'ASC']
+                fields: 
+                    - { property: 'user', label: 'Auteur' }
+                    - { property: 'date', label: 'Date' }
+                    - { property: 'content',  label: 'Contenu' }
+                    - { property: 'article',  label: 'Article correspondant' }
+                    - { property: 'moderation',  label: 'Publié' }
+            edit:
+                title:  'Modérer le commentaire'
+                fields:
+                    - { property: 'content',  label: 'Contenu' }
+                    # - { property: 'date', label: 'Date' }
+                    - { property: 'moderation',  label: 'Publié' }
         User:
             class: NAO\UserBundle\Entity\User
             list:
                 actions:
                     - { name: 'edit', icon: 'pencil', label: '', title: 'Éditer' }
+                    - { name: 'new', label: 'Créer un compte' }
                 title: Les utilisateurs
                 sort: ['id', 'ASC']
                 fields: 
@@ -132,6 +169,20 @@ easy_admin:
                     - { property: 'email', label: 'Contact', type: 'email' }
                     - { property: 'town', label: 'Ville' }
                     - { property: 'newsletter' }
-                    - { property: 'roles', label: 'Rôle' }
+                    - { property: 'roles', label: 'Rôle', help: 'ROLE_USER (Particulier) ou ROLE_ADMIN (Naturaliste)' }
                     - { property: 'points', label: 'Nbr de points' }
-                    - { property: 'enabled',  label: 'Actif' }
+                    - { property: 'enabled',  label: 'Activation du compte' }
+            new:
+                title:  'Créer un compte'
+                fields:
+                    - { property: 'lastname', label: 'Nom' }
+                    - { property: 'firstname', label: 'Prénom' }
+                    - { property: 'username', label: 'Pseudo' }
+                    - { property: 'email', label: 'Email', type: 'email' }
+                    - { property: 'town', label: 'Ville' }
+                    - { property: 'rgpd',  label: 'RGPD' }
+                    - { property: 'newsletter' }
+                    - { property: 'roles', label: 'Rôle', help: 'ROLE_USER (Particulier) ou ROLE_ADMIN (Naturaliste)' }
+                    - { property: 'enabled',  label: 'Activation du compte' }
+                    - { property: 'plainPassword',  label: 'Mot de passe' }
+                    - { property: 'password',  label: 'Répétez le mot de passe' }

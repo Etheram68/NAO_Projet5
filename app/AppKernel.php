@@ -19,12 +19,15 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle(),
+            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new Http\HttplugBundle\HttplugBundle(),
             new NAO\CoreBundle\NAOCoreBundle(),
             new NAO\BlogBundle\NAOBlogBundle(),
             new NAO\MapBundle\NAOMapBundle(),
             new NAO\GameBundle\NAOGameBundle(),
             new NAO\UserBundle\NAOUserBundle(),
+            new NAO\FicheBundle\NAOFicheBundle(),
+            new Indigo\Bundle\CookieConsentBundle\IndigoCookieConsentBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
@@ -32,6 +35,7 @@ class AppKernel extends Kernel
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
+            $bundles[] = new CoreSphere\ConsoleBundle\CoreSphereConsoleBundle();
 
             if ('dev' === $this->getEnvironment()) {
                 $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();

@@ -5,8 +5,8 @@
 {% endif %}
 
 <main role="main" class="container" id="pageLogin">
-    <div class="row col-lg-12">
-        <div class="col-lg-7 col-xs-12">
+    <div class="row col-lg-12 col-sm-12 col-xs-12">
+        <div class="col-lg-7 col-sm-7 col-xs-12">
             <form action="{{ path("fos_user_security_check") }}" method="post">
                 {% if csrf_token %}
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
@@ -24,13 +24,13 @@
                 </div>
                 <div class="forgetAndSubscribe">
                     <p>
-                        <a href="#" id="forget">Mot de passe oublié</a> ?<br><a href="{{ path('fos_user_registration_register') }}" id="subscribe">S'inscrire</a>
+                        <a href="#" id="forget">Mot de passe oublié</a> ?<br><a href="{{ path('fos_user_registration_register') }}" class="subscribe">S'inscrire</a>
                    </p>
                 </div>
                 <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="btn btn-light" />
             </form>
         </div>
-        <div class="col-lg-5 col-xs-12">
+        <div class="col-lg-5 col-sm-5 col-xs-12">
             <img src="{{ asset('bundles/naocore/img/pictos/oiseau-jaune-01.png') }}" alt="oiseau-silouhette" />
         </div>
 </main>
