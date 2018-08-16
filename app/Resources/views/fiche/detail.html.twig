@@ -3,19 +3,18 @@
 {% block title %}Fiche - {{ parent() }}{% endblock %}
 
 {% block body %}
-    <header class="header-404 overlay full-404 relative v-center" id="home-page">
+    <!--Header-area-->
+    <header class="header-area-fiches overlay full-height-miniHeader relative v-center">
         <div class="absolute anlge-bg"></div>
-        <div class="container">
-            <div class="row v-center">
-                <div class="col-xs-12 col-md-7 header-text">
-                    <h2>Fiche</h2>
-                    <h3>En détail</h3>
+            <div class="container">
+                <div class="row v-center">
+                    <div class="col-xs-12 col-md-7 header-text-fiches">
+                        <h2>Les fiches oiseaux</h2>
+                        {# <h3>La fiche est en attente de validation</h3> #}
+                    </div>
                 </div>
             </div>
-        </div>
-        </div>
     </header>
-
     <section class="section-padding gray-bg" id="blog-page">
         <div class="container">
             <div class="row">
@@ -31,7 +30,7 @@
                                         <p>Valider par : <br />
                                         <div class="observation-validate-content">
                                             <span>
-                                                <img class="circle" src="{{ asset('bundles/naocore/img/pictos/user-avatar.png' ) }}" alt="Photo de profil" style="max-width: 15%;"/>
+                                                <img class="circle" src="{{ asset('bundles/naocore/img/pictos/user-avatar.png' ) }}" alt="Photo de profil" style="max-width: 10%;"/>
                                             </span>
                                             <div class="observation-validate-detail">
                                                 <a href="{{ path('user.username', {'id' : bird.user.id, 'username' : bird.user }) }}"

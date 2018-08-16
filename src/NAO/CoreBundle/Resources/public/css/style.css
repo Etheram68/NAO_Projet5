@@ -153,6 +153,36 @@ input[type=search]:not(.browser-default):focus:not([readonly]) + label,
 textarea.materialize-textarea:focus:not([readonly]) + label {
   color: unset;
 }
+/* Validation Sass Placeholders */
+input.valid:not([type]), input.valid:not([type]):focus,
+input[type=text].valid:not(.browser-default),
+input[type=text].valid:not(.browser-default):focus,
+input[type=password].valid:not(.browser-default),
+input[type=password].valid:not(.browser-default):focus,
+input[type=email].valid:not(.browser-default),
+input[type=email].valid:not(.browser-default):focus,
+input[type=url].valid:not(.browser-default),
+input[type=url].valid:not(.browser-default):focus,
+input[type=time].valid:not(.browser-default),
+input[type=time].valid:not(.browser-default):focus,
+input[type=date].valid:not(.browser-default),
+input[type=date].valid:not(.browser-default):focus,
+input[type=datetime].valid:not(.browser-default),
+input[type=datetime].valid:not(.browser-default):focus,
+input[type=datetime-local].valid:not(.browser-default),
+input[type=datetime-local].valid:not(.browser-default):focus,
+input[type=tel].valid:not(.browser-default),
+input[type=tel].valid:not(.browser-default):focus,
+input[type=number].valid:not(.browser-default),
+input[type=number].valid:not(.browser-default):focus,
+input[type=search].valid:not(.browser-default),
+input[type=search].valid:not(.browser-default):focus,
+textarea.materialize-textarea.valid,
+textarea.materialize-textarea.valid:focus, .select-wrapper.valid > input.select-dropdown {
+  border-bottom: 1px solid #FFDE00;
+  -webkit-box-shadow: 0 1px 0 0 #FFDE00;
+          box-shadow: 0 1px 0 0 #FFDE00;
+}
 /* END */
 
 #nao {
@@ -288,8 +318,114 @@ section#service-page-home.gray-bg.section-padding {
 #section-observation div.item.row.active  {
     background-color: rgba(255,255,255,0);
 }
+#section-observation div.item.row .caption-title h2,
+#section-observation div.item.row.active .caption-title h2 {
+    font-size: 24px;
+}
+#section-observation div.item.row .caption-desc h3,
+#section-observation div.item.row.active .caption-desc h3 {
+    font-size: 54px;
+    color: #575757;
+}
+#section-observation div.item.row .caption-desc h3:hover,
+#section-observation div.item.row.active .caption-desc h3:hover {
+    color: #FFDE00;
+}
 section#blog-page.section-padding.gray-bg {
     padding: 3%;
+}
+/*------------------- FICHES OISEAUX -------------------*/
+
+.header-area-fiches,
+.header-area-ficheNew,
+.header-area-ficheWaiting,
+.header-area-ficheValidate,
+.header-area-ficheDraft {
+    background: #000000 url('../img/header-fiches-photo.jpg') no-repeat scroll center center / cover;
+}
+#pageFiches {
+    height: auto;
+    background-color: #F6F6F6;
+    padding: 7% 0% 7% 0%;
+}
+.header-text-fiches h2 {
+    margin-top: 40%;
+    margin-bottom: 3%;
+    font-size: 108px;
+    color: #FFDE00;
+    line-height: 0.7em;
+}
+.header-text-ficheNew h2 {
+    margin-top: 35%;
+    margin-bottom: 3%;
+    font-size: 96px;
+    color: #FFDE00;
+    line-height: 0.7em;
+}
+#pageFiches #fichesAjoutSearchButton {
+    margin-bottom: 5%;
+}
+form#search-map-widget.searchFiches {
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    webkit-box-shadow: 0 4px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12),0 3px 1px -2px rgba(0,0,0,.2);
+    -webkit-box-shadow: 0 4px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);
+    box-shadow: 0 4px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);
+    z-index: 15;
+    position: absolute;
+    top: 5px;
+    left: 40%;
+    width: 150%;
+    padding: 0px 0px 10px 40px;
+}
+#fichesAjoutSearchButton {
+    padding-left: 1%;
+}
+#pageFiches div#show_list.col.s12 {
+    padding: 0;
+}
+/* Soumission nouvelle fiche */
+.section-padding.pageFichesContrib {
+    padding: 0;
+}
+#pageFichesContrib {
+    height: auto;
+    background-color: #F6F6F6;
+    padding: 5% 0% 5% 0%;
+}
+#pageFichesContrib div.card.no-style {
+    -webkit-box-shadow: unset;
+    box-shadow: unset;
+    background-color: #F6F6F6;
+}
+#pageFichesContrib .card-content {
+    padding: 5%;
+}
+/* Fiche en attente, brouillon et validée */
+.header-text-ficheWaiting h2,
+.header-text-ficheValidate h2,
+.header-text-ficheDraft h2 {
+    margin-top: 35%;
+    margin-bottom: 3%;
+    font-size: 72px;
+    color: #FFDE00;
+    line-height: 0.8em;
+}
+/* Texte des fiches sous forme de card */
+#pageFiches #eltlist h2,
+#blog-page #eltlist h2 {
+    font-size: 30px;
+    line-height: 0.8em;
+    color: #575757;
+}
+#pageFiches #eltlist h2:hover,
+#blog-page #eltlist h2:hover {
+    color: #FFDE00
+}
+#pageFiches #eltlist p,
+ #blog-page #eltlist p {
+    font-size: 15px;
+    line-height: 1.5em;
 }
 /*------------------- MAP -------------------*/
 
@@ -338,7 +474,7 @@ section#map-page.section-padding {
     display: none;
 }
 
-form#search-map-widget {
+form#search-map-widget.searchMap {
     background-color: #FFFFFF;
     border-radius: 5px;
     webkit-box-shadow: 0 4px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12),0 3px 1px -2px rgba(0,0,0,.2);
@@ -348,17 +484,18 @@ form#search-map-widget {
     position: absolute;
     top: 15px;
     left: 28%;
-    width: 45%;
-    padding: 10px 40px 10px 40px;
+    width: 50%;
+    padding: 0px 0px 10px 40px;
 }
-
+form#search-map-widget.searchMap i {
+    color: #575757;
+}
 form#search-map-widget a:first-child {
     position: absolute;
     width: 24px;
     top: 15px;
     left: 10px;
 }
-
 .material-icons {
     font-family: 'Material Icons';
     font-weight: normal;
@@ -433,7 +570,7 @@ ul#action-map-widget {
 .btn-floating.white i {
     color: #000000;
 }
-
+/* Liste des observations */
 #listeObs {
     height: auto;
     background-color: #F6F6F6;
@@ -447,10 +584,38 @@ span#titreListeObs {
     line-height: 0.7em;
     margin-left: 30px;
 }
+/* Texte des Obs sous forme de card */
+#listeObs #show_list #eltlist h2 {
+    font-size: 30px;
+    color: #575757;
+    line-height: 0.8em;
+}
+#listeObs #show_list #eltlist h2:hover {
+    color: #FFDE00;
+}
+#listeObs #show_list #eltlist p {
+    font-size: 15px;
+    line-height: 1.5em;
+}
+#listeObs #show_list #eltlist p a {
+    color: #575757;
+    font-weight: 800;
+}
+#listeObs #show_list #eltlist p a:hover {
+    color: #FFDE00;
+}
+#listeObs #show_list #eltlist p.caption.light-2-no-hov.coordinate {
+    font-size: 12px;
+    font-style: italic;
+    margin-top: 2px;
+}
 
-/*------------------- CREATE OBSERVATION -------------------*/
+/*------------------- NOUVELLE OBSERVATION -------------------*/
 
-.header-area-observation {
+.header-area-observation,
+.header-area-observationWaiting,
+.header-area-observationValidate,
+.header-area-observationDraft {
     background: #000000 url('../img/header-observation-photo.jpg') no-repeat scroll center / cover;
 }
 #pageObservation {
@@ -459,11 +624,32 @@ span#titreListeObs {
     padding: 3% 0% 7% 0%;
 }
 .header-text-observation h2 {
-    margin-top: 30%;
+    margin-top: 35%;
     margin-bottom: 3%;
-    font-size: 108px;
+    font-size: 96px;
     color: #FFDE00;
     line-height: 0.75em;
+}
+/* Observation en attente, brouillon et validée */
+.header-text-observationWaiting h2,
+.header-text-observationValidate h2,
+.header-text-observationDraft h2 {
+    margin-top: 35%;
+    margin-bottom: 3%;
+    font-size: 72px;
+    color: #FFDE00;
+    line-height: 0.8em;
+}
+.section-padding.pageObservation {
+    padding: 0;
+}
+#pageObservation div.card.no-style {
+    -webkit-box-shadow: unset;
+    box-shadow: unset;
+    background-color: #F6F6F6;
+}
+#pageObservation .card-content {
+    padding: 5%;
 }
 .card {
     position: relative;
@@ -2171,6 +2357,72 @@ i.glyphicon.glyphicon-trash {
     margin: 15px 0px 20px 0px;
 }
 
+/*------------------- GAME -------------------*/
+
+.header-area-game {
+    background: #000000 url('../img/header-game-photo.jpg') no-repeat scroll center center / cover;
+}
+#pageGame {
+    height: auto;
+    background-color: #F6F6F6;
+    padding: 5% 7% 5% 7%;
+}
+.header-text-game h2 {
+    margin-top: 15%;
+    margin-bottom: 1%;
+    font-size: 144px;
+    color: #FFDE00;
+    line-height: 0.7em;
+}
+.header-text-game h3 {
+    font-size: 30px;
+    margin-top: 4%;
+}
+div#hofTitre {
+    display: flex;
+    align-items: baseline;
+}
+div#hofTitre img {
+    max-width: 7%;
+    margin-left: 5%;
+}
+div#hofContent {
+    padding: 5% 10% 5% 10%;
+    background-color: white;
+}
+div#hofContent table {
+    width: 90%;
+}
+div#hofContent table tr {
+    height: 15%;
+}
+div#hofContent img.hofAvatar {
+    max-width: 25%;
+}
+div#hofContent table td#hofAvatarTd {
+    width: 20%;
+}
+div#hofContent table td#hofUserNameTd {
+    display: flex;
+    justify-content: center;
+    width: 40%;
+}
+div#hofContent table td#hofPointsTd {
+    width: 20%;
+}
+div#hofContent table td#hofLevelTd {
+    width: 20%;
+}
+
+div#hofContent table a#hofUserNameLink {
+    color: #575757;
+    font-weight: 800;
+    font-size: 24px;
+}
+div#hofContent table a#hofUserNameLink:hover {
+    color: #FFDE00;
+}
+
 /*------------------- CONTACT -------------------*/
 
 .header-area-contact {
@@ -2179,7 +2431,7 @@ i.glyphicon.glyphicon-trash {
 #pageContact {
     height: auto;
     background-color: #F6F6F6;
-    padding: 7% 7% 7% 7%;
+    padding: 2% 7% 5% 7%;
 }
 .header-text-contact h2 {
     margin-top: 25%;
@@ -2474,7 +2726,7 @@ input:-webkit-autofill:focus {
     z-index: 9999999;
     -webkit-transition: 0.3s;
     transition: 0.3s;
-    background-color: RGBA(255, 255, 255, 0.3);
+    background-color: rgba(246, 246, 246, 0.3);
 }
 
 .overlay,
@@ -2548,11 +2800,16 @@ input:-webkit-autofill:focus {
 
 
 
-.mainmenu-area.affix {
+/*.mainmenu-area.affix {
     background-color: #FFFFFF;
+}*/
+
+.mainmenu-area.affix {
+    background-color: #F6F6F6;
+    -moz-box-shadow: 1px 1px 6px rgba(0,0,0,0.2);
+    -webkit-box-shadow: 1px 1px 6px rgba(0,0,0,0.2);
+    box-shadow: 1px 1px 6px rgba(0,0,0,0.2);
 }
-
-
 
 /**
 *Header-area
@@ -3595,6 +3852,7 @@ preloader
     }
     .mainmenu-area #primary-menu > ul > li > a.helloAdmin {
         font-size: 10.5px;
+        margin-left: -15px;
     }
     /*---- FOOTER ----*/
     .footer_area .footer_row .footer_about .quick_link li a {
@@ -3604,10 +3862,47 @@ preloader
     #home-page div.col-xs-12.col-md-7.header-text h3 {
         margin-bottom: 30px;
     }
+    #section-observation {
+        height: auto;
+    }
+    /*---- FICHES OISEAUX ----*/
+    #pageFichesContrib {
+        padding: 5% 0% 5% 0%;
+    }
+    #pageFichesContrib .card-content {
+        padding: 0%;
+    }
+    .header-text-fiches h2 {
+        margin-top: 35%;
+        font-size: 96px;
+    }
+    .header-text-fiches h3 {
+        font-size: 24px;
+    }
+    .header-text-ficheNew h2 {
+        margin-top: 35%;
+        font-size: 72px;
+    }
+    .header-text-ficheWaiting h2 {
+        margin-top: 30%;
+        font-size: 60px;
+    }
+    .header-text-ficheWaiting h3 {
+        font-size: 21px;
+    }
+    #pageFiches #eltlist h2,
+    #blog-page #eltlist h2 {
+        font-size: 24px;
+    }
+    #pageFiches #eltlist p,
+    #blog-page #eltlist p {
+        font-size: 12px;
+        line-height: 1.2em;
+    }
     /*---- MAP ----*/
     .header-text-map h2 {
         margin-top: 20%;
-        font-size: 96px;
+        font-size: 84px;
     }
     .header-text-map h3 {
         font-size: 24px;
@@ -3615,13 +3910,31 @@ preloader
     span#titreListeObs {
         margin-left: 0;
     }
+    #listeObs #show_list #eltlist h2 {
+        font-size: 24px;
+    }
+    #listeObs #show_list #eltlist p {
+        font-size: 12px;
+        line-height: 1.5em;
+    }
+    #listeObs #show_list #eltlist p.caption.light-2-no-hov.coordinate {
+        font-size: 10.5px;
+        margin-top: 5px;
+    }
     /*---- OBSERVATION ----*/
     .header-text-observation h2 {
-        margin-top: 20%;
-        font-size: 96px;
+        margin-top: 30%;
+        font-size: 72px;
     }
     .header-text-observation h3 {
         font-size: 24px;
+    }
+    .header-text-observationWaiting h2 {
+        margin-top: 30%;
+        font-size: 54px;
+    }
+    .header-text-observationWaiting h3 {
+        font-size: 21px;
     }
     /*---- LOGIN ----*/
     .header-text-login h2 {
@@ -3682,13 +3995,21 @@ preloader
     #pageComment div.row.col-lg-12.col-sm-12 {
         padding: 0;
     }
+    /*---- GAME ----*/
+    .header-text-game h2 {
+        margin-top: 25%;
+        font-size: 120px;
+    }
+    .header-text-game h3 {
+        font-size: 24px;
+    }
 }
 
 /*------------------------- TABLETTES -------------------------*/
 
 @media all and (min-width: 768px) and (max-width: 992px) {
     .container {
-        width: 924px;
+        width: 948px;
     }
     /*---- NAVBAR ----*/
     .mainmenu-area #primary-menu > ul > li > a {
@@ -3712,6 +4033,45 @@ preloader
     #home-page div.col-xs-12.col-md-7.header-text h3 {
         margin-bottom: 30px;
     }
+    #section-observation {
+        height: auto;
+    }
+    /*---- FICHES OISEAUX ----*/
+    #pageFichesContrib {
+        padding: 2% 0% 2% 0%;
+    }
+    #pageFichesContrib .card-content {
+        padding: 0%;
+    }
+    .header-text-fiches h2 {
+        margin-top: 25%;
+        font-size: 72px;
+    }
+    .header-text-fiches h3 {
+        font-size: 21px;
+    }
+    .header-text-ficheNew h2 {
+        margin-top: 20%;
+        margin-bottom: 2%;
+        font-size: 60px;
+    }
+    .header-text-ficheWaiting h2 {
+        margin-top: 20%;
+        font-size: 48px;
+        margin-bottom: 2%;
+    }
+    .header-text-ficheWaiting h3 {
+        font-size: 21px;
+    }
+    #pageFiches #eltlist h2,
+    #blog-page #eltlist h2 {
+        font-size: 24px;
+    }
+    #pageFiches #eltlist p,
+    #blog-page #eltlist p {
+        font-size: 12px;
+        line-height: 1.2em;
+    }
     /*---- MAP ----*/
     .header-text-map h2 {
         margin-top: 10%;
@@ -3725,6 +4085,16 @@ preloader
     }
     div.caption-button {
         margin-bottom: 30px;
+    }
+    #listeObs #show_list #eltlist h2 {
+        font-size: 24px;
+    }
+    #listeObs #show_list #eltlist p {
+        font-size: 12px;
+        line-height: 1.2em;
+    }
+    #listeObs #show_list #eltlist p.caption.light-2-no-hov.coordinate {
+        margin-top: 10px;
     }
     /*---- OBSERVATION ----*/
     .header-text-observation h2 {
@@ -3799,6 +4169,15 @@ preloader
     #pageComment div.row.col-lg-12.col-sm-12 {
         padding: 0;
     }
+    /*---- GAME ----*/
+    .header-text-game h2 {
+        margin-top: 15%;
+        font-size: 96px;
+    }
+    .header-text-game h3 {
+        margin-top: 2%;
+        font-size: 21px;
+    }
 }
 
 /*------------------------- MOBILES -------------------------*/
@@ -3826,6 +4205,14 @@ preloader
     .navbar-brand.logo {
         width: 40%;
         margin: 0 35% 0 0;
+    }
+    .mainmenu-area nav#primary-menu {
+        margin-top: 5%;
+        width: 100%;
+        background-color: rgba(246,246,246,0.9)
+    }
+    .mainmenu-area nav#primary-menu li a {
+        height: 10px;
     }
     /*---- SOCIAL MEDIA ----*/
     #socialMedia .row
@@ -3979,6 +4366,58 @@ preloader
     div.caption-button {
         margin-bottom: 15%;
     }
+    /*---- FICHES OISEAUX ----*/
+    #pageFichesContrib form#bird_form {
+        padding: 5%;
+    }
+    #pageFichesContrib {
+        padding: 2% 0% 2% 0%;
+    }
+    #pageFichesContrib .card-content {
+        padding: 0%;
+    }
+    #pageFiches #fichesAjoutSearchButton {
+        margin-bottom: 5%;
+    }
+    form#search-map-widget.searchFiches {
+        left: 25%;
+        width: 68%;
+    }
+    #fichesAjoutSearchButton {
+        padding-left: 0;
+    }
+    .header-text-fiches h2 {
+        margin-top: 35%;
+        font-size: 72px;
+        text-align: center;
+    }
+    .header-text-ficheNew h2 {
+        margin-top: 25%;
+        margin-bottom: 5%;
+        font-size: 60px;
+        text-align: center;
+    }
+    .header-text-ficheNew h3 {
+        font-size: 21px;
+        text-align: center;
+    }
+    #pageFichesContrib div#obs-action.col-s12.center-align {
+        display: flex;
+        flex-direction: column;
+    }
+    #pageFichesContrib div#obs-action.col-s12.center-align #bird_save_draft {
+        margin: 15px 0 15px 0;
+    }
+    .header-text-ficheWaiting h2 {
+        margin-top: 25%;
+        font-size: 48px;
+        margin-bottom: 2%;
+        text-align: center;
+    }
+    .header-text-ficheWaiting h3 {
+        font-size: 21px;
+        text-align: center;
+    }
     /*---- MAP ----*/
     div.col-xs-12.col-md-7.header-text-map {
         padding: 0;
@@ -3995,6 +4434,13 @@ preloader
         font-size: 18px;
         text-align: center;
     }
+    form#search-map-widget.searchMap {
+        left: 15%;
+        width: 70%;
+    }
+    form#search-map-widget.searchMap input#search-bird:placeholder-shown {
+        font-size: 12px;
+    }
     .map-container .map-result-overlay {
         position: absolute;
         z-index: 15;
@@ -4009,14 +4455,27 @@ preloader
         display: none;
         bottom: 0;
     }
+    /* Liste des observations */
     span#titreListeObs {
         margin-left: 0;
     }
     #listeObs div.col-xs-12.col-md-7.header-text {
         text-align: center;
     }
+    #listeObs #show_list {
+        font-size: 15px;
+        line-height: 1.5em;
+    }
     #show_list #eltlist .card-content a div.media-container {
         display: none;
+    }
+    /* Observations en attente */
+    #blog-page #eltlist .card-content div.media-container {
+        display: none;
+    }
+    #blog-page #eltlist .card-content p {
+        line-height: 1.3em;
+        font-size: 13.5px;
     }
     /*---- OBSERVATION ----*/
     div.col-xs-12.col-md-7.header-text-observation {
@@ -4039,10 +4498,6 @@ preloader
     }
     button#observation_save_draft.btn-secondary.btn {
         margin-bottom: 10px;
-    }
-    #listeObs #show_list {
-        font-size: 15px;
-        line-height: 1.5em;
     }
     /*---- LOGIN ----*/
     div.col-xs-12.col-md-7.header-text-login {
@@ -4254,6 +4709,57 @@ preloader
     #pageComment div.row.col-lg-12.col-sm-12 {
         padding: 0;
     }
+
+    /*---- GAME ----*/
+    div.col-xs-12.col-md-7.header-text-game {
+        padding: 0;
+    }
+    #pageGame {
+        height: auto;
+        background-color: #F6F6F6;
+        padding: 7% 7% 7% 3%;
+    }
+    .header-text-game h2 {
+        margin-top: 40%;
+        margin-bottom: 4%;
+        font-size: 60px;
+        color: #FFDE00;
+        line-height: 0.8em;
+        text-align: center;
+    }
+    .header-text-game h3 {
+        font-size: 21px;
+        text-align: center;
+        margin-bottom: 3%;
+    }
+    div#hofTitre {
+        text-align: center;
+    }
+    div#hofTitre img {
+        display: none;
+    }
+    div#hofContent {
+        padding: 2% 0% 2% 7%;
+    }
+    div#hofContent table td#hofAvatarTd,
+    div#hofContent img.hofAvatar {
+        display: none;
+    }
+    div#hofContent table td#hofUserNameTd {
+        display: unset;
+        width: 20%;
+    }
+    div#hofContent table td#hofPointsTd {
+        width: 25%;
+    }
+    div#hofContent table td#hofLevelTd {
+        font-size: 12px;
+        line-height: 1em;
+        width: 25%;
+    }
+    div#hofContent table a#hofUserNameLink {
+        font-size: 15px;
+    }
 }
 
 
@@ -4282,6 +4788,50 @@ preloader
         font-size: 18px;
         line-height: 1.3em;
     }
+    /*---- FICHES OISEAUX ----*/
+    .header-text-fiches h2 {
+        margin-top: 40%;
+        margin-bottom: 3%;
+        font-size: 60px;
+        text-align: center;
+    }
+    .header-text-ficheNew h2 {
+        margin-top: 30%;
+        margin-bottom: 3%;
+        font-size: 48px;
+        text-align: center;
+    }
+    .header-text-ficheNew h3 {
+        font-size: 18px;
+        text-align: center;
+    }
+    .header-text-ficheWaiting h2 {
+        margin-top: 25%;
+        font-size: 42px;
+        margin-bottom: 2%;
+        text-align: center;
+    }
+    .header-text-ficheWaiting h3 {
+        font-size: 18px;
+        text-align: center;
+    }
+    form#search-map-widget.searchFiches {
+        left: 30%;
+        width: 62%;
+    }
+    form#search-map-widget.searchFiches input#search-bird:placeholder-shown {
+        font-size: 10.5px;
+    }
+    #pageFiches #eltlist h2,
+    #blog-page #eltlist h2 {
+        font-size: 21px;
+        line-height: 1em;
+    }
+    #pageFiches #eltlist p,
+     #blog-page #eltlist p {
+        font-size: 12px;
+        line-height: 1.2em;
+    }
     /*---- MAP ----*/
     div.col-xs-12.col-md-7.header-text-map {
         padding: 0;
@@ -4292,6 +4842,20 @@ preloader
     }
     .header-text-map h3 {
         font-size: 16.5px;
+    }
+    #listeObs #show_list #eltlist h2 {
+        font-size: 24px;
+        line-height: 1em;
+    }
+    #listeObs #show_list #eltlist p {
+        font-size: 12px;
+        line-height: 1.5em;
+    }
+    #listeObs #show_list #eltlist p.caption.light-2-no-hov.coordinate {
+        margin-top: 10px;
+    }
+    form#search-map-widget.searchMap input#search-bird:placeholder-shown {
+        font-size: 10.5px;
     }
     /*---- OBSERVATION ----*/
     div.col-xs-12.col-md-7.header-text-observation {
@@ -4307,10 +4871,6 @@ preloader
     }
     #listeObs div.col-xs-12.col-md-7 #titreListeObs {
         font-size: 21px;
-    }
-    #listeObs #show_list {
-        font-size: 13.5px;
-        line-height: 1.5em;
     }
     /*---- PROFIL ----*/    
     .header-text-profile h2#adminProfile {
@@ -4337,6 +4897,16 @@ preloader
     }
     .header-text-contact h3 {
         font-size: 18px;
+    }
+    /*---- GAME ----*/
+    .header-text-game h2 {
+        margin-top: 30%;
+        font-size: 60px;
+        line-height: 0.7em;
+    }
+    .header-text-game h3 {
+        font-size: 21px;
+        margin-bottom: 3%;
     }
 }
 

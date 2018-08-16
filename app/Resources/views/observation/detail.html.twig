@@ -3,17 +3,16 @@
 {% block title %}Observation - {{ parent() }}{% endblock %}
 
 {% block body %}
-    <header class="header-404 overlay full-404 relative v-center" id="home-page">
+    <!--Header-area-->
+    <header class="header-area-observation overlay full-height-miniHeader relative v-center">
         <div class="absolute anlge-bg"></div>
-        <div class="container">
-            <div class="row v-center">
-                <div class="col-xs-12 col-md-7 header-text">
-                    <h2>OBSERVATIONS</h2>
-                    <h3>En détail</h3>
+            <div class="container">
+                <div class="row v-center">
+                    <div class="col-xs-12 col-md-7 header-text-observation">
+                        <h2>Les Observations</h2>
+                    </div>
                 </div>
             </div>
-        </div>
-        </div>
     </header>
 
     <section class="section-padding gray-bg" id="blog-page">
@@ -36,19 +35,24 @@
                                             <p>{{ observation.taxref.commonName }}</p>
                                             <p>{{ '%individuals% individu(s) observé(s) le %date%'|trans({'%individuals%': observation.individuals, '%date%': observation.watched|date("d/m/Y")}) }}<br/>
                                                 {{ 'à %place%'|trans({'%place%': observation.place}) }}</p>
+                                            par <a href="{{ path('user.username', {'id' : observation.user.id, 'username' : observation.user }) }}">{{ observation.user }}</a>
                                             <p>{{ 'Coordonnées GPS %latitude% N, %longitude% E' | trans({'%latitude%': observation.latitude | gps_dms, "%longitude%": observation.longitude | gps_dms()}) }}</p>
-                                            <p>Commentaire: <br />{{ observation.comments }}</p>
+                                            {% if not observation.comments == null %}
+                                                <p>Commentaire: <br />{{ observation.comments }}</p>
+                                            {% endif %}
                                         </div>
                                     </div>
                                     <div class="observedby">
                                         <p>Valider par : <br />
                                             <div class="observation-validate-content">
                                             <span>
-                                                <img class="circle" src="{{ asset('bundles/naocore/img/pictos/user-avatar.png' ) }}" alt="Photo de profil" style="max-width: 60%;"/>
+                                                <img class="circle" src="{{ asset('bundles/naocore/img/pictos/user-avatar.png' ) }}" alt="Photo de profil" style="max-width: 40%;"/>
                                             </span>
-                                                <div class="observation-validate-detail">
+                                                <div class="observation-validate-detail">                                       
                                                     <a href="{{ path('user.username', {'id' : observation.user.id, 'username' : observation.naturalist }) }}"
-                                                       class="bleen">{{ observation.naturalist }}</a>
+                                                       class="bleen">
+                                                       {{ observation.naturalist }}
+                                                   </a>
                                                 </div>
                                             </div>
                                     </div>

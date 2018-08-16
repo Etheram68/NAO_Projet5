@@ -80,7 +80,7 @@ easy_admin:
                     - { property: 'naturalist',  label: 'Naturalist Validation' }
                     - { property: 'status',  label: 'Validation' }
             edit:
-                title:  'Modifier la fiche'
+                title:  "Modifier l'observation"
                 fields:
                     - { property: 'user', label: 'Auteur' }
                     - { property: 'watched', label: 'Date' }

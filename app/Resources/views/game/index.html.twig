@@ -1,0 +1,55 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}Salle de jeux - {{ parent() }}{% endblock %}
+
+{% block body %}
+    <!--Header-area-->
+    <header class="header-area-game overlay full-height-miniHeader relative v-center">
+        <div class="absolute anlge-bg"></div>
+            <div class="container">
+                <div class="row v-center">
+                    <div class="col-xs-12 col-md-7 header-text-game">
+	                    <h2>Salle de jeux</h2>
+	                    <h3>Répondez au quiz et vous remporterez des points !</h3>
+                    </div>
+                </div>
+            </div>
+    </header>
+
+
+<main role="main" class="container" id="pageGame">
+
+	<section>
+		<div id="hofTitre">
+			<h2>Panthéon des Observateurs</h2>
+			<img src="{{ asset('bundles/naocore/img/pictos/hall-of-fame-main.png') }}" />
+		</div>
+ 		<div id="hofContent" class="col-lg-12 col-xs-12 hof">
+			<table>
+			<tbody>
+			  {% for user in bestUsers %}
+			  <tr>
+				<td id="hofAvatarTd">
+					<img src="{{ asset('bundles/naocore/img/pictos/user-avatar.png') }}" class="hofAvatar" />
+				</td>
+				<td id="hofUserNameTd">
+					<a href="{{ path('user.username', {'username': user.username } ) }}" id="hofUserNameLink">
+						{{ user.username }}
+					</a>
+				</td>
+				<td id="hofPointsTd">
+					{{ user.points }}
+				</td>
+				<td id="hofLevelTd">
+					{{ user.level }}
+				</td> 
+			  </tr>
+			  {% endfor %}
+			</tbody>
+			</table>
+		</div>
+	</section>
+
+
+</main>
+{% endblock %}

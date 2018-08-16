@@ -41,7 +41,8 @@ class UserController extends Controller
         }
         // Calcul du niveau par rapport aux points
         $points = $user->getPoints();
-        $userLevel = $this->container->get('naouser.level.levelCalcul')->guessLevel($points);
+        $level = $this->container->get('naouser.level.levelCalcul')->guessLevel($points);
+        $user->setLevel($level);
         // Récupération des observations
         $listObservations = $user->getObservations();
         $infosObs = [];
@@ -49,6 +50,7 @@ class UserController extends Controller
             foreach ($listObservations as $observation) {
                 $infosObs[] = [
                     'id' => $observation->getId(),
+                    'statut' => $observation->getStatus(),
                     'oiseau' => $observation->getTaxref()->getCommonName(),
                     'lieu' => $observation->getPlace(),
                     'date' => $observation->getWatched()
@@ -69,7 +71,7 @@ class UserController extends Controller
         }
         return $this->container->get('templating')->renderResponse('@FOSUser/Profile/show.html.twig', array(
             'user' => $user,
-            'userLevel' => $userLevel,
+            // 'userLevel' => $userLevel,
             'listObservations' => $listObservations,
             'infosObs' => $infosObs,
             'infosComment' => $infosComment,

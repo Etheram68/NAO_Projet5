@@ -73,7 +73,12 @@ class User extends BaseUser
      */
     private $points;
 
-    public $level;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="level", type="text", nullable=true)
+     */
+    private $level;
 
     /**
      * @ORM\OneToMany(targetEntity="NAO\MapBundle\Entity\Observation", mappedBy="user", cascade={"persist", "remove"} )
@@ -353,4 +358,28 @@ class User extends BaseUser
         return $this->comments;
     }
 
+
+    /**
+     * Set level
+     *
+     * @param string $level
+     *
+     * @return User
+     */
+    public function setLevel($level)
+    {
+        $this->level = $level;
+
+        return $this;
+    }
+
+    /**
+     * Get level
+     *
+     * @return string
+     */
+    public function getLevel()
+    {
+        return $this->level;
+    }
 }
