@@ -4,50 +4,50 @@
 
 {{ form_start(form, { 'action': path('fos_user_profile_edit', {'username': app.user.username } ), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
 
-	<div class="form-group row col-lg-12 col-sm-12">
+	<div class="form-group row col-lg-12 col-sm-12 col-xs-12">
 		{# Nom #}
-		<div class="col-lg-6">
+		<div class="col-lg-6 col-xs-12">
 			{{ form_label(form.lastname, 'Nom', {'label_attr': {'class': 'control-label'} }) }}
 			{{ form_errors(form.lastname) }}			
 			{{ form_widget(form.lastname, {'attr': {'class': 'form-control'} }) }}
 		</div>
 		{# Prénom #}
-		<div class="col-lg-6">
+		<div class="col-lg-6 col-xs-12">
 			{{ form_label(form.firstname, 'Prénom', {'label_attr': {'class': 'control-label'} }) }}
 			{{ form_errors(form.firstname) }}			
 			{{ form_widget(form.firstname, {'attr': {'class': 'form-control'} }) }}
 		</div>
 	</div>
-	<div class="form-group row col-lg-12 col-sm-12">
+	<div class="form-group row col-lg-12 col-sm-12 col-xs-12">
 		{# Pseudo #}
-		<div class="col-lg-6">
+		<div class="col-lg-6 col-xs-12">
 			{{ form_label(form.username, 'Pseudo', {'label_attr': {'class': 'control-label'} }) }}
 			{{ form_errors(form.username) }}			
 			{{ form_widget(form.username, {'attr': {'class': 'form-control'} }) }}
 		</div>
 		{# Ville #}
-		<div class="col-lg-6">
+		<div class="col-lg-6 col-xs-12">
 			{{ form_label(form.town, 'Ville', {'label_attr': {'class': 'control-label'}}) }}
 			{{ form_errors(form.town) }}			
 			{{ form_widget(form.town, {'attr': {'class': 'form-control'} }) }}	
 		</div>
 	</div>
-	<div class="form-group row col-lg-12 col-sm-12">
+	<div class="form-group row col-lg-12 col-sm-12 col-xs-12">
 		{# Email #}
-		<div class="col-lg-6">
+		<div class="col-lg-6 col-xs-12">
 			{{ form_label(form.email, 'Email', {'label_attr': {'class': 'control-label'} }) }}
 			{{ form_errors(form.email) }}			
 			{{ form_widget(form.email, {'attr': {'class': 'form-control'} }) }}
 		</div>
 		{# Présentation #}
-		<div class="col-lg-6">
+		<div class="col-lg-6 col-xs-12">
 			{{ form_label(form.presentation, 'Présentation', {'label_attr': {'class': 'control-label'}}) }}
 			{{ form_errors(form.presentation) }}			
 			{{ form_widget(form.presentation, {'attr': {'class': 'form-control' } }) }}	
 		</div>
 	</div>
 
-	<div class="form-group row col-lg-6 col-sm-12" style="padding-left: 30px;">		
+	<div class="form-group row col-lg-6 col-sm-12 col-xs-12" style="padding-left: 30px;">		
 		
 		{# Mot de passe #}
 		<div>

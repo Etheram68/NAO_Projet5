@@ -1,10 +1,20 @@
 {# src/OC/PlatformBundle/Resources/view/Advert/view.html.twig #}
 
 {% extends "blog/layout.html.twig" %}
+{% block headtitle %}Article – {{ parent() }}{% endblock %}
 
 {% block naoblog_body %}
     <section class="section-padding" id="article-page">
         <div class="container" id="pageArticle">
+        	{% if article.image is not null %}
+                            <img
+                                    src="{{ asset(article.image.webPath) }}"
+                                    alt="{{ article.image.alt }}"
+                                    height="60"
+                            />
+                        {% else %}
+                            <img src="{{ asset('bundles/naocore/img/blog/small1.jpg') }}" alt="default">
+                        {% endif %}
             <div class="blog-content">
                 <h1>{{ article.title }}</h1>
                 <div class="blog-meta">
@@ -14,24 +24,12 @@
                     <span>{{ article.date|date('d/m/Y') }}</span>                
                 </div>
                 <div class="row">
-                    <div class="col-xs-12 col-sm-6">
-                        {{ article.content }}
-                    </div>
-
-                    <div class="col-xs-12 col-sm-4">
-                        {% if article.image is not null %}
-                            <img
-                                    src="{{ asset(article.image.webPath) }}"
-                                    alt="{{ article.image.alt }}"
-                                    height="60"
-                            />
-                        {% else %}
-                            <img src="{{ asset('bundles/naocore/img/blog/small1.jpg') }}" alt="default">
-                        {% endif %}
+                    <div class="col-xs-12">
+                        {{ article.content|raw }}
                     </div>
                 </div>
-                <div class="comment-container">
-                    <h3>Commentaires</h3>
+                <div class="comment-container col-xs-12">
+                    <h3 id="ancreCommentaires">Commentaires</h3>
                         {% if (is_granted("IS_AUTHENTICATED_REMEMBERED")) and (is_granted("ROLE_USER")) %}
                             <a class="btn btn-light" href="{{ path('comment.add', {'id': article.id }) }}">Ajouter<br>un
                             commentaire</a>
@@ -41,7 +39,7 @@
                                 <a href="{{ path('fos_user_registration_register') }}" class="subscribe">créer un compte</a> pour commenter.
                             </div>
                         {% endif %}
-                    <div class="comment-content">
+                    <div class="comment-content col-xs-12">
                         <ul>
                             {% for comment in listComments %}
                                 {% if comment.moderation == 1 %}

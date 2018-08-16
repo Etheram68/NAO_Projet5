@@ -4,6 +4,8 @@ namespace NAO\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * User
@@ -71,13 +73,31 @@ class User extends BaseUser
      */
     private $points;
 
-    public $level;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="level", type="text", nullable=true)
+     */
+    private $level;
+
+    /**
+     * @ORM\OneToMany(targetEntity="NAO\MapBundle\Entity\Observation", mappedBy="user", cascade={"persist", "remove"} )
+     * @Assert\Valid() 
+     */
+    private $observations;
+
+    /**
+     * @ORM\OneToMany(targetEntity="NAO\BlogBundle\Entity\Comment", mappedBy="user", cascade={"persist", "remove"} )
+     * @Assert\Valid() 
+     */
+    private $comments;
 
 
     public function __construct()
     {
         parent::__construct();
-
+        $this->observations = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
 
@@ -264,5 +284,102 @@ class User extends BaseUser
         return $this->roles;
     }
 
-}
+    /**
+     * Add observation
+     *
+     * @param \NAO\MapBundle\Entity\Observation $observation
+     *
+     */
+    public function addObservation(\NAO\MapBundle\Entity\Observation $observation)
+    {        
+        if ($this->observations->contains($observation)) {
+            return;
+        }
+        $this->observations[] = $observation;
+        $observation->setObservation($this);
+        return $this;
+    }
 
+    /**
+     * Remove observation
+     *
+     * @param \NAO\MapBundle\Entity\Observation $observation
+     */
+    public function removeObservation(\NAO\MapBundle\Entity\Observation $observation)
+    {
+        $this->observations->removeElement($observation);
+        $observation->setObservation(null);
+    }
+
+    /**
+     * Get observations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getObservations()
+    {
+        return $this->observations;
+    }
+
+    /**
+     * Add comment
+     *
+     * @param \NAO\BlogBundle\Entity\Comment $comment
+     *
+     */
+    public function addComment(\NAO\BlogBundle\Entity\Comment $comment)
+    {        
+        if ($this->comments->contains($comment)) {
+            return;
+        }
+        $this->comments[] = $comment;
+        $comment->setComment($this);
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \NAO\BlogBundle\Entity\Comment $comment
+     */
+    public function removeComment(\NAO\BlogBundle\Entity\Comment $comment)
+    {
+        $this->comments->removeElement($comment);
+        $comment->setComment(null);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+
+    /**
+     * Set level
+     *
+     * @param string $level
+     *
+     * @return User
+     */
+    public function setLevel($level)
+    {
+        $this->level = $level;
+
+        return $this;
+    }
+
+    /**
+     * Get level
+     *
+     * @return string
+     */
+    public function getLevel()
+    {
+        return $this->level;
+    }
+}

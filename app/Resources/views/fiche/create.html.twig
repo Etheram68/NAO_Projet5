@@ -3,22 +3,20 @@
 {% block title %}Ajouter - {{ parent() }}{% endblock %}
 
 {% block body %}
-
-    <header class="header-404 overlay full-404 relative v-center" id="home-page">
+    <!--Header-area-->
+    <header class="header-area-ficheNew overlay full-height-miniHeader relative v-center">
         <div class="absolute anlge-bg"></div>
-        <div class="container">
-            <div class="row v-center">
-                <div class="col-xs-12 col-md-7 header-text">
-                    <h2>CONTRIBUER A UNE FICHE</h2>
-                    <h3>Merci de contribuer</h3>
+            <div class="container">
+                <div class="row v-center">
+                    <div class="col-xs-12 col-md-7 header-text-ficheNew">
+                        <h2>Soumettre une fiche oiseaux</h2>
+                        <h3>Remplissez le formulaire</h3>
+                    </div>
                 </div>
             </div>
-        </div>
-        </div>
     </header>
-
-    <section class="section-padding gray-bg" id="blog-page">
-        <div class="container">
+    <section class="section-padding pageFichesContrib">
+        <div class="container" id="pageFichesContrib">
             <div class="row">
 
                     <main class="container marge-top">
@@ -97,8 +95,8 @@
                                                     </div>
 
                                                     <div id="obs-action" class="col-s12 center-align">
-                                                        {{ form_widget(form.save_draft) }}
-                                                        {{ form_widget(form.save_published) }}
+                                                        {{ form_widget(form.save_draft, {'attr': {'class':'btn-secondary'} }) }}
+                                                        {{ form_widget(form.save_published, {'attr': {'class':'btn-light'} }) }}
                                                     </div>
 
                                                 </div>

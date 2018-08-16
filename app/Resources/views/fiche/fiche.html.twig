@@ -3,65 +3,78 @@
 {% block title %}Carte - {{ parent() }}{% endblock %}
 
 {% block body %}
-    <header class="header-404 overlay full-404 relative v-center" id="home-page">
+    <!--Header-area-->
+    <header class="header-area-fiches overlay full-height-miniHeader relative v-center">
         <div class="absolute anlge-bg"></div>
-        <div class="container">
-            <div class="row v-center">
-                <div class="col-xs-12 col-md-7 header-text">
-                    <h2>LES FICHE</h2>
-                    <h3>sur la Carte</h3>
-                </div>
-            </div>
-        </div>
-        </div>
-    </header>
-
-    <section class="section-padding gray-bg" id="blog-page">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-xs-12 col-sm-4">
-                            <form id="search-map-widget" method="post" style="width: 145%; top: 0px;">
-                                    <a id="action-map-search" href="#" class="light-2"><i class="material-icons">search</i></a>
-                                    <input type="text" id="search-bird" name="search-bird" autocomplete="off" placeholder="Rechercher par espèce"/>        
-                                </form>
-                                <ul id="dropSpecimen" class="autocomplete-content dropdown-content" style="display: block; position: absolute; top: 77px; left: 28%; margin-top: -20px; margin-bottom: 20px; min-width: 50px; min-height: 0; display: block; opacity: 1; position: ABSOLUTE; width: 45%; width: 145%;"></ul>
-
-                    <a href="{{ path('bird.create') }}" class="btn-floating btn-large waves-effect waves-light" style="background-color: #FFDE00;"><i class="material-icons" style="color: #333;">add</i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section-padding-card gray-bg" id="blog-page">
-        <div class="container">
-            <div class="row">
+            <div class="container">
                 <div class="row v-center">
-                    <div class="col-xs-12 col-md-7 header-text">
-                        <h2>Les Fiches</h2>
-                        <h3></h3>
+                    <div class="col-xs-12 col-md-7 header-text-fiches">
+                        <h2>Les fiches oiseaux</h2>
+                        {# <h3>sur la Carte</h3> #}
+
                     </div>
                 </div>
-                <div id="show_list" class="col s12">
-                    <main class="container marge-top">
-                        <section>
-                            <section>
-                                <div class="row">
-                                    {% if bird|length > 0 %}
-                                    {% for bird in bird %}
-                                    {% endfor %}
-                                    {% else %}
-                                        <h2>Il n'y a pas encore de fiche</h2>
-                                    {% endif %}
-                                    <div id="eltlist"></div>
-                                </div>
-                            </section>
-                        </section>
-                    </main>
+            </div>
+    </header>
+    <main role="main" class="container" id="pageFiches">
+
+    {#     <section class="section-padding gray-bg" >
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-xs-12 col-sm-4">
+                                <form id="search-map-widget" method="post" style="width: 145%; top: 0px;">
+                                        <a id="action-map-search" href="#" class="light-2"><i class="material-icons">search</i></a>
+                                        <input type="text" id="search-bird" name="search-bird" autocomplete="off" placeholder="Rechercher par espèce"/>        
+                                    </form>
+                                    <ul id="dropSpecimen" class="autocomplete-content dropdown-content" style="display: block; position: absolute; top: 77px; left: 28%; margin-top: -20px; margin-bottom: 20px; min-width: 50px; min-height: 0; display: block; opacity: 1; position: ABSOLUTE; width: 45%; width: 145%;"></ul>
+
+                        <a href="{{ path('bird.create') }}" class="btn-floating btn-large waves-effect waves-light" style="background-color: #FFDE00;"><i class="material-icons" style="color: #333;">add</i></a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section> #}
+
+        <section class="section-padding-card">
+            <div class="container">
+                <div class="row" id="fichesAjoutSearchButton">
+                    <div class="col-lg-3 col-xs-12 col-sm-4">
+                                <form id="search-map-widget" method="post" class="searchFiches">
+                                        <a id="action-map-search" href="#" class="light-2"><i class="material-icons">search</i></a>
+                                        <input type="text" id="search-bird" name="search-bird" autocomplete="off" placeholder="Rechercher par espèce"/>        
+                                </form>
+                                    <ul id="dropSpecimen" class="autocomplete-content dropdown-content" style="display: block; position: absolute; top: 77px; left: 28%; margin-top: -20px; margin-bottom: 20px; min-width: 50px; min-height: 0; display: block; opacity: 1; position: ABSOLUTE; width: 45%; width: 145%;"></ul>
+
+                        <a href="{{ path('bird.create') }}" class="btn-floating btn-large waves-effect waves-light" style="background-color: #FFDE00;"><i class="material-icons" style="color: #333;">add</i></a>
+                    </div>
+                </div>
+                <div class="row">
+{#                     <div class="row v-center">
+                        <div class="col-lg-12 col-xs-12 col-md-7 header-text">
+                            <h2>Les Fiches sur la carte</h2>
+                        </div>
+                    </div> #}
+                    <div id="show_list" class="col s12">
+                        <main class="container marge-top">
+                            <section>
+                                <section>
+                                    <div class="row">
+                                        {% if bird|length > 0 %}
+                                        {% for bird in bird %}
+                                        {% endfor %}
+                                        {% else %}
+                                            <h2>Il n'y a pas encore de fiche</h2>
+                                        {% endif %}
+                                        <div id="eltlist"></div>
+                                    </div>
+                                </section>
+                            </section>
+                        </main>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
 {% endblock %}
 

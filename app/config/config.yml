@@ -14,12 +14,12 @@ parameters:
     niveau01: Oisillon
     niveau02: Mésange
     niveau03: Pic noir
-    niveau04: Perroquet
-    niveau05: Grand Héron
-    niveau06: Grue
-    niveau07: Aigle Royal
-    niveau08: Hirondelle Rustique
-    niveau09: Black Stork
+    niveau04: Martinet
+    niveau05: Mouette de Ross
+    niveau06: Perroquet
+    niveau07: Pélican
+    niveau08: Aigle Royal
+    niveau09: Faucon Pèlerin
     niveau10: Imperial Eagle
     observations_directory: '%kernel.project_dir%/web/bundles/naocore/img/oiseaux/observations'
     list_limit: 10
@@ -67,12 +67,12 @@ twig:
         niveau01: Oisillon
         niveau02: Mésange
         niveau03: Pic noir
-        niveau04: Perroquet
-        niveau05: Grand Héron
-        niveau06: Grue
-        niveau07: Aigle Royal
-        niveau08: Hirondelle Rustique
-        niveau09: Black Stork
+        niveau04: Martinet
+        niveau05: Mouette de Ross
+        niveau06: Perroquet
+        niveau07: Pélican
+        niveau08: Aigle Royal
+        niveau09: Faucon Pèlerin
         niveau10: Imperial Eagle
         jwt: "@app.jwt"
 
@@ -157,7 +157,7 @@ fos_user:
         form:
             type: NAO\UserBundle\Form\RegistrationType
         confirmation:
-            enabled: false
+            enabled: true
             from_email:
                 address: "%mailer_user%"
                 sender_name: "%mailer_user%"
@@ -173,5 +173,11 @@ sensio_framework_extra:
     cache:       { annotations: true }
     security:    { annotations: true }
     psr_message: { enabled: false } # Defaults to true if the PSR-7 bridge is installed
+
+indigo_cookie_consent:
+    options:
+        # any options you would pass to the plugins (except labels: message, dismiss, learnMore)
+        # see https://silktide.com/tools/cookie-consent/docs/installation
+    script: false # You can turn script off or pass a script location (eg. to use a specific version)        
 
 

@@ -1,0 +1,103 @@
+{% extends "layout.html.twig" %}
+
+{% block headtitle %}À propos – {{ parent() }}{% endblock %}
+
+{% block body %}
+	<!--Header-area-->
+    <header class="header-area-map overlay full-height-miniHeader relative v-center">
+        <div class="absolute anlge-bg"></div>
+            <div class="container">
+                <div class="row v-center">
+                    <div class="col-xs-12 col-md-7 header-text-map">
+                        <h2>Nos Amis les Oiseaux</h2>
+                        <h3>Qui sommes-nous ?</h3>
+
+                    </div>
+                </div>
+            </div>
+    </header>
+
+    <section class="section-padding" id="map-page">
+    	<div class="container" id="pageMap">
+    		<div class="row">
+    			<section>
+            <div class="row">
+                <div class="col s12">
+                    <div class="card no-style">
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col s12 m10 push-m1">
+                                    <div class="row">
+                                        <div class="col s12 ">
+                                            <br>
+                                            <h1 class="big"> Nos Amis les Oiseaux</h1>
+                                            <p><br>
+                    Qui sommes-nous ?<br>
+                    Nos amis les oiseaux est une association loi 1901 regroupant de nombreux passionnés d’ornithologie.<br>
+                    Elle a été créée en 2001 par Michel Dujardin et Marie DUPONT tous deux naturalistes passionnés.<br>
+                </p>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col s12 center-align">
+                                            <img src="{{ asset('bundles/naocore/img/logo-nao-jaune.png') }}" width="280px">
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <h2 class="big">Un projet collaboratif engagé</h2>
+                                            <p>Le projet de NAO a pour objectif de collecter des informations afin d’étudier les effets de l’urbanisation sur les oiseaux. L'érosion de la biodiversité est un problème différent de celui du climat mais néanmoins lié. Elle est si inquiétante qu'il nous faut agir, et tout de suite.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <br>
+                                    <div class="row">
+                                        <div class="col s12 m6 right">
+                                            <img src="{{ asset('bundles/naocore/img/about/a-shuhani-541.jpg') }}">
+                                        </div>
+                                        <div class="col s12 m6 right">
+                                            <br>
+                    Vous n’êtes pas seul ! Vous vous dites peut-être que vous n’y connaissez rien pour identifier les oiseaux ou encore vous n’avez pas l’équipement adéquat. Ne vous en faites pas, nos membres naturalistes sont là pour vous aiguiller et pour vérifier les observations que vous rentrez sur le site.<br>
+<br>
+                    Ne vous mettez pas de barrières, l’observation d’oiseaux et l’inscription sur le site sont ouvertes à tous !<br>
+                
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col s12 m6">
+                                            <img src="{{ asset('bundles/naocore/img/about/pawel-janiak-114499.jpg') }}">
+                                        </div>
+                                        <div class="col s12 m6">
+                                            Nous comptons actuellement plus de 200 adhérents à l’association NAO ainsi que 2 000 membres inscrits sur le site qui effectuent régulièrement des observations lors de leurs balades et randonnées.<br><br>
+                                            <b>Alors qu’attendez-vous ?</b><br>
+                                            Rejoignez une communauté active sur l’ornithologie pour ne plus être simplement un spectateur, devenez l'acteur d'un projet environnemental pour préserver cette si belle nature.
+                                            <p class="center-align"><br><a href="{{ path('observation.create') }}" class="btn waves-effect">Soumettre une observation</a><br><br></p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 m6 right">
+                                            <img src="{{ asset('bundles/naocore/img/about/NAO-dons.jpg') }}">
+                                        </div>
+                                        <div class="col s12 m6 right">
+                                            <br>
+                    Vous voulez contribuer davantage ou vous n'avez tout simplement pas le temps de soumettre des observations ?<br>
+<br>
+                    Nous soutenir même avec un petit don, c'est aussi être acteur du combat écologique que nous menons.<br>
+                
+                                            <p class="center-align"><br><a href="https://www.helloasso.com/" class="btn waves-effect" target="_blank">Faire un don a l'association</a><br><br></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    		</div>
+    	</div>
+    </section>
+{% endblock %}
