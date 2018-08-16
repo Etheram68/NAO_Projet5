@@ -34,8 +34,7 @@ CSS INDEX
 0. Modifications #teamENVF
 ---------------------------*/
 
-
-/*------------------- GÉNÉRALES -------------------*/
+/************************* GÉNÉRALES *************************/
 
 /* Override materialize.css */
 
@@ -228,7 +227,7 @@ h1, h2 {
     line-height: 50px;
 }
 
-/*------------------- NAVBAR -------------------*/
+/************************* NAVBAR *************************/
 
 .navbar-header {
     width: 150px;
@@ -273,14 +272,14 @@ h1, h2 {
     margin-left: 0px;
 }
 
-/*------------------- Mini HEADER -------------------*/
+/************************* Mini HEADER *************************/
 
 .full-height-miniHeader {
     width: 100%;
     height: 50vh;
 }
 
-/*------------------- HOMEPAGE -------------------*/
+/************************* HOMEPAGE *************************/
 
 #home-page .btn.btn-light.mainButton {
     display: inline-block;
@@ -334,7 +333,8 @@ section#service-page-home.gray-bg.section-padding {
 section#blog-page.section-padding.gray-bg {
     padding: 3%;
 }
-/*------------------- FICHES OISEAUX -------------------*/
+
+/************************* FICHES OISEAUX *************************/
 
 .header-area-fiches,
 .header-area-ficheNew,
@@ -427,7 +427,8 @@ form#search-map-widget.searchFiches {
     font-size: 15px;
     line-height: 1.5em;
 }
-/*------------------- MAP -------------------*/
+
+/************************* MAP *************************/
 
 .header-area-map {
     background: #000000 url('../img/header-map-photo.jpg') no-repeat scroll center center / cover;
@@ -610,7 +611,7 @@ span#titreListeObs {
     margin-top: 2px;
 }
 
-/*------------------- NOUVELLE OBSERVATION -------------------*/
+/************************* NOUVELLE OBSERVATION *************************/
 
 .header-area-observation,
 .header-area-observationWaiting,
@@ -631,8 +632,13 @@ span#titreListeObs {
     line-height: 0.75em;
 }
 /* Observation en attente, brouillon et validée */
+.header-text-observationValidate h2 {
+    margin-top: 30%;
+    font-size: 84px;
+    color: #FFDE00;
+    line-height: 0.9em;
+}
 .header-text-observationWaiting h2,
-.header-text-observationValidate h2,
 .header-text-observationDraft h2 {
     margin-top: 35%;
     margin-bottom: 3%;
@@ -651,6 +657,39 @@ span#titreListeObs {
 #pageObservation .card-content {
     padding: 5%;
 }
+/* Observation validées et en attente Card */
+#observationValidate #eltlist h2,
+#observationWaiting #eltlist h2 {
+    font-size: 30px;
+    color: #575757;
+    line-height: 0.8em;
+}
+#observationValidate #eltlist h2:hover,
+#observationWaiting #eltlist h2:hover {
+    color: #FFDE00;
+}
+#observationValidate #eltlist p,
+#observationWaiting #eltlist p {
+    font-size: 15px;
+    line-height: 1.5em;
+}
+#observationValidate #eltlist p a,
+#observationWaiting #eltlist p a {
+    color: #575757;
+    font-weight: 800;
+}
+#observationValidate #eltlist p a:hover,
+#observationWaiting #eltlist p a:hover {
+    color: #FFDE00;
+}
+#observationValidate #eltlist p.caption.light-2-no-hov.coordinate,
+#observationWaiting #eltlist p.caption.light-2-no-hov.coordinate {
+    font-size: 12px;
+    font-style: italic;
+    margin-top: 2px;
+}
+
+
 .card {
     position: relative;
     margin: .5rem 0 1rem 0;
@@ -1499,7 +1538,7 @@ button.picker__clear:focus,button.picker__close:focus,button.picker__today:focus
     stroke-linecap: round
 }
 
-/*------------------- OBSERVATION -------------------*/
+/************************* OBSERVATION *************************/
 
 .card-panel {
     -webkit-transition: -webkit-box-shadow .25s;
@@ -1714,7 +1753,7 @@ button.picker__clear:focus,button.picker__close:focus,button.picker__today:focus
     display: block
 }
 
-/*------------------- LOGIN -------------------*/
+/************************* LOGIN *************************/
 
 .header-area-login {
     background: #000000 url('../img/header-login-photo.jpg') no-repeat scroll center / cover;
@@ -1776,7 +1815,7 @@ a#forget:hover, a.subscribe:hover, a.login:hover {
     color: #575757;
 }
 
-/*------------------- INSCRIPTION -------------------*/
+/************************* INSCRIPTION *************************/
 
 .header-area-register {
     background: #000000 url('../img/header-register-photo.jpg') no-repeat scroll center center / cover;
@@ -1835,7 +1874,39 @@ a#forget:hover, a.subscribe:hover, a.login:hover {
     color: #848484;
 }
 
-/*------------------- PROFIL -------------------*/
+/************************* CHECK EMAIL *************************/
+
+.header-area-checkEmail {
+    background: #000000 url('../img/header-register-photo.jpg') no-repeat scroll center center / cover;
+}
+#pageCheckEmail {
+    height: 500px;
+    background-color: #F6F6F6;
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 3% 15% 7% 10%;
+}
+.header-text-checkEmail h2 {
+    margin-top: 40%;
+    margin-bottom: 1%;
+    font-size: 132px;
+    color: #FFDE00;
+}
+#checkEmail-text-1 {
+    font-size: 30px;
+    line-height: 1.4em;
+    font-weight: 300;
+    margin-bottom: 0;
+}
+#checkEmail-text-2 {
+    font-size: 18px;
+    line-height: 1.8em;
+}
+#pageCheckEmail input.btn.btn-light {
+    width: 20%;
+}
+/************************* PROFIL *************************/
 
 .header-area-profile {
     background: #000000 url('../img/header-profile-photo.jpg') no-repeat scroll center center / cover;
@@ -2006,7 +2077,7 @@ div.lastCom ul:hover  {
     background-color: #F6F6F6;
 }
 
-/*------------------- EDIT PROFIL -------------------*/
+/************************* EDIT PROFIL *************************/
 
 .header-text-profile-edit h2 {
     margin-top: 40%;
@@ -2023,7 +2094,7 @@ div.lastCom ul:hover  {
     margin-right: 20px;
 }
 
-/*------------------- 404 -------------------*/
+/************************* 404 *************************/
 
 .full-404 {
     width: 100%;
@@ -2036,7 +2107,7 @@ div.lastCom ul:hover  {
     background: #000000 url('../img/header404.jpg') no-repeat scroll center center / cover;
 }
 
-/*------------------- SOCIAL MEDIA -------------------*/
+/************************* SOCIAL MEDIA *************************/
 
 #nao_socialMedia
 {
@@ -2202,7 +2273,7 @@ div.lastCom ul:hover  {
    width: 27px;
 }
 
-/*------------------- BLOG -------------------*/
+/************************* BLOG *************************/
 
 /* Liste des articles */
 .header-area-blog {
@@ -2357,7 +2428,7 @@ i.glyphicon.glyphicon-trash {
     margin: 15px 0px 20px 0px;
 }
 
-/*------------------- GAME -------------------*/
+/************************* GAME *************************/
 
 .header-area-game {
     background: #000000 url('../img/header-game-photo.jpg') no-repeat scroll center center / cover;
@@ -2368,7 +2439,7 @@ i.glyphicon.glyphicon-trash {
     padding: 5% 7% 5% 7%;
 }
 .header-text-game h2 {
-    margin-top: 15%;
+    margin-top: 20%;
     margin-bottom: 1%;
     font-size: 144px;
     color: #FFDE00;
@@ -2387,7 +2458,7 @@ div#hofTitre img {
     margin-left: 5%;
 }
 div#hofContent {
-    padding: 5% 10% 5% 10%;
+    padding: 5% 10% 5% 15%;
     background-color: white;
 }
 div#hofContent table {
@@ -2402,18 +2473,6 @@ div#hofContent img.hofAvatar {
 div#hofContent table td#hofAvatarTd {
     width: 20%;
 }
-div#hofContent table td#hofUserNameTd {
-    display: flex;
-    justify-content: center;
-    width: 40%;
-}
-div#hofContent table td#hofPointsTd {
-    width: 20%;
-}
-div#hofContent table td#hofLevelTd {
-    width: 20%;
-}
-
 div#hofContent table a#hofUserNameLink {
     color: #575757;
     font-weight: 800;
@@ -2422,8 +2481,23 @@ div#hofContent table a#hofUserNameLink {
 div#hofContent table a#hofUserNameLink:hover {
     color: #FFDE00;
 }
+div#hofContent table td#hofUserNameTd {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+}
+div#hofContent table td#hofPointsTd {
+    width: 25%;
+    font-size: 18px;
+}
+div#hofContent table td#hofLevelTd {
+    width: 30%;
+}
+#hofNiveau {
+    font-weight: 800;
+}
 
-/*------------------- CONTACT -------------------*/
+/************************* CONTACT *************************/
 
 .header-area-contact {
     background: #000000 url('../img/header-contact-photo.jpg') no-repeat scroll center center / cover;
@@ -3448,10 +3522,10 @@ preloader
     left: 0;
     width: 100%;
     height: 100%;
-    background: #75cbe7;
-    background: -webkit-gradient(linear, left top, left bottom, from(#75cbe7), to(#138fc2));
-    background: linear-gradient(to bottom, #75cbe7 0%, #138fc2 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#75cbe7', endColorstr='#138fc2', GradientType=0);
+    background: #fff1ab;
+    background: -webkit-gradient(linear, left top, left bottom, from(#fff1ab), to(#fff1ab));
+    background: linear-gradient(to bottom, #fff1ab 0%, #fff1ab 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff1ab', endColorstr='#fff1ab', GradientType=0);
     z-index: 99999999999;
 }
 
@@ -3484,7 +3558,7 @@ preloader
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #ffffff;
+    background-color: #575757;
     -webkit-animation: sk-foldCubeAngle 2.4s infinite linear both;
     animation: sk-foldCubeAngle 2.4s infinite linear both;
     -webkit-transform-origin: 100% 100%;
@@ -3835,10 +3909,9 @@ preloader
 }
 
 
+/****************************************** RESPONSIVE ******************************************/
 
-/*------------------------------ RESPONSIVE ------------------------------*/
-
-/*------------------------- ÉCRANS MOYENS -------------------------*/
+/******************************* ÉCRANS MOYENS *******************************/
 
 @media  all and (min-width: 992px) and (max-width: 1280px) {
 
@@ -3929,12 +4002,42 @@ preloader
     .header-text-observation h3 {
         font-size: 24px;
     }
-    .header-text-observationWaiting h2 {
-        margin-top: 30%;
-        font-size: 54px;
+    /* Observations validées, en attente et brouillon */
+    .header-text-observationValidate h2 {
+        margin-top: 40%;
+        font-size: 84px;
     }
-    .header-text-observationWaiting h3 {
+    .header-text-observationWaiting h2,
+    .header-text-observationDraft h2 {
+        margin-top: 30%;
+        font-size: 60px;
+    }
+    .header-text-observationWaiting h3,
+    .header-text-observationDraft h3 {
         font-size: 21px;
+    }
+    #observationValidate #eltlist h2,
+    #observationWaiting #eltlist h2,
+    #observationDraft #eltlist h2 {
+        line-height: 1em;
+    }
+    #observationValidate #eltlist p a,
+    #observationWaiting #eltlist p a,
+    #observationDraft #eltlist p a {
+        color: #575757;
+        font-weight: 800;
+    }
+    #observationValidate #eltlist p a:hover,
+    #observationWaiting #eltlist p a:hover,
+    #observationDraft #eltlist p a:hover {
+        color: #FFDE00;
+    }
+    #observationValidate #eltlist p.caption.light-2-no-hov.coordinate,
+    #observationWaiting #eltlist p.caption.light-2-no-hov.coordinate,
+    #observationDraft #eltlist p.caption.light-2-no-hov.coordinate {
+        font-size: 12px;
+        font-style: italic;
+        margin-top: 10px;
     }
     /*---- LOGIN ----*/
     .header-text-login h2 {
@@ -3961,6 +4064,25 @@ preloader
     .header-text-register h2 {
         margin-top: 15%;
         font-size: 96px;
+    }
+    /*---- CHECK EMAIL ----*/
+    #pageCheckEmail {
+        height: auto;
+        padding: 3% 15% 7% 10%;
+    }
+    .header-text-checkEmail h2 {
+        font-size: 96px;
+    }
+    #checkEmail-text-1 {
+        font-size: 30px;
+        line-height: 1.4em;
+        font-weight: 300;
+        margin-bottom: 2%;
+    }
+    #checkEmail-text-2 {
+        font-size: 18px;
+        line-height: 1.8em;
+        margin-bottom: 5%;
     }
     /*---- PROFIL ----*/
     .header-text-profile h2#adminProfile {
@@ -4003,9 +4125,26 @@ preloader
     .header-text-game h3 {
         font-size: 24px;
     }
+    div#hofContent table a#hofUserNameLink {
+        font-size: 1.5vmax;
+    }
+    div#hofContent table td#hofAvatarTd {
+        width: 15%;
+    }
+    div#hofContent table td#hofUserNameTd {
+        width: 60%;
+    }
+    div#hofContent table td#hofPointsTd {
+        width: 25%;
+    }
+    div#hofContent table td#hofLevelTd {
+        width: 35%;
+        line-height: 1em;
+    }
+
 }
 
-/*------------------------- TABLETTES -------------------------*/
+/******************************* TABLETTES *******************************/
 
 @media all and (min-width: 768px) and (max-width: 992px) {
     .container {
@@ -4104,6 +4243,42 @@ preloader
     .header-text-observation h3 {
         font-size: 21px;
     }
+    /* Observations validées et en attente */
+    .header-text-observationValidate h2 {
+        margin-top: 20%;
+        font-size: 84px;
+        margin-bottom: 1.5%;
+    }
+    .header-text-observationWaiting h2 {
+        margin-top: 15%;
+        font-size: 60px;
+        margin-bottom: 1.5%;
+    }
+    .header-text-observationWaiting h3 {
+        font-size: 21px;
+    }
+    #observationValidate #eltlist h2,
+    #observationWaiting #eltlist h2 {
+        line-height: 1em;
+    }
+    #observationValidate #eltlist p {
+        line-height: 1.5em;
+    }
+    #observationValidate #eltlist p a,
+    #observationWaiting #eltlist p a {
+        color: #575757;
+        font-weight: 800;
+    }
+    #observationValidate #eltlist p a:hover,
+    #observationWaiting #eltlist p a:hover {
+        color: #FFDE00;
+    }
+    #observationValidate #eltlist p.caption.light-2-no-hov.coordinate,
+    #observationWaiting #eltlist p.caption.light-2-no-hov.coordinate {
+        font-size: 12px;
+        font-style: italic;
+        margin-top: 10px;
+    }
     /*---- LOGIN ----*/
     .header-text-login h2 {
         margin-top: 15%;
@@ -4129,6 +4304,29 @@ preloader
     }
     .header-text-register h3 {
         font-size: 21px;
+    }
+    /*---- CHECK EMAIL ----*/
+    #pageCheckEmail {
+        height: auto;
+        padding: 3% 15% 7% 10%;
+    }
+    .header-text-checkEmail h2 {
+        margin-top: 20%;
+        font-size: 96px;
+    }
+    #checkEmail-text-1 {
+        font-size: 30px;
+        line-height: 1.4em;
+        font-weight: 300;
+        margin-bottom: 2%;
+    }
+    #checkEmail-text-2 {
+        font-size: 18px;
+        line-height: 1.8em;
+        margin-bottom: 5%;
+    }
+    #pageCheckEmail input.btn.btn-light {
+        width: 20%;
     }
     /*---- PROFIL ----*/
     .header-text-profile h2#adminProfile {
@@ -4170,6 +4368,9 @@ preloader
         padding: 0;
     }
     /*---- GAME ----*/
+    div#hofContent {
+        padding-left: 20%;
+    }
     .header-text-game h2 {
         margin-top: 15%;
         font-size: 96px;
@@ -4178,9 +4379,27 @@ preloader
         margin-top: 2%;
         font-size: 21px;
     }
+    div#hofContent table a#hofUserNameLink {
+        font-size: 1.5vmax;
+    }
+    div#hofContent table td#hofAvatarTd {
+        width: 15%;
+    }
+    div#hofContent table td#hofUserNameTd {
+        width: 70%;
+    }
+    div#hofContent table td#hofPointsTd {
+        width: 25%;
+        font-size: 15px;
+    }
+    div#hofContent table td#hofLevelTd {
+        line-height: 1em;
+        width: 35%;
+        font-size: 12px;
+    }
 }
 
-/*------------------------- MOBILES -------------------------*/
+/******************************* MOBILES *******************************/
 
 @media only screen and (max-width: 768px) {
 
@@ -4499,6 +4718,52 @@ preloader
     button#observation_save_draft.btn-secondary.btn {
         margin-bottom: 10px;
     }
+    /* Observations validées et en attente */
+    .header-text-observationValidate h2 {
+        margin-top: 45%;
+        font-size: 54px;
+        word-break: break-word;
+        text-align: center;
+    }
+    .header-text-observationWaiting h2 {
+        margin-top: 40%;
+        font-size: 48px;
+        margin-bottom: 2%;
+        word-break: break-word;
+        text-align: center;
+    }
+    .header-text-observationWaiting h3 {
+        font-size: 21px;
+        text-align: center;
+    }
+    #observationValidate #eltlist .card.observation.fix-height {
+        height: unset;
+    }
+    #observationWaiting #eltlist .card-content {
+        padding: 5%;
+    }
+    #observationWaiting #eltlist .card-content h2 {
+        line-height: 0.9em;
+        font-size: 24px;
+        margin-bottom: 0;
+    }
+    #observationWaiting #eltlist .card-content p {
+        line-height: 1.3em;
+        font-size: 13.5px;
+    }
+    #observationWaiting #eltlist p a {
+        color: #575757;
+        font-weight: 800;
+    }
+    #observationWaiting #eltlist p a:hover {
+        color: #FFDE00;
+    }
+    #observationValidate #eltlist p.caption.light-2-no-hov.coordinate,
+    #observationWaiting #eltlist p.caption.light-2-no-hov.coordinate {
+        font-size: 12px;
+        font-style: italic;
+        margin-top: 3%;
+    }
     /*---- LOGIN ----*/
     div.col-xs-12.col-md-7.header-text-login {
         padding: 0;
@@ -4555,6 +4820,30 @@ preloader
         font-style: italic;
         margin: 0px 0px 4% 7%;
     }
+    /*---- CHECK EMAIL ----*/
+    #pageCheckEmail {
+        height: auto;
+        padding: 5% 15% 10% 10%;
+    }
+    .header-text-checkEmail h2 {
+        margin-top: 20%;
+        font-size: 60px;
+        text-align: center;
+    }
+    #checkEmail-text-1 {
+        font-size: 27px;
+        line-height: 1.4em;
+        font-weight: 300;
+        margin-bottom: 5%;
+    }
+    #checkEmail-text-2 {
+        font-size: 18px;
+        line-height: 1.5em;
+        margin-bottom: 10%;
+    }
+    #pageCheckEmail input.btn.btn-light {
+        width: 50%;
+    }
     /*---- PROFIL ----*/
     div.col-xs-12.col-md-7.header-text-profile {
         padding: 0;
@@ -4566,19 +4855,24 @@ preloader
     }
     .header-text-profile h2#adminProfile {
         margin-top: 204px;
-        font-size: 84px;
+        font-size: 10vh;
+        line-height: 0.7em;
         color: #FFDE00;
         text-align: center;
+        word-break: break-all;
     }
     .header-text-profile h2#userProfile {
         margin-top: 222px;
         margin-bottom: 1%;
-        font-size: 84px;
+        font-size: 10vh;
+        line-height: 0.7em;
         color: #FFDE00;
         text-align: center;
+        word-break: break-all;
     }
     .header-text-profile h3 {
         font-size: 21px;
+        margin-top: 5%;
         text-align: center;
     }
     #pageProfile .rangee-1,
@@ -4739,31 +5033,30 @@ preloader
         display: none;
     }
     div#hofContent {
-        padding: 2% 0% 2% 7%;
+        padding: 2% 0% 2% 13%;
     }
     div#hofContent table td#hofAvatarTd,
     div#hofContent img.hofAvatar {
         display: none;
     }
+    div#hofContent table a#hofUserNameLink {
+        font-size: 2vmax;
+    }
     div#hofContent table td#hofUserNameTd {
         display: unset;
-        width: 20%;
     }
     div#hofContent table td#hofPointsTd {
-        width: 25%;
+        font-size: 1.5vmax;
+        width: 32%;
     }
     div#hofContent table td#hofLevelTd {
-        font-size: 12px;
+        font-size: 1.1vmax;
         line-height: 1em;
-        width: 25%;
-    }
-    div#hofContent table a#hofUserNameLink {
-        font-size: 15px;
+        width: 35%;
     }
 }
 
-
-/*------------------------- MOBILES 2 -------------------------*/
+/******************************* MOBILES 2 *******************************/
 
 @media only screen and (max-width: 320px) {
 
@@ -4872,22 +5165,76 @@ preloader
     #listeObs div.col-xs-12.col-md-7 #titreListeObs {
         font-size: 21px;
     }
+    .header-text-observationValidate h2 {
+        margin-top: 30%;
+        font-size: 48px;
+    }
+    .header-text-observationWaiting h2 {
+        margin-top: 30%;
+        font-size: 42px;
+        margin-bottom: 2%;
+        word-break: break-word;
+    }
+    .header-text-observationWaiting h3 {
+        font-size: 21px;
+    }
+    #observationWaiting #eltlist .card-content {
+        padding: 5%;
+    }
+    #observationValidate #eltlist .card-content h2,
+    #observationWaiting #eltlist .card-content h2 {
+        line-height: 0.9em;
+        font-size: 21px;
+        margin-bottom: 2%;
+    }
+    #observationValidate #eltlist p.caption.light-2-no-hov.coordinate,
+    #observationWaiting #eltlist p.caption.light-2-no-hov.coordinate {
+        margin-top: 5%;
+    }
+    /*---- INSCRIPTION ----*/
+    #pageRegister {
+        height: auto;
+        background-color: #F6F6F6;
+        padding: 5% 2% 5% 2%;
+    }
+    .header-text-register h3 {
+        font-size: 18px;
+    }
+    /*---- CHECK EMAIL ----*/
+    #pageCheckEmail {
+        height: auto;
+        padding: 5% 15% 10% 10%;
+    }
+    .header-text-checkEmail h2 {
+        font-size: 54px;
+    }
+    #checkEmail-text-1 {
+        font-size: 24px;
+    }
+    #pageCheckEmail input.btn.btn-light {
+        width: 60%;
+    }
     /*---- PROFIL ----*/    
     .header-text-profile h2#adminProfile {
         margin-top: 144px;
-        font-size: 84px;
+        font-size: 10vh;
+        line-height: 0.7em;
         color: #FFDE00;
         text-align: center;
+        word-break: break-all;
     }
     .header-text-profile h2#userProfile {
-        margin-top: 180px;
+        margin-top: 168px;
         margin-bottom: 1%;
-        font-size: 84px;
+        font-size: 10vh;
+        line-height: 0.7em;
         color: #FFDE00;
         text-align: center;
+        word-break: break-all;
     }
     .header-text-profile h3 {
         font-size: 18px;
+        margin-top: 5%;
         text-align: center;
     }
     /*---- CONTACT ----*/
@@ -4899,6 +5246,9 @@ preloader
         font-size: 18px;
     }
     /*---- GAME ----*/
+    div#hofContent {
+        padding-left: 13%;
+    }
     .header-text-game h2 {
         margin-top: 30%;
         font-size: 60px;
@@ -4907,6 +5257,12 @@ preloader
     .header-text-game h3 {
         font-size: 21px;
         margin-bottom: 3%;
+    }
+    div#hofContent table td#hofPointsTd {
+        width: 32%;
+    }
+    div#hofContent table td#hofLevelTd {
+        width: 38%;
     }
 }
 
