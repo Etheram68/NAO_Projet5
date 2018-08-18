@@ -41,6 +41,10 @@ class UserController extends Controller
         }
         // Calcul du niveau par rapport aux points
         $points = $user->getPoints();
+        if ($points == null) {
+            $user->setPoints(0);
+            $points = $user->getPoints();
+        }
         $level = $this->container->get('naouser.level.levelCalcul')->guessLevel($points);
         $user->setLevel($level);
         // Récupération des observations
@@ -65,14 +69,14 @@ class UserController extends Controller
                 $infosComment[] = [
                     'id' => $commentaire->getArticle()->getId(),
                     'date' => $commentaire->getDate(),
-                    'contenu' => $commentaire->getContent()
+                    'contenu' => $commentaire->getContent(),
+                    'moderation' => $commentaire->getModeration()
                 ];
             }
         }
         return $this->container->get('templating')->renderResponse('@FOSUser/Profile/show.html.twig', array(
             'user' => $user,
-            // 'userLevel' => $userLevel,
-            'listObservations' => $listObservations,
+            // 'listObservations' => $listObservations,
             'infosObs' => $infosObs,
             'infosComment' => $infosComment,
         ));

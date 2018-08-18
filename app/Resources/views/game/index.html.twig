@@ -17,39 +17,53 @@
     </header>
 
 
-<main role="main" class="container" id="pageGame">
-
-	<section>
-		<div id="hofTitre">
-			<h2>Panthéon des Observateurs</h2>
-			<img src="{{ asset('bundles/naocore/img/pictos/hall-of-fame-main.png') }}" />
-		</div>
- 		<div id="hofContent" class="col-lg-12 col-xs-12 hof">
-			<table>
-			<tbody>
-			  {% for user in bestUsers %}
-			  <tr>
-				<td id="hofAvatarTd">
-					<img src="{{ asset('bundles/naocore/img/pictos/user-avatar.png') }}" class="hofAvatar" />
-				</td>
-				<td id="hofUserNameTd">
-					<a href="{{ path('user.username', {'username': user.username } ) }}" id="hofUserNameLink">
-						{{ user.username }}
-					</a>
-				</td>
-				<td id="hofPointsTd">
-					{{ user.points }}
-				</td>
-				<td id="hofLevelTd">
-					{{ user.level }}
-				</td> 
-			  </tr>
-			  {% endfor %}
-			</tbody>
-			</table>
-		</div>
-	</section>
-
-
-</main>
+	<main role="main" class="container" id="pageGame">
+		<section>
+			<div id="hofTitre">
+				<h2>Panthéon des Observateurs</h2>
+				<img src="{{ asset('bundles/naocore/img/pictos/hall-of-fame-main.png') }}" />
+			</div>
+	 		<div id="hofContent" class="col-lg-12 col-xs-12 hof">
+				<table>
+				<tbody>
+				  {% for user in bestUsers %}
+				  	{% if user.enabled != 0 %}
+					  <tr>
+						<td id="hofAvatarTd">
+							<img src="{{ asset('bundles/naocore/img/pictos/user-avatar.png') }}" class="hofAvatar" />
+						</td>
+						<td id="hofUserNameTd">
+							<a href="{{ path('user.username', {'username': user.username } ) }}" id="hofUserNameLink">
+								{{ user.username }}
+							</a>
+						</td>
+						<td id="hofPointsTd">
+							{{ user.points }} points
+						</td>
+						<td id="hofLevelTd">
+							Niveau 
+							{% if user.level == niveau00 %}0 :
+							{% elseif user.level == niveau01 %}1 :
+							{% elseif user.level == niveau02 %}2 :
+							{% elseif user.level == niveau03 %}3 :
+							{% elseif user.level == niveau04 %}4 :
+							{% elseif user.level == niveau05 %}5 :
+							{% elseif user.level == niveau06 %}6 :
+							{% elseif user.level == niveau07 %}7 :
+							{% elseif user.level == niveau08 %}8 :
+							{% elseif user.level == niveau09 %}9 :
+							{% elseif user.level == niveau10 %}10 :
+							{% endif %}
+							<span id="hofNiveau">
+							{{ user.level }}
+							</span>
+						</td> 
+					  </tr>
+				  	{% endif %}
+				  {% endfor %}
+				</tbody>
+				</table>
+			</div>
+		</section>
+	</main>
 {% endblock %}

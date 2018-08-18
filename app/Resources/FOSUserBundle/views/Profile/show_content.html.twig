@@ -137,17 +137,19 @@
 
 		<div class="lastCom col-lg-6 col-xs-12">
 			<p class="profilTexte">Derniers commentaires</p>
-			{% if infosComment == null %}
-				<div class="emptyInfos">Aucun commentaire</div>
-			{% else %}
+			{% if infosComment != null %}
 				{% for info in infosComment|reverse %}
-				<a href="{{ path('article', {'id': info.id}) }}#ancreCommentaires">
-					<ul>        	
-						<li id="lastCom-content">"{{ info.contenu }}"</li>
-						<li id="lastCom-date">le : {{ info.date|date('d/m/Y') }}</li>       	
-					</ul>
-				</a>
+					{% if info.moderation == 1 %}
+						<a href="{{ path('article', {'id': info.id}) }}#ancreCommentaires">
+							<ul>        	
+								<li id="lastCom-content">"{{ info.contenu }}"</li>
+								<li id="lastCom-date">le : {{ info.date|date('d/m/Y') }}</li>
+							</ul>
+						</a>
+					{% endif %}
 				{% endfor %}
+			{% else %}
+				<div class="emptyInfos">Aucun commentaire</div>
 			{% endif %}
 		</div>
     </div>
@@ -159,6 +161,3 @@
 	</div>
 
 </main>
-
-
-
