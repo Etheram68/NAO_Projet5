@@ -28,12 +28,23 @@ class GameController extends Controller
     public function indexAction()
     {
     	/* HALL OF FAME */
-        $userManager = $this->get('fos_user.user_manager');
-        $bestUsers = $userManager->findUsers(array(), array(
-        	'points' => 'desc'
-        ));
+		$repository = $this
+		  ->getDoctrine()
+		  ->getManager()
+		  ->getRepository('NAOUserBundle:User')
+		;
+		$bestUsers = $repository->findBy(
+		  array(),
+		  array('points' => 'desc'),
+		  50,
+		  0
+		);
 		foreach ($bestUsers as $user) {
 		    $points = $user->getPoints();
+	        if ($points == null) {
+	            $user->setPoints(0);
+	            $points = $user->getPoints();
+	        }
 		    $level = $this->container->get('naouser.level.levelCalcul')->guessLevel($points);
 		    $user->setLevel($level);
 		}        
