@@ -1,0 +1,38 @@
+{% extends "@FOSUser/fosuser_layout.html.twig" %}
+{% block headtitle %}Inscription – {{ parent() }}{% endblock %}
+
+{% block body %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+    <!--Header-area-->
+    <header class="header-area-checkEmail overlay full-height-miniHeader relative v-center">
+        <div class="absolute anlge-bg"></div>
+            <div class="container">
+                <div class="row v-center">
+                    <div class="col-xs-12 col-md-7 header-text-checkEmail">
+                        <h2>Bienvenue !</h2>
+                    </div>
+                </div>
+            </div>
+    </header>
+
+	{% block fos_user_content %}
+
+		<main role="main" class="container" id="pageCheckEmail">
+
+		<div id="checkEmail-text-1">
+			Nous venons de vous envoyer un email de confirmation à {{ user.email }}.
+		</div>
+		<div id="checkEmail-text-2">
+			Cliquez sur le lien présent dans ce dernier pour finaliser votre inscription.<br>
+			À tout de suite !
+		</div>
+
+		<input type="button" value="Retour à l'accueil" class="btn btn-light" onclick="window.location.href='{{ path('homepage') }}'"/>
+	    	{# <p>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p> #}
+		</main>
+
+	{% endblock fos_user_content %}
+
+{% endblock %}

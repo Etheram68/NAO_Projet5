@@ -232,18 +232,32 @@ class ObservationService
             $observation->setStatus(Observation::DRAFT);
             $redirect = 'DRAFT';
         }
+        
+        // if ($form->get('save_published')->isClicked()) {
+        //     if ($user->hasRole('ROLE_USER')){
+        //         $observation->setStatus(Observation::WAITING);
+        //         $redirect = 'WAITING';
+        //     }else{
+        //         $observation->setStatus(Observation::VALIDATED);
+        //         $observation->setNaturalist($user);
+        //         $redirect = 'PUBLISHED';
+        //     }
+        // }
+
         // User want published observation,
         // only simple user need to have validation
         if ($form->get('save_published')->isClicked()) {
-            if ($user->hasRole('ROLE_USER')){
-                $observation->setStatus(Observation::WAITING);
-                $redirect = 'WAITING';
-            }else{
+            /* Si le User est admin la validation est automatique */
+            if ($user->hasRole('ROLE_ADMIN')) {
                 $observation->setStatus(Observation::VALIDATED);
                 $observation->setNaturalist($user);
                 $redirect = 'PUBLISHED';
-            }
+            } else {
+                $observation->setStatus(Observation::WAITING);
+                $redirect = 'WAITING';
+            } 
         }
+
         // Get region localisation
         $localization   = explode(' (', $observation->getPlace());
         $cityName       = isset($localization[0]) ? trim($localization[0]) : null;
