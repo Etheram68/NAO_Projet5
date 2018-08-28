@@ -29,11 +29,19 @@ class Answer
     private $content;
 
     /**
-     * @var string
+     * @var boolean
      *
-     * @ORM\Column(name="questionId", type="string", length=255)
+     * @ORM\Column(name="rightOrFalse", type="boolean")
      */
-    private $questionId;
+    private $rightOrFalse;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="NAO\GameBundle\Entity\Question", inversedBy="answers")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $question;
+
+
 
 
     /**
@@ -71,26 +79,50 @@ class Answer
     }
 
     /**
-     * Set questionId.
+     * Set question.
      *
-     * @param string $questionId
+     * @param \NAO\GameBundle\Entity\Question|null $question
      *
      * @return Answer
      */
-    public function setQuestionId($questionId)
+    public function setQuestion(\NAO\GameBundle\Entity\Question $question = null)
     {
-        $this->questionId = $questionId;
+        $this->question = $question;
 
         return $this;
     }
 
     /**
-     * Get questionId.
+     * Get question.
      *
-     * @return string
+     * @return \NAO\GameBundle\Entity\Question|null
      */
-    public function getQuestionId()
+    public function getQuestion()
     {
-        return $this->questionId;
+        return $this->question;
+    }
+
+    /**
+     * Set rightOrFalse.
+     *
+     * @param bool $rightOrFalse
+     *
+     * @return Answer
+     */
+    public function setRightOrFalse($rightOrFalse)
+    {
+        $this->rightOrFalse = $rightOrFalse;
+
+        return $this;
+    }
+
+    /**
+     * Get rightOrFalse.
+     *
+     * @return bool
+     */
+    public function getRightOrFalse()
+    {
+        return $this->rightOrFalse;
     }
 }

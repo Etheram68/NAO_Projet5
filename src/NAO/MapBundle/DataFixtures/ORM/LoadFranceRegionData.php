@@ -22,6 +22,7 @@ class LoadFranceRegionData extends Fixture implements FixtureInterface, Containe
      */
     public function load(ObjectManager $manager)
     {
+        ini_set('memory_limit','-1');
         // bin/console doctrine:fixtures:load
         $csv = fopen('./src/NAO/MapBundle/DataFixtures/ORM/FranceRegion.csv', 'r');
         $first = true;

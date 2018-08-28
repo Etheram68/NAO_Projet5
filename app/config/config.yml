@@ -99,6 +99,9 @@ doctrine:
         auto_generate_proxy_classes: '%kernel.debug%'
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
+        dql:
+            numeric_functions:
+                rand: DoctrineExtensions\Query\Mysql\Rand
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -159,13 +162,5 @@ fos_user:
     profile:
         form:
             type: NAO\UserBundle\Form\ProfileType
-
-sensio_framework_extra:
-    router:      { annotations: true }
-    request:     { converters: true, auto_convert: true }
-    view:        { annotations: true }
-    cache:       { annotations: true }
-    security:    { annotations: true }
-    psr_message: { enabled: false } # Defaults to true if the PSR-7 bridge is installed
 
 

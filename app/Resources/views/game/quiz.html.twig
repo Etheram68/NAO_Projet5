@@ -1,0 +1,42 @@
+{% block naogame_body %}
+
+    <div class="well">
+        <h2>Mini-quiz</h2>
+
+
+        {% for question in listQuestions %}
+
+
+            <h3>{{ question.problem }}</h3>
+            <fieldset>
+
+                <ul>
+                    <li class="form-check">
+                        <input class="form-check-input" type="radio" name="answer">
+                        <label class="form-check-label">
+                            {{ question.answer1 }}
+                        </label>
+                    </li>
+                    <li class="form-check">
+                        <input class="form-check-input" type="radio" name="answer">
+                        <label class="form-check-label">
+                            {{ question.answer2 }}
+                        </label>
+                    </li>
+                    <li class="form-check">
+                        <input class="form-check-input" type="radio" name="answer">
+                        <label class="form-check-label">
+                            {{ question.goodAnswer }}
+                        </label>
+                    </li>
+                </ul>
+
+            </fieldset>
+        {% else %}
+            <h2>Bientôt un super quizz !!</h2>
+        {% endfor %}
+
+        <button class="btn btn-primary">soumettre</button>
+    </div>
+
+{% endblock %}

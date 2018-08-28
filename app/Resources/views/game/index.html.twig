@@ -1,0 +1,7 @@
+{% extends "game/layout.html.twig" %}
+
+
+ {% block naogame_body %}
+
+     {{ render(controller("NAOGameBundle:Game:Question")) }}
+ {% endblock %}

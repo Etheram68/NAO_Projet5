@@ -2,6 +2,7 @@
 
 namespace NAO\GameBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,11 +23,28 @@ class Question
     private $id;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="question", type="integer")
+     * @ORM\Column(name="problem", type="string")
+     *
      */
-    private $question;
+    private $problem;
+
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $answer1;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $answer2;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $goodAnswer;
 
 
     /**
@@ -40,26 +58,75 @@ class Question
     }
 
     /**
-     * Set question.
+     * @return mixed
+     */
+    public function getAnswer1()
+    {
+        return $this->answer1;
+    }
+
+    /**
+     * @param mixed $answer1
+     */
+    public function setAnswer1($answer1)
+    {
+        $this->answer1 = $answer1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAnswer2()
+    {
+        return $this->answer2;
+    }
+
+    /**
+     * @param mixed $answer2
+     */
+    public function setAnswer2($answer2)
+    {
+        $this->answer2 = $answer2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGoodAnswer()
+    {
+        return $this->goodAnswer;
+    }
+
+    /**
+     * @param mixed $goodAnswer
+     */
+    public function setGoodAnswer($goodAnswer)
+    {
+        $this->goodAnswer = $goodAnswer;
+    }
+
+
+    /**
+     * Set problem.
      *
-     * @param string $question
+     * @param string $problem
      *
      * @return Question
      */
-    public function setQuestion($question)
+    public function setProblem($problem)
     {
-        $this->question = $question;
+        $this->problem = $problem;
 
         return $this;
     }
 
     /**
-     * Get question.
+     * Get problem.
      *
      * @return string
      */
-    public function getQuestion()
+    public function getProblem()
     {
-        return $this->question;
+        return $this->problem;
     }
 }

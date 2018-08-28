@@ -9,13 +9,14 @@
 namespace NAO\DataFixtures;
 
 
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use NAO\BlogBundle\Entity\Article;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use NAO\BlogBundle\Entity\Comment;
 
 
-class AppFixtures extends Fixture
+class LoadArticleFixture extends Fixture
 {
     public function load(ObjectManager $manager)
     {
@@ -62,15 +63,15 @@ class AppFixtures extends Fixture
         $comment3->setArticle($article2);
         $comment4->setArticle($article2);
 
-            $manager->persist($article1);
-            $manager->persist($article2);
-            $manager->persist($comment1);
-            $manager->persist($comment2);
-            $manager->persist($comment3);
-            $manager->persist($comment4);
-
+        $manager->persist($article1);
+        $manager->persist($article2);
+        $manager->persist($comment1);
+        $manager->persist($comment2);
+        $manager->persist($comment3);
+        $manager->persist($comment4);
 
 
         $manager->flush();
-}
+    }
+
 }

@@ -1,0 +1,32 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+    <header class="header-404 overlay full-404 relative v-center" id="home-page">
+        <div class="absolute anlge-bg">
+            <div class="container">
+                <div class="row v-center">
+                    <div class="col-xs-12 col-md-7 header-text">
+                        <h2>Salle de jeux</h2>
+                        <h3>
+                            Gagnez des récompenses et développer vos connaissances en répondant correctement à notre
+                            mini-quiz!
+                            <br>
+                            Découvrez aussi le Panthéon de nos meilleurs observateurs...
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="row">
+        <div class="col-sm-8">
+            {% block naogame_body %}
+            {% endblock %}
+        </div>
+        <div class="col-sm-4">
+            {% block Sidebar %}
+                {% include 'game/sidebar.html.twig' %}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}
